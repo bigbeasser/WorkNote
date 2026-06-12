@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "31bf67140e4663fe",
+        "id": "030fa62ad88f80af",
         "type": "tabs",
         "children": [
           {
-            "id": "72c2070a7eacaca4",
+            "id": "fe8e466664a43159",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Monthly Mgmt 科目逻辑梳理"
+            }
+          },
+          {
+            "id": "88c27fce72a19ab2",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -76,15 +90,15 @@
             "state": {
               "type": "recent-files",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "recent-files"
+              "icon": "clock",
+              "title": "Recent files"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 270.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -95,51 +109,23 @@
         "type": "tabs",
         "children": [
           {
-            "id": "edd1d762ac582a15",
+            "id": "9ab45c41582f4ff1",
             "type": "leaf",
             "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Untitled Kanban.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Untitled Kanban 的反向链接列表"
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           },
           {
-            "id": "e34d07b60fc6fbba",
+            "id": "53a8bb6c3836251f",
             "type": "leaf",
             "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Untitled Kanban.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "Untitled Kanban 的出链列表"
-            }
-          },
-          {
-            "id": "80d3fbae9028c85a",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "标签"
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
             }
           },
           {
@@ -162,12 +148,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "Monthly Mgmt 科目逻辑梳理 的大纲"
             }
           },
           {
@@ -179,13 +166,61 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "80d3fbae9028c85a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "edd1d762ac582a15",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Monthly Mgmt 科目逻辑梳理 的反向链接列表"
+            }
+          },
+          {
+            "id": "e34d07b60fc6fbba",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Monthly Mgmt 科目逻辑梳理 的出链列表"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 432.5
+    "width": 515.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,13 +233,38 @@
       "bases:新建数据库": false,
       "obsidian-git:Open Git source control": false,
       "omnisearch:Omnisearch": false,
-      "obsidian-kanban:Create new board": false
+      "obsidian-kanban:Create new board": false,
+      "realclaudian:Open Claudian": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "2026-06-12.md",
-    "未命名.base",
-    "任务列表_Kanban.md"
+    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md.crdownload",
+    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识",
+    "金仕达公司业务类/HME项目文档/代码文档/新建文件夹",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货基础知识.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md.tmp.11788.61aac9b4355e",
+    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md",
+    "任务列表_Kanban.md",
+    "金仕达公司业务类/HME项目文档/任务计划/任务计划.md",
+    "未命名.canvas",
+    "Untitled Kanban.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md.tmp.11788.9c78b2402401",
+    "金仕达公司业务类/HME项目文档/任务计划/任务计划安排_主题类型空壳.md",
+    "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md.tmp.11788.d7c30cdc1605",
+    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细MovementPrice生成逻辑.html",
+    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑.html",
+    "金仕达公司业务类/HME项目文档/通用文档/CTRM业务术语表/CTRM业务术语表.md",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md.tmp.11788.8af9f3257e11",
+    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md.tmp.34080.e5ba3150aa1b",
+    "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/库存价值评估报表方法分析.md",
+    "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/DetailEntrisValueEvaluation-方法分析与二开指引.md",
+    "2026-06-12.md"
   ]
 }

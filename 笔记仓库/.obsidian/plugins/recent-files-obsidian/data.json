@@ -1,12 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "2026-06-12",
-      "path": "2026-06-12.md"
+      "basename": "Monthly Mgmt 科目逻辑梳理",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md"
+    },
+    {
+      "basename": "期货基础知识",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货基础知识.md"
+    },
+    {
+      "basename": "期货现货标准术语手册",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md"
+    },
+    {
+      "basename": "金属损益（Metal Result）及管报重构项目进度汇报及问题沟通",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md"
+    },
+    {
+      "basename": "定价明细价格字段计算逻辑文档",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md"
     },
     {
       "basename": "任务列表_Kanban",
       "path": "任务列表_Kanban.md"
+    },
+    {
+      "basename": "任务计划",
+      "path": "金仕达公司业务类/HME项目文档/任务计划/任务计划.md"
+    },
+    {
+      "basename": "任务计划安排_主题类型空壳",
+      "path": "金仕达公司业务类/HME项目文档/任务计划/任务计划安排_主题类型空壳.md"
+    },
+    {
+      "basename": "Thrift跨语言调用链路说明",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md"
+    },
+    {
+      "basename": "定价明细MovementPrice生成逻辑",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细MovementPrice生成逻辑.html"
+    },
+    {
+      "basename": "定价明细价格字段计算逻辑",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑.html"
+    },
+    {
+      "basename": "CTRM业务术语表",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/CTRM业务术语表/CTRM业务术语表.md"
+    },
+    {
+      "basename": "库存价值评估报表方法分析",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/库存价值评估报表方法分析.md"
+    },
+    {
+      "basename": "DetailEntrisValueEvaluation-方法分析与二开指引",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/DetailEntrisValueEvaluation-方法分析与二开指引.md"
+    },
+    {
+      "basename": "2026-06-12",
+      "path": "2026-06-12.md"
     }
   ],
   "omittedPaths": [],

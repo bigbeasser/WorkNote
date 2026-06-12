@@ -1,0 +1,26 @@
+{
+  "id": "conv-1781250157522-7l407nkqg",
+  "providerId": "claude",
+  "title": "Format document tables using Obsidian syntax",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781250157522,
+  "updatedAt": 1781253264161,
+  "lastResponseAt": 1781253264161,
+  "sessionId": "dc63b5b4-638a-4ba5-956d-0eabddddf3fb",
+  "providerState": {
+    "providerSessionId": "dc63b5b4-638a-4ba5-956d-0eabddddf3fb"
+  },
+  "externalContextPaths": [
+    "C:\\StudyDataBase\\笔记仓库\\金仕达公司业务类\\HME项目文档\\代码文档"
+  ],
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0,
+    "contextWindowIsAuthoritative": true
+  }
+}

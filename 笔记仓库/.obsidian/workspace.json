@@ -179,19 +179,9 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
-          },
-          {
-            "id": "f7f4a46aaebee15a",
-            "type": "leaf",
-            "state": {
-              "type": "agent-client-chat-view",
-              "state": {},
-              "icon": "bot-message-square",
-              "title": "Agent client"
-            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -208,11 +198,10 @@
       "bases:新建数据库": false,
       "obsidian-git:Open Git source control": false,
       "omnisearch:Omnisearch": false,
-      "obsidian-kanban:Create new board": false,
-      "agent-client:Open agent client": false
+      "obsidian-kanban:Create new board": false
     }
   },
-  "active": "f7f4a46aaebee15a",
+  "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
     "2026-06-12.md",
     "未命名.base",

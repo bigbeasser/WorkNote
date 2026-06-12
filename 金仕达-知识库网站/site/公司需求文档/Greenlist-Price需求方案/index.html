@@ -1,0 +1,2915 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="大宗商品贸易 ERP 系统知识库 — 需求文档、代码分析、问题排查、业务概念">
+      
+      
+        <meta name="author" content="Knowledge Base">
+      
+      
+      
+        <link rel="prev" href="../Eservice%E9%80%81%E8%B4%A7%E9%A2%84%E7%BA%A6%E9%9C%80%E6%B1%82/">
+      
+      
+        <link rel="next" href="../%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%8A%A5%E8%A1%A8%E4%B8%BB%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Greenlist Price 需求方案 - 金仕达 CTRM 系统知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#req-001-greenlist-price" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="金仕达 CTRM 系统知识库" class="md-header__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            金仕达 CTRM 系统知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Greenlist Price 需求方案
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  金仕达 CTRM 系统知识库
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-tabs__link">
+          
+  
+  
+  代码分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  需求文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  
+  问题排查
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/" class="md-tabs__link">
+          
+  
+  
+  业务概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A8%A1%E6%9D%BF/" class="md-tabs__link">
+          
+  
+  
+  文档模板
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="金仕达 CTRM 系统知识库" class="md-nav__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    金仕达 CTRM 系统知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    金仕达 CTRM 系统知识库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    代码分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/ExecuteHMEFlowTask%E8%B0%83%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask 调用链分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    需求文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report Lab需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claim Report Lab需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Claim-Report-Lab%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report & Lab 需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eservice送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eservice送货预约需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eservice%E9%80%81%E8%B4%A7%E9%A2%84%E7%BA%A6%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-service 送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price需求方案
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Greenlist Price需求方案
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price 需求方案
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price 需求方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、需求背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、需求描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、需求描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 功能描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 基本规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、筛选查询条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、字段定义
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、字段定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 基础信息字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cuznpbalsnni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 金属成分字段 (CU/ZN/PB/AL/SN/NI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fixation-factory-2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Fixation / Factory 字段（2026.5.20 补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-yield-2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Yield 折率字段（2026.5.20 补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Marker 标记字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-lme-lme-cuznpbalsnni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 LME 行情字段 (LME CU/ZN/PB/AL/SN/NI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Curve 价格曲线字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-lme-for-greenlist-lme-equivalent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 LME For Greenlist（原 LME Equivalent）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-lme-equivalent2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 LME Equivalent（2026.5.20 新增）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410-average-premiumdiscount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Average Premium/Discount 月均折扣
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#411-greenlist-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Greenlist Price 单价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-adder-gl-lme2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 Adder GL-LME（2026.5.20 新增）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、数据示例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、变更记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表主数据优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水报表主数据优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%8A%A5%E8%A1%A8%E4%B8%BB%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表涉及主数据优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水明细表优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%98%8E%E7%BB%86%E8%A1%A8%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板采购优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    单据打印合同模板采购优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%95%E6%8D%AE%E6%89%93%E5%8D%B0%E5%90%88%E5%90%8C%E6%A8%A1%E6%9D%BF%E9%87%87%E8%B4%AD%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板（采购）优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    发票队列设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1/cursor_receivefixationorder_method_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursor receivefixationorder method anal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1/%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    问题排查
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    业务概念
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM业务术语表
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CTRM业务术语表
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/CTRM%E4%B8%9A%E5%8A%A1%E6%9C%AF%E8%AF%AD%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM 大宗商品贸易系统 — 专有业务术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文档模板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['需求标题']
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['问题简述']
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--resolved / investigating / wontfix"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、需求背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、需求描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、需求描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 功能描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 基本规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、筛选查询条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、字段定义
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、字段定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 基础信息字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cuznpbalsnni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 金属成分字段 (CU/ZN/PB/AL/SN/NI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fixation-factory-2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Fixation / Factory 字段（2026.5.20 补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-yield-2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Yield 折率字段（2026.5.20 补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Marker 标记字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-lme-lme-cuznpbalsnni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 LME 行情字段 (LME CU/ZN/PB/AL/SN/NI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Curve 价格曲线字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-lme-for-greenlist-lme-equivalent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 LME For Greenlist（原 LME Equivalent）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-lme-equivalent2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 LME Equivalent（2026.5.20 新增）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410-average-premiumdiscount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Average Premium/Discount 月均折扣
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#411-greenlist-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Greenlist Price 单价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-adder-gl-lme2026520" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 Adder GL-LME（2026.5.20 新增）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、数据示例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、变更记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="req-001-greenlist-price">REQ-001 Greenlist Price 需求方案<a class="headerlink" href="#req-001-greenlist-price" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>需求编号: REQ-001
+提出日期: 2026-05-14
+优先级: 高
+状态: 已确认
+原始文档: <a href="geenlist%20price%20%E9%9C%80%E6%B1%82%E6%96%B9%E6%A1%88.xlsx">geenlist price 需求方案.xlsx</a></p>
+</blockquote>
+<hr />
+<h2 id="_1">一、需求背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>按 <strong>业务机构 + 物料号</strong> 维度，计算商品的 <strong>公允价格 (Greenlist Price)</strong>。该表为商品价格的基底数据，需持久化存储，同时配置定时任务，<strong>每月最后一个交易日次日凌晨 2 点</strong> 更新当日市场行情值。</p>
+<h2 id="_2">二、需求描述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 功能描述<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>在菜单 <strong>【市场风险 → 日内市场行情】</strong> 下新建三级菜单：</p>
+<ul>
+<li>中文：<strong>Greenlist 价格</strong></li>
+<li>英文：<strong>Greenlist Price</strong></li>
+</ul>
+<h3 id="22">2.2 基本规则<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>静态截面表</strong>，不支持拖动汇总</li>
+<li>最小统计维度：<strong>业务机构 + 物料号 + 日期</strong></li>
+<li>金额显示 <strong>五位小数</strong>，数字加 <strong>千分符</strong></li>
+<li>仅针对 <strong>原材料</strong> 和 <strong>Alloy</strong> 类别商品</li>
+</ol>
+<h3 id="23">2.3 定时任务<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<ul>
+<li>触发时间：每月最后一个交易日次日凌晨 2:00</li>
+<li>执行内容：更新当日市场行情值</li>
+</ul>
+<hr />
+<h2 id="_3">三、筛选查询条件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>筛选项</th>
+<th>控件类型</th>
+<th>必输</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>业务机构</strong></td>
+<td>下拉框</td>
+<td>否</td>
+<td>支持多选，默认空（查全部）。取自：业务设置 → 组织管理 → 业务机构管理（启用状态的机构）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>商品编号</strong></td>
+<td>下拉框</td>
+<td>否</td>
+<td>支持多选、模糊搜索，默认空（查全部）。取自：商品定义有效商品编号</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>日期</strong></td>
+<td>日期选择器</td>
+<td>是</td>
+<td>年份+月份+日期，具体日期，默认系统日期</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>月份</strong></td>
+<td>月份选择器</td>
+<td>是</td>
+<td>年月选择器；查询时自动取所选月份的最后一日。示例：选择 2026-03，默认查询 2026-03-31</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>商品大类</strong></td>
+<td>下拉框</td>
+<td>否</td>
+<td>支持多选，默认空（查全部）。取自：商品大类</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Family</strong></td>
+<td>下拉框</td>
+<td>否</td>
+<td>支持多选、模糊搜索，默认空（查全部）。取自：对接配置 → Family → 对接明细 → 值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">四、字段定义<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 基础信息字段<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段(英文)</th>
+<th>字段(中文)</th>
+<th>取值规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Company</td>
+<td>业务机构</td>
+<td>默认呈现全部启用状态的业务机构</td>
+</tr>
+<tr>
+<td>Article Code</td>
+<td>商品编号</td>
+<td>取 [商品定义-商品编号]，业务机构 + 商品编号为唯一主键</td>
+</tr>
+<tr>
+<td>Article Description</td>
+<td>商品名称</td>
+<td>取「商品定义 → 商品名称」</td>
+</tr>
+<tr>
+<td>Article Category</td>
+<td>商品大类</td>
+<td>取「商品定义 → 商品大类」</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>Family</td>
+<td>取「商品定义 → 统计属性 → Family」</td>
+</tr>
+<tr>
+<td>Alloy Code</td>
+<td>对应合金内部编号</td>
+<td>取「商品定义 → 父商品 → 商品编号」，需取最顶层父商品，无父商品则为空。示例：BA1 最顶层父商品编号 C32</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>行情日期</td>
+<td>查询日为交易日则取当日，否则取上一交易日</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-cuznpbalsnni">4.2 金属成分字段 (CU/ZN/PB/AL/SN/NI)<a class="headerlink" href="#42-cuznpbalsnni" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>取值规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CU, ZN, PB, AL, SN, NI</td>
+<td>优先取 [对应合金内部编号] 对应的金属成分值（质检类型默认值=Fixation），无则取 [商品编号] 对应的金属成分值；取值来源于「商品定义 → 质检类型 → 类别=Fixation」的成分值，无数据则取 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-fixation-factory-2026520">4.3 Fixation / Factory 字段（2026.5.20 补充）<a class="headerlink" href="#43-fixation-factory-2026520" title="Permanent link">&para;</a></h3>
+<p>每种金属各有 <strong>Fixation</strong> 和 <strong>Factory</strong> 两个字段：</p>
+<table>
+<thead>
+<tr>
+<th>商品大类</th>
+<th>取值规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原材料</strong></td>
+<td>取该商品本身 Fixation/Factory 金属成分的默认值，无值为 0</td>
+</tr>
+<tr>
+<td><strong>Alloy</strong></td>
+<td>取 [对应合金内部编号] 的 Fixation/Factory 金属成分默认值，无值为 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-yield-2026520">4.4 Yield 折率字段（2026.5.20 补充）<a class="headerlink" href="#44-yield-2026520" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>商品大类</th>
+<th>取值规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原材料</strong></td>
+<td>取该商品本身对应工厂 Yield 的默认值，无值为 0</td>
+</tr>
+<tr>
+<td><strong>Alloy</strong></td>
+<td>取 [对应合金内部编号] 商品对应工厂 Yield 的默认值，无值为 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-marker">4.5 Marker 标记字段<a class="headerlink" href="#45-marker" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>商品大类</th>
+<th>Family</th>
+<th>Marker 值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alloy、半成品、成品</td>
+<td>—</td>
+<td><strong>Alloy</strong></td>
+</tr>
+<tr>
+<td>原材料</td>
+<td>New metal</td>
+<td><strong>Cash</strong></td>
+</tr>
+<tr>
+<td>原材料</td>
+<td>Scrap</td>
+<td><strong>Lowest</strong></td>
+</tr>
+<tr>
+<td>其他</td>
+<td>—</td>
+<td>空</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-lme-lme-cuznpbalsnni">4.6 LME 行情字段 (LME CU/ZN/PB/AL/SN/NI)<a class="headerlink" href="#46-lme-lme-cuznpbalsnni" title="Permanent link">&para;</a></h3>
+<p>取各金属成分对应的 LME 市场行情值，查找规则：</p>
+<ul>
+<li><strong>合约文本</strong>：符号=CU/ZN/Pb/AL/SN/Ni &amp; 作价市场=LME &amp; 币种=Euro &amp; 类型=现货</li>
+<li><strong>行情日期</strong>：查询日期，是交易日取当天，不是则取上一个交易日</li>
+<li><strong>行情类型</strong>：结算价</li>
+<li><strong>Session</strong>：0</li>
+<li><strong>标记</strong>：Family=New metal → Cash，Family=Scrap → Lowest，其它为空</li>
+</ul>
+<h3 id="47-curve">4.7 Curve 价格曲线字段<a class="headerlink" href="#47-curve" title="Permanent link">&para;</a></h3>
+<p>取合约文本名称，查找规则：</p>
+<ol>
+<li>商品 = [对应合金内部编号] 对应的 [商品名称]</li>
+<li>根据业务机构映射确定作价市场：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>业务机构 (Company)</th>
+<th>作价市场</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HME Brass Italy SpA</td>
+<td><strong>MEB</strong></td>
+</tr>
+<tr>
+<td>HME Brass France SAS</td>
+<td><strong>TMB</strong></td>
+</tr>
+<tr>
+<td>HME Brass Germany GmbH</td>
+<td><strong>KMB</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>根据作价市场匹配对应合约文本</li>
+<li>无对应业务机构则取第一个合约文本，无匹配合约文本为空</li>
+</ol>
+<h3 id="48-lme-for-greenlist-lme-equivalent">4.8 LME For Greenlist（原 LME Equivalent）<a class="headerlink" href="#48-lme-for-greenlist-lme-equivalent" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>2026.5.20 字段名称修改：LME Equivalent → LME For Greenlist</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>商品大类</th>
+<th>计算规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alloy、半成品、成品</strong></td>
+<td>取对应市场行情值：合约文本=本表【价格曲线】，行情日期=查询日期（交易日取当天，否则取上一交易日），行情类型=结算价，Session=0，标记=Cash</td>
+</tr>
+<tr>
+<td><strong>原材料 (Scrap/New metal)</strong></td>
+<td><code>LME For Greenlist = ∑(CU/ZN/PB/AL/SN/NI-Fixation × 对应 LME 行情值)</code></td>
+</tr>
+<tr>
+<td><strong>其他</strong></td>
+<td>取 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LME 行情值补充说明（2026.5.20）</strong>：
+- 取各金属成分对应的 LME 市场行情值，然后根据 <strong>Bloomberg 汇率</strong> 将美元转换为欧元
+- LME 合约：符号=CU/ZN/Pb/AL/SN/Ni &amp; 作价市场=LME &amp; 币种=<strong>USD</strong> &amp; 类型=现货
+- 行情日期/行情类型/Session 同上
+- 标记：Family=Scrap → Lowest，其它为 Cash
+- 汇率转换：取 USD-EUR-Bloomberg 的行情值</p>
+<h3 id="49-lme-equivalent2026520">4.9 LME Equivalent（2026.5.20 新增）<a class="headerlink" href="#49-lme-equivalent2026520" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LME Equivalent = ∑(CU/ZN/PB/AL/SN/NI-Factory × LME CU/ZN/PB/AL/SN/NI × Yield 折率)
+</code></pre></div>
+<h3 id="410-average-premiumdiscount">4.10 Average Premium/Discount 月均折扣<a class="headerlink" href="#410-average-premiumdiscount" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>2026.5.14 修改</p>
+</blockquote>
+<ul>
+<li><strong>适用范围</strong>：仅商品大类 = <strong>原材料</strong>，其余品类取值为 0</li>
+<li><strong>计算维度</strong>：业务机构 + 商品</li>
+<li><strong>计算公式</strong>：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>月均折扣 = ∑(入库数量(TO) × 同行标准折扣) ÷ ∑入库数量(TO)
+</code></pre></div>
+<ul>
+<li><strong>收货明细表筛选条件</strong>：</li>
+<li>过账开始日期 = 查询月第一天</li>
+<li>过账结束日期 = 查询月最后一天</li>
+<li>业务机构 = 查询机构</li>
+<li>商品 = 查询商品名称</li>
+<li>SAP 推送状态 = 已推送</li>
+<li><strong>无数据回溯</strong>：若当前查询月无交货订单，逐月向前追溯最近有交货订单的月份取值</li>
+<li>示例：计算 2026-05 月均折扣，优先取 2026-05-01~2026-05-31 数据；5 月无数据则取 2026-04 月</li>
+</ul>
+<h3 id="411-greenlist-price">4.11 Greenlist Price 单价<a class="headerlink" href="#411-greenlist-price" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Greenlist 单价 = LME For Greenlist + 月均折扣
+</code></pre></div>
+<h3 id="412-adder-gl-lme2026520">4.12 Adder GL-LME（2026.5.20 新增）<a class="headerlink" href="#412-adder-gl-lme2026520" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Adder = Greenlist 单价 - LME Equivalent
+</code></pre></div>
+<hr />
+<h2 id="_5">五、数据示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>业务机构</th>
+<th>商品编号</th>
+<th>商品名称</th>
+<th>大类</th>
+<th>Family</th>
+<th>合金编号</th>
+<th>日期</th>
+<th>Marker</th>
+<th>LME For GL</th>
+<th>月均折扣</th>
+<th>GL 单价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HME Brass Italy SpA</td>
+<td>4000071</td>
+<td>COPPER SCRAPS CEN S-CU-10/C GRAN.</td>
+<td>Raw materials</td>
+<td>Scrap</td>
+<td>—</td>
+<td>2026-03-31</td>
+<td>Scrap</td>
+<td>10580.15</td>
+<td>0</td>
+<td>10580.15</td>
+</tr>
+<tr>
+<td>HME Brass France SAS</td>
+<td>4000071</td>
+<td>COPPER SCRAPS CEN S-CU-10/C GRAN.</td>
+<td>Raw materials</td>
+<td>Scrap</td>
+<td>—</td>
+<td>2026-03-31</td>
+<td>Scrap</td>
+<td>10580.15</td>
+<td>0</td>
+<td>10580.15</td>
+</tr>
+<tr>
+<td>HME Brass Germany GmbH</td>
+<td>4000071</td>
+<td>COPPER SCRAPS CEN S-CU-10/C GRAN.</td>
+<td>Raw materials</td>
+<td>Scrap</td>
+<td>—</td>
+<td>2026-03-31</td>
+<td>Scrap</td>
+<td>10580.15</td>
+<td>0</td>
+<td>10580.15</td>
+</tr>
+<tr>
+<td>HME Brass Italy SpA</td>
+<td>4000046</td>
+<td>ZINC INGOTS SECONDARY FUSION</td>
+<td>Raw materials</td>
+<td>New metal</td>
+<td>—</td>
+<td>2026-03-31</td>
+<td>New metal</td>
+<td>2771.30</td>
+<td>0</td>
+<td>2771.30</td>
+</tr>
+<tr>
+<td>HME Brass Italy SpA</td>
+<td>BA1</td>
+<td>B17</td>
+<td>Alloy</td>
+<td>—</td>
+<td>C32</td>
+<td>2026-03-31</td>
+<td>Alloy</td>
+<td>7495.20</td>
+<td>0</td>
+<td>7495.20</td>
+</tr>
+<tr>
+<td>HME Brass France SAS</td>
+<td>BA1</td>
+<td>B17</td>
+<td>Alloy</td>
+<td>—</td>
+<td>C32</td>
+<td>2026-03-31</td>
+<td>Alloy</td>
+<td>7492.80</td>
+<td>0</td>
+<td>7492.80</td>
+</tr>
+<tr>
+<td>HME Brass Germany GmbH</td>
+<td>BA1</td>
+<td>B17</td>
+<td>Alloy</td>
+<td>—</td>
+<td>C32</td>
+<td>2026-03-31</td>
+<td>Alloy</td>
+<td>7503.90</td>
+<td>0</td>
+<td>7503.90</td>
+</tr>
+<tr>
+<td>HME Brass Italy SpA</td>
+<td>4000087</td>
+<td>BINARY BRASS SCRAPS 67/33 S-CUZN-1/C</td>
+<td>Raw materials</td>
+<td>—</td>
+<td>—</td>
+<td>2026-03-31</td>
+<td>Scrap</td>
+<td>8003.29</td>
+<td>0</td>
+<td>8003.29</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">六、变更记录<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>变更内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-05-14</td>
+<td>初始版本：月均折扣计算逻辑修改（仅原材料、按月回溯）、定时任务改为每月最后交易日次日凌晨 2 点</td>
+</tr>
+<tr>
+<td>2026-05-20</td>
+<td>补充字段：每种金属增加 Fixation/Factory 双列、增加 Yield 折率列、增加 LME Equivalent 和 Adder 列、LME Equivalent 更名为 LME For Greenlist、LME 行情值改用 USD 币种 + Bloomberg 汇率转换 EUR</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>最后更新: 2026-06-02</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      金仕达 CTRM 系统知识库 &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

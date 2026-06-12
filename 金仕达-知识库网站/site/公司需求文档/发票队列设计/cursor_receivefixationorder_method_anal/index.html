@@ -1,0 +1,2547 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="大宗商品贸易 ERP 系统知识库 — 需求文档、代码分析、问题排查、业务概念">
+      
+      
+        <meta name="author" content="Knowledge Base">
+      
+      
+      
+        <link rel="prev" href="../../%E5%8D%95%E6%8D%AE%E6%89%93%E5%8D%B0%E5%90%88%E5%90%8C%E6%A8%A1%E6%9D%BF%E9%87%87%E8%B4%AD%E4%BC%98%E5%8C%96/">
+      
+      
+        <link rel="next" href="../%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Cursor receivefixationorder method anal - 金仕达 CTRM 系统知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-nestfixationgenerpayinvoice" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="金仕达 CTRM 系统知识库" class="md-header__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            金仕达 CTRM 系统知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cursor receivefixationorder method anal
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  金仕达 CTRM 系统知识库
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-tabs__link">
+          
+  
+  
+  代码分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  需求文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  
+  问题排查
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/" class="md-tabs__link">
+          
+  
+  
+  业务概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E6%A8%A1%E6%9D%BF/" class="md-tabs__link">
+          
+  
+  
+  文档模板
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="金仕达 CTRM 系统知识库" class="md-nav__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    金仕达 CTRM 系统知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    金仕达 CTRM 系统知识库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    代码分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/ExecuteHMEFlowTask%E8%B0%83%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask 调用链分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    需求文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report Lab需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claim Report Lab需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Claim-Report-Lab%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report & Lab 需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eservice送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eservice送货预约需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Eservice%E9%80%81%E8%B4%A7%E9%A2%84%E7%BA%A6%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-service 送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price需求方案
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Greenlist Price需求方案
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Greenlist-Price%E9%9C%80%E6%B1%82%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price 需求方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表主数据优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水报表主数据优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%8A%A5%E8%A1%A8%E4%B8%BB%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表涉及主数据优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水明细表优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%98%8E%E7%BB%86%E8%A1%A8%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板采购优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    单据打印合同模板采购优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8D%95%E6%8D%AE%E6%89%93%E5%8D%B0%E5%90%88%E5%90%8C%E6%A8%A1%E6%9D%BF%E9%87%87%E8%B4%AD%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板（采购）优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    发票队列设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursor receivefixationorder method anal
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursor receivefixationorder method anal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-nestfixationgenerpayinvoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. nestFixationGenerPayInvoice 方法执行逻辑与调用关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. nestFixationGenerPayInvoice 方法执行逻辑与调用关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 方法本身逻辑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 调用方（谁在调用它）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 并发下重复发票的原因分析（在现有设计下）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 解耦设计方案：任务表 + 定时任务 + 幂等与并发控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 解耦设计方案：任务表 + 定时任务 + 幂等与并发控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 新增一张“发票生成任务表”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 入口改造思路：从“直接生成发票”变为“写任务表”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 定时任务：顺序（或限流）消费任务表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 业务幂等与数据约束建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 回到现有接口行为的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    问题排查
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    业务概念
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM业务术语表
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CTRM业务术语表
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%9A%E5%8A%A1%E6%A6%82%E5%BF%B5/CTRM%E4%B8%9A%E5%8A%A1%E6%9C%AF%E8%AF%AD%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM 大宗商品贸易系统 — 专有业务术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文档模板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%A8%A1%E6%9D%BF/%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['需求标题']
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%A8%A1%E6%9D%BF/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%A8%A1%E6%9D%BF/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['问题简述']
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--resolved / investigating / wontfix"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-nestfixationgenerpayinvoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. nestFixationGenerPayInvoice 方法执行逻辑与调用关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. nestFixationGenerPayInvoice 方法执行逻辑与调用关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 方法本身逻辑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 调用方（谁在调用它）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 并发下重复发票的原因分析（在现有设计下）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 解耦设计方案：任务表 + 定时任务 + 幂等与并发控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 解耦设计方案：任务表 + 定时任务 + 幂等与并发控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 新增一张“发票生成任务表”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 入口改造思路：从“直接生成发票”变为“写任务表”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 定时任务：顺序（或限流）消费任务表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 业务幂等与数据约束建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 回到现有接口行为的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Cursor receivefixationorder method anal</h1>
+
+<hr />
+<p>create table ic_invoice_generate_task(    id            bigint auto_increment        primary key,    business_id   bigint  not null comment '业务ID,入库登记ID,等',    business_numbers varchar(100) DEFAULT NULL COMMENT '业务单号 (冗余字段，方便查询)',    request_params   text null comment '原始请求参数 (JSON)',    action_type  varchar(100) not null comment '发票类型,冲销发票/正向发票',    invoice_type  varchar(100) not null comment '发票种类,采购发票/销售发票/Credit/Debit',    source_type      varchar(500) not null comment '任务来源,crm_接收点价单/crm_接收入库登记',    status      varchar(50) not null comment 'PENDING：待处理;PROCESSING：处理中;SUCCESS：成功;FAILED：失败;',    sap_push_status      varchar(50)  null comment 'SUCCESS：成功;FAILED：失败;init:未推送',    error_message   text  null comment '最近一次失败原因摘要',    start_time datetime DEFAULT NULL COMMENT '开始执行时间',    end_time datetime DEFAULT NULL COMMENT '结束时间',    version int(11) NOT NULL DEFAULT 0 COMMENT '版本号 (乐观锁)',    created_by    varchar(255) not null comment '创建者',    created_time  datetime     not null comment '创建时间',    inactive_flag bit          not null comment '逻辑删除标识(0:未删除、1:已删除)',    KEY idx_business_id (business_id),    KEY idx_status (status)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment 'IC发票自动生成队列表';​​create table ic_invoice_generate_task_result(    id            bigint auto_increment        primary key,    ic_invoice_generate_task_id  bigint not null comment 'IC发票自动生成队列表id',    business_id    bigint not null comment '业务ID,例如入库登记ID',    relate_invoice_id     bigint not null comment '关联生成的发票',    relate_invoice_document_id     bigint not null comment '关联生成的发票明细',    created_by    varchar(255) not null comment '创建者',    created_time  datetime     not null comment '创建时间',    KEY idx_ic_invoice_generate_task_id (ic_invoice_generate_task_id),    KEY idx_business_id (business_id),    KEY idx_invoice_document_id (relate_invoice_document_id),    KEY idx_invoice_id (relate_invoice_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment 'IC发票自动生成队列关联结果表';sql</p>
+<p>仔细分析这个方法nestFixationGenerPayInvoice,详细了解每一步调用,和调用他的地方,现在当有并发出现的时候,会出现一种情况,发票生成重复,现在希望吧生成发票这个功能解耦出来 ,数据库里设计一张表,当个地方进行调用的时候,先存进表里,然后定时任务一个一个再进行实际执行,给出我方案,各种细节的设计</p>
+<hr />
+<p><strong>Cursor</strong></p>
+<p>先把你关心的这块理一遍：<strong>现在的 <code>nestFixationGenerPayInvoice</code> 是“同步直接调生成发票”的方式</strong>，在并发场景下容易出现同一批入库登记（RegisterIds）被多次传入，从而触发多次 <code>genInvoiceByCrmPricing</code> 调用，虽然方法内部有一定去重校验，但在高并发+事务隔离下仍可能产生重复发票。你希望的是：<strong>把“生成发票”变成一个异步任务队列</strong>，入口只负责“写任务表”，由定时任务顺序消费，这个方向是对的。</p>
+<p>下面分三块说：<br />
+1）现有方法链路和调用点分析<br />
+2）为什么在并发下仍然可能重复生成发票<br />
+3）设计一个“发票生成任务表 + 定时任务消费”的完整解耦方案（含表结构、状态流转、并发控制、幂等设计等）</p>
+<hr />
+<h3 id="1-nestfixationgenerpayinvoice">1. <code>nestFixationGenerPayInvoice</code> 方法执行逻辑与调用关系<a class="headerlink" href="#1-nestfixationgenerpayinvoice" title="Permanent link">&para;</a></h3>
+<h4 id="11">1.1 方法本身逻辑<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<p>方法位置（你可以在 IDE 里跳转）：</p>
+<p>```3813:3838:bcadmin-system/src/main/java/com/resrun/modules/business/service/impl/PricingServiceImpl.java
+    @Override
+    public void nestFixationGenerPayInvoice(List<Long> RegisterIds) {
+        if (CollectionUtils.isEmpty(RegisterIds)) {
+            return;
+        }
+        LambdaQueryWrapper<Documents> queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(Documents::getInactiveFlag, false);
+        queryWrapper.eq(Documents::getActionId, 42L);
+        queryWrapper.eq(Documents::getOffsetFlag, "n");
+        queryWrapper.in(Documents::getIntercompany, Arrays.asList("BTO", "BTS"));</p>
+<div class="highlight"><pre><span></span><code>    queryWrapper.in(Documents::getId, RegisterIds);
+    List&lt;Documents&gt; documents = documentsMapper.selectList(queryWrapper);
+    if (org.springframework.util.CollectionUtils.isEmpty(documents))
+        return;
+
+    CrmFixationParams paras = new CrmFixationParams();
+    paras.setDocs(documents);
+    /* 生成 采购发票 */
+    try {
+        log.info(&quot;点价接口开始生成采购发票 ----  &quot;);
+        List&lt;Invoice&gt; invoices = invoiceService.genInvoiceByCrmPricing(paras, null);
+    } catch (BizException e) {
+        log.error(&quot;采购发票生成失败&quot;, e);
+    }
+}
+</code></pre></div>
+<p><code>``
+
+**逐步拆解：**
+
+- **Step 1：入参判空**
+  -</code>RegisterIds<code>为空直接返回。
+
+- **Step 2：查询入库登记</code>Documents<code>**
+  - 条件：
+    -</code>inactiveFlag = false<code>-</code>actionId = 42L<code>-</code>offsetFlag = "n"<code>（未冲销）
+    -</code>intercompany in ("BTO", "BTS")<code>-</code>id in RegisterIds<code>- 这一步得到的是一批“满足条件的入库登记单”。
+
+- **Step 3：判空**
+  - 如果根据上述条件查不到</code>documents<code>，直接返回。
+
+- **Step 4：组装参数</code>CrmFixationParams<code>**
+  -</code>paras.setDocs(documents);<code>- 这里只填充了</code>docs<code>，</code>docItems/pdLines/pds<code>在</code>InvoiceServiceImpl.genInvoiceByCrmPricing<code>里会进一步补全。
+
+- **Step 5：调用发票生成服务**
+  -</code>invoiceService.genInvoiceByCrmPricing(paras, null);<code>-</code>postDate<code>传</code>null`，意思是过账日期使用默认逻辑（通常取入库登记的过账日期）。
+</p>
+<h4 id="12">1.2 调用方（谁在调用它）<a class="headerlink" href="#12" title="Permanent link">&para;</a></h4>
+<p>主要调用点：
+
+<code>110:130:bcadmin-system/src/main/java/com/resrun/modules/business/rest/DockingCrmController.java
+    public CrmFixationOrderRes receiveFixationOrder(@RequestBody CrmFixationOrderReq request) {
+        ...
+        String key = ICPRICLOCK + crmIdKey;
+        contractStatusLockMap.computeIfAbsent(key, k -&gt; new Object());
+        synchronized (contractStatusLockMap.get(key)) {
+            try {
+                if (COLUMN2_VALUE_OFFSET.equalsIgnoreCase(crmFixationOrderReqItem.getColumn2())) {
+                    // 冲销逻辑
+                    return pricingService.getRevertFixationOrderFromCrm(request);
+                }
+                CrmFixationOrderRes fixationOrderFromCrm = pricingService.getFixationOrderFromCrm(request);// 新建
+                pricingService.nestFixationGenerPayInvoice(fixationOrderFromCrm.getRegisterIdList());  // 生成发票（当前是同步）
+                return fixationOrderFromCrm;
+            } catch (Exception e) {
+                ...
+            }
+        }
+    }</code></p>
+<p>调用链概览：</p>
+<ol>
+<li>CRM 调用 <code>POST /api/dockingCrm/receiveFixationOrder</code>（类名略，接口路径按你实际）。</li>
+<li><code>DockingCrmController.receiveFixationOrder</code> 解析请求，做一个以 <code>crmId</code> 为粒度的 <code>synchronized</code> 锁。</li>
+<li>如果是新建（非冲销）：</li>
+<li>调 <code>pricingService.getFixationOrderFromCrm(request)</code>：根据 CRM 点价生成本系统点价及相关数据，返回 <code>CrmFixationOrderRes</code>，其中包含 <code>registerIdList</code>（入库登记 ID 集合）。</li>
+<li>立即调用 <code>pricingService.nestFixationGenerPayInvoice(registerIdList)</code>：<strong>同步生成采购发票</strong>。</li>
+<li>返回给 CRM。</li>
+</ol>
+<p>还有其他地方间接走 <code>genInvoiceByCrmPricing</code> 的，如 <code>DockingSapController</code>、<code>InvoiceAsyncTask</code>、<code>SystemOperationsController</code>，但你这次问的是 <strong>nestFixationGenerPayInvoice 这条链路</strong>。</p>
+<hr />
+<h3 id="2">2. 并发下重复发票的原因分析（在现有设计下）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>结合上面的链路，以及 <code>genInvoiceByCrmPricing</code> 内部逻辑，可以得出几个关键点：</p>
+<ol>
+<li><strong><code>receiveFixationOrder</code> 的锁粒度是 <code>crmId</code>，不是 “入库登记 ID” 或 “合同+行号”</strong></li>
+<li>如果<strong>不同的 CRM 请求</strong>（不同 <code>crmId</code>）逻辑上指向了<strong>相同的一批入库登记（RegisterIds）</strong>，这些请求之间是<strong>没有互斥的</strong>。</li>
+<li>
+<p>这种情况在补单、重发等“上游重复推送”的场景里比较常见。</p>
+</li>
+<li>
+<p><strong><code>genInvoiceByCrmPricing</code> 的幂等性依赖于“先查已有发票，再决定是否生成”</strong></p>
+</li>
+<li><code>InvoiceServiceImpl.genInvoiceByCrmPricing</code> 中做了不少“避免重复生成”的逻辑（简化一下）：<ul>
+<li>通过 <code>myFinanceMapper.selectInvoiceByCriteria</code> 判断当前入库是否已有发票；</li>
+<li>通过 <code>invoiceDocuments</code> 和 <code>Invoice</code>（gzstatus != 3）过滤出已经被有效发票引用的 <code>DocumentItems</code>；</li>
+<li>只对 <code>jsQuantity&gt;0</code> 的明细生成发票。</li>
+</ul>
+</li>
+<li>
+<p>但在 <strong>高并发 + 事务隔离（<code>REQUIRES_NEW</code>）</strong> 下，会存在这样的竞态：</p>
+<ul>
+<li>线程 A 和线程 B 几乎同时进入 <code>genInvoiceByCrmPricing</code>；</li>
+<li>两者在各自事务里查询 <code>InvoiceDocuments</code> 时，看不到对方尚未提交的那批数据；</li>
+<li>都认为“还没开这个发票”，于是各自生成了一组发票并提交——这时就产生了重复。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>nestFixationGenerPayInvoice</code> 是同步串接，发票生成耗时 + CRM 同步等待，放大并发问题</strong></p>
+</li>
+<li>发票生成逻辑不轻（查询 + 汇率 + 发票行组装 + 插表），在接口同步里做，一旦 CRM 有高峰并发：<ul>
+<li>一方面请求慢；</li>
+<li>另一方面，发票生成这段复杂逻辑在多线程下同时跑，更容易制造上述读/写竞态。</li>
+</ul>
+</li>
+</ol>
+<p>综上：<strong>即便 <code>genInvoiceByCrmPricing</code> 做了不少防重复校验，在“多线程近同时进入 + 校验也在事务内”的场景下，仍然可能导致重复生成。</strong><br />
+你的目标是把这块从“高并发入口”里抽离出来，改成“统一队列 + 单点/小并发消费者”，这是从架构层面减轻竞态的办法。</p>
+<hr />
+<h3 id="3">3. 解耦设计方案：任务表 + 定时任务 + 幂等与并发控制<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>下面给一个比较完整、落得下地的方案，按你现在的技术栈（Spring + MyBatis/MyBatis-Plus + Quartz/定时任务）来设计。</p>
+<h4 id="31">3.1 新增一张“发票生成任务表”<a class="headerlink" href="#31" title="Permanent link">&para;</a></h4>
+<p>可以命名为：<code>invoice_generate_task</code>（或按你们命名规范来）。</p>
+<p><strong>建议字段（核心字段 + 建议约束）：</strong></p>
+<ul>
+<li><strong>主键</strong></li>
+<li>
+<p><code>id</code> (bigint, PK)</p>
+</li>
+<li>
+<p><strong>业务维度 / 去重维度</strong></p>
+</li>
+<li><code>register_id</code> (bigint)  <ul>
+<li>对应 <code>Documents.id</code>，一条任务通常可以针对 1 个入库登记；如果一次任务要处理多个，可以设计 <code>task_id + 子表</code>，但按你现状，每个 <code>RegisterId</code> 一个任务更清晰。</li>
+</ul>
+</li>
+<li><code>invoice_type</code> (varchar)  <ul>
+<li>例如固定 <code>"DomesticInvoiceMaterial"</code>，也为后续扩展不同类型预留空间。</li>
+</ul>
+</li>
+<li>
+<p><strong>唯一约束</strong>：<code>unique(register_id, invoice_type)</code>  </p>
+<ul>
+<li>防止同一个入库登记+发票类型被重复入队。</li>
+</ul>
+</li>
+<li>
+<p><strong>来源信息（便于追踪、排障）</strong></p>
+</li>
+<li><code>source_type</code> (varchar)：如 <code>"CRM_FIXATION"</code>, <code>"SAP_RESEND"</code>, <code>"OPS_MANUAL"</code> 等。</li>
+<li><code>source_key</code> (varchar)：例如 <code>crmId</code>、外部系统单号。</li>
+<li>
+<p><code>request_payload</code> (text/json)：可选，用于存储原始请求关键参数（比如 registerIdList、contractNo 等）。</p>
+</li>
+<li>
+<p><strong>执行控制字段</strong></p>
+</li>
+<li><code>status</code> (varchar)：枚举，比如：<ul>
+<li><code>PENDING</code>：待处理</li>
+<li><code>PROCESSING</code>：处理中</li>
+<li><code>SUCCESS</code>：成功</li>
+<li><code>FAILED</code>：失败（可重试）</li>
+<li><code>PERMANENT_FAILED</code>：多次失败后不再重试</li>
+</ul>
+</li>
+<li><code>retry_count</code> (int)：当前重试次数。</li>
+<li><code>next_run_time</code> (datetime)：下次允许执行时间，用于做退避（比如失败后 5 分钟再试）。</li>
+<li><code>last_error</code> (varchar/text)：最近一次失败原因摘要（堆栈截断即可）。</li>
+<li><code>last_run_time</code> (datetime)：最后一次尝试执行时间。</li>
+<li><code>created_time</code> / <code>updated_time</code> / <code>created_by</code> 等审计字段。</li>
+</ul>
+<blockquote>
+<p>如果你觉得“一条任务就是一组 RegisterIds”更合适，也可以：<br />
+- 表里用 <code>register_ids</code> 存 JSON 数组；<br />
+- 唯一约束改为业务自定义，比如 <code>UNIQUE(task_key)</code>，<code>task_key</code> 可由 <code>crmId</code> 等组合生成。<br />
+下文用“每个 RegisterId 一条任务”的思路讲解，更细粒度，也更自然和幂等。</p>
+</blockquote>
+<h4 id="32">3.2 入口改造思路：从“直接生成发票”变为“写任务表”<a class="headerlink" href="#32" title="Permanent link">&para;</a></h4>
+<p><strong>现状：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">CrmFixationOrderRes</span><span class="w"> </span><span class="n">fixationOrderFromCrm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pricingService</span><span class="p">.</span><span class="na">getFixationOrderFromCrm</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pricingService</span><span class="p">.</span><span class="na">nestFixationGenerPayInvoice</span><span class="p">(</span><span class="n">fixationOrderFromCrm</span><span class="p">.</span><span class="na">getRegisterIdList</span><span class="p">());</span>
+</code></pre></div>
+<p><strong>目标：</strong></p>
+<ul>
+<li>把这段变成：<strong>只负责把 <code>registerIdList</code> 写入 <code>invoice_generate_task</code>，不直接调发票生成</strong>。</li>
+<li>对 CRM 的响应仍然是“点价创建成功”，但要明确发票是异步生成。</li>
+</ul>
+<p><strong>伪代码设计（供你后续改造时参考）</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fixationOrderFromCrm</span><span class="p">.</span><span class="na">getRegisterIdList</span><span class="p">();</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">registerId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">registerIds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">invoiceGenerateTaskService</span><span class="p">.</span><span class="na">enqueueCrmPricingTask</span><span class="p">(</span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CRM_FIXATION&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getCrmId</span><span class="p">(),</span><span class="w"> </span><span class="n">currentUser</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DuplicateKeyException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="c1">// 已经存在同样的任务了，说明已排队/执行过，忽略即可（幂等）</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>invoiceGenerateTaskService.enqueueCrmPricingTask</code> 内部逻辑建议：</p>
+<ul>
+<li>插入一条 <code>invoice_generate_task</code> 记录：</li>
+<li><code>register_id = registerId</code></li>
+<li><code>invoice_type = "DomesticInvoiceMaterial"</code></li>
+<li><code>status = PENDING</code></li>
+<li><code>retry_count = 0</code></li>
+<li><code>next_run_time = now</code></li>
+<li><code>source_type = "CRM_FIXATION"</code></li>
+<li><code>source_key = crmId</code></li>
+<li>利用前面提到的 <code>(register_id, invoice_type)</code> 唯一约束，天然防止同一入库登记被多次入队。</li>
+</ul>
+<blockquote>
+<p>这里按你的要求，我<strong>只给方案，不改代码</strong>；你后面可以根据这个思路落代码。</p>
+</blockquote>
+<h4 id="33">3.3 定时任务：顺序（或限流）消费任务表<a class="headerlink" href="#33" title="Permanent link">&para;</a></h4>
+<p>新建一个类似 <code>InvoiceGenerateTaskJob</code> 的定时任务/Quartz Job：</p>
+<p><strong>核心流程：</strong></p>
+<ol>
+<li><strong>拉取一批待处理任务</strong></li>
+<li>SQL 示例（伪代码）：<ul>
+<li><code>select * from invoice_generate_task where status = 'PENDING' and next_run_time &lt;= now() order by created_time asc limit 100</code></li>
+<li>或者再加一层 <code>FOR UPDATE SKIP LOCKED</code>（如果底层支持），保证多实例情况下不会抢同一条记录。</li>
+</ul>
+</li>
+<li>
+<p>对于每条记录，在代码里：</p>
+<ul>
+<li>使用乐观/悲观方式把状态从 <code>PENDING</code> 更新为 <code>PROCESSING</code>：</li>
+<li><code>update invoice_generate_task set status='PROCESSING', last_run_time=now() where id=? and status='PENDING'</code></li>
+<li>返回影响行数==1 说明抢到了执行权；否则说明别的实例已经抢走了，当前实例跳过。</li>
+</ul>
+</li>
+<li>
+<p><strong>执行单条任务（建议每条任务一个新事务）</strong></p>
+</li>
+<li>在 <code>PROCESSING</code> 状态下，执行类似当前 <code>nestFixationGenerPayInvoice</code> 中的逻辑：<ul>
+<li>根据 <code>register_id</code> 去 <code>Documents</code> 查对应入库登记（同现有 where 条件）。</li>
+<li>构造 <code>CrmFixationParams</code>，设置 <code>docs</code>。</li>
+<li>调用 <code>invoiceService.genInvoiceByCrmPricing(paras, null)</code>。</li>
+</ul>
+</li>
+<li>
+<p>完全可以把 <code>nestFixationGenerPayInvoice</code> 的“查询+组装+调用”逻辑搬到一个私有方法，让任务消费和原来的同步入口共用，减少重复。</p>
+</li>
+<li>
+<p><strong>根据执行结果更新任务状态</strong></p>
+</li>
+<li><strong>成功：</strong><ul>
+<li><code>status = SUCCESS</code></li>
+<li><code>retry_count</code> 不变（或设置为最终值）</li>
+<li>可选：记录生成的 <code>invoice_ids</code>，写到另一个关联表 <code>invoice_generate_task_result</code> 里。</li>
+</ul>
+</li>
+<li>
+<p><strong>失败可重试：</strong></p>
+<ul>
+<li>增加 <code>retry_count</code>。</li>
+<li>若 <code>retry_count &lt; maxRetry</code>（比如 3 或 5），则：</li>
+<li><code>status = FAILED</code></li>
+<li><code>next_run_time = now() + retryInterval * retry_count</code>（简单指数退避）</li>
+<li><code>last_error = 截断后的错误信息</code></li>
+<li>若达到最大重试次数：</li>
+<li><code>status = PERMANENT_FAILED</code></li>
+<li>报警/人工介入（邮件、钉钉等）。</li>
+</ul>
+</li>
+<li>
+<p><strong>并发与幂等控制</strong></p>
+</li>
+<li>通过：<ul>
+<li><strong>任务表唯一约束</strong> 防止“入口层面”的重复排队；</li>
+<li><strong>任务消费端单条任务 + 事务 + 现有 <code>genInvoiceByCrmPricing</code> 中的发票存在性校验</strong><br />
+   再加上一层“串行或小并发、非高并发入口”的架构，将<strong>生成重复发票的概率极大降低</strong>，即便极端情况下仍有竞态，数据库层面可以再加业务唯一索引（比如某些业务键）兜底。</li>
+</ul>
+</li>
+</ol>
+<h4 id="34">3.4 业务幂等与数据约束建议<a class="headerlink" href="#34" title="Permanent link">&para;</a></h4>
+<p>为确保即便入口或任务消费出现异常，也不会产生重复发票，可以再增加一些“硬约束”：</p>
+<ul>
+<li><strong>在发票明细关系表 <code>InvoiceDocuments</code> 上增加业务唯一约束</strong>（如果业务允许）：</li>
+<li>例如：<code>UNIQUE(document_items_id, invoice_type, gzstatus not reversed)</code> 之类的组合（这需要结合你们现有表结构仔细设计）。</li>
+<li>
+<p>如果插入时违反唯一约束，说明这条明细已经被某个有效发票引用，可以捕获异常视为“已成功/已存在”，从逻辑上将本次任务标记为成功而不是失败。</p>
+</li>
+<li>
+<p><strong>任务表与发票之间建立关联表（可选）</strong></p>
+</li>
+<li>如 <code>invoice_generate_task_result(task_id, invoice_id, created_time)</code>。</li>
+<li>方便后续排查：“这条任务到底生成了哪些发票”。</li>
+</ul>
+<h4 id="35">3.5 回到现有接口行为的影响<a class="headerlink" href="#35" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>对 CRM 调用方</strong>：</li>
+<li>现在：CRM 发起点价 → 接口里“点价 + 同步生成发票” → 成功返回时，发票基本已经在系统中。</li>
+<li>未来：CRM 发起点价 → 接口里“点价 + 写任务表” → 立即返回成功（或带上“发票生成中”的状态），发票由后台任务稍后生成。</li>
+<li>如果 CRM 端对“发票是否已生成”有依赖，需要：</li>
+<li>要么增加一个“查询发票生成状态”的接口（通过 <code>crmId</code> 或 <code>registerId</code> 查询）；</li>
+<li>要么通过你们现有对接给 SAP/CRM 的反向推送来通知发票生成结果。</li>
+</ul>
+<hr />
+<h3 id="4">4. 小结<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>当前问题本质</strong>：发票生成逻辑在高并发入口中被多次触发，依赖“先查再生成”的逻辑去重，在事务并发下不完全可靠，导致偶发重复发票。</li>
+<li><strong>建议方案</strong>：  </li>
+<li>新增 <code>invoice_generate_task</code> 任务表；  </li>
+<li>所有地方（包括 <code>nestFixationGenerPayInvoice</code> 的现有调用点）不再直接调 <code>genInvoiceByCrmPricing</code>，而是向任务表写入记录；  </li>
+<li>由单实例/限流的定时任务顺序消费任务，在任务消费端执行现有的 <code>genInvoiceByCrmPricing</code> 逻辑；  </li>
+<li>配合任务状态机（PENDING/PROCESSING/SUCCESS/FAILED/...）、唯一约束和可选的发票明细唯一索引，整体上做到既防重复，又易于监控和重试。</li>
+</ul>
+<p>如果你愿意，下一步我可以帮你：<br />
+- 把“任务表字段 + 索引方案”写成完整的建表 SQL；<br />
+- 以及“enqueue 服务接口”和“定时任务消费伪代码”写成接近可直接贴进项目的 Java 代码草案，方便你后续自己落地实现。</p>
+<hr />
+<p><reproduction_steps>
+1. 在测试库中按上述方案先设计并创建 <code>invoice_generate_task</code> 表以及必要的唯一约束（例如 <code>(register_id, invoice_type)</code> 唯一）。
+2. 在测试环境中，将当前同步调用 <code>nestFixationGenerPayInvoice</code> 的逻辑改为“只写任务表、不直接生成发票”，并实现定时任务消费逻辑（单线程或受控并发）。
+3. 使用同一组 <code>RegisterIds</code> 构造 5～10 个并发的 CRM 点价请求，确认请求返回时只是排队，不会立刻在发票表中出现多组重复数据。
+4. 等定时任务运行完成后，检查发票相关表（<code>Invoice</code>、<code>InvoiceDocuments</code>）和任务表，确认：相同的 <code>registerId</code> 只生成了一套有效发票，失败任务有清晰的状态和错误信息。
+5. Press Proceed/Mark as fixed when done.
+</reproduction_steps></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      金仕达 CTRM 系统知识库 &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,554 @@
+╭─── Claude Code v2.1.162 ─────────────────────────────────────────────────────╮
+│                                            │ Tips for getting started        │
+│                Welcome back!               │ Run /init to create a CLAUDE.m… │
+│                                            │ ─────────────────────────────── │
+│                   ▐▛███▜▌                  │ What's new                      │
+│                  ▝▜█████▛▘                 │ `claude agents --json` now inc… │
+│                    ▘▘ ▝▝                   │ `--tools`: explicitly listing … │
+│                                            │ `/effort` now confirms when yo… │
+│   aliyun/qwen3.7-max · API Usage Billing   │ /release-notes for more         │
+│    C:\doWork\HME-客户服务器源码\hmeback    │                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+❯ 分析下这个方法是计算什么的?统计什么维度的数据的报表?                          
+  List<DetailEntrisValueEvaluation> normalResults = new ArrayList<>();          
+          List<DetailEntrisValueEvaluation> offsetResults = new                 
+  ArrayList<>();这俩的作用是什么                                                
+  ⎿  ⧉ Selected 102 lines from ..\..\..\mnt\c\doWork\HME-客户服务器源码\hmeback\bcadmin-system\src\main\java\com\resrun\modules\business\service\impl\EomStorageServiceImpl.java in IntelliJ IDEA
+
+  Thought for 2s (ctrl+o to expand)
+
+● 让我先读取完整的方法和相关的实体类，以便全面分析。
+
+  Read 1 file (ctrl+o to expand)
+
+● Explore(查找DetailEntrisValueEvaluation实体类)
+  ⎿  Done (6 tool uses · 0 tokens · 56s)
+  (ctrl+o to expand)
+
+  Thought for 3m 59s (ctrl+o to expand)
+
+● 让我继续读取方法的剩余部分：
+
+  Thought for 46s, read 2 files (ctrl+o to expand)
+
+● 现在我对整个方法有了完整的理解，下面是分析。
+
+  ---
+  方法分析：listDetailEntrisValueEvaluation
+
+  这是什么报表？
+
+  这是一个库存价值评估明细表（Detail Entries Value
+  Evaluation），属于大宗商品贸易/仓储管理系统中的月末（EOM）库存估值报表。
+
+  统计维度
+
+  从实体类字段和查询条件来看，报表按以下维度展示数据：
+
+  ┌──────────┬──────────────────────────────────────────────┐
+  │   维度   │                   对应字段                   │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 时间     │ 会计日、过账日期、货权转移日期               │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 单据     │ 单据号、单据类型、单据行号                   │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 合同     │ 合同号、合同行号、SAP订单号                  │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 交易对手 │ 交易对家名称                                 │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 组织     │ 业务机构（Legal Entity）、业务部门、业务板块 │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 仓储     │ 仓库名称、工厂                               │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 商品     │ 商品名、合金、批次号、父商品                 │
+  ├──────────┼──────────────────────────────────────────────┤
+  │ 币种     │ 结算币种、本位币种                           │
+  └──────────┴──────────────────────────────────────────────┘
+
+  核心计算内容
+
+  每条记录计算并展示：
+  - 数量类：入库数量、冲销数量、已入库库存数量、已开票数量、待开票数量
+  - 金额类：记账金额（金属价 + 附加价）、开票金额、暂估价
+  - 关联类：已关联数量/均价、未关联数量/均价、待收 Credit/Debit 金额
+  - 本位币折算：上述金额均同时计算本位币版本（通过汇率转换）
+
+  ---
+  normalResults 和 offsetResults 的作用
+
+  这是处理**冲销（Reversal/Offset）**逻辑的关键：
+
+  normalResults  → 所有记录（包括正常单据 + 冲销单据），作为最终返回的主体
+  offsetResults  → 仅冲销单据（offsetFlag="Y"），用于特殊处理
+
+  具体流程：
+
+  1. 分类（第541-547行）：遍历查询结果，所有记录都加入
+  normalResults；如果是冲销单据（offsetFlag="Y"），额外加入
+  offsetResults，并记录其 sourceDocumentItemId（被冲销的原始单据ID）。
+  2. 回填原始单据（第549-558行）：冲销单据引用了原始单据，但原始单据可能不在当前
+  查询范围内。所以用 sourceDocumentItemIdList 再查一次，把缺失的原始单据也加入
+  normalResults。
+  3. 统一计算（第562-580行）：对 normalResults 统一调用 fillEvaluationInfo
+  计算金额、开票、关联等数据，并回填每条记录的冲销数量。
+  4.
+  冲销取反（第582-613行）：对冲销单据（offsetResults），从其对应的原始单据（通过
+  sourceDocumentItemId 关联）复制金额数据后全部乘以 -1，包括：
+    - 数量取反（入库数量、库存数量）
+    - 金额取反（记账金额、附加价、金属价、开票金额）
+    - 关联/未关联数量和均价取反
+    - 待收 Credit/Debit 金额取反
+
+  简单来说：normalResults 是用来统一计算估值数据的"工作台"，offsetResults
+  是需要做金额取反处理的冲销记录子集。冲销单据的金额不能独立计算，必须找到它对应
+  的原始单据，取原始单据的计算结果再取负值，确保冲销在报表中体现为"减少"效果。
+
+✻ Worked for 1m 13s
+
+❯ 需要加上这个方法的分析,这个方法才是重点,并且重点关注字段的赋值MetalValue逻辑  
+  ⎿  ⧉ Selected 993 lines from ..\..\..\mnt\c\doWork\HME-客户服务器源码\hmeback\bcadmin-system\src\main\java\com\resrun\modules\business\service\impl\EomStorageServiceImpl.java in IntelliJ IDEA
+
+  Thought for 3s (ctrl+o to expand)
+
+● 让我继续读取 fillEvaluationInfo 方法的剩余部分：
+
+  Thought for 47s, read 1 file (ctrl+o to expand)
+
+● 现在我对整个方法有了完整的理解。以下是详细分析：
+
+  ---
+  fillEvaluationInfo 方法完整分析
+
+  方法定位
+
+  这是库存价值评估报表的核心计算引擎，负责对从数据库查出的"骨架数据"进行金额层面
+  的完整赋值。所有关键金额字段（记账金额、金属价、附加价、开票金额、暂估价、CD金
+  额等）都在这里计算。
+
+  整体结构（三大阶段）
+
+  阶段一（617-647行）  收集ID → 为批量查询做准备
+  阶段二（649-817行）  批量加载关联数据（9大类）
+  阶段三（819-1607行） 逐条记录计算所有金额字段
+
+  阶段二：批量加载的9类关联数据
+
+  ┌─────────────────────────────────────┬───────────────────────────────────┐
+  │                数据                 │               用途                │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ MovementPrice（定价明细）           │ 计算最终价、附加价                │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ PriceTriggering（点价明细）         │ 点价类型的关联/未关联计算         │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ AbutmentConfig（工厂配置）          │ 工厂展示字段                      │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ PriceTriggeringWarehouseRela（点价- │ 点价关联数量和金额                │
+  │ 仓库关联）                          │                                   │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ InvoiceDocumentsRes（发票）         │ 开票数量、开票金额                │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ ProductFinancialAttributes（商品财  │ 区分原材料/半成品/产成品（Z001/Z0 │
+  │ 务属性）                            │ 02/Z003）                         │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ PhysicalDealLine（合同商品行）      │ 计价公式参数                      │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ Unit（单位转换）                    │ 数量单位→KG转换                   │
+  ├─────────────────────────────────────┼───────────────────────────────────┤
+  │ ExchangeRate（汇率）                │ 结算币种→本位币转换               │
+  └─────────────────────────────────────┴───────────────────────────────────┘
+
+  阶段三：逐条计算流程（按执行顺序）
+
+  ① 汇率计算（839行）
+  ② 暂估价 → baseCurEstimatedPrice（924-930行）
+  ③ 最终价 finalPrice（932-1073行）—— 按计价类型分3种算法
+  ④ 记账金额 accountingTotalValue（1076-1129行）—— 区分完全开票/部分开票
+  ⑤ 附加价 addedValue（1131-1273行）—— 按商品财务属性+计价类型
+  ⑥ 金属价 metalValue（1275-1317行）—— 分已定价/未定价两条路径 ★重点
+  ⑦ CD Note 调整（1320-1338行）—— 对附加价和金属价的再调整
+  ⑧ 关联/未关联数量和均价（1340-1416行）
+  ⑨ 待收Credit/Debit金额（1418-1496行）
+  ⑩ 单位转换→KG（1498-1516行）
+  ⑪ 精度处理（1569-1606行）
+
+  ---
+  ★ 重点：MetalValue 的赋值逻辑（完整决策树）
+
+  MetalValue 的计算经过三个层次的赋值，后一层会覆盖或修正前一层的值：
+
+  第一层：按商品财务属性分流（1131行）
+
+  商品财务属性 = ProductFinancialAttributes.accountingGroup
+
+  情况A：原材料（Z001） — 第1132-1138行
+
+  // 原材料没有附加价，金属价 = 记账金额
+  addedValue = 0
+  metalValue = accountingTotalValue        // 直接等于记账金额
+  baseCurMetalValue = baseCurAccountingTotalValue
+
+  ▎ 逻辑：原材料不涉及加工，全部价值都是金属价值，附加价为零。
+
+  情况B：非原材料（半成品/产成品等） — 进入第1139行以后的复杂分支
+
+  第二层：非原材料的 MetalValue 计算（1276-1317行）
+
+  这里有一个关键标志位 priced（是否有定价记录，即 MovementPrice 是否存在）：
+
+  路径B1：已定价（priced = true） — 第1276-1281行
+
+  metalValue = accountingTotalValue - addedValue
+  baseCurMetalValue = baseCurAccountingTotalValue - baseCurAddedValue
+
+  ▎ 逻辑：记账金额 = 金属价 + 附加价，已知记账金额和附加价，反推金属价。
+
+  其中 addedValue 的计算方式取决于计价类型：
+
+  ┌───────────────────────┬─────────────────────────────────────────────────┐
+  │       计价类型        │               AddedValue 计算方式               │
+  ├───────────────────────┼─────────────────────────────────────────────────┤
+  │ 固定价                │ 加权平均附加单价 × 数量 ×                       │
+  │ BasicFixedPrice       │ KG转换率（1143-1193行）                         │
+  ├───────────────────────┼─────────────────────────────────────────────────┤
+  │ 均价                  │ 同上（1143-1193行）                             │
+  │ BasicAveragePrice     │                                                 │
+  ├───────────────────────┼─────────────────────────────────────────────────┤
+  │ 点价                  │ 关联部分附加金额 + 未关联数量 ×                 │
+  │ BasicTriggeredPrice   │ 未关联附加均价（1194-1273行）                   │
+  └───────────────────────┴─────────────────────────────────────────────────┘
+
+  路径B2：未定价（priced = false） — 第1282-1317行
+
+  // 金属价使用合同签订日期的 SCO 价格（Scorpro Price）
+  scoPrice = riskUtil.getScoPrice(productId, contractDate, legalEntityId)
+
+  // 单位转换：SCO价格单位 → KG
+  scoPricePerKg = scoPrice / scoToKgConversion
+
+  // 币种转换：SCO币种 → 结算币种
+  scoPriceInSettleCur = scoPricePerKg × scoCurrencyToSettleExchange
+
+  // 结算币种 → 本位币
+  scoPriceInBaseCur = scoPriceInSettleCur × settleToBaseExchangeRate
+
+  // 最终赋值
+  metalValue = scoPriceInSettleCur × quantity
+  baseCurMetalValue = scoPriceInBaseCur × quantity
+
+  // 反推附加价
+  addedValue = accountingTotalValue - metalValue
+  baseCurAddedValue = baseCurAccountingTotalValue - baseCurMetalValue
+
+  ▎ 逻辑：没有定价记录时，用 SCO 市场价格作为金属单价，乘以数量得到金属价值，再
+  ▎ 用记账金额减去金属价值反推出附加价。注意这里和路径B1的推导方向相反：B1是先算
+  ▎ 附加价再推金属价，B2是先算金属价再推附加价。
+
+  第三层：CD Note 调整（1320-1338行）
+
+  如果该入库明细有附加价类型的 CD Note 发票（CdValuationType = 
+  ADDED_VALUE），会对金属价和附加价做再分配：
+
+  cdAddedValue = CD Note发票的不含税金额
+
+  addedValue = addedValue + cdAddedValue        // 附加价增加CD金额
+  metalValue = metalValue - cdAddedValue        // 
+  金属价减少CD金额（保持总额不变）
+
+  // 本位币按比例调整
+  baseCurAddedValue = (addedValue + cdAddedValue) / addedValue ×
+  baseCurAddedValue
+  baseCurMetalValue = (metalValue - cdAddedValue) / metalValue ×
+  baseCurMetalValue
+
+  ▎ 逻辑：CD Note 的附加价部分从金属价"转移"到附加价，记账金额（metalValue + 
+  ▎ addedValue）总量不变。
+
+  ---
+  MetalValue 完整决策流程图
+
+                      ┌─────────────────────────┐
+                      │  商品财务属性是什么？      │
+                      └────────┬────────────────┘
+                               │
+                ┌──────────────┴──────────────┐
+                │ Z001(原材料)                 │ 非Z001(半成品/产成品)
+                ▼                             ▼
+      metalValue = accountingTotalValue    ┌─────────────────────┐
+      addedValue = 0                       │ 是否有定价记录(priced)│
+                                           └─────┬───────────────┘
+                                                 │
+                            ┌────────────────────┴────────────────────┐
+                            │ true(已定价)                             │
+  false(未定价)
+                            ▼                                         ▼
+             metalValue = accountingTotalValue              取SCO价格(合同日期)
+                       − addedValue                         单位转换→KG
+
+  币种转换→结算币种→本位币
+                                                            metalValue =
+  scoPrice × quantity
+                                                            addedValue =
+  accountingTotalValue − metalValue
+                            │                                         │
+                            └────────────────────┬────────────────────┘
+                                                 │
+                                                 ▼
+                                ┌─────────────────────────────┐
+                                │ 是否有附加价CD Note发票？     │
+                                └───────┬─────────────────────┘
+                                        │ 有
+                                        ▼
+                            metalValue = metalValue − cdAddedValue
+                            addedValue = addedValue + cdAddedValue
+                            (总额不变，内部再分配)
+                                        │
+                                        ▼
+                                最终精度处理(setScale 5位)
+
+  关键要点总结
+
+  1. 原材料（Z001）最简单：metalValue 直接等于记账金额，没有附加价
+  2. 已定价的非原材料：先算附加价（从 MovementPrice 的 additionalPrice
+  字段加权），再用 记账金额 - 附加价 得到金属价
+  3. 未定价的非原材料：先算金属价（取合同签订日的 SCO 市场价格 × 数量），再用
+  记账金额 - 金属价 反推附加价
+  4. CD Note 调整是最后一步：把 CD Note
+  中属于附加价的金额从金属价"搬"到附加价，保持记账总额不变
+
+✻ Cooked for 1m 24s
+
+❯ 你分析的很好,上面的流程图画的很好,再补充一点这个是怎么计算的,放到流程图里     
+  ⎿  ⧉ Selected 1 lines from ..\..\..\mnt\c\doWork\HME-客户服务器源码\hmeback\bcadmin-system\src\main\java\com\resrun\modules\business\service\impl\EomStorageServiceImpl.java in IntelliJ IDEA
+
+  Thought for 6s (ctrl+o to expand)
+
+● 好的，我把 accountingTotalValue（记账金额）和
+  finalPrice（最终价）的计算细节也补充进流程图中：
+
+  ---
+  MetalValue 完整计算流程图（含上游推导链）
+
+  ═══════════════════════════════════════════════════════════════
+                      ① 最终价 finalPrice 的计算
+  ═══════════════════════════════════════════════════════════════
+
+                ┌─────────────────────────────┐
+                │ 合同商品行是否有定价记录？     │
+                │ (MovementPrice 列表是否非空)  │
+                └──────────┬──────────────────┘
+                           │
+              ┌────────────┴────────────┐
+              │ 无定价记录               │ 有定价记录
+              ▼                         ▼
+    finalPrice = estimatedPrice     ┌──────────────────────────┐
+    (暂估价，来自入库单据原始数据)     │ 计价类型 pricingType？    │
+                                    └──────┬───────────────────┘
+                                           │
+                ┌──────────────────────────┼──────────────────────────┐
+                │ BasicFixedPrice          │ BasicAveragePrice        │
+  BasicTriggeredPrice
+                │ (固定价)                  │ (均价)                    │ (点价)
+                ▼                          ▼                          ▼
+    取最新一条 MovementPrice     加权平均计算：
+  分"已关联"和"未关联"两部分：
+    的 settlementNetPrice       Σ(单价×数量) / Σ数量
+  ┌─────────────────────────┐
+    作为 finalPrice             作为 finalPrice               │已关联部分：
+           │
+                                                              │ relaAmount =
+  Σ(点价结算价  │
+    若为0则回退取estimatedPrice   若为0则回退取estimatedPrice   │   × 关联数量)
+             │
+                                                              │
+          │
+                                                              │未关联部分：
+           │
+                                                              │ unRelaPrice =
+  Σ(点价结算价 │
+                                                              │   × 未关联数量)
+           │
+                                                              │   / Σ未关联数量
+           │
+                                                              │
+          │
+                                                              │finalPrice =
+          │
+                                                              │
+  (数量-relaQty)×unRelaPrice│
+                                                              │ + relaAmount) /
+  数量      │
+
+  └─────────────────────────┘
+                │                          │                          │
+                └──────────────────────────┼──────────────────────────┘
+                                           ▼
+                                    得到 finalPrice
+                                    (用于后续记账金额计算)
+
+
+  ═══════════════════════════════════════════════════════════════
+                ② 记账金额 accountingTotalValue 的计算
+  ═══════════════════════════════════════════════════════════════
+
+                ┌─────────────────────────────────┐
+                │ 开票状态判断：                     │
+                │ 已开票数量>0 且 待开票数量≤0       │
+                │ 或 invoiceStage = "Final"        │
+                └──────────┬──────────────────────┘
+                           │
+              ┌────────────┴────────────┐
+              │ 完全开票                 │ 部分开票 / 未开票
+              ▼                         ▼
+  ┌──────────────────────┐   ┌──────────────────────────────────┐
+  │accountingTotalValue  │   │ 计价类型 pricingType？             │
+  │ = taxIncInvoiceAmount│   └──────┬───────────────────────────┘
+  │ (直接取发票不含税金额) │          │
+  │                      │   ┌──────┴──────────────────────────┐
+  │baseCurAccountingTotal│   │ BasicTriggeredPrice(点价)        │
+  其他(固定价/均价)
+  │ = 发票不含税本币金额   │   ▼                                ▼
+  └──────────────────────┘   ┌─────────────────────┐  ┌────────────────────┐
+                             │ invoicedQty 与       │  │accountingValue =   │
+                             │ relatedQty 比较？     │  │ (数量-已开票数量)    │
+                             └──────┬──────────────┘  │ × finalPrice        │
+                                    │                  │ + taxIncInvoiceAmt  │
+                      ┌─────────────┴────────────┐     └────────────────────┘
+                      │ relatedQty < invoicedQty │     │ relatedQty ≥
+  invoicedQty
+                      ▼                          ▼
+            ┌────────────────────┐    ┌────────────────────────────┐
+            │ 未关联部分覆盖未开票 │    │ 关联部分按比例覆盖未开票      │
+            │                    │    │                             │
+            │ value =            │    │ amount1 = (relaQty          │
+            │ (数量-invoicedQty)  │    │   - invoicedQty)            │
+            │ × unrelatedAvgPrice│    │   × (relaAmount/relaQty)    │
+            │ + taxIncInvoiceAmt │    │                             │
+            └────────────────────┘    │ amount2 = (数量-relaQty)     │
+                                      │   × unrelatedAvgPrice        │
+                                      │                             │
+                                      │ value = amount1+amount2      │
+                                      │       + taxIncInvoiceAmt     │
+                                      └────────────────────────────┘
+                      │                          │             │
+                      └──────────────────────────┼─────────────┘
+                                                 ▼
+                                      得到 accountingTotalValue
+                                      (用于后续 metalValue 计算)
+
+
+  ═══════════════════════════════════════════════════════════════
+            ③ 金属价 metalValue & 附加价 addedValue 的计算
+  ═══════════════════════════════════════════════════════════════
+
+                ┌─────────────────────────────┐
+                │ 商品财务属性是什么？           │
+                │ (ProductFinancialAttributes  │
+                │  .accountingGroup)           │
+                └──────────┬──────────────────┘
+                           │
+              ┌────────────┴────────────┐
+              │ Z001(原材料)             │ 非Z001(半成品/产成品)
+              ▼                         ▼
+    ┌────────────────────┐    ┌─────────────────────────────┐
+    │addedValue = 0      │    │ 是否有定价记录(priced)？       │
+    │metalValue =        │    │ (MovementPrice是否存在)       │
+    │ accountingTotalValue│   └──────────┬──────────────────┘
+    │                    │               │
+    │(原材料无加工附加价， │   ┌───────────┴───────────┐
+    │ 全部价值=金属价值)   │   │ true(已定价)            │ false(未定价)
+    └────────────────────┘   ▼                         ▼
+                  ┌─────────────────────┐   ┌─────────────────────────────┐
+                  │先算 addedValue：     │   │先算 metalValue：              │
+                  │                     │   │                             │
+                  │按计价类型分别计算：   │   │scoPrice = getScoPrice(      │
+                  │                     │   │  productId,                 │
+                  │·固定价/均价：        │   │  contractDate,  ←── 合同签订日│
+                  │ addedPrice =        │   │  legalEntityId)             │
+                  │  Σ(additionalPrice  │   │                             │
+                  │   × quantity)       │   │单位转换: SCO单位 → KG        │
+                  │  / Σ(quantity)      │   │  scoPricePerKg =            │
+                  │ addedValue =        │   │   scoPrice / kgConversion   │
+                  │  addedPrice × 数量   │   │                             │
+                  │  × KG转换率          │   │币种转换: SCO币种 → 结算币种  │
+                  │                     │   │  scoPriceSettle =           │
+                  │·点价：              │   │   scoPricePerKg × exchange  │
+                  │ addedValue =        │   │                             │
+                  │  关联附加金额        │   │结算币种 → 本位币             │
+                  │  + 未关联数量        │   │  scoPriceBaseCur =          │
+                  │    × 未关联附加均价  │   │   scoPriceSettle × exchange │
+                  │                     │   │                             │
+                  │然后反推：            │   │然后赋值：                    │
+                  │metalValue =         │   │metalValue =                 │
+                  │ accountingTotalValue│   │  scoPriceSettle × quantity  │
+                  │ − addedValue        │   │addedValue =                 │
+                  └─────────────────────┘   │  accountingTotalValue       │
+                           │                │  − metalValue               │
+                           │                └─────────────────────────────┘
+                           │                          │
+                           └────────────┬─────────────┘
+                                        ▼
+  ═══════════════════════════════════════════════════════════════
+                ④ CD Note 调整（如有附加价类型的CD Note发票）
+  ═══════════════════════════════════════════════════════════════
+
+                ┌─────────────────────────────────┐
+                │ 是否存在 CdValuationType         │
+                │ = ADDED_VALUE 的 CD Note 发票？  │
+                └──────────┬──────────────────────┘
+                           │
+                  ┌────────┴────────┐
+                  │ 有               │ 无
+                  ▼                 ▼
+    ┌──────────────────────────┐   (不调整)
+    │cdAddedValue =            │
+    │ CD Note发票不含税金额     │
+    │                          │
+    │addedValue += cdAddedValue│  ← 附加价吸收CD金额
+    │metalValue -= cdAddedValue│  ← 金属价扣减CD金额
+    │                          │
+    │(记账总额不变，内部再分配)   │
+    └──────────────────────────┘
+                  │
+                  ▼
+  ═══════════════════════════════════════════════════════════════
+                ⑤ 精度处理 setScale(5, HALF_UP)
+  ═══════════════════════════════════════════════════════════════
+
+  核心公式总结
+
+  整个计算链条的核心恒等式是：
+
+  accountingTotalValue = metalValue + addedValue
+
+  但推导方向因场景不同而不同：
+
+  ┌────────┬───────────────────────────┬───────────────────────────────────┐
+  │  场景  │         推导方向          │               原因                │
+  ├────────┼───────────────────────────┼───────────────────────────────────┤
+  │ 原材料 │ metalValue = accountingTo │ 原材料无加工附加值                │
+  │  Z001  │ talValue，addedValue = 0  │                                   │
+  ├────────┼───────────────────────────┼───────────────────────────────────┤
+  │ 非原材 │ 先算 addedValue → 反推    │ 有 MovementPrice 的               │
+  │ 料 +   │ metalValue                │ additionalPrice                   │
+  │ 已定价 │                           │ 字段可直接算附加价                │
+  ├────────┼───────────────────────────┼───────────────────────────────────┤
+  │ 非原材 │ 先算 metalValue（SCO价格× │ 没有定价记录，只能用市场参考价估  │
+  │ 料 +   │ 数量）→ 反推 addedValue   │ 算金属部分                        │
+  │ 未定价 │                           │                                   │
+  ├────────┼───────────────────────────┼───────────────────────────────────┤
+  │ CD     │ 在已有结果上做 metalValue │ CD Note 的附加价部分需要从金属价" │
+  │ Note   │  → addedValue 的转移      │ 搬"到附加价                       │
+  │ 调整   │                           │                                   │
+  └────────┴───────────────────────────┴───────────────────────────────────┘
+
+✻ Sautéed for 43s
+
+❯ /export 把上面的对话导出一份文件                                              
+  ⎿  Conversation exported to:
+     C:\doWork\HME-客户服务器源码\hmeback\把上面的对话导出一份文件.txt
+
+❯ /export 把上面的对话导出一份pdf文件,流程清晰点                                
+  ⎿  Conversation exported to: C:\doWork\HME-客户服务器源码\hmeback\把上面的对话
+     导出一份pdf文件,流程清晰点.txt

@@ -1,0 +1,9913 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="大宗商品贸易 ERP 系统知识库 — 需求文档、代码分析、问题排查、业务概念">
+      
+      
+        <meta name="author" content="Knowledge Base">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../%E6%A8%A1%E6%9D%BF/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CTRM 大宗商品贸易系统 — 专有业务术语对照表 - 金仕达 CTRM 系统知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ctrm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="金仕达 CTRM 系统知识库" class="md-header__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            金仕达 CTRM 系统知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CTRM 大宗商品贸易系统 — 专有业务术语对照表
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  金仕达 CTRM 系统知识库
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-tabs__link">
+          
+  
+  
+  代码分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/" class="md-tabs__link">
+          
+  
+  
+  需求文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  
+  问题排查
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  业务概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A8%A1%E6%9D%BF/" class="md-tabs__link">
+          
+  
+  
+  文档模板
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="金仕达 CTRM 系统知识库" class="md-nav__button md-logo" aria-label="金仕达 CTRM 系统知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    金仕达 CTRM 系统知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    金仕达 CTRM 系统知识库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    代码分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ExecuteHMEFlowTask调用链分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/ExecuteHMEFlowTask%E8%B0%83%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ExecuteHMEFlowTask 调用链分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    需求文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report Lab需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claim Report Lab需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/Claim-Report-Lab%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claim Report & Lab 需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eservice送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eservice送货预约需求
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/Eservice%E9%80%81%E8%B4%A7%E9%A2%84%E7%BA%A6%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-service 送货预约需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price需求方案
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Greenlist Price需求方案
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/Greenlist-Price%E9%9C%80%E6%B1%82%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Greenlist Price 需求方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表主数据优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水报表主数据优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%8A%A5%E8%A1%A8%E4%B8%BB%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水报表涉及主数据优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    升贴水明细表优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/%E5%8D%87%E8%B4%B4%E6%B0%B4%E6%98%8E%E7%BB%86%E8%A1%A8%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    升贴水明细表优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板采购优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    单据打印合同模板采购优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/%E5%8D%95%E6%8D%AE%E6%89%93%E5%8D%B0%E5%90%88%E5%90%8C%E6%A8%A1%E6%9D%BF%E9%87%87%E8%B4%AD%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单据打印合同模板（采购）优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    发票队列设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1/cursor_receivefixationorder_method_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursor receivefixationorder method anal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E5%8F%B8%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1/%E5%8F%91%E7%A5%A8%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发票队列设计文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    问题排查
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题排查记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    业务概念
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM业务术语表
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CTRM业务术语表
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM 大宗商品贸易系统 — 专有业务术语对照表
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CTRM 大宗商品贸易系统 — 专有业务术语对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 使用指南
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-physical-trading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实货交易 / Physical Trading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 实货交易 / Physical Trading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fixation-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 作价与定价管理 / Fixation &amp; Pricing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 作价与定价管理 / Fixation &amp; Pricing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-inventory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 库存管理 / Inventory Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 库存管理 / Inventory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arap-capital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 应收应付与资金管理 / AR/AP &amp; Capital
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 应收应付与资金管理 / AR/AP &amp; Capital">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-derivatives-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 衍生品与风险管理 / Derivatives &amp; Risk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 衍生品与风险管理 / Derivatives &amp; Risk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-credit-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 信用与授信管理 / Credit Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 信用与授信管理 / Credit Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-business-settings-master-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 业务设置与主数据 / Business Settings &amp; Master Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 业务设置与主数据 / Business Settings &amp; Master Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-lab-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 实验室与质检 / Lab &amp; Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 实验室与质检 / Lab &amp; Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-workflow-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 流程与审批 / Workflow &amp; Approval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 流程与审批 / Workflow &amp; Approval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-treasury-banking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 资金与银行 / Treasury &amp; Banking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 资金与银行 / Treasury &amp; Banking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资金与银行 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资金与银行 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-system-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 系统对接 / System Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 系统对接 / System Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统对接 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统对接 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-system-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 系统管理 / System Administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 系统管理 / System Administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A：AI 语义映射速查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 B：核心业务状态枚举
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录 B：核心业务状态枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合同类型 (Contract Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approval-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        审批状态 (Approval Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程状态 (Flow Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invoice-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发票类型 (Invoice Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-partner-cooperation-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客商合作类型 (Business Partner Cooperation Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#letter-of-credit-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用证状态 (Letter of Credit Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricing-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定价状态 (Pricing Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        头寸方向 (Position Direction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trading-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易策略 (Trading Strategy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 C：统计摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文档模板
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['需求标题']
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码分析模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E6%9D%BF/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ['问题简述']
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--resolved / investigating / wontfix"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 使用指南
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-physical-trading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实货交易 / Physical Trading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 实货交易 / Physical Trading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实货交易 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fixation-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 作价与定价管理 / Fixation &amp; Pricing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 作价与定价管理 / Fixation &amp; Pricing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作价与定价管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-inventory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 库存管理 / Inventory Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 库存管理 / Inventory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        库存管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arap-capital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 应收应付与资金管理 / AR/AP &amp; Capital
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 应收应付与资金管理 / AR/AP &amp; Capital">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应收应付与资金管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-derivatives-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 衍生品与风险管理 / Derivatives &amp; Risk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 衍生品与风险管理 / Derivatives &amp; Risk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衍生品与风险管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-credit-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 信用与授信管理 / Credit Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 信用与授信管理 / Credit Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用与授信管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-business-settings-master-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 业务设置与主数据 / Business Settings &amp; Master Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 业务设置与主数据 / Business Settings &amp; Master Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务设置与主数据 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-lab-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 实验室与质检 / Lab &amp; Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 实验室与质检 / Lab &amp; Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验室与质检 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-workflow-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 流程与审批 / Workflow &amp; Approval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 流程与审批 / Workflow &amp; Approval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程与审批 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-treasury-banking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 资金与银行 / Treasury &amp; Banking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 资金与银行 / Treasury &amp; Banking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资金与银行 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资金与银行 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-system-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 系统对接 / System Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 系统对接 / System Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统对接 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统对接 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-system-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 系统管理 / System Administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 系统管理 / System Administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 功能页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 业务字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统管理 — 状态/类型枚举值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A：AI 语义映射速查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 B：核心业务状态枚举
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录 B：核心业务状态枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合同类型 (Contract Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approval-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        审批状态 (Approval Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程状态 (Flow Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invoice-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发票类型 (Invoice Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-partner-cooperation-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客商合作类型 (Business Partner Cooperation Types)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#letter-of-credit-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信用证状态 (Letter of Credit Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricing-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定价状态 (Pricing Status)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        头寸方向 (Position Direction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trading-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易策略 (Trading Strategy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 C：统计摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ctrm">CTRM 大宗商品贸易系统 — 专有业务术语对照表<a class="headerlink" href="#ctrm" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>版本</strong>: v1.0<br />
+<strong>生成日期</strong>: 2026-06-02<br />
+<strong>用途</strong>: 团队沟通对齐 &amp; AI 语义识别基准文档<br />
+<strong>说明</strong>: 本文档从系统前端多语言文件（en.js / zh.js）中提取，按业务模块分类整理。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1">实货交易 / Physical Trading</a></li>
+<li><a href="#2">作价与定价管理 / Fixation &amp; Pricing</a></li>
+<li><a href="#3">库存管理 / Inventory Management</a></li>
+<li><a href="#4">应收应付与资金管理 / AR/AP &amp; Capital</a></li>
+<li><a href="#5">衍生品与风险管理 / Derivatives &amp; Risk</a></li>
+<li><a href="#6">信用与授信管理 / Credit Management</a></li>
+<li><a href="#7">业务设置与主数据 / Business Settings &amp; Master Data</a></li>
+<li><a href="#8">实验室与质检 / Lab &amp; Quality</a></li>
+<li><a href="#9">流程与审批 / Workflow &amp; Approval</a></li>
+<li><a href="#10">资金与银行 / Treasury &amp; Banking</a></li>
+<li><a href="#11">系统对接 / System Integration</a></li>
+<li><a href="#12">系统管理 / System Administration</a></li>
+</ol>
+<hr />
+<h2 id="_2">使用说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">术语结构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>中文术语</strong></td>
+<td>系统界面上的中文表达</td>
+</tr>
+<tr>
+<td><strong>英文术语</strong></td>
+<td>系统界面上的英文表达</td>
+</tr>
+<tr>
+<td><strong>AI别名/口语表达</strong></td>
+<td>用户在日常沟通中可能使用的其他叫法，用于AI语义桥接</td>
+</tr>
+<tr>
+<td><strong>业务含义</strong></td>
+<td>在CTRM语境下的简要解释</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai">AI 使用指南<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h3>
+<p>当用户用自然语言提问时，请参照本文档的"AI别名/口语表达"列进行语义映射。例如：</p>
+<ul>
+<li>用户说"帮我查一下这个<strong>业务机构</strong>的信息" → 映射到系统的 <strong>Business Entity（业务机构管理）</strong></li>
+<li>用户说"这个<strong>对手方</strong>的授信额度是多少" → 映射到系统的 <strong>Business Partner（客商）+ Credit Limit（授信额度）</strong></li>
+<li>用户说"今天的<strong>持仓</strong>情况" → 映射到系统的 <strong>Position Monitor（持仓统计表）</strong></li>
+<li>用户说"这笔<strong>入库</strong>的定价" → 映射到系统的 <strong>Good Receipt（入库登记）+ Fixation（点价）</strong></li>
+</ul>
+<hr />
+<h2 id="1-physical-trading">1. 实货交易 / Physical Trading<a class="headerlink" href="#1-physical-trading" title="Permanent link">&para;</a></h2>
+<h3 id="_4">实货交易 — 功能页面<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAP委外销售</td>
+<td>SAP Conversion Sales</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAP常规销售</td>
+<td>SAP Full Price Sales</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>供应商寄售</td>
+<td>Vendor consignment</td>
+<td>寄售, Consignment, Vendor Consignment, VMI</td>
+<td></td>
+</tr>
+<tr>
+<td>全价采购</td>
+<td>Full price procurement</td>
+<td>Full Price, 全价, 一口价采购, Fixed Price Purchase</td>
+<td></td>
+</tr>
+<tr>
+<td>关联采购需求</td>
+<td>Associated Procurement Demand</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>升贴水明细表</td>
+<td>Premium and Discount Detail</td>
+<td>Premium/Discount, 溢价, 贴水, 升水, Premium</td>
+<td></td>
+</tr>
+<tr>
+<td>半成品/成品销售开票定价快照</td>
+<td>SF&amp;FG Sales Engagement Snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>半成品/成品销售开票定价明细</td>
+<td>SF-FG Sales Engagement Details</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>卡车信息跟踪表</td>
+<td>Truck Information Tracking Table</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料到货管理-库管</td>
+<td>Raw material management-warehouse</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料到货管理-库管详情</td>
+<td>Raw material management-warehouse detail</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料到货管理-收货</td>
+<td>Raw material management - new entry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料到货管理-质检</td>
+<td>Raw material management-quality inspection</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+<td></td>
+</tr>
+<tr>
+<td>原材料到货计划</td>
+<td>Raw Material Arrivals Planning</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料销售开票定价快照</td>
+<td>RM Sales Engagement Snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料销售开票定价明细</td>
+<td>RM Sales Engagement RM Details</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>原材料销售开票定价表</td>
+<td>Sales Engagement-RM</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发货定价</td>
+<td>Delivery Fixation Invoice Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发货未开票</td>
+<td>Delivered Invoiced Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>合同执行进度表</td>
+<td>Contract execusion status report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>合同明细表</td>
+<td>Contract split in detail</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>合同点价进度表</td>
+<td>Fixation Status Report</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+<td></td>
+</tr>
+<tr>
+<td>合同转账登记</td>
+<td>Contract Transaction Registration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>固定价现货合同周报</td>
+<td>Fixed Spot Purchase Orders</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>外仓货物转移</td>
+<td>Conversion(from external warehouse)</td>
+<td>外仓转移, External Warehouse Transfer, 三方库转移</td>
+<td></td>
+</tr>
+<tr>
+<td>委托加工</td>
+<td>Conversion</td>
+<td>加工, Conversion, Subcontracting, 外协加工, 委外加工</td>
+<td></td>
+</tr>
+<tr>
+<td>实货交易</td>
+<td>Physical Trading</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收发货明细</td>
+<td>Shipping and Receiving Details</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收发货明细-详情</td>
+<td>Shipping and Receiving Details-View</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收货定价</td>
+<td>Receipt Fixation Invoice Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收货明细表</td>
+<td>Detail Entries of Goods Receipt</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收货未开票</td>
+<td>Received Invoiced Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>物流信息</td>
+<td>Logistics Information</td>
+<td>物流, Logistics, 运输信息, Shipping Info</td>
+<td></td>
+</tr>
+<tr>
+<td>现货合同周报</td>
+<td>Spot Purchase Orders</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>现货订单</td>
+<td>Spot Order</td>
+<td>现货, Spot, Spot Order, Spot Contract, 即期订单</td>
+<td></td>
+</tr>
+<tr>
+<td>现货订单-采购</td>
+<td>Spot Order - Procurement</td>
+<td>现货, Spot, Spot Order, Spot Contract, 即期订单</td>
+<td></td>
+</tr>
+<tr>
+<td>现货订单-销售</td>
+<td>Spot Order - Sales</td>
+<td>现货, Spot, Spot Order, Spot Contract, 即期订单</td>
+<td></td>
+</tr>
+<tr>
+<td>索赔报告</td>
+<td>Claim Report</td>
+<td>索赔, Claim, Claim Report, 理赔</td>
+<td></td>
+</tr>
+<tr>
+<td>补充协议</td>
+<td>Supplementary Agreement</td>
+<td>补充条款, 合同变更, Supplementary Agreement, Amendment</td>
+<td></td>
+</tr>
+<tr>
+<td>补充协议管理</td>
+<td>Supplementary Agreement Management</td>
+<td>补充条款, 合同变更, Supplementary Agreement, Amendment</td>
+<td></td>
+</tr>
+<tr>
+<td>采购</td>
+<td>Procurement</td>
+<td>进项发票, Purchase Invoice, 收票</td>
+<td></td>
+</tr>
+<tr>
+<td>采购发票</td>
+<td>Purchase Invoice</td>
+<td>进项发票, Purchase Invoice, 收票</td>
+<td></td>
+</tr>
+<tr>
+<td>采购发票明细表</td>
+<td>Detail Entries of Purchase Invoice</td>
+<td>进项发票, Purchase Invoice, 收票</td>
+<td></td>
+</tr>
+<tr>
+<td>采购定价明细周报</td>
+<td>Purchase Fixation Detail</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>采购库存定价快照</td>
+<td>Purchase Engagement Snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>采购库存定价明细</td>
+<td>Purchase Engagement Details</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>采购库存定价表</td>
+<td>Purchase Engagement</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>采购开票未定价</td>
+<td>Purchase No Fixation Invoice Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>采购需求</td>
+<td>Procurement Demand</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>销售</td>
+<td>Sales</td>
+<td>销项发票, Sales Invoice, 开票</td>
+<td></td>
+</tr>
+<tr>
+<td>销售发票</td>
+<td>Sales Invoice</td>
+<td>销项发票, Sales Invoice, 开票</td>
+<td></td>
+</tr>
+<tr>
+<td>销售发票明细表</td>
+<td>Detail Entries of Sales Invoice</td>
+<td>销项发票, Sales Invoice, 开票</td>
+<td></td>
+</tr>
+<tr>
+<td>销售开票未定价</td>
+<td>Sales No Fixation Invoice Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>长协合同</td>
+<td>Long-term Agreement</td>
+<td>长协, 年度合同, LTA, Long-term Agreement, 框架合同</td>
+<td></td>
+</tr>
+<tr>
+<td>长协合同-采购</td>
+<td>Long-term Agreement - Procurement</td>
+<td>长协, 年度合同, LTA, Long-term Agreement, 框架合同</td>
+<td></td>
+</tr>
+<tr>
+<td>长协合同-销售</td>
+<td>Long-term Agreement - Sales</td>
+<td>长协, 年度合同, LTA, Long-term Agreement, 框架合同</td>
+<td></td>
+</tr>
+<tr>
+<td>长协订单</td>
+<td>LTA Order</td>
+<td>长协执行, LTA Order, 长协下单, 合同项下订单</td>
+<td></td>
+</tr>
+<tr>
+<td>长协订单-采购</td>
+<td>LTA Order - Procurement</td>
+<td>长协执行, LTA Order, 长协下单, 合同项下订单</td>
+<td></td>
+</tr>
+<tr>
+<td>长协订单-销售</td>
+<td>LTA Order - Sales</td>
+<td>长协执行, LTA Order, 长协下单, 合同项下订单</td>
+<td></td>
+</tr>
+<tr>
+<td>预约送货</td>
+<td>Delivery booking</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>预约送货清单</td>
+<td>Booking list</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">实货交易 — 业务字段<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LME折扣</td>
+<td>Discount on LME</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LML折扣</td>
+<td>Discount on LML</td>
+<td></td>
+</tr>
+<tr>
+<td>TQ欧元交易条款折扣</td>
+<td>Discount TQ Eur TM</td>
+<td></td>
+</tr>
+<tr>
+<td>临时升贴水</td>
+<td>Temporary Discount/Premium</td>
+<td>Premium/Discount, 溢价, 贴水, 升水, Premium</td>
+</tr>
+<tr>
+<td>交货总折扣</td>
+<td>Total Delivered Discount（Eur）</td>
+<td></td>
+</tr>
+<tr>
+<td>交货截止日</td>
+<td>Delivery End Date</td>
+<td></td>
+</tr>
+<tr>
+<td>交货起始日</td>
+<td>Delivery Start Date</td>
+<td></td>
+</tr>
+<tr>
+<td>仓单交易</td>
+<td>Warehouse receipt transaction</td>
+<td>Warehouse Receipt, 标准仓单, 提单</td>
+</tr>
+<tr>
+<td>内/外贸</td>
+<td>CN/ Global Trade</td>
+<td>国际贸易, Global Trade, International Trade</td>
+</tr>
+<tr>
+<td>升贴水</td>
+<td>Nominal Premium Discount</td>
+<td>Premium/Discount, 溢价, 贴水, 升水, Premium</td>
+</tr>
+<tr>
+<td>升贴水单价（欧元/吨）</td>
+<td>Unit discount(Eur/TO)</td>
+<td>Premium/Discount, 溢价, 贴水, 升水, Premium</td>
+</tr>
+<tr>
+<td>原材料销售已定价未交割</td>
+<td>Raw mat</td>
+<td>Delivery, 实物交割, Settlement</td>
+</tr>
+<tr>
+<td>合同号</td>
+<td>Contract Number</td>
+<td></td>
+</tr>
+<tr>
+<td>合同类型</td>
+<td>Contract Type</td>
+<td></td>
+</tr>
+<tr>
+<td>实货交易</td>
+<td>Physical transaction</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货日期</td>
+<td>Effective entry date</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货日期开始</td>
+<td>Effective entry date start</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货日期结束</td>
+<td>Effective entry date end</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货物料</td>
+<td>Article</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货货量</td>
+<td>Actual Received Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>实际收货量</td>
+<td>Quantity(TO)</td>
+<td></td>
+</tr>
+<tr>
+<td>已收货数量</td>
+<td>Received Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>应收货款</td>
+<td>Accounts receivable</td>
+<td>Goods Payment, 商品货款</td>
+</tr>
+<tr>
+<td>折扣</td>
+<td>Discount</td>
+<td></td>
+</tr>
+<tr>
+<td>收发</td>
+<td>Receipt delivery type</td>
+<td></td>
+</tr>
+<tr>
+<td>收发货明细</td>
+<td>Receipt and delivery details</td>
+<td></td>
+</tr>
+<tr>
+<td>收发货标识</td>
+<td>Receipt delivery identifier</td>
+<td></td>
+</tr>
+<tr>
+<td>收货</td>
+<td>Receive Goods</td>
+<td></td>
+</tr>
+<tr>
+<td>暂估销售炉渣</td>
+<td>prov sales/slag</td>
+<td></td>
+</tr>
+<tr>
+<td>最终升贴水</td>
+<td>Final Discount/Premium</td>
+<td>Premium/Discount, 溢价, 贴水, 升水, Premium</td>
+</tr>
+<tr>
+<td>月均折扣</td>
+<td>Average Premium/Discount</td>
+<td></td>
+</tr>
+<tr>
+<td>有hu业务，不允许跨订单行选择</td>
+<td>Cross-order line selection prohibited for HU business.</td>
+<td></td>
+</tr>
+<tr>
+<td>标准折扣</td>
+<td>Unitary discount/(Eur/TO)</td>
+<td></td>
+</tr>
+<tr>
+<td>欧元折扣</td>
+<td>EUR Discount</td>
+<td></td>
+</tr>
+<tr>
+<td>溢价</td>
+<td>Premium</td>
+<td></td>
+</tr>
+<tr>
+<td>点价方</td>
+<td>Price setter</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>计价类型</td>
+<td>Pricing type</td>
+<td></td>
+</tr>
+<tr>
+<td>资金交易</td>
+<td>Funds transaction</td>
+<td></td>
+</tr>
+<tr>
+<td>部分冲销</td>
+<td>Partial Write-off</td>
+<td>Reversal, Write-off, Offset, 红冲, 撤销</td>
+</tr>
+<tr>
+<td>采购</td>
+<td>Purchase</td>
+<td>进项发票, Purchase Invoice, 收票</td>
+</tr>
+<tr>
+<td>采购净库存价值</td>
+<td>Pur Eng Val</td>
+<td></td>
+</tr>
+<tr>
+<td>采购合计</td>
+<td>tot purch</td>
+<td></td>
+</tr>
+<tr>
+<td>采购合计2</td>
+<td>Pur. Eng.</td>
+<td></td>
+</tr>
+<tr>
+<td>采购已定价未交割</td>
+<td>Purchase eng</td>
+<td>Delivery, 实物交割, Settlement</td>
+</tr>
+<tr>
+<td>采购退款</td>
+<td>Purchase refund</td>
+<td></td>
+</tr>
+<tr>
+<td>采销方向</td>
+<td>Direction</td>
+<td></td>
+</tr>
+<tr>
+<td>销售</td>
+<td>Sales</td>
+<td>销项发票, Sales Invoice, 开票</td>
+</tr>
+<tr>
+<td>销售净库存价值</td>
+<td>Sal Eng Val</td>
+<td></td>
+</tr>
+<tr>
+<td>销售合计</td>
+<td>tot sales</td>
+<td></td>
+</tr>
+<tr>
+<td>销售合计2</td>
+<td>Sale eng.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">实货交易 — 状态/类型枚举值<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>voyageCharterPricingTypes_1</code></td>
+<td>WS点</td>
+<td>WS Point</td>
+</tr>
+<tr>
+<td><code>fxPsFlags_1</code></td>
+<td>买入</td>
+<td>Buy</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_9</code></td>
+<td>信用申请</td>
+<td>Credit Application</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_10</code></td>
+<td>信用登记</td>
+<td>Credit Registration</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_8</code></td>
+<td>信用计划</td>
+<td>Credit Plan</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_4</code></td>
+<td>入库登记</td>
+<td>Good Receipt</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_2</code></td>
+<td>入库登记和采购合同</td>
+<td>Good Receipt and Purchase Contract</td>
+</tr>
+<tr>
+<td><code>priceStatus_2</code></td>
+<td>全部确认</td>
+<td>Fully Confirmed</td>
+</tr>
+<tr>
+<td><code>pricingContractTypes_3</code></td>
+<td>其他</td>
+<td>Other</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_5</code></td>
+<td>出库登记</td>
+<td>Good Release</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_7</code></td>
+<td>初始库存</td>
+<td>Initial Stock</td>
+</tr>
+<tr>
+<td><code>headerStatus_3</code></td>
+<td>删除</td>
+<td>Deleted</td>
+</tr>
+<tr>
+<td><code>priceFormulaType_2</code></td>
+<td>升贴水</td>
+<td>Premium/Discount</td>
+</tr>
+<tr>
+<td><code>fxPsFlags_2</code></td>
+<td>卖出</td>
+<td>Sell</td>
+</tr>
+<tr>
+<td><code>termFlags_1</code></td>
+<td>即期</td>
+<td>Spot</td>
+</tr>
+<tr>
+<td><code>receiptDeliverTypes_2</code></td>
+<td>发货</td>
+<td>Release</td>
+</tr>
+<tr>
+<td><code>voucherType_4</code></td>
+<td>发货</td>
+<td>Delivery</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_1</code></td>
+<td>发起审批</td>
+<td>Initiate Approval</td>
+</tr>
+<tr>
+<td><code>pricingStatuses_2</code></td>
+<td>固定</td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td><code>chargePricingType_1</code></td>
+<td>固定价</td>
+<td>Fixed Price</td>
+</tr>
+<tr>
+<td><code>pricingTypes_1</code></td>
+<td>均价</td>
+<td>Average Price</td>
+</tr>
+<tr>
+<td><code>pricingTypes_3</code></td>
+<td>复杂计价</td>
+<td>Complex Pricing</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_15</code></td>
+<td>外汇交易</td>
+<td>FX Trading</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_11</code></td>
+<td>存贷款</td>
+<td>Deposit and Loan</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_3</code></td>
+<td>审批中</td>
+<td>In Approval</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_4</code></td>
+<td>审批通过</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_5</code></td>
+<td>审批驳回</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td><code>pricePointParty_2</code></td>
+<td>对方</td>
+<td>To counterparty option</td>
+</tr>
+<tr>
+<td><code>deliveryStatus_2</code></td>
+<td>已划款</td>
+<td>Delivered</td>
+</tr>
+<tr>
+<td><code>deliveryTypes_2</code></td>
+<td>库存盘点</td>
+<td>Inventory Count</td>
+</tr>
+<tr>
+<td><code>voucherType_5</code></td>
+<td>开票</td>
+<td>Invoice Release</td>
+</tr>
+<tr>
+<td><code>pricePointParty_1</code></td>
+<td>我方</td>
+<td>To our option</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_14</code></td>
+<td>掉期</td>
+<td>Swap</td>
+</tr>
+<tr>
+<td><code>voucherType_3</code></td>
+<td>收票</td>
+<td>Invoice Received</td>
+</tr>
+<tr>
+<td><code>receiptDeliverTypes_1</code></td>
+<td>收货</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td><code>voucherType_2</code></td>
+<td>收货</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td><code>headerStatus_1</code></td>
+<td>新建</td>
+<td>New</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_2</code></td>
+<td>新建</td>
+<td>New</td>
+</tr>
+<tr>
+<td><code>documentStatus_1</code></td>
+<td>无</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_13</code></td>
+<td>期货</td>
+<td>Futures</td>
+</tr>
+<tr>
+<td><code>pricingContractTypes_1</code></td>
+<td>期货</td>
+<td>Futures</td>
+</tr>
+<tr>
+<td><code>deliveryStatus_1</code></td>
+<td>未划款</td>
+<td>Undelivered</td>
+</tr>
+<tr>
+<td><code>priceStatus_1</code></td>
+<td>未确认</td>
+<td>Unconfirmed</td>
+</tr>
+<tr>
+<td><code>documentStatus_2</code></td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><code>pricingStatuses_1</code></td>
+<td>浮动</td>
+<td>Floating</td>
+</tr>
+<tr>
+<td><code>pricingTypes_2</code></td>
+<td>点价</td>
+<td>Unknown Price</td>
+</tr>
+<tr>
+<td><code>pricingContractTypes_2</code></td>
+<td>现货</td>
+<td>Physical</td>
+</tr>
+<tr>
+<td><code>contractTypes_3</code></td>
+<td>现货订单</td>
+<td>Spot Order</td>
+</tr>
+<tr>
+<td><code>headerStatus_2</code></td>
+<td>生效</td>
+<td>Effective</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_6</code></td>
+<td>生效</td>
+<td>Effective</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_12</code></td>
+<td>租船合同</td>
+<td>Charter Contract</td>
+</tr>
+<tr>
+<td><code>voucherType_6</code></td>
+<td>移仓</td>
+<td>Stock Transfer</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_6</code></td>
+<td>移库登记</td>
+<td>Stock Transfer Registration</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_7</code></td>
+<td>虚拟合同</td>
+<td>Virtual Contract</td>
+</tr>
+<tr>
+<td><code>voucherType_1</code></td>
+<td>订单</td>
+<td>Order</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_16</code></td>
+<td>质押式回购</td>
+<td>Repurchase Pledge</td>
+</tr>
+<tr>
+<td><code>lcStatus_10</code></td>
+<td>贴现</td>
+<td>Discount</td>
+</tr>
+<tr>
+<td><code>warehousePsFlag_1</code></td>
+<td>转入</td>
+<td>Transfer In</td>
+</tr>
+<tr>
+<td><code>warehousePsFlag_2</code></td>
+<td>转出</td>
+<td>Transfer Out</td>
+</tr>
+<tr>
+<td><code>termFlags_2</code></td>
+<td>远期</td>
+<td>Forward</td>
+</tr>
+<tr>
+<td><code>priceStatus_3</code></td>
+<td>部分确认</td>
+<td>Partially Confirmed</td>
+</tr>
+<tr>
+<td><code>psFlags_1</code></td>
+<td>采购</td>
+<td>Purchase</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_1</code></td>
+<td>采购合同</td>
+<td>Purchase Contract</td>
+</tr>
+<tr>
+<td><code>deliveryTypes_3</code></td>
+<td>采购退货</td>
+<td>Purchase Return</td>
+</tr>
+<tr>
+<td><code>chargePricingType_2</code></td>
+<td>金额</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>voyageCharterPricingTypes_2</code></td>
+<td>金额</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>psFlags_2</code></td>
+<td>销售</td>
+<td>Sale</td>
+</tr>
+<tr>
+<td><code>deliveryTypes_1</code></td>
+<td>销售出库</td>
+<td>Sales Outbound</td>
+</tr>
+<tr>
+<td><code>receiptDeliveryHeaderTypes_3</code></td>
+<td>销售合同</td>
+<td>Sales Contract</td>
+</tr>
+<tr>
+<td><code>contractTypes_1</code></td>
+<td>长协合同</td>
+<td>Long-term Agreement</td>
+</tr>
+<tr>
+<td><code>contractTypes_2</code></td>
+<td>长协订单</td>
+<td>LTA Order</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-fixation-pricing">2. 作价与定价管理 / Fixation &amp; Pricing<a class="headerlink" href="#2-fixation-pricing" title="Permanent link">&para;</a></h2>
+<h3 id="_7">作价与定价管理 — 功能页面<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Greenlist价格</td>
+<td>Greenlist Price</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>价格主数据</td>
+<td>Price Master Data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>价格因素</td>
+<td>Pricing Factor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>作价市场</td>
+<td>Pricing Market</td>
+<td>定价市场, 基准市场, Pricing Market, Benchmark Market</td>
+<td></td>
+</tr>
+<tr>
+<td>作价管理</td>
+<td>Fixation Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>定价明细表</td>
+<td>Fixation Detail</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>常用作价方式</td>
+<td>Common Pricing Formula</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月底已定价未交割明细</td>
+<td>EOM Engagement Detail By Base Metal</td>
+<td>Delivery, 实物交割, Settlement</td>
+<td></td>
+</tr>
+<tr>
+<td>月底金属已定价未交割汇总</td>
+<td>EOM Engagement Summary by Base Metal</td>
+<td>Delivery, 实物交割, Settlement</td>
+<td></td>
+</tr>
+<tr>
+<td>期货计价量模型</td>
+<td>LME Movement</td>
+<td>Futures, 期货合约, 期货交易</td>
+<td></td>
+</tr>
+<tr>
+<td>期间规则</td>
+<td>Period Rule</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>点价关联</td>
+<td>Link Fixation to GR</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+<td></td>
+</tr>
+<tr>
+<td>点价关联明细表</td>
+<td>Fixation Link Detail</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+<td></td>
+</tr>
+<tr>
+<td>点价记录</td>
+<td>Fixation Record</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+<td></td>
+</tr>
+<tr>
+<td>点价邮件补发</td>
+<td>Fixation Email Re-send</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+<td></td>
+</tr>
+<tr>
+<td>现货计价量模型</td>
+<td>Fixation Movement</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>现货计价量调整</td>
+<td>Fixation Adjustment</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>计价公式</td>
+<td>Pricing Formula</td>
+<td>定价公式, 价格公式, Pricing Formula, Price Formula</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">作价与定价管理 — 业务字段<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixation ID</td>
+<td>Fixation ID</td>
+<td></td>
+</tr>
+<tr>
+<td>Greenlist 价格更新</td>
+<td>Greenlist Price Update</td>
+<td></td>
+</tr>
+<tr>
+<td>Greenlist 单价</td>
+<td>Greenlist Price/（Eur/To）</td>
+<td></td>
+</tr>
+<tr>
+<td>Greenlist金额（EUR）</td>
+<td>tot gl（EUR）</td>
+<td></td>
+</tr>
+<tr>
+<td>LME 历史价格</td>
+<td>LME Hist</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>MIN 价格</td>
+<td>MIN</td>
+<td></td>
+</tr>
+<tr>
+<td>仅支持对审批完成的单据进行点价关联</td>
+<td>Only supported for pricing association of approved documents</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>价格小数点位</td>
+<td>Price rounding digits</td>
+<td></td>
+</tr>
+<tr>
+<td>价格类型</td>
+<td>Price type</td>
+<td></td>
+</tr>
+<tr>
+<td>价格趋势</td>
+<td>Price Trend</td>
+<td></td>
+</tr>
+<tr>
+<td>作价周期类型</td>
+<td>Pricing cycle type</td>
+<td></td>
+</tr>
+<tr>
+<td>作价完成</td>
+<td>Fixation Complete</td>
+<td></td>
+</tr>
+<tr>
+<td>作价市场</td>
+<td>Pricing market</td>
+<td>定价市场, 基准市场, Pricing Market, Benchmark Market</td>
+</tr>
+<tr>
+<td>作价期间规则</td>
+<td>Pricing range rule</td>
+<td></td>
+</tr>
+<tr>
+<td>作废失败</td>
+<td>Cancel Failed</td>
+<td>Void, Cancel, Invalid, 废弃</td>
+</tr>
+<tr>
+<td>作废成功</td>
+<td>Cancelled</td>
+<td>Void, Cancel, Invalid, 废弃</td>
+</tr>
+<tr>
+<td>关联Fixation ID</td>
+<td>Link Fixation ID</td>
+<td></td>
+</tr>
+<tr>
+<td>关联交易场景中，基价只能选择BasicTriggeredPrice作价方式</td>
+<td>In the related party transaction scenario, the base price can only choose the Pricing Formula of BasicTriggeredPrice.</td>
+<td>Related Party, 关联方交易</td>
+</tr>
+<tr>
+<td>关联失败</td>
+<td>Link Failed</td>
+<td></td>
+</tr>
+<tr>
+<td>关联定价明细ID</td>
+<td>Linked Pricing Detail ID</td>
+<td></td>
+</tr>
+<tr>
+<td>关联点价单</td>
+<td>Link Fixation Record</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>关联计价量ID</td>
+<td>Associated Pricing Quantity ID</td>
+<td></td>
+</tr>
+<tr>
+<td>变更定价日期</td>
+<td>Change Pricing Date</td>
+<td></td>
+</tr>
+<tr>
+<td>变更数量超过新商品行待点价数量</td>
+<td>The quantity change exceeds the quantity of the new product line awaiting pricing</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>合约月</td>
+<td>Contract Month</td>
+<td>Contract, 期货合约, Contract Name</td>
+</tr>
+<tr>
+<td>基价类型</td>
+<td>Basic price type</td>
+<td></td>
+</tr>
+<tr>
+<td>定价日期</td>
+<td>Pricing date</td>
+<td></td>
+</tr>
+<tr>
+<td>定价明细表</td>
+<td>Fixation Detail</td>
+<td></td>
+</tr>
+<tr>
+<td>已关联点价量</td>
+<td>Quantity already associated with pricing</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>已定单价</td>
+<td>Fixation Price</td>
+<td></td>
+</tr>
+<tr>
+<td>已点价数量</td>
+<td>Fixeded Quantity</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>市场价格</td>
+<td>Market Price</td>
+<td></td>
+</tr>
+<tr>
+<td>总价</td>
+<td>Fixation Value In Settlement Currency</td>
+<td></td>
+</tr>
+<tr>
+<td>成交明细</td>
+<td>Fixation Details</td>
+<td></td>
+</tr>
+<tr>
+<td>成功关联合同</td>
+<td>Link Successful</td>
+<td></td>
+</tr>
+<tr>
+<td>数量</td>
+<td>Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>数量单位</td>
+<td>Quantity unit</td>
+<td></td>
+</tr>
+<tr>
+<td>有合同的单据无法进行关联合同</td>
+<td>Already linked to contract</td>
+<td></td>
+</tr>
+<tr>
+<td>未点价数量</td>
+<td>Unfixed Quantity</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>欧元总价</td>
+<td>Fixation Value In Base Currency</td>
+<td></td>
+</tr>
+<tr>
+<td>点价</td>
+<td>Fixation</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价保证金</td>
+<td>Fixation margin deposit</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价关联</td>
+<td>Pricing association</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价单位</td>
+<td>Pricing unit</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价单号</td>
+<td>Pricing order number</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价变更</td>
+<td>Fixation Change</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价手数</td>
+<td>Unknown Fixation Lots</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价方</td>
+<td>Fixation right</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>点价金额</td>
+<td>Pricing Amount</td>
+<td>定价, 作价, Fixation, Price Fixation, Pricing</td>
+</tr>
+<tr>
+<td>现货计价量模型</td>
+<td>Fixation Movement</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">作价与定价管理 — 状态/类型枚举值<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>priceType_1</code></td>
+<td>均价</td>
+<td>Average Price</td>
+</tr>
+<tr>
+<td><code>priceFormulaType_1</code></td>
+<td>基价</td>
+<td>Base Price</td>
+</tr>
+<tr>
+<td><code>priceType_3</code></td>
+<td>最低价</td>
+<td>Lowest Price</td>
+</tr>
+<tr>
+<td><code>priceType_2</code></td>
+<td>最高价</td>
+<td>Highest Price</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-inventory-management">3. 库存管理 / Inventory Management<a class="headerlink" href="#3-inventory-management" title="Permanent link">&para;</a></h2>
+<h3 id="_10">库存管理 — 功能页面<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EOM Engagement 报表</td>
+<td>EOM Engagement Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAP入库单</td>
+<td>SAP Goods Receipt</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAP分包商物料移动</td>
+<td>SAP Subcontract Movement</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAP废料再生产</td>
+<td>SAP Return Scrap Recycle</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>仓储设施</td>
+<td>Warehouse</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>仓库</td>
+<td>Warehouse</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+<td></td>
+</tr>
+<tr>
+<td>元素库存报表</td>
+<td>Inventory Report Split by Base Metal</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>入库报表</td>
+<td>Entry report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>入库登记</td>
+<td>Good Receipt</td>
+<td>入库, 收货登记, Good Receipt, GR, Goods Receipt</td>
+<td></td>
+</tr>
+<tr>
+<td>出入库配置</td>
+<td>Inbound/ Outbound Configuration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>出库明细表</td>
+<td>Detail Entries of Goods Release</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>出库通知</td>
+<td>Outbound Delivery Note</td>
+<td>发货通知, 出库单, Outbound Delivery, Delivery Note</td>
+<td></td>
+</tr>
+<tr>
+<td>初始库存</td>
+<td>Initial Stock</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>商品库存报表</td>
+<td>Entries report of materials</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+<td></td>
+</tr>
+<tr>
+<td>年度商品库存报表</td>
+<td>Yearly entries report of materials</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+<td></td>
+</tr>
+<tr>
+<td>年终库存报表</td>
+<td>Year End Inventory Report</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存价值报表</td>
+<td>Detailed Entries Accounting &amp; Added Value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存价值评估表</td>
+<td>Evaluation of Detaile Entries Value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存余额表</td>
+<td>Inventory Balance Table</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存总览表</td>
+<td>Inventory Overview Table</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存报表管理</td>
+<td>Inventory Report Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存明细对账</td>
+<td>Inventory Detail for Reconcilation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存明细表</td>
+<td>SAP Year End Inventory by Article</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存月结</td>
+<td>Inventory Monthly Closing</td>
+<td>月末结算, 月度结转, EOM, End of Month, 月结</td>
+<td></td>
+</tr>
+<tr>
+<td>库存管理</td>
+<td>Inventory Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>库存调差</td>
+<td>Inventory Adjustment</td>
+<td>库存调整, 盘盈盘亏, Inventory Adjustment, Stock Adjustment</td>
+<td></td>
+</tr>
+<tr>
+<td>废料来料入库</td>
+<td>Residual &amp; Conversion Entry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>当月库存附加价</td>
+<td>Added Value of Current Month Entry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月底净库存估值表</td>
+<td>EOM Committed Stock Valuation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月度入库金属价值快照</td>
+<td>Monthly GR Metal Value Snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月度入库金属价值明细</td>
+<td>Monthly GR Metal Value Detail</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月结明细</td>
+<td>EOM Details</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月结管理</td>
+<td>EOM Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>未开票库存价值</td>
+<td>Accounting Value of Entry without Invoice</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>移库</td>
+<td>Stock Transfer</td>
+<td>调拨, 库存转移, Stock Transfer, 仓库间转移</td>
+<td></td>
+</tr>
+<tr>
+<td>移库入库</td>
+<td>Stock Transfer Inbound</td>
+<td>调拨, 库存转移, Stock Transfer, 仓库间转移</td>
+<td></td>
+</tr>
+<tr>
+<td>移库出库</td>
+<td>Stock Transfer Outbound</td>
+<td>调拨, 库存转移, Stock Transfer, 仓库间转移</td>
+<td></td>
+</tr>
+<tr>
+<td>移库申请</td>
+<td>Stock Transfer Application</td>
+<td>调拨, 库存转移, Stock Transfer, 仓库间转移</td>
+<td></td>
+</tr>
+<tr>
+<td>金属库存快照</td>
+<td>Inventory of Base Metal Snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>金属库存明细</td>
+<td>Inventory of Base Metal Details</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">库存管理 — 业务字段<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Begining Stock Ownership</td>
+<td>Begining Stock Ownership</td>
+<td></td>
+</tr>
+<tr>
+<td>CTRM审批通过、未推送SAP的开票数量</td>
+<td>The number of invoices approved in CTRM but not yet pushed to SAP.</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>Diff Stock</td>
+<td>Diff Stock</td>
+<td></td>
+</tr>
+<tr>
+<td>Ending Stock Ownership</td>
+<td>Ending Stock Ownership</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP DN行号</td>
+<td>SAP DN Line Number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 交货单号</td>
+<td>SAP DN</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 物料凭证号</td>
+<td>SAP Article</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 物料凭证年度</td>
+<td>SAP Voucher Fiscal Year</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 物料凭证行号</td>
+<td>SAP Voucher Line Item</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 订单号</td>
+<td>SAP PO</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP 订单行号</td>
+<td>SAP PO No..</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP业务场景</td>
+<td>SAP Business Scenario</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP会计凭证号</td>
+<td>SAP accounting document number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP会计年</td>
+<td>SAP Document Year</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP内向交货单号</td>
+<td>SAP Doc No.</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP单位</td>
+<td>SAP UoM</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP单据号</td>
+<td>SAP Document No.</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP单据行号</td>
+<td>SAP Material Document Line</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP发票号</td>
+<td>SAP Inv. No.</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP只能关联1行采购需求，请不要多选！</td>
+<td>SAP only can be related to 1 line of purchase request, please do not multi-select!</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP基本计量单位</td>
+<td>SAP basic UoM</td>
+<td>UOM, Unit of Measure, 计量, 单位</td>
+</tr>
+<tr>
+<td>SAP外向交货单行号</td>
+<td>SAP Outbound Delivery Line Number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP批次行号</td>
+<td>SAP Batch Line Number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP数据拉取</td>
+<td>Retrieve SAP Data</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP数量单位</td>
+<td>SAP Uom</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP物料凭证号</td>
+<td>SAP Material Document Number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP物料凭证年份</td>
+<td>SAP Doc Year</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP物料凭证行号</td>
+<td>SAP material document Line</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP生产订单号</td>
+<td>SAP Production Order Number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP行项目</td>
+<td>SAP Line Item</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP行项目号</td>
+<td>SAP Item num</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP订单号</td>
+<td>SAP order number</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP订单行号</td>
+<td>SAP Order Line No.</td>
+<td></td>
+</tr>
+<tr>
+<td>SAP销售订单行号</td>
+<td>SAP sales order Line No.</td>
+<td></td>
+</tr>
+<tr>
+<td>sap物料号</td>
+<td>SAP material number</td>
+<td></td>
+</tr>
+<tr>
+<td>storageIs</td>
+<td>查询0库存数据</td>
+<td></td>
+</tr>
+<tr>
+<td>上级SAP发票号</td>
+<td>Linked SAP Invoice No.</td>
+<td></td>
+</tr>
+<tr>
+<td>上级SAP发票号存在不一致</td>
+<td>Inconsistent parent SAP invoice number exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>上级SAP发票行号</td>
+<td>Linked SAP invoice Line No.</td>
+<td></td>
+</tr>
+<tr>
+<td>不能选择不同仓库，请重新勾选</td>
+<td>Cannot select different warehouses, please reselect</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+</tr>
+<tr>
+<td>交货数量(SAP)</td>
+<td>Delivered SAP Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>仓单交易平台账户</td>
+<td>Warehouse trading platform account</td>
+<td>Warehouse Receipt, 标准仓单, 提单</td>
+</tr>
+<tr>
+<td>仓库</td>
+<td>Warehouse</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+</tr>
+<tr>
+<td>仓库地点</td>
+<td>Warehouse location</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+</tr>
+<tr>
+<td>仓库未填</td>
+<td>Warehouse not filled</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+</tr>
+<tr>
+<td>仓库类型</td>
+<td>仓库类型</td>
+<td>仓储, 库, Warehouse, Storage, Depot</td>
+</tr>
+<tr>
+<td>入库总量</td>
+<td>Total storage quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>入库数量（TO）</td>
+<td>Quantity in Warehouse（TO）</td>
+<td></td>
+</tr>
+<tr>
+<td>入库数量（主计量单位）</td>
+<td>Quantity in Warehouse(main uom)</td>
+<td>UOM, Unit of Measure, 计量, 单位</td>
+</tr>
+<tr>
+<td>入库日期</td>
+<td>Warehouse in date</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">库存管理 — 状态/类型枚举值<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storageInsideOutside_1</code></td>
+<td>三方库</td>
+<td>Third-party Warehouse</td>
+</tr>
+<tr>
+<td><code>warehousePs_1</code></td>
+<td>串入</td>
+<td>Transfer In</td>
+</tr>
+<tr>
+<td><code>warehousePs_2</code></td>
+<td>串出</td>
+<td>Transfer Out</td>
+</tr>
+<tr>
+<td><code>warehousePsbuy_1</code></td>
+<td>买入</td>
+<td>Buy In</td>
+</tr>
+<tr>
+<td><code>warehouseBusinessType_3</code></td>
+<td>二次结算收款登记</td>
+<td>Secondary Settlement Receipt Registration</td>
+</tr>
+<tr>
+<td><code>cooperationType_3</code></td>
+<td>仓储</td>
+<td>Warehouse</td>
+</tr>
+<tr>
+<td><code>warehouseType_2</code></td>
+<td>仓单</td>
+<td>Warehouse Receipt</td>
+</tr>
+<tr>
+<td><code>cdzxType</code></td>
+<td>仓单注销</td>
+<td>Warehouse Receipt Cancellation</td>
+</tr>
+<tr>
+<td><code>warehouseTypes_1</code></td>
+<td>仓库</td>
+<td>Warehouse</td>
+</tr>
+<tr>
+<td><code>warehouseBusinessType_4</code></td>
+<td>保证金</td>
+<td>Margin</td>
+</tr>
+<tr>
+<td><code>billFlag_1</code></td>
+<td>入库库存</td>
+<td>Physical Inventory</td>
+</tr>
+<tr>
+<td><code>warehouseStatus_2</code></td>
+<td>冻结</td>
+<td>Frozen</td>
+</tr>
+<tr>
+<td><code>warehouseStatus_4</code></td>
+<td>出库</td>
+<td>Outbound</td>
+</tr>
+<tr>
+<td><code>warehousePsbuy_2</code></td>
+<td>卖出</td>
+<td>Sell Out</td>
+</tr>
+<tr>
+<td><code>rdFlags_2</code></td>
+<td>发货</td>
+<td>Release</td>
+</tr>
+<tr>
+<td><code>actionTypes_4</code></td>
+<td>库存盘点</td>
+<td>Inventory Count</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_2</code></td>
+<td>待验真</td>
+<td>Awaiting Verification</td>
+</tr>
+<tr>
+<td><code>rdFlags_3</code></td>
+<td>拣配</td>
+<td>Picking</td>
+</tr>
+<tr>
+<td><code>billFlag_2</code></td>
+<td>提单库存</td>
+<td>Bill Inventory</td>
+</tr>
+<tr>
+<td><code>rdFlags_1</code></td>
+<td>收货</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_1</code></td>
+<td>无需验真</td>
+<td>Verification Waived</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_6</code></td>
+<td>未通过</td>
+<td>Not Verified</td>
+</tr>
+<tr>
+<td><code>warehouseFlag_1</code></td>
+<td>正回购(S/B)</td>
+<td>Repurchase (S/B)</td>
+</tr>
+<tr>
+<td><code>warehouseStatus_1</code></td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><code>warehouseType_1</code></td>
+<td>现货</td>
+<td>Physical</td>
+</tr>
+<tr>
+<td><code>transferapplyType_1</code></td>
+<td>移库申请</td>
+<td>Stock Transfer Application</td>
+</tr>
+<tr>
+<td><code>warehouseBusinessType_1</code></td>
+<td>货款</td>
+<td>Goods Payment</td>
+</tr>
+<tr>
+<td><code>warehouseStatus_3</code></td>
+<td>质押</td>
+<td>Pledged</td>
+</tr>
+<tr>
+<td><code>warehouseTypes_2</code></td>
+<td>车船</td>
+<td>Vehicles / Vessels</td>
+</tr>
+<tr>
+<td><code>warehouseFlag_2</code></td>
+<td>逆回购(B/S)</td>
+<td>Reverse Repurchase (B/S)</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_5</code></td>
+<td>通过</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td><code>warehouseBusinessType_2</code></td>
+<td>采购货款退款</td>
+<td>Purchase Goods Payment Refund</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_4</code></td>
+<td>验真中</td>
+<td>Verifying</td>
+</tr>
+<tr>
+<td><code>sapValidateStatus_3</code></td>
+<td>验真失败</td>
+<td>Verification Failed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-arap-capital">4. 应收应付与资金管理 / AR/AP &amp; Capital<a class="headerlink" href="#4-arap-capital" title="Permanent link">&para;</a></h2>
+<h3 id="_13">应收应付与资金管理 — 功能页面<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debit/Credit Note</td>
+<td>Debit/Credit Note</td>
+<td>借贷项通知, DC Note, 借项通知, 贷项通知, Debit Note</td>
+<td></td>
+</tr>
+<tr>
+<td>付款条款</td>
+<td>payment terms</td>
+<td>Payment Terms, 付款条件, 账期</td>
+<td></td>
+</tr>
+<tr>
+<td>付款申请</td>
+<td>Payment Application</td>
+<td>付款, Payment Application, Payment Request, 请款</td>
+<td></td>
+</tr>
+<tr>
+<td>供应商结算发票检查表</td>
+<td>Supplier Settlement Invoice Checklist</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>应付管理</td>
+<td>Payables Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>应收应付</td>
+<td>Accounts Receivable and Payable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>应收管理</td>
+<td>Receivables Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>开票情况查询</td>
+<td>Invoice Status Inquiry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>待开Credit/Debit Note表</td>
+<td>Credit/Debit Note to be received</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>待收Credit/Debit Note表</td>
+<td>Credit/Debit Note to be received</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>支付工具</td>
+<td>Payment Method</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>收票情况查询</td>
+<td>Invoice Receipt Status Inquiry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>款项类型</td>
+<td>Payment Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>费用记录</td>
+<td>Expense Record</td>
+<td>费用, 杂费, Expense, Charge, Cost Record</td>
+<td></td>
+</tr>
+<tr>
+<td>资金管理</td>
+<td>Capital Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>银行流水</td>
+<td>Bank Transactions</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">应收应付与资金管理 — 业务字段<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DN码</td>
+<td>Delivery Note (DN) Code</td>
+<td></td>
+</tr>
+<tr>
+<td>paymentAmountValid</td>
+<td>Detected that the current pending payment amount ({paymentApplicationClaimSettingAmount} RMB) is greater than [application amount (Payment currency) ({paymentCurrencyApplicationAmount} RMB) - paid amount ({paymentAmount} RMB)]; please modify the current pending payment amount?</td>
+<td></td>
+</tr>
+<tr>
+<td>paymentApplicationAmountValid</td>
+<td>Detected that the current application payment amount ({applicationAmount} RMB) is greater than [paid amount ({receiveAmount} RMB) - application amount ({paymentApplicationAmount} RMB)]; please modify the current payment amount</td>
+<td></td>
+</tr>
+<tr>
+<td>revokeApproveTip</td>
+<td>Do you want to revoke the approval of the expense record {invoiceNumber} created by {createdBy}?</td>
+<td></td>
+</tr>
+<tr>
+<td>上级发票单据号</td>
+<td>Linked Invoice Doc No.</td>
+<td></td>
+</tr>
+<tr>
+<td>不能选择不同交易对家的流水！</td>
+<td>Cannot select transactions with different counterparties!</td>
+<td></td>
+</tr>
+<tr>
+<td>不能选择不同收付类型的流水！</td>
+<td>Cannot select transactions with different payment methods!</td>
+<td></td>
+</tr>
+<tr>
+<td>业务机构账号不同，不能合并认领，请重新选择</td>
+<td>Different business entity accounts, unable to merge claims, please reselect</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>主单位发票数量</td>
+<td>Invoiced Quantity in Master UoM</td>
+<td></td>
+</tr>
+<tr>
+<td>交易对家不同，不能合并认领，请重新选择</td>
+<td>Different counterparty, unable to merge claims, please reselect</td>
+<td></td>
+</tr>
+<tr>
+<td>交易日期不同，不能合并认领，请重新选择</td>
+<td>Different transaction dates, unable to merge claims, please reselect</td>
+<td></td>
+</tr>
+<tr>
+<td>交易时间</td>
+<td>Transaction Time</td>
+<td></td>
+</tr>
+<tr>
+<td>交易附言</td>
+<td>Transaction Note</td>
+<td></td>
+</tr>
+<tr>
+<td>付款</td>
+<td>Payment</td>
+<td>付款, Payment Application, Payment Request, 请款</td>
+</tr>
+<tr>
+<td>付款摘要</td>
+<td>Payment summary</td>
+<td></td>
+</tr>
+<tr>
+<td>付款时间</td>
+<td>Payment date</td>
+<td></td>
+</tr>
+<tr>
+<td>付款条件</td>
+<td>Payment Condition</td>
+<td></td>
+</tr>
+<tr>
+<td>付款条款</td>
+<td>Payment Term</td>
+<td>Payment Terms, 付款条件, 账期</td>
+</tr>
+<tr>
+<td>付款申请单据的支付方式暂只支持一行明细</td>
+<td>Payment application documents support only one line item for payment method details</td>
+<td>付款, Payment Application, Payment Request, 请款</td>
+</tr>
+<tr>
+<td>付款进度</td>
+<td>Payment progress</td>
+<td></td>
+</tr>
+<tr>
+<td>付款金额(支付币种)</td>
+<td>Payment amount (Payment currency)</td>
+<td>Currency, 货币, 交易币种</td>
+</tr>
+<tr>
+<td>付款金额上下不一致，请调整</td>
+<td>Inconsistent payment amount, please adjust</td>
+<td></td>
+</tr>
+<tr>
+<td>付款金额需要大于0</td>
+<td>Payment amount needs to be greater than 0</td>
+<td></td>
+</tr>
+<tr>
+<td>供应商退货款、供应商质量赔款</td>
+<td>Supplier return payment, supplier quality compensation</td>
+<td>Goods Payment, 商品货款</td>
+</tr>
+<tr>
+<td>信用币种</td>
+<td>Credit Segment Currency</td>
+<td>Currency, 货币, 交易币种</td>
+</tr>
+<tr>
+<td>信用敞口</td>
+<td>Credit Exposure</td>
+<td>Exposure, 风险敞口, Open Exposure</td>
+</tr>
+<tr>
+<td>信用限额</td>
+<td>Credit Limit</td>
+<td></td>
+</tr>
+<tr>
+<td>入库未开票数量</td>
+<td>Received Not Invoiced Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>全部开票?</td>
+<td>All invoiced?</td>
+<td></td>
+</tr>
+<tr>
+<td>全部收付?</td>
+<td>All payment?</td>
+<td></td>
+</tr>
+<tr>
+<td>关联发票号码</td>
+<td>Linked Invoice No</td>
+<td></td>
+</tr>
+<tr>
+<td>关联报关发票</td>
+<td>Relate Customs Invoice</td>
+<td></td>
+</tr>
+<tr>
+<td>关联部分待收credit/debit金额</td>
+<td>Linked Pending Credit/Debit Amount</td>
+<td></td>
+</tr>
+<tr>
+<td>冲销发票号</td>
+<td>Reversed Invoice Document Number</td>
+<td>Reversal, Write-off, Offset, 红冲, 撤销</td>
+</tr>
+<tr>
+<td>出库未开票数量</td>
+<td>Uninvoiced Outbound Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>出库通知</td>
+<td>Outbound Delivery Note</td>
+<td>发货通知, 出库单, Outbound Delivery, Delivery Note</td>
+</tr>
+<tr>
+<td>出库通知单据号</td>
+<td>Outbound Delivery Note Number</td>
+<td>发货通知, 出库单, Outbound Delivery, Delivery Note</td>
+</tr>
+<tr>
+<td>出库通知明细中，通知数量不能为负数</td>
+<td>Outbound Delivery Note detail, notification quantity cannot be negative</td>
+<td>发货通知, 出库单, Outbound Delivery, Delivery Note</td>
+</tr>
+<tr>
+<td>出库通知行号</td>
+<td>Outbound Delivery Note Line Number</td>
+<td>发货通知, 出库单, Outbound Delivery, Delivery Note</td>
+</tr>
+<tr>
+<td>分类</td>
+<td>Category</td>
+<td></td>
+</tr>
+<tr>
+<td>列表中已有数据，不可多选</td>
+<td>There is existing data in the list, multiple selection is not allowed</td>
+<td></td>
+</tr>
+<tr>
+<td>创建的报关发票</td>
+<td>Created Invoice</td>
+<td></td>
+</tr>
+<tr>
+<td>剩余可结算数量</td>
+<td>Tobe Invoiced Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>单据明细</td>
+<td>Doc details</td>
+<td></td>
+</tr>
+<tr>
+<td>发票</td>
+<td>invoice</td>
+<td>销项发票, Sales Invoice, 开票</td>
+</tr>
+<tr>
+<td>发票-物资</td>
+<td>Invoice-Article</td>
+<td></td>
+</tr>
+<tr>
+<td>发票不含税金额</td>
+<td>Invoiced amount excluding tax</td>
+<td></td>
+</tr>
+<tr>
+<td>发票信息</td>
+<td>Invoice information</td>
+<td></td>
+</tr>
+<tr>
+<td>发票单价</td>
+<td>invoice unit price</td>
+<td></td>
+</tr>
+<tr>
+<td>发票号</td>
+<td>Invoice Document Number</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">应收应付与资金管理 — 状态/类型枚举值<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lcTypes_3</code></td>
+<td>Back To Back</td>
+<td>Back To Back</td>
+</tr>
+<tr>
+<td><code>lcTypes_2</code></td>
+<td>Cash To Back</td>
+<td>Cash To Back</td>
+</tr>
+<tr>
+<td><code>invoiceDirection_2</code></td>
+<td>Credit</td>
+<td>Credit</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_5</code></td>
+<td>Credit Note</td>
+<td>Credit Note</td>
+</tr>
+<tr>
+<td><code>invoiceDirection_1</code></td>
+<td>Debit</td>
+<td>Debit</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_4</code></td>
+<td>Debit Note</td>
+<td>Debit Note</td>
+</tr>
+<tr>
+<td><code>invoiceCategory_4</code></td>
+<td>Final</td>
+<td>Final</td>
+</tr>
+<tr>
+<td><code>invoiceCategory2_2</code></td>
+<td>Final</td>
+<td>Final</td>
+</tr>
+<tr>
+<td><code>lcTypes_4</code></td>
+<td>Front To Back</td>
+<td>Front To Back</td>
+</tr>
+<tr>
+<td><code>lcTypes_6</code></td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>lcTypes_1</code></td>
+<td>Open Account</td>
+<td>Open Account</td>
+</tr>
+<tr>
+<td><code>invoiceCategory_3</code></td>
+<td>Provisional</td>
+<td>Provisional</td>
+</tr>
+<tr>
+<td><code>invoiceCategory2_1</code></td>
+<td>Provisional</td>
+<td>Provisional</td>
+</tr>
+<tr>
+<td><code>repaymentMethods_1</code></td>
+<td>一次性先付</td>
+<td>One-time Prepayment</td>
+</tr>
+<tr>
+<td><code>repaymentMethods_2</code></td>
+<td>一次性后付</td>
+<td>One-time Postpayment</td>
+</tr>
+<tr>
+<td><code>customsBondPaymentMethod_1</code></td>
+<td>一般贸易</td>
+<td>General Trade</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_1</code></td>
+<td>临时发票</td>
+<td>Provisional Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceStage_1</code></td>
+<td>临时发票</td>
+<td>Provisional Invoice</td>
+</tr>
+<tr>
+<td><code>adFlags_2</code></td>
+<td>交单</td>
+<td>Negotiation</td>
+</tr>
+<tr>
+<td><code>lcStatus_6</code></td>
+<td>交单</td>
+<td>Documents Presented</td>
+</tr>
+<tr>
+<td><code>lcStatus_8</code></td>
+<td>交单</td>
+<td>Documents Presented</td>
+</tr>
+<tr>
+<td><code>chargeDirections_1</code></td>
+<td>付款</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td><code>paymentFlags_1</code></td>
+<td>付款</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td><code>paymentProgressStatus_2</code></td>
+<td>付款完成</td>
+<td>Payment Completed</td>
+</tr>
+<tr>
+<td><code>creditTableType_3</code></td>
+<td>例外授信</td>
+<td>Exceptional Credit</td>
+</tr>
+<tr>
+<td><code>taxPaymentStatus_2</code></td>
+<td>保税</td>
+<td>Duty-free</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_3</code></td>
+<td>信用证</td>
+<td>Letter of Credit</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_8</code></td>
+<td>信用证保证金</td>
+<td>Letter of Credit Margin</td>
+</tr>
+<tr>
+<td><code>limitTypes_1</code></td>
+<td>信用证额度</td>
+<td>Letter of Credit Limit</td>
+</tr>
+<tr>
+<td><code>limitTypes_4</code></td>
+<td>信用风险</td>
+<td>Credit Risk</td>
+</tr>
+<tr>
+<td><code>paymentStatuses_4</code></td>
+<td>全部认领</td>
+<td>All Claimed</td>
+</tr>
+<tr>
+<td><code>creditTableType_1</code></td>
+<td>关联方</td>
+<td>Related Party</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_10</code></td>
+<td>内贸发票-单据</td>
+<td>CN Invoice-Doc</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_11</code></td>
+<td>内贸发票-物资</td>
+<td>CN Invoice-Article</td>
+</tr>
+<tr>
+<td><code>adFlags_1</code></td>
+<td>到单</td>
+<td>Presentation</td>
+</tr>
+<tr>
+<td><code>settlementSourceList_2</code></td>
+<td>前期结算调整</td>
+<td>Previous Settlement Adjustment</td>
+</tr>
+<tr>
+<td><code>invoiceType_1</code></td>
+<td>发票-单据</td>
+<td>Invoice Doc</td>
+</tr>
+<tr>
+<td><code>invoiceType_2</code></td>
+<td>发票-物资</td>
+<td>Invoice Article</td>
+</tr>
+<tr>
+<td><code>invoiceType2_1</code></td>
+<td>发票-物资</td>
+<td>Invoice Article</td>
+</tr>
+<tr>
+<td><code>invoiceType_4</code></td>
+<td>发票-物资-冲销</td>
+<td>Invoice Article-Offset</td>
+</tr>
+<tr>
+<td><code>cashReceiveType_1</code></td>
+<td>合同</td>
+<td>Contract</td>
+</tr>
+<tr>
+<td><code>bankCreditOcFlags_2</code></td>
+<td>场内</td>
+<td>Ex Market</td>
+</tr>
+<tr>
+<td><code>bankCreditOcFlags_1</code></td>
+<td>场外</td>
+<td>OTC</td>
+</tr>
+<tr>
+<td><code>invoiceCategory_1</code></td>
+<td>增值税专用发票</td>
+<td>Special VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceCategory1_1</code></td>
+<td>增值税专用发票</td>
+<td>Special VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceType1_1</code></td>
+<td>增值税专用发票</td>
+<td>Special VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceCategory_2</code></td>
+<td>增值税普通发票</td>
+<td>General VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceCategory1_2</code></td>
+<td>增值税普通发票</td>
+<td>General VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceType1_2</code></td>
+<td>增值税普通发票</td>
+<td>General VAT Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceType1_3</code></td>
+<td>增值税电子专用发票</td>
+<td>Special VAT E-Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceType1_4</code></td>
+<td>增值税电子普通发票</td>
+<td>General VAT E-Invoice</td>
+</tr>
+<tr>
+<td><code>lcCategories_2</code></td>
+<td>备用信用证</td>
+<td>Standby Letter of Credit</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_6</code></td>
+<td>存贷款</td>
+<td>Deposit and Loan</td>
+</tr>
+<tr>
+<td><code>taxPaymentStatus_1</code></td>
+<td>完税</td>
+<td>Duty Paid</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_1</code></td>
+<td>实货合同</td>
+<td>Physical Contract</td>
+</tr>
+<tr>
+<td><code>cashReceiveType_2</code></td>
+<td>实际</td>
+<td>Actual</td>
+</tr>
+<tr>
+<td><code>creditTableType_4</code></td>
+<td>小额授信</td>
+<td>Small Credit</td>
+</tr>
+<tr>
+<td><code>creditObjectType_4</code></td>
+<td>小额特殊</td>
+<td>Small Special</td>
+</tr>
+<tr>
+<td><code>settlementStatus_2</code></td>
+<td>已临时结算</td>
+<td>Temporarily Settled</td>
+</tr>
+<tr>
+<td><code>creditDataStatus_1</code></td>
+<td>已失效</td>
+<td>Expired</td>
+</tr>
+<tr>
+<td><code>limitValues_13</code></td>
+<td>已开票未支付</td>
+<td>Invoiced Unpaid</td>
+</tr>
+<tr>
+<td><code>settlementStatus_3</code></td>
+<td>已最终结算</td>
+<td>Finally Settled</td>
+</tr>
+<tr>
+<td><code>settlementStatusList_1</code></td>
+<td>已结</td>
+<td>Settled</td>
+</tr>
+<tr>
+<td><code>paymentStatuses_3</code></td>
+<td>已认领</td>
+<td>Fully Claimed</td>
+</tr>
+<tr>
+<td><code>creditStatus_5</code></td>
+<td>待备案</td>
+<td>To be Recorded</td>
+</tr>
+<tr>
+<td><code>creditDataSource_1</code></td>
+<td>手工录入</td>
+<td>Manual Input</td>
+</tr>
+<tr>
+<td><code>lcAcceptanceStatuses_1</code></td>
+<td>承兑</td>
+<td>Acceptance</td>
+</tr>
+<tr>
+<td><code>lcStatus_9</code></td>
+<td>承兑</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td><code>lcAcceptanceStatuses_2</code></td>
+<td>拒绝</td>
+<td>Refusal</td>
+</tr>
+<tr>
+<td><code>indicatorNature_4</code></td>
+<td>授信账期</td>
+<td>Credit Term</td>
+</tr>
+<tr>
+<td><code>indicatorNature_3</code></td>
+<td>授信额度</td>
+<td>Credit Limit</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_5</code></td>
+<td>掉期</td>
+<td>Swap</td>
+</tr>
+<tr>
+<td><code>abutmentPayStatusList_3</code></td>
+<td>支付失败</td>
+<td>Payment Failed</td>
+</tr>
+<tr>
+<td><code>abutmentPushStatus_5</code></td>
+<td>支付成功</td>
+<td>Payment Success</td>
+</tr>
+<tr>
+<td><code>abutmentPayStatusList_2</code></td>
+<td>支付成功</td>
+<td>Payment Success</td>
+</tr>
+<tr>
+<td><code>lcStatus_11</code></td>
+<td>收付款</td>
+<td>Payment/ Collection</td>
+</tr>
+<tr>
+<td><code>chargeDirections_2</code></td>
+<td>收款</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td><code>paymentFlags_2</code></td>
+<td>收款</td>
+<td>Collection</td>
+</tr>
+<tr>
+<td><code>lcTypes_5</code></td>
+<td>敞口授信</td>
+<td>Open Credit</td>
+</tr>
+<tr>
+<td><code>paymentStatuses_5</code></td>
+<td>无</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>creditTableType_2</code></td>
+<td>普通授信</td>
+<td>General Credit</td>
+</tr>
+<tr>
+<td><code>creditModel_1</code></td>
+<td>普通授信</td>
+<td>General Credit</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_2</code></td>
+<td>最终发票</td>
+<td>Final Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceStage_2</code></td>
+<td>最终发票</td>
+<td>Final Invoice</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_4</code></td>
+<td>期货</td>
+<td>Futures</td>
+</tr>
+<tr>
+<td><code>lcStatus_7</code></td>
+<td>未交单</td>
+<td>Documents Not Presented</td>
+</tr>
+<tr>
+<td><code>paymentProgressStatus_1</code></td>
+<td>未付款</td>
+<td>Unpaid</td>
+</tr>
+<tr>
+<td><code>settlementStatusList_2</code></td>
+<td>未结</td>
+<td>Unsettled</td>
+</tr>
+<tr>
+<td><code>settlementStatus_1</code></td>
+<td>未结算</td>
+<td>Unsettled</td>
+</tr>
+<tr>
+<td><code>lcStatus_1</code></td>
+<td>未计划</td>
+<td>Unplanned</td>
+</tr>
+<tr>
+<td><code>paymentStatuses_1</code></td>
+<td>未认领</td>
+<td>Unclaimed</td>
+</tr>
+<tr>
+<td><code>settlementSourceList_1</code></td>
+<td>本次结算</td>
+<td>Current Settlement</td>
+</tr>
+<tr>
+<td><code>customsBondPaymentMethod_2</code></td>
+<td>来料加工</td>
+<td>Incoming Processing</td>
+</tr>
+<tr>
+<td><code>sourceList_1</code></td>
+<td>标准</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td><code>purposeListApplication_1</code></td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_9</code></td>
+<td>海关增值税</td>
+<td>Customs VAT</td>
+</tr>
+<tr>
+<td><code>creditModel_2</code></td>
+<td>现货现款</td>
+<td>Spot Cash</td>
+</tr>
+<tr>
+<td><code>creditDataStatus_2</code></td>
+<td>生效中</td>
+<td>Effective</td>
+</tr>
+<tr>
+<td><code>lcStatus_3</code></td>
+<td>申请</td>
+<td>Applied</td>
+</tr>
+<tr>
+<td><code>invoiceCategory3_3</code></td>
+<td>电子普通发票</td>
+<td>General E-Invoice</td>
+</tr>
+<tr>
+<td><code>lcStatus_4</code></td>
+<td>登记</td>
+<td>Registered</td>
+</tr>
+<tr>
+<td><code>bankCreditHeaderTypes_2</code></td>
+<td>租船合同</td>
+<td>Charter Contract</td>
+</tr>
+<tr>
+<td><code>creditObjectType_3</code></td>
+<td>第三方</td>
+<td>Third Party</td>
+</tr>
+<tr>
+<td><code>invoiceCategory3_2</code></td>
+<td>纸质专用发票</td>
+<td>Physical Special Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceCategory3_1</code></td>
+<td>纸质普通发票</td>
+<td>Physical General Invoice</td>
+</tr>
+<tr>
+<td><code>creditObjectType_1</code></td>
+<td>股份内</td>
+<td>Intra-Equity</td>
+</tr>
+<tr>
+<td><code>lcStatus_2</code></td>
+<td>计划</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td><code>creditDataSource_2</code></td>
+<td>评级申请</td>
+<td>Rating Application</td>
+</tr>
+<tr>
+<td><code>cashflowTypes_1</code></td>
+<td>货款</td>
+<td>Goods Payment</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_7</code></td>
+<td>货款保证金</td>
+<td>Payment Margin</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_3</code></td>
+<td>费用</td>
+<td>Expense</td>
+</tr>
+<tr>
+<td><code>invoiceType_3</code></td>
+<td>费用发票</td>
+<td>Expense Invoice</td>
+</tr>
+<tr>
+<td><code>expenseScene_3</code></td>
+<td>费用发票</td>
+<td>Expense Invoice</td>
+</tr>
+<tr>
+<td><code>lcCategories_1</code></td>
+<td>跟单信用证</td>
+<td>Documentary Credit</td>
+</tr>
+<tr>
+<td><code>PurposeList_3</code></td>
+<td>转保证金</td>
+<td>Transfer Margin</td>
+</tr>
+<tr>
+<td><code>PurposeList_6</code></td>
+<td>转款-入</td>
+<td>Transfer In</td>
+</tr>
+<tr>
+<td><code>PurposeList_5</code></td>
+<td>转款-出</td>
+<td>Transfer Out</td>
+</tr>
+<tr>
+<td><code>sourceList_2</code></td>
+<td>转账</td>
+<td>Transfer</td>
+</tr>
+<tr>
+<td><code>PurposeList_4</code></td>
+<td>转货款</td>
+<td>Transfer Payment</td>
+</tr>
+<tr>
+<td><code>customsBondPaymentMethod_3</code></td>
+<td>进料加工</td>
+<td>Outgoing Processing</td>
+</tr>
+<tr>
+<td><code>purposeListApplication_2</code></td>
+<td>退款</td>
+<td>Refund</td>
+</tr>
+<tr>
+<td><code>invoiceType1_5</code></td>
+<td>通行费发票</td>
+<td>Toll Invoice</td>
+</tr>
+<tr>
+<td><code>abutmentPayStatusList_6</code></td>
+<td>部分支付</td>
+<td>Partial Payment</td>
+</tr>
+<tr>
+<td><code>paymentStatuses_2</code></td>
+<td>部分认领</td>
+<td>Partially Claimed</td>
+</tr>
+<tr>
+<td><code>lcStatus_5</code></td>
+<td>闭卷</td>
+<td>Closed</td>
+</tr>
+<tr>
+<td><code>creditObjectType_2</code></td>
+<td>集团内</td>
+<td>Intra-Group</td>
+</tr>
+<tr>
+<td><code>expenseScene_1</code></td>
+<td>预付</td>
+<td>Prepayment</td>
+</tr>
+<tr>
+<td><code>limitValues_14</code></td>
+<td>预付款</td>
+<td>Prepayment</td>
+</tr>
+<tr>
+<td><code>cashflowTypes_2</code></td>
+<td>预收付</td>
+<td>Prepayment and Payment</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_6</code></td>
+<td>预收付</td>
+<td>Advanced Payment and Colllection</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-derivatives-risk">5. 衍生品与风险管理 / Derivatives &amp; Risk<a class="headerlink" href="#5-derivatives-risk" title="Permanent link">&para;</a></h2>
+<h3 id="_16">衍生品与风险管理 — 功能页面<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LME Bill Book</td>
+<td>LME Bill Book</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME Engagement</td>
+<td>LME Engagement</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME Position</td>
+<td>LME Position</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME Quantity Summary</td>
+<td>LME Quantity Summary</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME VM Forcast</td>
+<td>LME VM Forcast</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME交易日期配置</td>
+<td>LME Trade Date Config</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME成交流水</td>
+<td>LME Transaction Records</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME持仓变动明细</td>
+<td>ME Engagement Details</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>LME持仓快照</td>
+<td>LME Engagement Snapshot</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+<td></td>
+</tr>
+<tr>
+<td>交易小节</td>
+<td>Session</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>保证金管理</td>
+<td>Margin Management</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+<td></td>
+</tr>
+<tr>
+<td>保证金配置</td>
+<td>Margin Configuration</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+<td></td>
+</tr>
+<tr>
+<td>历史持仓统计表</td>
+<td>Position Monitor History</td>
+<td>持仓监控, Position Monitor, 头寸监控</td>
+<td></td>
+</tr>
+<tr>
+<td>夜盘保值头寸统计表</td>
+<td>Night Session Hedging Position</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+<td></td>
+</tr>
+<tr>
+<td>头寸汇总表</td>
+<td>Bollettino Summary</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+<td></td>
+</tr>
+<tr>
+<td>市场风险</td>
+<td>Market Risk</td>
+<td>Market Risk, 价格风险, 市价风险</td>
+<td></td>
+</tr>
+<tr>
+<td>市场风险报表</td>
+<td>Market Risk Report</td>
+<td>Market Risk, 价格风险, 市价风险</td>
+<td></td>
+</tr>
+<tr>
+<td>持仓统计表</td>
+<td>Position Monitor</td>
+<td>持仓监控, Position Monitor, 头寸监控</td>
+<td></td>
+</tr>
+<tr>
+<td>日内市场行情</td>
+<td>Intraday Market Quotation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>日结操作</td>
+<td>End of Day</td>
+<td>EOD, End of Day, 日终, 日结</td>
+<td></td>
+</tr>
+<tr>
+<td>日结日志</td>
+<td>EOD Log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>每日市场行情</td>
+<td>Market Quotation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>现金流模型</td>
+<td>Cash Flow Model</td>
+<td>Cash Flow, 现金流, Cash Flow Model</td>
+<td></td>
+</tr>
+<tr>
+<td>衍生品管理</td>
+<td>Derivatives Management</td>
+<td>Derivatives, 衍生品交易, 金融衍生品</td>
+<td></td>
+</tr>
+<tr>
+<td>追保通知</td>
+<td>Margin Call Notification</td>
+<td>追加保证金, Margin Call, 追保</td>
+<td></td>
+</tr>
+<tr>
+<td>追加保证金监控表</td>
+<td>Margin Monitor</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+<td></td>
+</tr>
+<tr>
+<td>金属头寸表</td>
+<td>Metal Bollettino</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+<td></td>
+</tr>
+<tr>
+<td>金属损益</td>
+<td>Metal Result</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_17">衍生品与风险管理 — 业务字段<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After Melting Composition</td>
+<td>After Melting Composition</td>
+<td></td>
+</tr>
+<tr>
+<td>LME AL</td>
+<td>LME AL</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME CU</td>
+<td>LME CU</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME Cash (€/KG)</td>
+<td>LME Cash (€/KG)</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME Cash Price</td>
+<td>LME Cash Price</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME Gross Price</td>
+<td>LME Gross Price</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME NI</td>
+<td>LME NI</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME PB</td>
+<td>LME PB</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME Quantity</td>
+<td>LME Quantity</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME SN</td>
+<td>LME SN</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME ZN</td>
+<td>LME ZN</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 交易头寸</td>
+<td>LME Movement</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 到期头寸</td>
+<td>Exprie LME</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 多头</td>
+<td>LME long</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 多头头寸（欧元）</td>
+<td>LME Long Position (EUR)</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 空头</td>
+<td>LME short</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 空头头寸（欧元）</td>
+<td>LME Short Position (EUR)</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME 等效价</td>
+<td>LME equivalent</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME多头价值</td>
+<td>LME Long  Val</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME成交价</td>
+<td>Unit Price</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME欧元价值</td>
+<td>LME value</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME空头价值</td>
+<td>LME short  Val</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME金额（EUR）</td>
+<td>tot lme（EUR）</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>LME（Eurkg）</td>
+<td>LME（Eurkg）</td>
+<td>伦敦金属交易所, London Metal Exchange, LME</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>Session</td>
+<td></td>
+</tr>
+<tr>
+<td>一键追保</td>
+<td>One-click margin call</td>
+<td></td>
+</tr>
+<tr>
+<td>交易日结束</td>
+<td>Trade Date End</td>
+<td></td>
+</tr>
+<tr>
+<td>保证金分类</td>
+<td>Margin classification</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+</tr>
+<tr>
+<td>保证金模板</td>
+<td>Margin template</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+</tr>
+<tr>
+<td>保证金类型</td>
+<td>Margin type</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+</tr>
+<tr>
+<td>保证金认领</td>
+<td>Margin claim</td>
+<td>Margin, 履约保证金, 交易保证金</td>
+</tr>
+<tr>
+<td>元素商品</td>
+<td>Composition Product</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>初始头寸</td>
+<td>Initial Position</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+</tr>
+<tr>
+<td>合成类型</td>
+<td>Composition Type</td>
+<td></td>
+</tr>
+<tr>
+<td>品味</td>
+<td>Composition</td>
+<td></td>
+</tr>
+<tr>
+<td>商品质检类型中每个类别计价的默认值加起来应为1</td>
+<td>Summary of metal composition does not equal to 1</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>基础头寸</td>
+<td>Basic</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+</tr>
+<tr>
+<td>复杂分析数据</td>
+<td>Composition analytic data</td>
+<td></td>
+</tr>
+<tr>
+<td>套保比率</td>
+<td>Hedging Ratio</td>
+<td>对冲, Hedging, 套期保值, Hedge</td>
+</tr>
+<tr>
+<td>实际应追保金额</td>
+<td>Actual margin amount</td>
+<td></td>
+</tr>
+<tr>
+<td>小额套期保值</td>
+<td>small hedg</td>
+<td></td>
+</tr>
+<tr>
+<td>已收付追保金额</td>
+<td>Received/paid margin amount</td>
+<td></td>
+</tr>
+<tr>
+<td>当日结算价</td>
+<td>LME Cash</td>
+<td></td>
+</tr>
+<tr>
+<td>成交价</td>
+<td>In price</td>
+<td></td>
+</tr>
+<tr>
+<td>成分曲线</td>
+<td>Composition Curve</td>
+<td></td>
+</tr>
+<tr>
+<td>持仓</td>
+<td>Position</td>
+<td>持仓监控, Position Monitor, 头寸监控</td>
+</tr>
+<tr>
+<td>暂估提货已定价-追保金额</td>
+<td>Priced and picked - Margin amount</td>
+<td></td>
+</tr>
+<tr>
+<td>更新交易小节</td>
+<td>Session Update</td>
+<td></td>
+</tr>
+<tr>
+<td>最终头寸</td>
+<td>Final Position</td>
+<td>持仓, 敞口, Position, Exposure, Open Position</td>
+</tr>
+<tr>
+<td>服务套期保值</td>
+<td>service hed</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">衍生品与风险管理 — 状态/类型枚举值<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limitValues_11</code></td>
+<td>%95单日VaR</td>
+<td>%95 Single Day VaR</td>
+</tr>
+<tr>
+<td><code>marginReleaseRules_2</code></td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>instalmentTypes_1</code></td>
+<td>一次性</td>
+<td>One-time</td>
+</tr>
+<tr>
+<td><code>lsFlags_1</code></td>
+<td>买</td>
+<td>Buy</td>
+</tr>
+<tr>
+<td><code>riskStatuses_1</code></td>
+<td>估计值</td>
+<td>Estimated Value</td>
+</tr>
+<tr>
+<td><code>limitValues_16</code></td>
+<td>保证金</td>
+<td>Margin</td>
+</tr>
+<tr>
+<td><code>instalmentTypes_2</code></td>
+<td>单月</td>
+<td>Single Month</td>
+</tr>
+<tr>
+<td><code>lsFlags_2</code></td>
+<td>卖</td>
+<td>Sell</td>
+</tr>
+<tr>
+<td><code>limitValues_12</code></td>
+<td>历史场景压力测试</td>
+<td>Historical Scenario Stress Test</td>
+</tr>
+<tr>
+<td><code>limitTypes_2</code></td>
+<td>国资委额度</td>
+<td>SASAC Limit</td>
+</tr>
+<tr>
+<td><code>strategyOcFlags_2</code></td>
+<td>场内</td>
+<td>Ex Market</td>
+</tr>
+<tr>
+<td><code>strategyOcFlags_1</code></td>
+<td>场外</td>
+<td>OTC</td>
+</tr>
+<tr>
+<td><code>insuranceFlags_2</code></td>
+<td>套保</td>
+<td>Hedging</td>
+</tr>
+<tr>
+<td><code>insuranceFlags_3</code></td>
+<td>套利</td>
+<td>Arbitrage</td>
+</tr>
+<tr>
+<td><code>riskStatuses_2</code></td>
+<td>实际值</td>
+<td>Actual Value</td>
+</tr>
+<tr>
+<td><code>limitValues_9</code></td>
+<td>实际盈亏</td>
+<td>Actual P&amp;L</td>
+</tr>
+<tr>
+<td><code>ocFlags_3</code></td>
+<td>平今</td>
+<td>Close Today</td>
+</tr>
+<tr>
+<td><code>ocFlags_2</code></td>
+<td>平仓</td>
+<td>Closing</td>
+</tr>
+<tr>
+<td><code>ocFlags_4</code></td>
+<td>平昨</td>
+<td>Close Yesterday</td>
+</tr>
+<tr>
+<td><code>ocFlags_1</code></td>
+<td>开仓</td>
+<td>Opening</td>
+</tr>
+<tr>
+<td><code>insuranceFlags_1</code></td>
+<td>投机</td>
+<td>Speculation</td>
+</tr>
+<tr>
+<td><code>limitValues_7</code></td>
+<td>持仓头寸</td>
+<td>Position</td>
+</tr>
+<tr>
+<td><code>limitValues_8</code></td>
+<td>浮动盈亏</td>
+<td>Floating P&amp;L</td>
+</tr>
+<tr>
+<td><code>limitValues_6</code></td>
+<td>经营规模</td>
+<td>Business Scale</td>
+</tr>
+<tr>
+<td><code>limitValues_10</code></td>
+<td>资金占用规模</td>
+<td>Capital Occupation</td>
+</tr>
+<tr>
+<td><code>limitValues_15</code></td>
+<td>赊销</td>
+<td>Open Sale</td>
+</tr>
+<tr>
+<td><code>marginReleaseRules_1</code></td>
+<td>逐笔</td>
+<td>By Transaction</td>
+</tr>
+<tr>
+<td><code>limitTypes_3</code></td>
+<td>高级市场风险</td>
+<td>High Market Risk</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-credit-management">6. 信用与授信管理 / Credit Management<a class="headerlink" href="#6-credit-management" title="Permanent link">&para;</a></h2>
+<h3 id="_19">信用与授信管理 — 功能页面<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日度限制</td>
+<td>Daily limit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月度限制</td>
+<td>Monthly limit</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_20">信用与授信管理 — 业务字段<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不含税差异</td>
+<td>Variance Amount Excluding Tax</td>
+<td></td>
+</tr>
+<tr>
+<td>交易品种</td>
+<td>Metal</td>
+<td></td>
+</tr>
+<tr>
+<td>含税差异</td>
+<td>Variance Amount Including Tax</td>
+<td></td>
+</tr>
+<tr>
+<td>开始生成现金流</td>
+<td>Start generating cash flow</td>
+<td></td>
+</tr>
+<tr>
+<td>开票限额</td>
+<td>Invoicing limit</td>
+<td></td>
+</tr>
+<tr>
+<td>敞口明细</td>
+<td>Exposure details</td>
+<td>Exposure, 风险敞口, Open Exposure</td>
+</tr>
+<tr>
+<td>账实差异量</td>
+<td>Physical-booked variance quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>限额</td>
+<td>Limit amount</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_21">信用与授信管理 — 状态/类型枚举值<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indicatorSource_2</code></td>
+<td>内部主观</td>
+<td>Internal Subjective</td>
+</tr>
+<tr>
+<td><code>indicatorSource_3</code></td>
+<td>内部客观</td>
+<td>Internal Objective</td>
+</tr>
+<tr>
+<td><code>indicatorNature_2</code></td>
+<td>减分项</td>
+<td>Deduction Item</td>
+</tr>
+<tr>
+<td><code>indicatorNature_1</code></td>
+<td>加分项</td>
+<td>Bonus Item</td>
+</tr>
+<tr>
+<td><code>indicatorType_2</code></td>
+<td>区间</td>
+<td>Range</td>
+</tr>
+<tr>
+<td><code>certificationTypes_1</code></td>
+<td>国营配额</td>
+<td>State-owned Quota</td>
+</tr>
+<tr>
+<td><code>exposureOrFlags_1</code></td>
+<td>授予</td>
+<td>Grant</td>
+</tr>
+<tr>
+<td><code>exposureOrFlags_2</code></td>
+<td>接收</td>
+<td>Receive</td>
+</tr>
+<tr>
+<td><code>indicatorClassification_3</code></td>
+<td>敞口指标</td>
+<td>Exposure Indicator</td>
+</tr>
+<tr>
+<td><code>templateType_2</code></td>
+<td>敞口模型</td>
+<td>Exposure Model</td>
+</tr>
+<tr>
+<td><code>indicatorType_3</code></td>
+<td>是非</td>
+<td>Binary</td>
+</tr>
+<tr>
+<td><code>indicatorClassification_1</code></td>
+<td>普通指标</td>
+<td>General Indicator</td>
+</tr>
+<tr>
+<td><code>indicatorType_1</code></td>
+<td>枚举</td>
+<td>Enum</td>
+</tr>
+<tr>
+<td><code>indicatorSource_1</code></td>
+<td>第三方数据</td>
+<td>External Data</td>
+</tr>
+<tr>
+<td><code>templateType_1</code></td>
+<td>评级模板</td>
+<td>Rating Template</td>
+</tr>
+<tr>
+<td><code>indicatorClassification_2</code></td>
+<td>财务指标</td>
+<td>Financial Indicator</td>
+</tr>
+<tr>
+<td><code>indicatorType_4</code></td>
+<td>连续</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td><code>certificationTypes_2</code></td>
+<td>非国营配额</td>
+<td>Non-state-owned Quota</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-business-settings-master-data">7. 业务设置与主数据 / Business Settings &amp; Master Data<a class="headerlink" href="#7-business-settings-master-data" title="Permanent link">&para;</a></h2>
+<h3 id="_22">业务设置与主数据 — 功能页面<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>业务主数据</td>
+<td>Business Master Data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>业务机构管理</td>
+<td>Business Entity Management</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+<td></td>
+</tr>
+<tr>
+<td>业务板块管理</td>
+<td>Business Segment Management</td>
+<td>板块, 事业部, Segment, Business Segment, Division</td>
+<td></td>
+</tr>
+<tr>
+<td>业务部门管理</td>
+<td>Business Department Management</td>
+<td>部门, 交易部门, Department, Business Department, Trading Desk</td>
+<td></td>
+</tr>
+<tr>
+<td>事件类型</td>
+<td>Event Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>交易日历</td>
+<td>Trading Calendar</td>
+<td>Trading Calendar, 交易日, 交易日历</td>
+<td></td>
+</tr>
+<tr>
+<td>人员管理</td>
+<td>Personnel Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>免税配额管理</td>
+<td>Exemption Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>功能角色权限管理</td>
+<td>Function Permission Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>包装</td>
+<td>Packaging</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>单位转换</td>
+<td>Unit Conversion</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>合约文本</td>
+<td>Contract Name</td>
+<td>Contract, 期货合约, Contract Name</td>
+<td></td>
+</tr>
+<tr>
+<td>合约管理</td>
+<td>Contract Management</td>
+<td>Contract, 期货合约, Contract Name</td>
+<td></td>
+</tr>
+<tr>
+<td>商品主数据</td>
+<td>Article Master Data</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+<td></td>
+</tr>
+<tr>
+<td>商品定义</td>
+<td>Article Definition</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+<td></td>
+</tr>
+<tr>
+<td>商品属性</td>
+<td>Article Attribute</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+<td></td>
+</tr>
+<tr>
+<td>地点</td>
+<td>Location</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>客商主数据</td>
+<td>Business Partner Master Data</td>
+<td>交易对手, 对手方, 客户, 供应商, Business Partner</td>
+<td></td>
+</tr>
+<tr>
+<td>客商管理</td>
+<td>Business Partner Management</td>
+<td>交易对手, 对手方, 客户, 供应商, Business Partner</td>
+<td></td>
+</tr>
+<tr>
+<td>币种</td>
+<td>Currency</td>
+<td>Currency, 货币, 交易币种</td>
+<td></td>
+</tr>
+<tr>
+<td>币种转换</td>
+<td>Currency Conversion</td>
+<td>Currency, 货币, 交易币种</td>
+<td></td>
+</tr>
+<tr>
+<td>数据角色权限管理</td>
+<td>Data Permission Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>权限管理</td>
+<td>Permission Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>用户管理</td>
+<td>User Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>税码</td>
+<td>Tax Code</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>系统日期</td>
+<td>System Date</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>组织管理</td>
+<td>Organizational Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>结算方式</td>
+<td>Settlement Method</td>
+<td>Settlement, 结算, Settlement Method</td>
+<td></td>
+</tr>
+<tr>
+<td>结算曲线</td>
+<td>Settlement Curve</td>
+<td>Settlement Curve, Pricing Curve, 远期曲线, Forward Curve</td>
+<td></td>
+</tr>
+<tr>
+<td>计税规则</td>
+<td>Taxation Rules</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>计量单位</td>
+<td>Unit of Measure</td>
+<td>UOM, Unit of Measure, 计量, 单位</td>
+<td></td>
+</tr>
+<tr>
+<td>贸易术语</td>
+<td>Incoterms</td>
+<td>Incoterms, 贸易条件, 交货条件, FOB, CIF</td>
+<td></td>
+</tr>
+<tr>
+<td>车船</td>
+<td>Vehicles and Vessels</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_23">业务设置与主数据 — 业务字段<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTRM当前行数</td>
+<td>CTRM Current Line</td>
+<td></td>
+</tr>
+<tr>
+<td>LML欧元价值</td>
+<td>LML Value</td>
+<td></td>
+</tr>
+<tr>
+<td>verified</td>
+<td>Verified article</td>
+<td></td>
+</tr>
+<tr>
+<td>业务机构</td>
+<td>Company</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务机构代码</td>
+<td>Business entity code</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务机构户名</td>
+<td>Business Entity Account Name</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务机构简称</td>
+<td>Company Short Name</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务机构联系电话</td>
+<td>Business entity contact number</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务机构账号</td>
+<td>Business entity account number</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>业务板块</td>
+<td>Business Segment Name</td>
+<td>板块, 事业部, Segment, Business Segment, Division</td>
+</tr>
+<tr>
+<td>临时结算</td>
+<td>Provisional Settlement</td>
+<td></td>
+</tr>
+<tr>
+<td>临时结算价</td>
+<td>Provisional Settlement price</td>
+<td></td>
+</tr>
+<tr>
+<td>临时结算单价</td>
+<td>Provisional Unit Price</td>
+<td></td>
+</tr>
+<tr>
+<td>临时结算数量</td>
+<td>Provisional Settlement Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>临时结算数量类型</td>
+<td>Provisional Settlement Quantity Type</td>
+<td></td>
+</tr>
+<tr>
+<td>临时结算金额</td>
+<td>Provisional Settlement amount</td>
+<td></td>
+</tr>
+<tr>
+<td>交易币种</td>
+<td>Trading currency</td>
+<td>Currency, 货币, 交易币种</td>
+</tr>
+<tr>
+<td>交货地</td>
+<td>Delivery Location</td>
+<td></td>
+</tr>
+<tr>
+<td>交货地点</td>
+<td>Delivery location</td>
+<td></td>
+</tr>
+<tr>
+<td>价格货币</td>
+<td>Price Currency</td>
+<td></td>
+</tr>
+<tr>
+<td>企业性质</td>
+<td>Enterprise nature</td>
+<td></td>
+</tr>
+<tr>
+<td>供应商</td>
+<td>Supplier</td>
+<td>寄售, Consignment, Vendor Consignment, VMI</td>
+</tr>
+<tr>
+<td>关联业务机构</td>
+<td>Link business entity</td>
+<td>公司, 法人实体, 交易主体, 机构, Company</td>
+</tr>
+<tr>
+<td>关联商品明细行号</td>
+<td>Related Article Details Line Number.</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>内外部</td>
+<td>Inside and outside</td>
+<td></td>
+</tr>
+<tr>
+<td>分配到商品</td>
+<td>Assign to article</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>分配数量不等于结算重量, 不能关联</td>
+<td>The allocated quantity does not equal the settlement weight and cannot be associated</td>
+<td></td>
+</tr>
+<tr>
+<td>包装数量</td>
+<td>Package Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>单价（本位币）</td>
+<td>Price in Base Currency</td>
+<td></td>
+</tr>
+<tr>
+<td>单价（结算币）</td>
+<td>Price in Settle Currency</td>
+<td></td>
+</tr>
+<tr>
+<td>原商品</td>
+<td>Original Article</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>原定物料</td>
+<td>Original article</td>
+<td></td>
+</tr>
+<tr>
+<td>合同币种</td>
+<td>Contract currency</td>
+<td>Currency, 货币, 交易币种</td>
+</tr>
+<tr>
+<td>名义本金（结算币种）</td>
+<td>Notional Amount</td>
+<td>Currency, 货币, 交易币种</td>
+</tr>
+<tr>
+<td>商品</td>
+<td>Article</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品 VAT 类别</td>
+<td>Article VAT Type</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品信息</td>
+<td>Article info</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品别名</td>
+<td>Article alias</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品名称</td>
+<td>Article description</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品大类</td>
+<td>Article Category</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品属性</td>
+<td>Article attribute</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品数量</td>
+<td>Article quantity</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品数量单位</td>
+<td>Article UoM</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品明细</td>
+<td>Article Details</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品税码</td>
+<td>Article Tax Code</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品编号</td>
+<td>Article code</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品编码</td>
+<td>Article Code</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>商品行号</td>
+<td>Article Line No.</td>
+<td>品种, 产品, 货物, 物料, Article</td>
+</tr>
+<tr>
+<td>固定单价</td>
+<td>Fixed Unit Price</td>
+<td></td>
+</tr>
+<tr>
+<td>固定单价（欧元）</td>
+<td>Fixed unit price in Eur</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_24">业务设置与主数据 — 状态/类型枚举值<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settlementType_1</code></td>
+<td>临时结算</td>
+<td>Provisional Settlement</td>
+</tr>
+<tr>
+<td><code>cooperationType_4</code></td>
+<td>交易所</td>
+<td>Exchange Market</td>
+</tr>
+<tr>
+<td><code>insideOutside_1</code></td>
+<td>内部</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td><code>pricechangeType_5</code></td>
+<td>变更商品减少</td>
+<td>Decrease in Article</td>
+</tr>
+<tr>
+<td><code>pricechangeType_4</code></td>
+<td>变更商品增加</td>
+<td>Increase in Article</td>
+</tr>
+<tr>
+<td><code>enterpriseNature_5</code></td>
+<td>合资</td>
+<td>Joint Venture</td>
+</tr>
+<tr>
+<td><code>enterpriseNature_1</code></td>
+<td>国企</td>
+<td>State-owned Enterprise</td>
+</tr>
+<tr>
+<td><code>storageInsideOutside_2</code></td>
+<td>基地</td>
+<td>Base</td>
+</tr>
+<tr>
+<td><code>enterpriseNature_4</code></td>
+<td>外资</td>
+<td>Foreign-funded Enterprise</td>
+</tr>
+<tr>
+<td><code>insideOutside_2</code></td>
+<td>外部</td>
+<td>External</td>
+</tr>
+<tr>
+<td><code>enterpriseNature_2</code></td>
+<td>央企</td>
+<td>National Enterprise</td>
+</tr>
+<tr>
+<td><code>settlementDirection_1</code></td>
+<td>无</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>settlementType_2</code></td>
+<td>最终结算</td>
+<td>Final Settlement</td>
+</tr>
+<tr>
+<td><code>cooperationType_5</code></td>
+<td>期货公司</td>
+<td>Futures Brokers</td>
+</tr>
+<tr>
+<td><code>enterpriseNature_3</code></td>
+<td>民企</td>
+<td>Private Enterprise</td>
+</tr>
+<tr>
+<td><code>sectionList_2</code></td>
+<td>氧化铝</td>
+<td>Alumina</td>
+</tr>
+<tr>
+<td><code>sectionList_1</code></td>
+<td>电解铝</td>
+<td>Electrolytic Aluminum</td>
+</tr>
+<tr>
+<td><code>sfFlags_1</code></td>
+<td>结算价格</td>
+<td>Settlement Price</td>
+</tr>
+<tr>
+<td><code>quantityType_1</code></td>
+<td>货币</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td><code>cooperationType_6</code></td>
+<td>车船</td>
+<td>Vehicles/ Vessels</td>
+</tr>
+<tr>
+<td><code>cooperationType_9</code></td>
+<td>运输商</td>
+<td>Transportation Provider</td>
+</tr>
+<tr>
+<td><code>sectionList_3</code></td>
+<td>非铝金属</td>
+<td>Non-ferrous Metal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-lab-quality">8. 实验室与质检 / Lab &amp; Quality<a class="headerlink" href="#8-lab-quality" title="Permanent link">&para;</a></h2>
+<h3 id="_25">实验室与质检 — 功能页面<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAB+SPE-414</td>
+<td>LAB+SPE-414</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>公式扣减属性</td>
+<td>Reduction function</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>完成检测列表</td>
+<td>Completed list</td>
+<td>Testing, Inspection, 化验</td>
+<td></td>
+</tr>
+<tr>
+<td>实验室模块</td>
+<td>Lab</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>待检/检测中列表</td>
+<td>List to be checked/tested</td>
+<td>Testing, Inspection, 化验</td>
+<td></td>
+</tr>
+<tr>
+<td>新增质检规则</td>
+<td>Standard rule create</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+<td></td>
+</tr>
+<tr>
+<td>检测结果统计</td>
+<td>Inspection statistic</td>
+<td>Testing, Inspection, 化验</td>
+<td></td>
+</tr>
+<tr>
+<td>计算规则</td>
+<td>Calculation method per elements</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>质检</td>
+<td>quality inspection</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+<td></td>
+</tr>
+<tr>
+<td>质检规则配置</td>
+<td>Standard rule configuration</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+<td></td>
+</tr>
+<tr>
+<td>配置元素</td>
+<td>Standard rules &amp; Elements per rule</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_26">实验室与质检 — 业务字段<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人工结果</td>
+<td>Inspection result(manually)</td>
+<td></td>
+</tr>
+<tr>
+<td>可引用数量</td>
+<td>Available Quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>实验室单据ID</td>
+<td>Lab ID</td>
+<td></td>
+</tr>
+<tr>
+<td>最新可用?</td>
+<td>Latest available?</td>
+<td></td>
+</tr>
+<tr>
+<td>未开始/不可用</td>
+<td>not started/unavailable</td>
+<td></td>
+</tr>
+<tr>
+<td>机器结果</td>
+<td>Inspection result(machine)</td>
+<td></td>
+</tr>
+<tr>
+<td>核实的质量</td>
+<td>Verified quality</td>
+<td></td>
+</tr>
+<tr>
+<td>没有可以{setName}的记录！</td>
+<td>There are no records available for {setName}!</td>
+<td></td>
+</tr>
+<tr>
+<td>申报的质量</td>
+<td>Declared quality</td>
+<td></td>
+</tr>
+<tr>
+<td>结算数量</td>
+<td>Available quantity</td>
+<td></td>
+</tr>
+<tr>
+<td>质检方法</td>
+<td>Analysis type</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+</tr>
+<tr>
+<td>质检组成求和</td>
+<td>tot</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+</tr>
+<tr>
+<td>质检结果</td>
+<td>Inspection Result</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+</tr>
+<tr>
+<td>质检规则</td>
+<td>Standards rule</td>
+<td>Quality Inspection, 检验, 质量检测, 品检</td>
+</tr>
+<tr>
+<td>转出金额大于可转金额，请检查</td>
+<td>The transferred amount is greater than the available amount for transfer, please check</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_27">实验室与质检 — 状态/类型枚举值<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assayTypes_2</code></td>
+<td>类型1</td>
+<td>Type 1</td>
+</tr>
+<tr>
+<td><code>assayTypes_3</code></td>
+<td>类型2</td>
+<td>Type 2</td>
+</tr>
+<tr>
+<td><code>assayTypes_1</code></td>
+<td>默认</td>
+<td>Default</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-workflow-approval">9. 流程与审批 / Workflow &amp; Approval<a class="headerlink" href="#9-workflow-approval" title="Permanent link">&para;</a></h2>
+<h3 id="_28">流程与审批 — 功能页面<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动态表单配置管理</td>
+<td>Dynamic Form Configuration Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发布流程管理</td>
+<td>Release process management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>已办事项</td>
+<td>Completed Items</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>待办事项</td>
+<td>To Do Items</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>我的待办</td>
+<td>My To-Do</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>我的流程</td>
+<td>My process</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>流程中心</td>
+<td>Process Center</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>流程管理器</td>
+<td>Process Manager</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>流程配置</td>
+<td>Process configuration</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_29">流程与审批 — 业务字段<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OA审批完成才可推送</td>
+<td>OA approval is required before push</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>任务名称</td>
+<td>Task name</td>
+<td></td>
+</tr>
+<tr>
+<td>加工贸易手册编号</td>
+<td>Processing Trade Manual Number</td>
+<td></td>
+</tr>
+<tr>
+<td>加工费</td>
+<td>Added Value</td>
+<td></td>
+</tr>
+<tr>
+<td>发起审批</td>
+<td>Initiate approval</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>委托加工费</td>
+<td>Commissioned Added Value</td>
+<td>加工, Conversion, Subcontracting, 外协加工, 委外加工</td>
+</tr>
+<tr>
+<td>审批记录</td>
+<td>Approval history</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>审批进度</td>
+<td>Approval progress</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>当前处理日期</td>
+<td>Current processing date</td>
+<td></td>
+</tr>
+<tr>
+<td>撤回审批</td>
+<td>Withdraw approval</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>撤销审批</td>
+<td>Revoke approval</td>
+<td>审核, Approval, Approve, 签批</td>
+</tr>
+<tr>
+<td>进行中</td>
+<td>in progress</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_30">流程与审批 — 状态/类型枚举值<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claimReportState_2</code></td>
+<td>In process</td>
+<td>In Process</td>
+</tr>
+<tr>
+<td><code>processingMessageLevel_1</code></td>
+<td>信息</td>
+<td>Information</td>
+</tr>
+<tr>
+<td><code>approvalStatus_10</code></td>
+<td>冲销</td>
+<td>Reversal</td>
+</tr>
+<tr>
+<td><code>approvalStatus_4</code></td>
+<td>初始状态</td>
+<td>Initial</td>
+</tr>
+<tr>
+<td><code>processingTaskStatus_1</code></td>
+<td>处理中</td>
+<td>Processing</td>
+</tr>
+<tr>
+<td><code>approvalStatus_21</code></td>
+<td>处理中</td>
+<td>In Progress</td>
+</tr>
+<tr>
+<td><code>processingTaskStatus_3</code></td>
+<td>失败</td>
+<td>Failure</td>
+</tr>
+<tr>
+<td><code>approvalStatus_2</code></td>
+<td>审批中</td>
+<td>In Approval</td>
+</tr>
+<tr>
+<td><code>approvalStatus_9</code></td>
+<td>审批完成</td>
+<td>Approval Completed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_20</code></td>
+<td>审核中</td>
+<td>In Review</td>
+</tr>
+<tr>
+<td><code>approvalStatus</code></td>
+<td>审核状态</td>
+<td>Approval Status</td>
+</tr>
+<tr>
+<td><code>approvalStatus_23</code></td>
+<td>已作废</td>
+<td>Void</td>
+</tr>
+<tr>
+<td><code>approvalStatus_12</code></td>
+<td>已冲销</td>
+<td>Reversed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_3</code></td>
+<td>已审批</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td><code>approvalStatus_19</code></td>
+<td>已审核</td>
+<td>Reviewed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_8</code></td>
+<td>已提交</td>
+<td>Submitted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_6</code></td>
+<td>已撤回</td>
+<td>Revoked</td>
+</tr>
+<tr>
+<td><code>approvalStatus_15</code></td>
+<td>已撤销</td>
+<td>Revoked</td>
+</tr>
+<tr>
+<td><code>approvalStatus_22</code></td>
+<td>已生效</td>
+<td>Effective</td>
+</tr>
+<tr>
+<td><code>approvalStatus_16</code></td>
+<td>已过账</td>
+<td>Posted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_7</code></td>
+<td>已驳回</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td><code>approvalStatus_13</code></td>
+<td>待提交</td>
+<td>To Be Submitted</td>
+</tr>
+<tr>
+<td><code>processingTaskStatus_2</code></td>
+<td>成功</td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>approvalStatus_11</code></td>
+<td>未冲销</td>
+<td>Not Reversed</td>
+</tr>
+<tr>
+<td><code>noticeStatus_2</code></td>
+<td>未处理</td>
+<td>Unprocessed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_1</code></td>
+<td>未审批</td>
+<td>Not Approved</td>
+</tr>
+<tr>
+<td><code>approvalStatus_18</code></td>
+<td>未审核</td>
+<td>Not Reviewed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_14</code></td>
+<td>未提交</td>
+<td>Not Submitted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_17</code></td>
+<td>未过账</td>
+<td>Not Posted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_5</code></td>
+<td>流程中</td>
+<td>In Process</td>
+</tr>
+<tr>
+<td><code>processingTaskStatus_4</code></td>
+<td>等待用户确认</td>
+<td>Waiting for user confirmation</td>
+</tr>
+<tr>
+<td><code>processingMessageLevel_3</code></td>
+<td>警告</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td><code>processingMessageLevel_2</code></td>
+<td>错误</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-treasury-banking">10. 资金与银行 / Treasury &amp; Banking<a class="headerlink" href="#10-treasury-banking" title="Permanent link">&para;</a></h2>
+<h3 id="_31">资金与银行 — 业务字段<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>利息单价（欧元/吨）</td>
+<td>Interest（Eur/TO）</td>
+<td>Interest, 利率</td>
+</tr>
+<tr>
+<td>利息（欧元）</td>
+<td>Interest(Eur)</td>
+<td>Interest, 利率</td>
+</tr>
+<tr>
+<td>开户银行</td>
+<td>Depositary bank</td>
+<td></td>
+</tr>
+<tr>
+<td>计息天数</td>
+<td>Days of interest</td>
+<td></td>
+</tr>
+<tr>
+<td>计息天数（新金属）</td>
+<td>Interest Days（New metal）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_32">资金与银行 — 状态/类型枚举值<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interestRules_2</code></td>
+<td>30 / 360</td>
+<td>30 / 360</td>
+</tr>
+<tr>
+<td><code>interestRules_1</code></td>
+<td>Actual / 360</td>
+<td>Actual / 360</td>
+</tr>
+<tr>
+<td><code>interestRules_3</code></td>
+<td>Actual / 365</td>
+<td>Actual / 365</td>
+</tr>
+<tr>
+<td><code>interestTypes_1</code></td>
+<td>固定</td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td><code>dlFlags_1</code></td>
+<td>存款</td>
+<td>Deposit</td>
+</tr>
+<tr>
+<td><code>mortgageFlags_1</code></td>
+<td>抵押</td>
+<td>Mortgaged</td>
+</tr>
+<tr>
+<td><code>mortgageFlags_2</code></td>
+<td>无抵押</td>
+<td>Unmortgaged</td>
+</tr>
+<tr>
+<td><code>interestTypes_2</code></td>
+<td>浮动</td>
+<td>Floating</td>
+</tr>
+<tr>
+<td><code>lrFlags_2</code></td>
+<td>租入</td>
+<td>Lease In</td>
+</tr>
+<tr>
+<td><code>lrFlags_1</code></td>
+<td>租出</td>
+<td>Lease Out</td>
+</tr>
+<tr>
+<td><code>dlFlags_2</code></td>
+<td>贷款</td>
+<td>Loan</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-system-integration">11. 系统对接 / System Integration<a class="headerlink" href="#11-system-integration" title="Permanent link">&para;</a></h2>
+<h3 id="_33">系统对接 — 功能页面<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对接凭证</td>
+<td>Integration Credentials</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>对接日志</td>
+<td>Integration Log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>对接配置</td>
+<td>Integration Configuration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>系统对接</td>
+<td>System Integration</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_34">系统对接 — 状态/类型枚举值<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>groupSharing_2</code></td>
+<td>不是集团共享</td>
+<td>Non-Group FSS</td>
+</tr>
+<tr>
+<td><code>source_4</code></td>
+<td>共享同步</td>
+<td>FSS Synchronization</td>
+</tr>
+<tr>
+<td><code>groupSharing_1</code></td>
+<td>是集团共享</td>
+<td>Group FSS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-system-administration">12. 系统管理 / System Administration<a class="headerlink" href="#12-system-administration" title="Permanent link">&para;</a></h2>
+<h3 id="_35">系统管理 — 功能页面<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+<th>业务含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL配置</td>
+<td>SQL Configuration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>个人中心</td>
+<td>Personal Center</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>任务列表</td>
+<td>Task List</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>任务调度</td>
+<td>Task Scheduling</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>单号配置</td>
+<td>Serial Configuration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>单据模板管理</td>
+<td>Template Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>多语言维护</td>
+<td>Multilingual Maintenance</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>字典管理</td>
+<td>Dictionary Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>导入模板</td>
+<td>Import Template</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>执行日志</td>
+<td>Execution Log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>报表管理</td>
+<td>Report Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>文件管理</td>
+<td>File Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>日志</td>
+<td>Log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>消息中心</td>
+<td>Message Center</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>消息内容管理</td>
+<td>Message Content Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>消息管理</td>
+<td>Message Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>消息运维管理</td>
+<td>Message Operations Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>消息通知管理</td>
+<td>Message Notification Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>系统设置</td>
+<td>System Settings</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>系统运维</td>
+<td>System Operations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表单管理</td>
+<td>Form Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>规则引擎</td>
+<td>Rule Engine</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>规则管理</td>
+<td>Rule Management</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>透视表</td>
+<td>Pivot Table</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_36">系统管理 — 业务字段<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>中文术语</th>
+<th>英文术语</th>
+<th>AI别名/口语表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL 名称</td>
+<td>SQL name</td>
+<td></td>
+</tr>
+<tr>
+<td>字典名称</td>
+<td>Dictionary name</td>
+<td></td>
+</tr>
+<tr>
+<td>布局</td>
+<td>Layout</td>
+<td></td>
+</tr>
+<tr>
+<td>所属字典</td>
+<td>Belongs to dictionary</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_37">系统管理 — 状态/类型枚举值<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文值</th>
+<th>英文值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pivotGridControlTypes_5</code></td>
+<td>下拉选择</td>
+<td>Dropdown Select</td>
+</tr>
+<tr>
+<td><code>gridShowTotals_2</code></td>
+<td>不显示小计</td>
+<td>Hide Subtotals</td>
+</tr>
+<tr>
+<td><code>gridShowGrandTotals_2</code></td>
+<td>不显示总计</td>
+<td>Hide Grand Totals</td>
+</tr>
+<tr>
+<td><code>gridShowTotals_3</code></td>
+<td>仅在列显示小计</td>
+<td>Show Subtotals in Columns</td>
+</tr>
+<tr>
+<td><code>gridShowGrandTotals_3</code></td>
+<td>仅在列显示总计</td>
+<td>Grand Totals in Columns</td>
+</tr>
+<tr>
+<td><code>gridShowTotals_4</code></td>
+<td>仅在行显示小计</td>
+<td>Show Subtotals in Rows</td>
+</tr>
+<tr>
+<td><code>gridShowGrandTotals_4</code></td>
+<td>仅在行显示总计</td>
+<td>Grand Totals Only in Rows</td>
+</tr>
+<tr>
+<td><code>dataSorts_1</code></td>
+<td>升序</td>
+<td>Ascending</td>
+</tr>
+<tr>
+<td><code>pivotGridDataTypes_2</code></td>
+<td>字符串</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_8</code></td>
+<td>年份</td>
+<td>Year</td>
+</tr>
+<tr>
+<td><code>gridTypes_2</code></td>
+<td>扁平方式</td>
+<td>Flat</td>
+</tr>
+<tr>
+<td><code>pivotGridDataTypes_3</code></td>
+<td>数字</td>
+<td>Number</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_1</code></td>
+<td>日期</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>pivotGridDataTypes_1</code></td>
+<td>日期</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_2</code></td>
+<td>日期-月</td>
+<td>Date-Month</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_9</code></td>
+<td>日期区间</td>
+<td>Date range</td>
+</tr>
+<tr>
+<td><code>gridShowTotals_1</code></td>
+<td>显示小计</td>
+<td>Show Subtotals</td>
+</tr>
+<tr>
+<td><code>gridShowGrandTotals_1</code></td>
+<td>显示总计</td>
+<td>Show Grand Totals</td>
+</tr>
+<tr>
+<td><code>dataSorts_3</code></td>
+<td>未设置</td>
+<td>Unset</td>
+</tr>
+<tr>
+<td><code>rangeTypes_3</code></td>
+<td>相对</td>
+<td>Relative</td>
+</tr>
+<tr>
+<td><code>gridTypes_1</code></td>
+<td>简洁方式</td>
+<td>Compact</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_3</code></td>
+<td>系统日期</td>
+<td>System Date</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_4</code></td>
+<td>级联选择</td>
+<td>Cascading Select</td>
+</tr>
+<tr>
+<td><code>gridTypes_3</code></td>
+<td>经典方式</td>
+<td>Classic</td>
+</tr>
+<tr>
+<td><code>rangeTypes_2</code></td>
+<td>绝对</td>
+<td>Absolute</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_6</code></td>
+<td>输入框</td>
+<td>Input Box</td>
+</tr>
+<tr>
+<td><code>pivotGridControlTypes_7</code></td>
+<td>输入框-数字</td>
+<td>Input Box-Number</td>
+</tr>
+<tr>
+<td><code>pivotGridDataTypes_4</code></td>
+<td>金额</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>dataSorts_2</code></td>
+<td>降序</td>
+<td>Descending</td>
+</tr>
+<tr>
+<td><code>rangeTypes_1</code></td>
+<td>默认</td>
+<td>Default</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="aai">附录 A：AI 语义映射速查表<a class="headerlink" href="#aai" title="Permanent link">&para;</a></h2>
+<p>以下是用户在口语/自然语言中最常使用的表达与系统术语的映射关系，按使用频率排列。</p>
+<table>
+<thead>
+<tr>
+<th>口语/别名</th>
+<th>系统中文术语</th>
+<th>系统英文术语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公司 / 法人实体 / 交易主体</td>
+<td>业务机构</td>
+<td>Business Entity</td>
+</tr>
+<tr>
+<td>部门 / 交易部门 / Trading Desk</td>
+<td>业务部门</td>
+<td>Business Department</td>
+</tr>
+<tr>
+<td>事业部 / 板块 / Division</td>
+<td>业务板块</td>
+<td>Business Segment</td>
+</tr>
+<tr>
+<td>对手方 / 交易对手 / 客户 / 供应商</td>
+<td>客商</td>
+<td>Business Partner</td>
+</tr>
+<tr>
+<td>品种 / 产品 / 货物 / 物料</td>
+<td>商品</td>
+<td>Article</td>
+</tr>
+<tr>
+<td>品种分类 / 产品类别</td>
+<td>商品大类</td>
+<td>Article Category</td>
+</tr>
+<tr>
+<td>现货 / Spot</td>
+<td>现货订单</td>
+<td>Spot Order</td>
+</tr>
+<tr>
+<td>长协 / 年度合同 / LTA</td>
+<td>长协合同</td>
+<td>Long-term Agreement</td>
+</tr>
+<tr>
+<td>长协执行 / 长协下单</td>
+<td>长协订单</td>
+<td>LTA Order</td>
+</tr>
+<tr>
+<td>定价 / 作价 / 确定价格</td>
+<td>点价</td>
+<td>Fixation</td>
+</tr>
+<tr>
+<td>定价公式 / 价格公式</td>
+<td>计价公式</td>
+<td>Pricing Formula</td>
+</tr>
+<tr>
+<td>定价市场 / 基准市场</td>
+<td>作价市场</td>
+<td>Pricing Market</td>
+</tr>
+<tr>
+<td>溢价 / 贴水 / 升水</td>
+<td>升贴水</td>
+<td>Premium/Discount</td>
+</tr>
+<tr>
+<td>入库 / 收货 / GR</td>
+<td>入库登记</td>
+<td>Good Receipt</td>
+</tr>
+<tr>
+<td>出库 / 发货</td>
+<td>出库登记</td>
+<td>Good Release</td>
+</tr>
+<tr>
+<td>仓储 / 库 / Depot</td>
+<td>仓库</td>
+<td>Warehouse</td>
+</tr>
+<tr>
+<td>调拨 / 库存转移</td>
+<td>移库</td>
+<td>Stock Transfer</td>
+</tr>
+<tr>
+<td>盘盈盘亏 / 库存调整</td>
+<td>库存调差</td>
+<td>Inventory Adjustment</td>
+</tr>
+<tr>
+<td>月末结算 / 月结 / EOM</td>
+<td>库存月结</td>
+<td>Inventory Monthly Closing</td>
+</tr>
+<tr>
+<td>销项发票 / 开票</td>
+<td>销售发票</td>
+<td>Sales Invoice</td>
+</tr>
+<tr>
+<td>进项发票 / 收票</td>
+<td>采购发票</td>
+<td>Purchase Invoice</td>
+</tr>
+<tr>
+<td>付款 / 请款</td>
+<td>付款申请</td>
+<td>Payment Application</td>
+</tr>
+<tr>
+<td>费用 / 杂费</td>
+<td>费用记录</td>
+<td>Expense Record</td>
+</tr>
+<tr>
+<td>DC Note / 借贷项</td>
+<td>Debit/Credit Note</td>
+<td>Debit/Credit Note</td>
+</tr>
+<tr>
+<td>伦敦金属交易所</td>
+<td>LME</td>
+<td>LME</td>
+</tr>
+<tr>
+<td>履约保证金</td>
+<td>保证金</td>
+<td>Margin</td>
+</tr>
+<tr>
+<td>追加保证金 / Margin Call</td>
+<td>追保通知</td>
+<td>Margin Call Notification</td>
+</tr>
+<tr>
+<td>持仓 / 敞口 / 仓位</td>
+<td>头寸</td>
+<td>Position</td>
+</tr>
+<tr>
+<td>对冲 / 套期保值 / Hedge</td>
+<td>套保</td>
+<td>Hedging</td>
+</tr>
+<tr>
+<td>Swap / 互换</td>
+<td>掉期</td>
+<td>Swap</td>
+</tr>
+<tr>
+<td>L/C / 信用证</td>
+<td>信用证</td>
+<td>Letter of Credit</td>
+</tr>
+<tr>
+<td>Incoterms / 贸易条件</td>
+<td>贸易术语</td>
+<td>Incoterms</td>
+</tr>
+<tr>
+<td>货币 / 交易币种</td>
+<td>币种</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td>UOM / 计量 / 单位</td>
+<td>计量单位</td>
+<td>Unit of Measure</td>
+</tr>
+<tr>
+<td>账期 / 付款条件</td>
+<td>付款条款</td>
+<td>Payment Terms</td>
+</tr>
+<tr>
+<td>远期曲线 / Forward Curve</td>
+<td>结算曲线</td>
+<td>Settlement Curve</td>
+</tr>
+<tr>
+<td>EOD / 日终 / 日结</td>
+<td>日结操作</td>
+<td>End of Day</td>
+</tr>
+<tr>
+<td>加工 / 外协 / 委外</td>
+<td>委托加工</td>
+<td>Conversion</td>
+</tr>
+<tr>
+<td>寄售 / Consignment / VMI</td>
+<td>供应商寄售</td>
+<td>Vendor Consignment</td>
+</tr>
+<tr>
+<td>索赔 / 理赔</td>
+<td>索赔报告</td>
+<td>Claim Report</td>
+</tr>
+<tr>
+<td>审核 / 签批</td>
+<td>审批</td>
+<td>Approval</td>
+</tr>
+<tr>
+<td>红冲 / 撤销 / Reversal</td>
+<td>冲销</td>
+<td>Write-off/Offset</td>
+</tr>
+<tr>
+<td>交割 / Delivery</td>
+<td>交割</td>
+<td>Delivery/Settlement</td>
+</tr>
+<tr>
+<td>风险敞口 / Exposure</td>
+<td>敞口</td>
+<td>Exposure</td>
+</tr>
+<tr>
+<td>信用额度 / Credit Limit</td>
+<td>授信额度</td>
+<td>Credit Limit</td>
+</tr>
+<tr>
+<td>信用评级 / Rating</td>
+<td>评级</td>
+<td>Credit Rating</td>
+</tr>
+<tr>
+<td>专票</td>
+<td>增值税专用发票</td>
+<td>Special VAT Invoice</td>
+</tr>
+<tr>
+<td>普票</td>
+<td>增值税普通发票</td>
+<td>General VAT Invoice</td>
+</tr>
+<tr>
+<td>暂估发票 / 预估发票</td>
+<td>临时发票</td>
+<td>Provisional Invoice</td>
+</tr>
+<tr>
+<td>结算发票</td>
+<td>最终发票</td>
+<td>Final Invoice</td>
+</tr>
+<tr>
+<td>预付 / Advance</td>
+<td>预付款</td>
+<td>Prepayment</td>
+</tr>
+<tr>
+<td>赊账 / 赊销</td>
+<td>赊销</td>
+<td>Open Sale</td>
+</tr>
+<tr>
+<td>OTC / 场外交易</td>
+<td>场外</td>
+<td>OTC</td>
+</tr>
+<tr>
+<td>交易所内 / 场内交易</td>
+<td>场内</td>
+<td>Ex Market</td>
+</tr>
+<tr>
+<td>建仓 / Open</td>
+<td>开仓</td>
+<td>Open Position</td>
+</tr>
+<tr>
+<td>了结 / Close</td>
+<td>平仓</td>
+<td>Close Position</td>
+</tr>
+<tr>
+<td>在险价值 / Value at Risk</td>
+<td>VaR</td>
+<td>%95 Single Day VaR</td>
+</tr>
+<tr>
+<td>盘点 / Stock Take</td>
+<td>库存盘点</td>
+<td>Inventory Count</td>
+</tr>
+<tr>
+<td>退货 / Sales Return</td>
+<td>销售退货</td>
+<td>Sales Return</td>
+</tr>
+<tr>
+<td>采购退回</td>
+<td>采购退货</td>
+<td>Purchase Return</td>
+</tr>
+<tr>
+<td>完税 / Duty Paid</td>
+<td>完税</td>
+<td>Duty Paid</td>
+</tr>
+<tr>
+<td>保税 / Bonded</td>
+<td>保税</td>
+<td>Duty-free</td>
+</tr>
+<tr>
+<td>质押 / Pledge</td>
+<td>质押</td>
+<td>Mortgage/Pledge</td>
+</tr>
+<tr>
+<td>Repo / 正回购</td>
+<td>正回购</td>
+<td>Repurchase (S/B)</td>
+</tr>
+<tr>
+<td>逆回购 / 买入返售</td>
+<td>逆回购</td>
+<td>Reverse Repurchase (B/S)</td>
+</tr>
+<tr>
+<td>仓单 / Warehouse Receipt</td>
+<td>仓单</td>
+<td>Warehouse Receipt</td>
+</tr>
+<tr>
+<td>内贸 / 国内贸易</td>
+<td>内贸</td>
+<td>CN Trade</td>
+</tr>
+<tr>
+<td>外贸 / 国际贸易</td>
+<td>外贸</td>
+<td>Global Trade</td>
+</tr>
+<tr>
+<td>租船 / Charter Party</td>
+<td>租船合同</td>
+<td>Charter Contract</td>
+</tr>
+<tr>
+<td>关联方 / 关联交易</td>
+<td>关联方</td>
+<td>Related Party</td>
+</tr>
+<tr>
+<td>现货现款</td>
+<td>现货现款</td>
+<td>Spot Cash</td>
+</tr>
+<tr>
+<td>仓单注销 / 注销仓单</td>
+<td>仓单注销</td>
+<td>Warehouse Receipt Cancellation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b">附录 B：核心业务状态枚举<a class="headerlink" href="#b" title="Permanent link">&para;</a></h2>
+<h3 id="contract-types">合同类型 (Contract Types)<a class="headerlink" href="#contract-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractTypes_1</code></td>
+<td>长协合同</td>
+<td>Long-term Agreement</td>
+</tr>
+<tr>
+<td><code>contractTypes_2</code></td>
+<td>长协订单</td>
+<td>LTA Order</td>
+</tr>
+<tr>
+<td><code>contractTypes_3</code></td>
+<td>现货订单</td>
+<td>Spot Order</td>
+</tr>
+</tbody>
+</table>
+<h3 id="approval-status">审批状态 (Approval Status)<a class="headerlink" href="#approval-status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>approvalStatus_1</code></td>
+<td>未审批</td>
+<td>Not Approved</td>
+</tr>
+<tr>
+<td><code>approvalStatus_2</code></td>
+<td>审批中</td>
+<td>In Approval</td>
+</tr>
+<tr>
+<td><code>approvalStatus_3</code></td>
+<td>已审批</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td><code>approvalStatus_4</code></td>
+<td>初始状态</td>
+<td>Initial</td>
+</tr>
+<tr>
+<td><code>approvalStatus_5</code></td>
+<td>流程中</td>
+<td>In Process</td>
+</tr>
+<tr>
+<td><code>approvalStatus_6</code></td>
+<td>已撤回</td>
+<td>Revoked</td>
+</tr>
+<tr>
+<td><code>approvalStatus_7</code></td>
+<td>已驳回</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td><code>approvalStatus_8</code></td>
+<td>已提交</td>
+<td>Submitted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_9</code></td>
+<td>审批完成</td>
+<td>Approval Completed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_10</code></td>
+<td>冲销</td>
+<td>Reversal</td>
+</tr>
+<tr>
+<td><code>approvalStatus_12</code></td>
+<td>已冲销</td>
+<td>Reversed</td>
+</tr>
+<tr>
+<td><code>approvalStatus_13</code></td>
+<td>待提交</td>
+<td>To Be Submitted</td>
+</tr>
+<tr>
+<td><code>approvalStatus_16</code></td>
+<td>已过账</td>
+<td>Posted</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flow-status">流程状态 (Flow Status)<a class="headerlink" href="#flow-status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flowStatusTypes_1</code></td>
+<td>发起审批</td>
+<td>Initiate Approval</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_2</code></td>
+<td>新建</td>
+<td>New</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_3</code></td>
+<td>审批中</td>
+<td>In Approval</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_4</code></td>
+<td>审批通过</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_5</code></td>
+<td>审批驳回</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_6</code></td>
+<td>生效</td>
+<td>Effective</td>
+</tr>
+<tr>
+<td><code>flowStatusTypes_7</code></td>
+<td>虚拟合同</td>
+<td>Virtual Contract</td>
+</tr>
+</tbody>
+</table>
+<h3 id="invoice-types">发票类型 (Invoice Types)<a class="headerlink" href="#invoice-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>invoiceTypes_1</code></td>
+<td>临时发票</td>
+<td>Provisional Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_2</code></td>
+<td>最终发票</td>
+<td>Final Invoice</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_3</code></td>
+<td>费用</td>
+<td>Expense</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_4</code></td>
+<td>Debit Note</td>
+<td>Debit Note</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_5</code></td>
+<td>Credit Note</td>
+<td>Credit Note</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_6</code></td>
+<td>预收付</td>
+<td>Advanced Payment and Collection</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_7</code></td>
+<td>货款保证金</td>
+<td>Payment Margin</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_8</code></td>
+<td>信用证保证金</td>
+<td>Letter of Credit Margin</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_9</code></td>
+<td>海关增值税</td>
+<td>Customs VAT</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_10</code></td>
+<td>内贸发票-单据</td>
+<td>CN Invoice-Doc</td>
+</tr>
+<tr>
+<td><code>invoiceTypes_11</code></td>
+<td>内贸发票-物资</td>
+<td>CN Invoice-Article</td>
+</tr>
+</tbody>
+</table>
+<h3 id="business-partner-cooperation-types">客商合作类型 (Business Partner Cooperation Types)<a class="headerlink" href="#business-partner-cooperation-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cooperationType_1</code></td>
+<td>客户</td>
+<td>Customer</td>
+</tr>
+<tr>
+<td><code>cooperationType_2</code></td>
+<td>供应商</td>
+<td>Supplier</td>
+</tr>
+<tr>
+<td><code>cooperationType_3</code></td>
+<td>仓储</td>
+<td>Warehouse</td>
+</tr>
+<tr>
+<td><code>cooperationType_4</code></td>
+<td>交易所</td>
+<td>Exchange Market</td>
+</tr>
+<tr>
+<td><code>cooperationType_5</code></td>
+<td>期货公司</td>
+<td>Futures Brokers</td>
+</tr>
+<tr>
+<td><code>cooperationType_6</code></td>
+<td>车船</td>
+<td>Vehicles/Vessels</td>
+</tr>
+<tr>
+<td><code>cooperationType_9</code></td>
+<td>运输商</td>
+<td>Transportation Provider</td>
+</tr>
+</tbody>
+</table>
+<h3 id="letter-of-credit-status">信用证状态 (Letter of Credit Status)<a class="headerlink" href="#letter-of-credit-status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lcStatus_1</code></td>
+<td>未计划</td>
+<td>Unplanned</td>
+</tr>
+<tr>
+<td><code>lcStatus_2</code></td>
+<td>计划</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td><code>lcStatus_3</code></td>
+<td>申请</td>
+<td>Applied</td>
+</tr>
+<tr>
+<td><code>lcStatus_4</code></td>
+<td>登记</td>
+<td>Registered</td>
+</tr>
+<tr>
+<td><code>lcStatus_5</code></td>
+<td>闭卷</td>
+<td>Closed</td>
+</tr>
+<tr>
+<td><code>lcStatus_6</code></td>
+<td>交单</td>
+<td>Documents Presented</td>
+</tr>
+<tr>
+<td><code>lcStatus_9</code></td>
+<td>承兑</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td><code>lcStatus_10</code></td>
+<td>贴现</td>
+<td>Discount</td>
+</tr>
+<tr>
+<td><code>lcStatus_11</code></td>
+<td>收付款</td>
+<td>Payment/Collection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pricing-status">定价状态 (Pricing Status)<a class="headerlink" href="#pricing-status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pricingStatuses_1</code></td>
+<td>浮动</td>
+<td>Floating</td>
+</tr>
+<tr>
+<td><code>pricingStatuses_2</code></td>
+<td>固定</td>
+<td>Fixed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="position-direction">头寸方向 (Position Direction)<a class="headerlink" href="#position-direction" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ocFlags_1</code></td>
+<td>开仓</td>
+<td>Opening</td>
+</tr>
+<tr>
+<td><code>ocFlags_2</code></td>
+<td>平仓</td>
+<td>Closing</td>
+</tr>
+<tr>
+<td><code>ocFlags_3</code></td>
+<td>平今</td>
+<td>Close Today</td>
+</tr>
+<tr>
+<td><code>ocFlags_4</code></td>
+<td>平昨</td>
+<td>Close Yesterday</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trading-strategy">交易策略 (Trading Strategy)<a class="headerlink" href="#trading-strategy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系统Key</th>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>insuranceFlags_1</code></td>
+<td>投机</td>
+<td>Speculation</td>
+</tr>
+<tr>
+<td><code>insuranceFlags_2</code></td>
+<td>套保</td>
+<td>Hedging</td>
+</tr>
+<tr>
+<td><code>insuranceFlags_3</code></td>
+<td>套利</td>
+<td>Arbitrage</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="c">附录 C：统计摘要<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能页面术语</td>
+<td>261</td>
+</tr>
+<tr>
+<td>业务字段术语</td>
+<td>3123</td>
+</tr>
+<tr>
+<td>状态/类型枚举值</td>
+<td>493</td>
+</tr>
+<tr>
+<td>AI语义映射条目</td>
+<td>72</td>
+</tr>
+<tr>
+<td>业务模块分类</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      金仕达 CTRM 系统知识库 &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

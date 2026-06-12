@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定价明细价格字段计算逻辑</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #1a1a1e;
+    --paper-2: #222226;
+    --ink: #e8e6e3;
+    --muted: #8e98ac;
+    --soft: #6b7280;
+    --rule: rgba(245,245,245,0.08);
+    --rule-solid: rgba(245,245,245,0.18);
+    --accent: #eb6c36;
+    --accent-tint: rgba(235,108,54,0.10);
+    --link: #6a95d8;
+    --green: #4ade80;
+    --green-tint: rgba(74,222,128,0.08);
+    --yellow: #fbbf24;
+    --yellow-tint: rgba(251,191,36,0.08);
+    --purple: #a78bfa;
+    --purple-tint: rgba(167,139,250,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Geist', 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .header { margin-bottom: 3rem; }
+  .eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-family: 'Geist', 'Noto Sans SC', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--muted);
+    max-width: 640px;
+  }
+
+  .section { margin-bottom: 3rem; }
+  .section-title {
+    font-family: 'Geist', 'Noto Sans SC', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Formula highlight */
+  .formula-box {
+    background: var(--paper-2);
+    border: 1px solid var(--rule-solid);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .formula-box code {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--ink);
+    display: block;
+    line-height: 1.8;
+  }
+  .formula-box .comment {
+    color: var(--soft);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    font-family: 'Geist', 'Noto Sans SC', sans-serif;
+  }
+
+  /* Field cards */
+  .field-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .field-card {
+    background: var(--paper-2);
+    border: 1px solid var(--rule-solid);
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .field-card .field-name {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .field-card .field-name.orange { color: var(--accent); }
+  .field-card .field-name.green { color: var(--green); }
+  .field-card .field-name.yellow { color: var(--yellow); }
+  .field-card .field-name.blue { color: var(--link); }
+  .field-card .field-name.purple { color: var(--purple); }
+  .field-card .field-label {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .field-card .field-formula {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink);
+    background: rgba(255,255,255,0.04);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    line-height: 1.5;
+  }
+
+  /* Diagram container */
+  .diagram-container {
+    background: var(--paper-2);
+    border: 1px solid var(--rule-solid);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+  .diagram-container svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule-solid);
+    border-radius: 6px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+  }
+  thead th {
+    background: rgba(255,255,255,0.04);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule-solid);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  .badge {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .badge.fixed { background: var(--accent-tint); color: var(--accent); border: 1px solid rgba(235,108,54,0.25); }
+  .badge.avg { background: var(--yellow-tint); color: var(--yellow); border: 1px solid rgba(251,191,36,0.20); }
+  .badge.trigger { background: var(--green-tint); color: var(--green); border: 1px solid rgba(74,222,128,0.20); }
+  .badge.skip { background: transparent; color: var(--soft); border: 1px solid var(--rule); }
+
+  code {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    background: rgba(255,255,255,0.06);
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  /* Notes grid */
+  .notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .note {
+    background: var(--paper-2);
+    border-left: 2px solid var(--link);
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .note.accent-border { border-left-color: var(--accent); }
+  .note.green-border { border-left-color: var(--green); }
+  .note.yellow-border { border-left-color: var(--yellow); }
+  .note p {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .note strong { color: var(--ink); font-weight: 600; }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6875rem;
+    color: var(--soft);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    .field-cards { grid-template-columns: 1fr; }
+    .notes { grid-template-columns: 1fr; }
+    .title { font-size: 1.75rem; }
+    .page { padding: 2rem 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <p class="eyebrow">MovementPrice / fillPriceInfo</p>
+    <h1 class="title">价格字段计算逻辑</h1>
+    <p class="subtitle">定价明细中 6 个核心价格字段的计算公式、数据源、计算时机。只有 priced=1（已计价）的记录才会进入计算流程。</p>
+  </div>
+
+  <!-- 核心公式 -->
+  <div class="section">
+    <div class="section-title">核心计算公式链</div>
+    <div class="formula-box">
+      <code>
+        <span style="color:var(--accent)">settlementNetPrice</span> = <span style="color:var(--yellow)">basePrice</span> + <span style="color:var(--link)">spread</span> + <span style="color:var(--muted)">otherCostPrice</span>
+        <br>
+        <span style="color:var(--green)">scorporoPrice</span> = f(product, date) &nbsp;&nbsp;// 查金属价 or settlementNetPrice / unitConversion
+        <br>
+        <span style="color:var(--purple)">additionalPrice</span> = (<span style="color:var(--accent)">settlementNetPrice</span> / unitConversion) - <span style="color:var(--green)">scorporoPrice</span>
+        <br><br>
+        <span style="color:var(--soft)">totalValue</span> = settlementNetPrice × quantity
+        <br>
+        <span style="color:var(--soft)">metalValue</span> = scorporoPrice × parentProductQuantity
+        <br>
+        <span style="color:var(--soft)">addedValue</span> = additionalPrice × parentProductQuantity
+      </code>
+    </div>
+  </div>
+
+  <!-- 字段卡片 -->
+  <div class="section">
+    <div class="section-title">6 个核心价格字段</div>
+    <div class="field-cards">
+      <div class="field-card">
+        <div class="field-name orange">basePrice 基价</div>
+        <div class="field-label">按基价类型分三路计算</div>
+        <div class="field-formula">
+          固定价 → pricingParams.fixedPrice<br>
+          均价 → Σ(定价行价格 × 汇率 × 系数)<br>
+          点价 → PriceTriggering.basePrice
+        </div>
+      </div>
+      <div class="field-card">
+        <div class="field-name blue">spread 升贴水</div>
+        <div class="field-label">百分比 or 固定值</div>
+        <div class="field-formula">
+          百分比: spreadValue × basePrice<br>
+          固定: spreadValue × 汇率 / 单位转换
+        </div>
+      </div>
+      <div class="field-card">
+        <div class="field-name" style="color:var(--muted)">otherCostPrice 其他费用</div>
+        <div class="field-label">直接取值</div>
+        <div class="field-formula">
+          cmv.otherCostPrice<br>
+          来源: CashflowModelValuesRes
+        </div>
+      </div>
+      <div class="field-card">
+        <div class="field-name green">scorporoPrice 金属价</div>
+        <div class="field-label">按产品类型分支</div>
+        <div class="field-formula">
+          有金属价(Z002/Z003):<br>
+          &nbsp;&nbsp;riskUtil.getScoPrice(product, date)<br>
+          无金属价:<br>
+          &nbsp;&nbsp;settlementNetPrice / unitConversion
+        </div>
+      </div>
+      <div class="field-card">
+        <div class="field-name purple">additionalPrice 附加价</div>
+        <div class="field-label">公式计算</div>
+        <div class="field-formula">
+          (settlementNetPrice / unitConversion)<br>
+          - scorporoPrice
+        </div>
+      </div>
+      <div class="field-card">
+        <div class="field-name yellow">settlementNetPrice 总价</div>
+        <div class="field-label">三项求和</div>
+        <div class="field-formula">
+          basePrice + spread<br>
+          + otherCostPrice
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 基价计算流程图 -->
+  <div class="section">
+    <div class="section-title">基价（basePrice）三路计算流程</div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 560" width="1040" height="560" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1040" height="560" fill="#222226" rx="4"/>
+
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#8e98ac"/>
+          </marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+          </marker>
+          <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4ade80"/>
+          </marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#6a95d8"/>
+          </marker>
+          <marker id="arrow-yellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+          </marker>
+        </defs>
+
+        <!-- Entry node -->
+        <rect x="400" y="20" width="240" height="40" rx="6" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="1"/>
+        <text x="520" y="38" fill="#e8e6e3" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">fillPriceInfo 入口</text>
+        <text x="520" y="52" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">priced=1 且 inactiveFlag=false</text>
+
+        <!-- Decision -->
+        <polygon points="520,92 620,124 520,156 420,124" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="520" y="128" fill="#e8e6e3" font-size="10" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">基价类型?</text>
+
+        <!-- Arrows from decision -->
+        <line x1="440" y1="124" x2="180" y2="180" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow-accent)"/>
+        <line x1="520" y1="156" x2="520" y2="180" stroke="#fbbf24" stroke-width="0.8" marker-end="url(#arrow-yellow)"/>
+        <line x1="600" y1="124" x2="860" y2="180" stroke="#4ade80" stroke-width="0.8" marker-end="url(#arrow-green)"/>
+
+        <!-- ===== 固定价分支 ===== -->
+        <rect x="60" y="180" width="240" height="36" rx="4" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="1"/>
+        <text x="180" y="196" fill="#eb6c36" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">BasicFixedPrice</text>
+        <text x="180" y="210" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">固定价</text>
+
+        <rect x="60" y="232" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="180" y="252" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">pricingParams.fixedPrice</text>
+        <line x1="180" y1="216" x2="180" y2="232" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <rect x="60" y="280" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="180" y="300" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">cmv.settlementPrice (fallback)</text>
+        <line x1="180" y1="264" x2="180" y2="280" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <rect x="60" y="328" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="180" y="348" fill="#6b7280" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">需单位转换 × unitConversion</text>
+        <line x1="180" y1="312" x2="180" y2="328" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <text x="180" y="384" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoDate = dailySettlementDate</text>
+
+        <!-- ===== 均价分支 ===== -->
+        <rect x="400" y="180" width="240" height="36" rx="4" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="520" y="196" fill="#fbbf24" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">BasicAveragePrice</text>
+        <text x="520" y="210" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">均价</text>
+
+        <rect x="400" y="232" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="520" y="252" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">CashflowModelPricingDetail</text>
+        <line x1="520" y1="216" x2="520" y2="232" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <rect x="400" y="280" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="520" y="300" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">按 priceDate 匹配定价行</text>
+        <line x1="520" y1="264" x2="520" y2="280" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <rect x="400" y="328" width="240" height="48" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="520" y="348" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">每条: 价格 × 汇率 × defaultValue</text>
+        <text x="520" y="366" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">单位转换 + 币种转换</text>
+        <line x1="520" y1="312" x2="520" y2="328" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <rect x="400" y="392" width="240" height="32" rx="4" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="1"/>
+        <text x="520" y="412" fill="#eb6c36" font-size="10" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">basePrice = Σ 累加</text>
+        <line x1="520" y1="376" x2="520" y2="392" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow-accent)"/>
+
+        <text x="520" y="444" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoDate = priceDate</text>
+
+        <!-- ===== 点价分支 ===== -->
+        <rect x="740" y="180" width="240" height="36" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="1"/>
+        <text x="860" y="196" fill="#4ade80" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">BasicTriggeredPrice</text>
+        <text x="860" y="210" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">点价</text>
+
+        <!-- 点价子分支 -->
+        <polygon points="860,240 940,264 860,288 780,264" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="860" y="268" fill="#e8e6e3" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">onSpot?</text>
+        <line x1="860" y1="216" x2="860" y2="240" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <!-- 现货价 -->
+        <rect x="740" y="304" width="112" height="48" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="0.8"/>
+        <text x="796" y="324" fill="#4ade80" font-size="9" font-weight="600" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">现货价/特殊</text>
+        <text x="796" y="342" fill="#e8e6e3" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">pt.basePrice</text>
+        <line x1="800" y1="280" x2="796" y2="304" stroke="#4ade80" stroke-width="0.8" marker-end="url(#arrow-green)"/>
+
+        <!-- 非现货价 -->
+        <rect x="868" y="304" width="112" height="48" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="924" y="324" fill="#e8e6e3" font-size="9" font-weight="600" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">非现货价</text>
+        <text x="924" y="342" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">ForwardPrice</text>
+        <line x1="920" y1="280" x2="924" y2="304" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <!-- 非现货价详细 -->
+        <rect x="868" y="368" width="112" height="48" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="924" y="388" fill="#e8e6e3" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">市场价格 × 含量</text>
+        <text x="924" y="404" fill="#e8e6e3" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">× 系数 × 收率</text>
+        <line x1="924" y1="352" x2="924" y2="368" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow)"/>
+
+        <text x="860" y="444" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoDate = dailySettlementDate</text>
+
+        <!-- ===== 底部汇总 ===== -->
+        <line x1="60" y1="476" x2="980" y2="476" stroke="rgba(245,245,245,0.08)" stroke-width="0.8"/>
+
+        <rect x="300" y="492" width="440" height="48" rx="6" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="1"/>
+        <text x="520" y="512" fill="#eb6c36" font-size="12" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">→ basePrice 确定</text>
+        <text x="520" y="530" fill="#8e98ac" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">继续计算 spread → otherCostPrice → settlementNetPrice → scorporoPrice → additionalPrice</text>
+
+        <!-- 连线到底部 -->
+        <line x1="180" y1="396" x2="380" y2="500" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+        <line x1="520" y1="456" x2="520" y2="492" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+        <line x1="860" y1="456" x2="660" y2="500" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+      </svg>
+    </div>
+  </div>
+
+  <!-- 升贴水 & 金属价 计算流程 -->
+  <div class="section">
+    <div class="section-title">升贴水（spread）& 金属价（scorporoPrice）计算</div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 400" width="1040" height="400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1040" height="400" fill="#222226" rx="4"/>
+
+        <defs>
+          <marker id="arrow2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#8e98ac"/>
+          </marker>
+          <marker id="arrow2-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+          </marker>
+          <marker id="arrow2-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4ade80"/>
+          </marker>
+          <marker id="arrow2-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#6a95d8"/>
+          </marker>
+        </defs>
+
+        <!-- 左半: 升贴水 -->
+        <text x="260" y="32" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">SPREAD 升贴水</text>
+        <line x1="40" y1="44" x2="480" y2="44" stroke="rgba(245,245,245,0.06)" stroke-width="0.8"/>
+
+        <!-- 入口 -->
+        <rect x="160" y="60" width="200" height="32" rx="4" fill="rgba(106,149,216,0.10)" stroke="#6a95d8" stroke-width="1"/>
+        <text x="260" y="80" fill="#6a95d8" font-size="10" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">spreadValue</text>
+
+        <!-- 分支 -->
+        <polygon points="260,116 340,144 260,172 180,144" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="260" y="148" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">百分比?</text>
+        <line x1="260" y1="92" x2="260" y2="116" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow2)"/>
+
+        <!-- 百分比 -->
+        <rect x="60" y="192" width="180" height="48" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="150" y="212" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">spread = spreadValue</text>
+        <text x="150" y="230" fill="#eb6c36" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">× basePrice</text>
+        <line x1="200" y1="164" x2="150" y2="192" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow2)"/>
+        <text x="140" y="180" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">isPercentage=y</text>
+
+        <!-- 固定 -->
+        <rect x="280" y="192" width="180" height="64" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="370" y="212" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">spread × 汇率</text>
+        <text x="370" y="228" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">(spreadCurrency→currency)</text>
+        <text x="370" y="248" fill="#e8e6e3" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">÷ 单位转换</text>
+        <line x1="320" y1="164" x2="370" y2="192" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow2)"/>
+        <text x="380" y="180" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">固定值</text>
+
+        <!-- 结果 -->
+        <rect x="160" y="284" width="200" height="28" rx="4" fill="rgba(106,149,216,0.10)" stroke="#6a95d8" stroke-width="1"/>
+        <text x="260" y="302" fill="#6a95d8" font-size="10" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">spread 确定</text>
+        <line x1="150" y1="240" x2="220" y2="284" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow2)"/>
+        <line x1="370" y1="256" x2="300" y2="284" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow2)"/>
+
+        <!-- 分割线 -->
+        <line x1="520" y1="20" x2="520" y2="380" stroke="rgba(245,245,245,0.06)" stroke-width="0.8"/>
+
+        <!-- 右半: 金属价 -->
+        <text x="780" y="32" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">SCORPORO PRICE 金属价</text>
+        <line x1="560" y1="44" x2="1000" y2="44" stroke="rgba(245,245,245,0.06)" stroke-width="0.8"/>
+
+        <!-- 入口 -->
+        <rect x="680" y="60" width="200" height="32" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="1"/>
+        <text x="780" y="80" fill="#4ade80" font-size="10" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">Z002/Z003?</text>
+
+        <!-- 分支 -->
+        <!-- 有金属价 -->
+        <rect x="560" y="116" width="200" height="64" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="0.8"/>
+        <text x="660" y="136" fill="#4ade80" font-size="9" font-weight="600" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">有金属价产品</text>
+        <text x="660" y="154" fill="#e8e6e3" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">getScoPrice(product,</text>
+        <text x="660" y="170" fill="#e8e6e3" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoDate, ...)</text>
+        <line x1="720" y1="92" x2="660" y2="116" stroke="#4ade80" stroke-width="0.8" marker-end="url(#arrow2-green)"/>
+        <text x="660" y="108" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">是</text>
+
+        <!-- onSpot=2 向前查 -->
+        <rect x="560" y="196" width="200" height="48" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="660" y="216" fill="#6b7280" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">空 且 onSpot=2</text>
+        <text x="660" y="234" fill="#6b7280" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">→ 向前查 10 天</text>
+        <line x1="660" y1="180" x2="660" y2="196" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow2)"/>
+
+        <!-- 无金属价 -->
+        <rect x="800" y="116" width="200" height="64" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="900" y="136" fill="#e8e6e3" font-size="9" font-weight="600" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">无金属价产品</text>
+        <text x="900" y="156" fill="#eb6c36" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">settlementNetPrice</text>
+        <text x="900" y="172" fill="#eb6c36" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">/ unitConversion</text>
+        <line x1="840" y1="92" x2="900" y2="116" stroke="#8e98ac" stroke-width="0.8" marker-end="url(#arrow2)"/>
+        <text x="900" y="108" fill="#6b7280" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">否</text>
+
+        <!-- 结果 -->
+        <rect x="680" y="284" width="200" height="28" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="1"/>
+        <text x="780" y="302" fill="#4ade80" font-size="10" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoPrice 确定</text>
+        <line x1="660" y1="244" x2="740" y2="284" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow2)"/>
+        <line x1="900" y1="180" x2="820" y2="284" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow2)"/>
+
+        <!-- 底部说明 -->
+        <line x1="40" y1="340" x2="1000" y2="340" stroke="rgba(245,245,245,0.06)" stroke-width="0.8"/>
+        <text x="520" y="368" fill="#6b7280" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">scorporoDate: 固定价/点价 = dailySettlementDate &nbsp;&nbsp;|&nbsp;&nbsp; 均价 = priceDate</text>
+        <text x="520" y="388" fill="#6b7280" font-size="9" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">汇率获取失败时，向前查询最近工作日 &nbsp;&nbsp;|&nbsp;&nbsp; 所有价格保留 5 位小数</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 各基价类型下的计算差异 -->
+  <div class="section">
+    <div class="section-title">各基价类型下的字段计算差异</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>基价类型</th>
+            <th>basePrice 来源</th>
+            <th>spread</th>
+            <th>otherCostPrice</th>
+            <th>scorporoDate</th>
+            <th>calBasePrice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge fixed">BasicFixedPrice</span></td>
+            <td><code>fixedPrice</code> 或 <code>settlementPrice</code></td>
+            <td>商品行参数计算</td>
+            <td>cmv.otherCostPrice</td>
+            <td>dailySettlementDate</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td><span class="badge avg">BasicAveragePrice</span></td>
+            <td>Σ(定价行价格 × 汇率 × 系数)</td>
+            <td>商品行参数计算</td>
+            <td>cmv.otherCostPrice</td>
+            <td>priceDate</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td><span class="badge trigger">BasicTriggeredPrice</span><br><small style="color:var(--soft)">onSpot=1/2</small></td>
+            <td>pt.basePrice</td>
+            <td>pt.spread</td>
+            <td>pt.otherExpenses</td>
+            <td>dailySettlementDate</td>
+            <td>false</td>
+          </tr>
+          <tr>
+            <td><span class="badge trigger">BasicTriggeredPrice</span><br><small style="color:var(--soft)">onSpot=0</small></td>
+            <td>ForwardPrice 市场价格累加</td>
+            <td>商品行参数计算</td>
+            <td>cmv.otherCostPrice</td>
+            <td>dailySettlementDate</td>
+            <td>true</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 数据源汇总 -->
+  <div class="section">
+    <div class="section-title">数据源关系</div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 360" width="1040" height="360" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1040" height="360" fill="#222226" rx="4"/>
+
+        <defs>
+          <marker id="arrow3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#8e98ac"/>
+          </marker>
+          <marker id="arrow3-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+          </marker>
+          <marker id="arrow3-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4ade80"/>
+          </marker>
+          <marker id="arrow3-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#6a95d8"/>
+          </marker>
+          <marker id="arrow3-yellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+          </marker>
+          <marker id="arrow3-purple" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#a78bfa"/>
+          </marker>
+        </defs>
+
+        <!-- 左侧数据源 -->
+        <text x="140" y="28" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">DATA SOURCES</text>
+
+        <!-- 数据源节点 -->
+        <rect x="20" y="48" width="240" height="32" rx="4" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="0.8"/>
+        <text x="140" y="68" fill="#eb6c36" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">pricingParams</text>
+
+        <rect x="20" y="96" width="240" height="32" rx="4" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="0.8"/>
+        <text x="140" y="116" fill="#fbbf24" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">CashflowModelValuesRes</text>
+
+        <rect x="20" y="144" width="240" height="32" rx="4" fill="rgba(106,149,216,0.10)" stroke="#6a95d8" stroke-width="0.8"/>
+        <text x="140" y="164" fill="#6a95d8" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">CashflowPricingDetail</text>
+
+        <rect x="20" y="192" width="240" height="32" rx="4" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="0.8"/>
+        <text x="140" y="212" fill="#4ade80" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">PriceTriggering</text>
+
+        <rect x="20" y="240" width="240" height="32" rx="4" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="0.8"/>
+        <text x="140" y="260" fill="#a78bfa" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">ForwardPrice</text>
+
+        <rect x="20" y="288" width="240" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="140" y="308" fill="#e8e6e3" font-size="10" font-family="'Geist Mono', monospace" text-anchor="middle">riskUtil.getScoPrice()</text>
+
+        <!-- 中间计算层 -->
+        <text x="520" y="28" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">COMPUTED FIELDS</text>
+
+        <rect x="420" y="48" width="200" height="40" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="520" y="64" fill="#fbbf24" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">basePrice</text>
+        <text x="520" y="80" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">基价</text>
+
+        <rect x="420" y="108" width="200" height="40" rx="6" fill="rgba(106,149,216,0.10)" stroke="#6a95d8" stroke-width="1"/>
+        <text x="520" y="124" fill="#6a95d8" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">spread</text>
+        <text x="520" y="140" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">升贴水</text>
+
+        <rect x="420" y="168" width="200" height="40" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(245,245,245,0.18)" stroke-width="0.8"/>
+        <text x="520" y="184" fill="#e8e6e3" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">otherCostPrice</text>
+        <text x="520" y="200" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">其他费用</text>
+
+        <!-- 右侧结果 -->
+        <text x="860" y="28" fill="#8e98ac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">DERIVED FIELDS</text>
+
+        <rect x="760" y="68" width="200" height="40" rx="6" fill="rgba(235,108,54,0.10)" stroke="#eb6c36" stroke-width="1"/>
+        <text x="860" y="84" fill="#eb6c36" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">settlementNetPrice</text>
+        <text x="860" y="100" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">总价</text>
+
+        <rect x="760" y="148" width="200" height="40" rx="6" fill="rgba(74,222,128,0.08)" stroke="#4ade80" stroke-width="1"/>
+        <text x="860" y="164" fill="#4ade80" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">scorporoPrice</text>
+        <text x="860" y="180" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">金属价</text>
+
+        <rect x="760" y="228" width="200" height="40" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+        <text x="860" y="244" fill="#a78bfa" font-size="11" font-weight="600" font-family="'Geist Mono', monospace" text-anchor="middle">additionalPrice</text>
+        <text x="860" y="260" fill="#8e98ac" font-size="8" font-family="'Geist', 'Noto Sans SC', sans-serif" text-anchor="middle">附加价</text>
+
+        <!-- 连线: 数据源 → 计算字段 -->
+        <!-- pricingParams → basePrice -->
+        <line x1="260" y1="64" x2="420" y2="64" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+        <!-- pricingParams → spread -->
+        <line x1="260" y1="68" x2="420" y2="124" stroke="#6a95d8" stroke-width="0.8" marker-end="url(#arrow3-link)"/>
+
+        <!-- CashflowModelValuesRes → basePrice -->
+        <line x1="260" y1="108" x2="420" y2="72" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+        <!-- CashflowModelValuesRes → otherCostPrice -->
+        <line x1="260" y1="116" x2="420" y2="188" stroke="rgba(245,245,245,0.15)" stroke-width="0.8" marker-end="url(#arrow3)"/>
+
+        <!-- CashflowPricingDetail → basePrice -->
+        <line x1="260" y1="160" x2="420" y2="68" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+
+        <!-- PriceTriggering → basePrice/spread -->
+        <line x1="260" y1="204" x2="420" y2="68" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+        <line x1="260" y1="212" x2="420" y2="128" stroke="#6a95d8" stroke-width="0.8" marker-end="url(#arrow3-link)"/>
+
+        <!-- ForwardPrice → basePrice -->
+        <line x1="260" y1="256" x2="420" y2="76" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+
+        <!-- getScoPrice → scorporoPrice -->
+        <line x1="260" y1="304" x2="760" y2="168" stroke="#4ade80" stroke-width="0.8" marker-end="url(#arrow3-green)"/>
+
+        <!-- 连线: 计算字段 → 结果字段 -->
+        <!-- basePrice + spread + otherCostPrice → settlementNetPrice -->
+        <line x1="620" y1="68" x2="760" y2="84" stroke="#eb6c36" stroke-width="0.8" marker-end="url(#arrow3-accent)"/>
+        <line x1="620" y1="128" x2="760" y2="88" stroke="#6a95d8" stroke-width="0.8" marker-end="url(#arrow3-link)"/>
+        <line x1="620" y1="188" x2="760" y2="92" stroke="rgba(245,245,245,0.15)" stroke-width="0.8" marker-end="url(#arrow3)"/>
+
+        <!-- settlementNetPrice → additionalPrice -->
+        <line x1="860" y1="108" x2="860" y2="228" stroke="rgba(245,245,245,0.12)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrow3)"/>
+
+        <!-- scorporoPrice → additionalPrice -->
+        <line x1="860" y1="188" x2="860" y2="228" stroke="#a78bfa" stroke-width="0.8" marker-end="url(#arrow3-purple)"/>
+
+        <!-- 底部公式 -->
+        <line x1="20" y1="332" x2="1020" y2="332" stroke="rgba(245,245,245,0.06)" stroke-width="0.8"/>
+        <text x="520" y="352" fill="#6b7280" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">settlementNetPrice = basePrice + spread + otherCostPrice &nbsp;&nbsp;|&nbsp;&nbsp; additionalPrice = (settlementNetPrice / unitConv) - scorporoPrice</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 注意事项 -->
+  <div class="section">
+    <div class="section-title">关键规则</div>
+    <div class="notes">
+      <div class="note accent-border">
+        <p><strong>priced=0 不计算</strong>：FIX 类型记录在生成时 priced=0，fillPriceInfo 会跳过。只有日结生成 RI+ 后 priced=1 才进入计算。</p>
+      </div>
+      <div class="note green-border">
+        <p><strong>calBasePrice 标志</strong>：点价类型 onSpot=1/2 时 calBasePrice=false，spread/otherCostPrice/settlementNetPrice 直接从 PriceTriggering 取值，不重新计算。</p>
+      </div>
+      <div class="note yellow-border">
+        <p><strong>金属价向前查询</strong>：onSpot=2 且当天无金属价时，向前逐天查询最多 10 天。仅当 scorporoDate ≤ 当前日结日期时才触发。</p>
+      </div>
+      <div class="note">
+        <p><strong>汇率容错</strong>：按 priceDate 获取汇率失败时，自动向前查询最近的金融日汇率。所有价格字段最终保留 5 位小数。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 调用时机 -->
+  <div class="section">
+    <div class="section-title">fillPriceInfo 调用时机</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>操作</th>
+            <th>调用位置</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>合同提交</td><td>第 332、336 行</td><td>新增 + 更新的记录</td></tr>
+          <tr><td>合同撤销</td><td>第 435 行</td><td>生成的 CC- 记录</td></tr>
+          <tr><td>补充协议</td><td>第 996、1000、1004 行</td><td>新增、冲销、更新的记录</td></tr>
+          <tr><td>点价单提交</td><td>第 1778、1811 行</td><td>新增和更新的记录</td></tr>
+          <tr><td>日结处理</td><td>第 2501、2507 行</td><td>新增和更新的记录（RI+/RI-）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>MovementPriceServiceImpl.fillPriceInfo() · Line 2722-3182</span>
+    <span>2026-06-10</span>
+  </div>
+
+</div>
+</body>
+</html>

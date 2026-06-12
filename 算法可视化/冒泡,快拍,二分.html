@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>算法可视化工具 | 排序算法动画演示</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 统一的 Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#8b5cf6',
+            accent: '#ec4899',
+            dark: '#1e1b4b',
+            darker: '#111827',
+            light: '#e0e7ff',
+            success: '#10b981',
+            warning: '#f59e0b',
+            danger: '#ef4444',
+            info: '#3b82f6'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      .bg-grid {
+        background-size: 20px 20px;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      }
+      .transition-all-300 {
+        transition: all 300ms ease-in-out;
+      }
+      .slider-thumb::-webkit-slider-thumb {
+        @apply appearance-none w-5 h-5 rounded-full bg-primary border-2 border-white cursor-pointer;
+      }
+      .slider-thumb::-moz-range-thumb {
+        @apply appearance-none w-5 h-5 rounded-full bg-primary border-2 border-white cursor-pointer;
+      }
+    }
+  </style>
+  <style>
+    body {
+      overflow-x: hidden;
+      background-color: #111827;
+      color: #e0e7ff;
+    }
+    
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 5px;
+      background: #374151;
+      outline: none;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #6366f1;
+      cursor: pointer;
+      border: 2px solid #e0e7ff;
+      transition: all 0.2s ease;
+    }
+    
+    .slider::-webkit-slider-thumb:hover {
+      background: #4f46e5;
+      transform: scale(1.1);
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #6366f1;
+      cursor: pointer;
+      border: 2px solid #e0e7ff;
+      transition: all 0.2s ease;
+    }
+    
+    .slider::-moz-range-thumb:hover {
+      background: #4f46e5;
+      transform: scale(1.1);
+    }
+    
+    .btn {
+      transition: all 0.2s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .card {
+      background: rgba(30, 27, 75, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+    }
+    
+    .algorithm-info {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(17, 24, 39, 0.8);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .step-info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(17, 24, 39, 0.8);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 80%;
+    }
+    
+    .comparison-line {
+      position: absolute;
+      height: 2px;
+      background-color: #ec4899;
+      transform-origin: left center;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .comparison-line.active {
+      opacity: 1;
+    }
+    
+    /* 粒子背景效果 */
+    #particles-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.2;
+    }
+    
+    /* 动画效果 */
+    @keyframes highlight {
+      0%, 100% { background-color: rgba(236, 72, 153, 0.3); }
+      50% { background-color: rgba(236, 72, 153, 0.7); }
+    }
+    
+    @keyframes swap {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(0); }
+    }
+    
+    @keyframes sorted {
+      0% { background-color: rgba(16, 185, 129, 0.3); }
+      100% { background-color: rgba(16, 185, 129, 0.7); }
+    }
+    
+    .highlight {
+      animation: highlight 0.6s ease-in-out;
+    }
+    
+    .swap {
+      animation: swap 0.8s ease-in-out;
+    }
+    
+    .sorted {
+      animation: sorted 0.5s ease-in-out forwards;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .visualization-area {
+        width: 100% !important;
+        height: 50vh !important;
+      }
+      
+      .control-panel {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-darker text-light">
+  <div class="container mx-auto px-4 py-8">
+    <!-- 顶部标题 -->
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-shadow-lg mb-2 bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">算法可视化工具</h1>
+      <p class="text-lg text-gray-300">直观理解算法执行过程，将抽象代码转化为动态可视化</p>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <div class="main-container flex flex-col lg:flex-row gap-6">
+      <!-- 左侧可视化区域 -->
+      <div class="visualization-area w-full lg:w-2/3 bg-dark rounded-xl overflow-hidden card">
+        <div class="canvas-container" style="height: 500px;">
+          <!-- 粒子背景 -->
+          <canvas id="particles-bg"></canvas>
+          
+          <!-- 算法可视化画布 -->
+          <canvas id="visualization-canvas"></canvas>
+          
+          <!-- 步骤信息显示 -->
+          <div class="step-info hidden" id="step-info">
+            <p class="font-medium">准备开始排序...</p>
+          </div>
+          
+          <!-- 算法信息显示 -->
+          <div class="algorithm-info hidden" id="algorithm-info">
+            <div class="mb-2">
+              <span class="font-bold" id="current-algorithm">冒泡排序</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-3 h-3 rounded-full bg-danger"></span>
+              <span id="comparisons">比较次数: 0</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-3 h-3 rounded-full bg-warning"></span>
+              <span id="swaps">交换次数: 0</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-3 h-3 rounded-full bg-success"></span>
+              <span id="time-complexity">时间复杂度: O(n²)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右侧控制面板 -->
+      <div class="control-panel w-full lg:w-1/3 bg-dark rounded-xl p-6 card">
+        <h2 class="text-xl font-bold mb-6 text-center">控制面板</h2>
+        
+        <!-- 算法选择 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">算法选择</h3>
+          <div class="grid grid-cols-3 gap-3">
+            <button id="bubble-sort-btn" class="btn bg-primary hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium active">
+              冒泡排序
+            </button>
+            <button id="quick-sort-btn" class="btn bg-secondary hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium">
+              快速排序
+            </button>
+            <button id="binary-sort-btn" class="btn bg-info hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium">
+              二分排序
+            </button>
+          </div>
+        </div>
+        
+        <!-- 数组参数设置 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">数组设置</h3>
+          
+          <!-- 数组长度 -->
+          <div class="mb-4">
+            <label for="array-length" class="block text-sm font-medium mb-1">数组长度: <span id="array-length-value">20</span></label>
+            <input type="range" id="array-length" class="slider" min="5" max="50" value="20">
+          </div>
+          
+          <!-- 数值范围 -->
+          <div class="mb-4">
+            <label for="value-range" class="block text-sm font-medium mb-1">数值范围: <span id="value-range-value">100</span></label>
+            <input type="range" id="value-range" class="slider" min="10" max="200" value="100">
+          </div>
+          
+          <!-- 生成数组按钮 -->
+          <button id="generate-array-btn" class="btn w-full bg-info hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium mb-3">
+            <i class="fa fa-refresh mr-2"></i> 生成新数组
+          </button>
+          
+          <!-- 数组可视化 -->
+          <div class="bg-darker rounded-lg p-3 mt-3">
+            <h4 class="text-sm font-medium mb-2">当前数组:</h4>
+            <div id="array-preview" class="text-sm overflow-x-auto pb-1">
+              [ 正在生成数组... ]
+            </div>
+          </div>
+        </div>
+        
+        <!-- 动画控制 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">动画控制</h3>
+          
+          <!-- 动画速度 -->
+          <div class="mb-4">
+            <label for="animation-speed" class="block text-sm font-medium mb-1">动画速度: <span id="speed-value">中等</span></label>
+            <input type="range" id="animation-speed" class="slider" min="1" max="5" value="3">
+          </div>
+          
+          <!-- 控制按钮 -->
+          <div class="grid grid-cols-3 gap-3">
+            <button id="play-btn" class="btn bg-success hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium">
+              <i class="fa fa-play"></i>
+            </button>
+            <button id="pause-btn" class="btn bg-warning hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium" disabled>
+              <i class="fa fa-pause"></i>
+            </button>
+            <button id="reset-btn" class="btn bg-danger hover:bg-opacity-90 text-white py-2 px-4 rounded-lg font-medium">
+              <i class="fa fa-stop"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 算法对比 -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3">算法对比</h3>
+          <div class="bg-darker rounded-lg p-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium">冒泡排序:</span>
+              <span id="bubble-stats" class="text-sm bg-primary bg-opacity-20 px-2 py-1 rounded">--</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-medium">快速排序:</span>
+              <span id="quick-stats" class="text-sm bg-secondary bg-opacity-20 px-2 py-1 rounded">--</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-sm font-medium">二分排序:</span>
+              <span id="binary-stats" class="text-sm bg-info bg-opacity-20 px-2 py-1 rounded">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部算法原理说明 -->
+    <div class="mt-8 bg-dark rounded-xl p-6 card">
+      <h2 class="text-2xl font-bold mb-4">算法原理说明</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 冒泡排序说明 -->
+        <div id="bubble-sort-info">
+          <h3 class="text-xl font-semibold mb-3 text-primary">冒泡排序</h3>
+          <div class="space-y-3">
+            <p><span class="font-medium">核心思想:</span> 重复地遍历要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。</p>
+            <p><span class="font-medium">执行步骤:</span></p>
+            <ol class="list-decimal list-inside space-y-1 pl-4">
+              <li>比较相邻的元素，如果第一个比第二个大，就交换它们</li>
+              <li>对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对</li>
+              <li>每一轮比较后，最大的元素会"浮"到数组的末尾</li>
+              <li>重复以上步骤，每次比较的元素数量减少一个</li>
+            </ol>
+            <p><span class="font-medium">时间复杂度:</span> 最坏 O(n²)，最好 O(n)，平均 O(n²)</p>
+            <p><span class="font-medium">空间复杂度:</span> O(1)</p>
+            <p><span class="font-medium">稳定性:</span> 稳定</p>
+          </div>
+        </div>
+        
+        <!-- 快速排序说明 -->
+        <div id="quick-sort-info" class="hidden">
+          <h3 class="text-xl font-semibold mb-3 text-secondary">快速排序</h3>
+          <div class="space-y-3">
+            <p><span class="font-medium">核心思想:</span> 采用分治策略，选择一个基准元素，通过一趟排序将数组分成两部分，然后递归地排序这两部分。</p>
+            <p><span class="font-medium">执行步骤:</span></p>
+            <ol class="list-decimal list-inside space-y-1 pl-4">
+              <li>选择一个基准元素（通常是数组的第一个或最后一个元素）</li>
+              <li>将小于基准的元素放在左边，大于基准的元素放在右边</li>
+              <li>对左右两个子数组重复上述步骤，直到每个子数组只有一个元素</li>
+            </ol>
+            <p><span class="font-medium">时间复杂度:</span> 最坏 O(n²)，最好 O(nlogn)，平均 O(nlogn)</p>
+            <p><span class="font-medium">空间复杂度:</span> O(logn)</p>
+            <p><span class="font-medium">稳定性:</span> 不稳定</p>
+          </div>
+        </div>
+        
+        <!-- 二分排序说明 -->
+        <div id="binary-sort-info" class="hidden">
+          <h3 class="text-xl font-semibold mb-3 text-info">二分排序（插入排序的优化）</h3>
+          <div class="space-y-3">
+            <p><span class="font-medium">核心思想:</span> 在插入排序的基础上，使用二分查找来寻找插入位置，减少比较次数。</p>
+            <p><span class="font-medium">执行步骤:</span></p>
+            <ol class="list-decimal list-inside space-y-1 pl-4">
+              <li>将数组分为已排序和未排序两部分，初始时已排序部分只包含第一个元素</li>
+              <li>对于未排序部分的每个元素，在已排序部分使用二分查找找到合适的插入位置</li>
+              <li>将元素插入到正确位置，并将插入位置之后的元素向后移动</li>
+              <li>重复步骤2-3，直到所有元素都被插入到已排序部分</li>
+            </ol>
+            <p><span class="font-medium">时间复杂度:</span> 最坏 O(n²)，最好 O(nlogn)，平均 O(n²)</p>
+            <p><span class="font-medium">空间复杂度:</span> O(1)</p>
+            <p><span class="font-medium">稳定性:</span> 稳定</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 三种解法对比 -->
+      <div class="mt-6">
+        <h3 class="text-xl font-semibold mb-3">三种解法对比</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-700">
+                <th class="py-2 px-4 text-left">对比项</th>
+                <th class="py-2 px-4 text-left text-primary">冒泡排序</th>
+                <th class="py-2 px-4 text-left text-secondary">快速排序</th>
+                <th class="py-2 px-4 text-left text-info">二分排序</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">平均时间复杂度</td>
+                <td class="py-2 px-4">O(n²)</td>
+                <td class="py-2 px-4">O(nlogn)</td>
+                <td class="py-2 px-4">O(n²)</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">最坏时间复杂度</td>
+                <td class="py-2 px-4">O(n²)</td>
+                <td class="py-2 px-4">O(n²)</td>
+                <td class="py-2 px-4">O(n²)</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">最好时间复杂度</td>
+                <td class="py-2 px-4">O(n)</td>
+                <td class="py-2 px-4">O(nlogn)</td>
+                <td class="py-2 px-4">O(nlogn)</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">空间复杂度</td>
+                <td class="py-2 px-4">O(1)</td>
+                <td class="py-2 px-4">O(logn)</td>
+                <td class="py-2 px-4">O(1)</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">排序稳定性</td>
+                <td class="py-2 px-4">稳定</td>
+                <td class="py-2 px-4">不稳定</td>
+                <td class="py-2 px-4">稳定</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-2 px-4 font-medium">适用场景</td>
+                <td class="py-2 px-4">小规模数据或几乎有序的数据</td>
+                <td class="py-2 px-4">大多数情况下的通用排序</td>
+                <td class="py-2 px-4">中等规模数据，部分有序的数据</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 font-medium">优化思路</td>
+                <td class="py-2 px-4">添加标志位，记录是否发生交换</td>
+                <td class="py-2 px-4">随机选择基准元素，避免最坏情况</td>
+                <td class="py-2 px-4">使用二分查找减少比较次数</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 全局变量
+    let array = [];
+    let originalArray = [];
+    let currentAlgorithm = 'bubble';
+    let isSorting = false;
+    let isPaused = false;
+    let animationSpeed = 3;
+    let arrayLength = 20;
+    let valueRange = 100;
+    let comparisons = 0;
+    let swaps = 0;
+    let animationFrameId = null;
+    let algorithmSteps = [];
+    let currentStep = 0;
+    let algorithmStats = {
+      bubble: { comparisons: 0, swaps: 0, time: 0 },
+      quick: { comparisons: 0, swaps: 0, time: 0 },
+      binary: { comparisons: 0, swaps: 0, time: 0 }
+    };
+    
+    // 已排序区间标记
+    let sortedRanges = [];
+    
+    // 获取DOM元素
+    const canvas = document.getElementById('visualization-canvas');
+    const ctx = canvas.getContext('2d');
+    const particlesCanvas = document.getElementById('particles-bg');
+    const particlesCtx = particlesCanvas.getContext('2d');
+    const arrayLengthSlider = document.getElementById('array-length');
+    const arrayLengthValue = document.getElementById('array-length-value');
+    const valueRangeSlider = document.getElementById('value-range');
+    const valueRangeValue = document.getElementById('value-range-value');
+    const generateArrayBtn = document.getElementById('generate-array-btn');
+    const arrayPreview = document.getElementById('array-preview');
+    const animationSpeedSlider = document.getElementById('animation-speed');
+    const speedValue = document.getElementById('speed-value');
+    const playBtn = document.getElementById('play-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const bubbleSortBtn = document.getElementById('bubble-sort-btn');
+    const quickSortBtn = document.getElementById('quick-sort-btn');
+    const stepInfo = document.getElementById('step-info');
+    const algorithmInfo = document.getElementById('algorithm-info');
+    const comparisonsElement = document.getElementById('comparisons');
+    const swapsElement = document.getElementById('swaps');
+    const timeComplexityElement = document.getElementById('time-complexity');
+    const bubbleSortInfo = document.getElementById('bubble-sort-info');
+    const quickSortInfo = document.getElementById('quick-sort-info');
+    const bubbleStats = document.getElementById('bubble-stats');
+    const quickStats = document.getElementById('quick-stats');
+    
+    // 粒子系统
+    let particles = [];
+    const particleCount = 50;
+    
+    // 初始化
+    function init() {
+      // 设置画布尺寸
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // 初始化粒子系统
+      initParticles();
+      animateParticles();
+      
+      // 生成初始数组
+      generateArray();
+      
+      // 事件监听器
+      arrayLengthSlider.addEventListener('input', updateArrayLength);
+      valueRangeSlider.addEventListener('input', updateValueRange);
+      generateArrayBtn.addEventListener('click', generateArray);
+      animationSpeedSlider.addEventListener('input', updateAnimationSpeed);
+      playBtn.addEventListener('click', startSorting);
+      pauseBtn.addEventListener('click', pauseSorting);
+      resetBtn.addEventListener('click', resetSorting);
+      bubbleSortBtn.addEventListener('click', () => selectAlgorithm('bubble'));
+      quickSortBtn.addEventListener('click', () => selectAlgorithm('quick'));
+      document.getElementById('binary-sort-btn').addEventListener('click', () => selectAlgorithm('binary'));
+      
+      // 绘制初始数组
+      drawArray();
+    }
+    
+    // 调整画布尺寸
+    function resizeCanvas() {
+      const container = canvas.parentElement;
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+      particlesCanvas.width = container.clientWidth;
+      particlesCanvas.height = container.clientHeight;
+      
+      // 重绘数组
+      if (array.length > 0) {
+        drawArray();
+      }
+    }
+    
+    // 初始化粒子系统
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * particlesCanvas.width,
+          y: Math.random() * particlesCanvas.height,
+          radius: Math.random() * 2 + 1,
+          color: `rgba(${Math.floor(Math.random()*80+180)}, ${Math.floor(Math.random()*80+180)}, ${Math.floor(Math.random()*80+180)}, 0.5)`,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25
+        });
+      }
+    }
+    
+    // 动画粒子
+    function animateParticles() {
+      particlesCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+      
+      particles.forEach(particle => {
+        // 更新位置
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        
+        // 边界检查
+        if (particle.x < 0 || particle.x > particlesCanvas.width) {
+          particle.speedX = -particle.speedX;
+        }
+        if (particle.y < 0 || particle.y > particlesCanvas.height) {
+          particle.speedY = -particle.speedY;
+        }
+        
+        // 绘制粒子
+        particlesCtx.beginPath();
+        particlesCtx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        particlesCtx.fillStyle = particle.color;
+        particlesCtx.fill();
+      });
+      
+      // 连接临近粒子
+      connectParticles();
+      
+      requestAnimationFrame(animateParticles);
+    }
+    
+    // 连接临近粒子
+    function connectParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 120) {
+            particlesCtx.beginPath();
+            particlesCtx.strokeStyle = `rgba(200, 200, 255, ${0.2 * (1 - distance/120)})`;
+            particlesCtx.lineWidth = 0.5;
+            particlesCtx.moveTo(particles[i].x, particles[i].y);
+            particlesCtx.lineTo(particles[j].x, particles[j].y);
+            particlesCtx.stroke();
+          }
+        }
+      }
+    }
+    
+    // 更新数组长度
+    function updateArrayLength() {
+      arrayLength = parseInt(arrayLengthSlider.value);
+      arrayLengthValue.textContent = arrayLength;
+      generateArray();
+    }
+    
+    // 更新数值范围
+    function updateValueRange() {
+      valueRange = parseInt(valueRangeSlider.value);
+      valueRangeValue.textContent = valueRange;
+      generateArray();
+    }
+    
+    // 生成新数组
+    function generateArray() {
+      // 如果正在排序，先停止
+      if (isSorting) {
+        resetSorting();
+      }
+      
+      array = [];
+      for (let i = 0; i < arrayLength; i++) {
+        array.push(Math.floor(Math.random() * valueRange) + 1);
+      }
+      
+      // 保存原始数组副本
+      originalArray = [...array];
+      
+      // 更新数组预览
+      updateArrayPreview();
+      
+      // 绘制数组
+      drawArray();
+      
+      // 重置统计信息
+      resetStats();
+    }
+    
+    // 更新数组预览
+    function updateArrayPreview() {
+      arrayPreview.textContent = JSON.stringify(array);
+    }
+    
+    // 更新动画速度
+    function updateAnimationSpeed() {
+      animationSpeed = parseInt(animationSpeedSlider.value);
+      
+      // 更新速度文本
+      switch (animationSpeed) {
+        case 1:
+          speedValue.textContent = "极慢";
+          break;
+        case 2:
+          speedValue.textContent = "慢速";
+          break;
+        case 3:
+          speedValue.textContent = "中等";
+          break;
+        case 4:
+          speedValue.textContent = "快速";
+          break;
+        case 5:
+          speedValue.textContent = "极快";
+          break;
+      }
+    }
+    
+    // 选择算法
+    function selectAlgorithm(algorithm) {
+      // 如果正在排序，先停止
+      if (isSorting) {
+        resetSorting();
+      }
+      
+      currentAlgorithm = algorithm;
+      
+      // 更新按钮样式
+      if (algorithm === 'bubble') {
+        bubbleSortBtn.classList.add('active');
+        bubbleSortBtn.classList.remove('bg-secondary');
+        bubbleSortBtn.classList.add('bg-primary');
+        quickSortBtn.classList.remove('active');
+        quickSortBtn.classList.remove('bg-primary');
+        quickSortBtn.classList.add('bg-secondary');
+        document.getElementById('binary-sort-btn').classList.remove('active');
+        document.getElementById('binary-sort-btn').classList.remove('bg-primary');
+        document.getElementById('binary-sort-btn').classList.add('bg-info');
+        
+        // 显示冒泡排序说明，隐藏其他排序说明
+        bubbleSortInfo.classList.remove('hidden');
+        quickSortInfo.classList.add('hidden');
+        document.getElementById('binary-sort-info').classList.add('hidden');
+        
+        // 更新时间复杂度显示
+        timeComplexityElement.textContent = '时间复杂度: O(n²)';
+        document.getElementById('current-algorithm').textContent = '二分排序';
+        document.getElementById('current-algorithm').textContent = '冒泡排序';
+      } else if (algorithm === 'quick') {
+        quickSortBtn.classList.add('active');
+        quickSortBtn.classList.remove('bg-secondary');
+        quickSortBtn.classList.add('bg-primary');
+        bubbleSortBtn.classList.remove('active');
+        bubbleSortBtn.classList.remove('bg-primary');
+        bubbleSortBtn.classList.add('bg-secondary');
+        document.getElementById('binary-sort-btn').classList.remove('active');
+        document.getElementById('binary-sort-btn').classList.remove('bg-primary');
+        document.getElementById('binary-sort-btn').classList.add('bg-info');
+        
+        // 显示快速排序说明，隐藏其他排序说明
+        quickSortInfo.classList.remove('hidden');
+        bubbleSortInfo.classList.add('hidden');
+        document.getElementById('binary-sort-info').classList.add('hidden');
+        
+        // 更新时间复杂度显示
+        timeComplexityElement.textContent = '时间复杂度: O(nlogn)';
+      } else {
+        document.getElementById('binary-sort-btn').classList.add('active');
+        document.getElementById('binary-sort-btn').classList.remove('bg-info');
+        document.getElementById('binary-sort-btn').classList.add('bg-primary');
+        bubbleSortBtn.classList.remove('active');
+        bubbleSortBtn.classList.remove('bg-primary');
+        bubbleSortBtn.classList.add('bg-secondary');
+        quickSortBtn.classList.remove('active');
+        quickSortBtn.classList.remove('bg-primary');
+        quickSortBtn.classList.add('bg-secondary');
+        
+        // 显示二分排序说明，隐藏其他排序说明
+        document.getElementById('binary-sort-info').classList.remove('hidden');
+        bubbleSortInfo.classList.add('hidden');
+        quickSortInfo.classList.add('hidden');
+        
+        // 更新时间复杂度显示
+        timeComplexityElement.textContent = '时间复杂度: O(n²)';
+        document.getElementById('current-algorithm').textContent = '二分排序';
+        document.getElementById('current-algorithm').textContent = '冒泡排序';
+      }
+      
+      // 重置数组和已排序区间
+      array = [...originalArray];
+      sortedRanges = [];
+      drawArray();
+      resetStats();
+    }
+    
+    // 开始排序
+    function startSorting() {
+      if (isSorting && isPaused) {
+        // 继续暂停的排序
+        isPaused = false;
+        animateSorting();
+        playBtn.disabled = true;
+        pauseBtn.disabled = false;
+        return;
+      }
+      
+      if (isSorting) return;
+      
+      // 重置数组为原始状态
+      array = [...originalArray];
+      
+      // 重置统计信息
+      comparisons = 0;
+      swaps = 0;
+      updateStats();
+      
+      // 生成算法步骤
+      algorithmSteps = [];
+      currentStep = 0;
+      sortedRanges = [];
+      
+      // 根据选择的算法生成步骤
+      const startTime = performance.now();
+      
+      if (currentAlgorithm === 'bubble') {
+        generateBubbleSortSteps();
+      } else if (currentAlgorithm === 'quick') {
+        generateQuickSortSteps(0, array.length - 1);
+      } else {
+        generateBinarySortSteps();
+      }
+      
+      const endTime = performance.now();
+      
+      // 保存算法统计信息
+      algorithmStats[currentAlgorithm].comparisons = comparisons;
+      algorithmStats[currentAlgorithm].swaps = swaps;
+      algorithmStats[currentAlgorithm].time = endTime - startTime;
+      
+      // 更新算法对比统计
+      updateAlgorithmStats();
+      
+      // 开始动画
+      isSorting = true;
+      isPaused = false;
+      
+      // 更新按钮状态
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resetBtn.disabled = false;
+      
+      // 显示算法信息
+      algorithmInfo.classList.remove('hidden');
+      stepInfo.classList.remove('hidden');
+      
+      // 开始动画
+      animateSorting();
+    }
+    
+    // 暂停排序
+    function pauseSorting() {
+      if (!isSorting || isPaused) return;
+      
+      isPaused = true;
+      cancelAnimationFrame(animationFrameId);
+      
+      // 更新按钮状态
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+    }
+    
+    // 重置排序
+    function resetSorting() {
+      if (!isSorting) return;
+      
+      // 停止动画
+      isSorting = false;
+      isPaused = false;
+      cancelAnimationFrame(animationFrameId);
+      
+      // 重置数组为原始状态
+      array = [...originalArray];
+      
+      // 绘制数组
+      drawArray();
+      
+      // 重置统计信息
+      comparisons = 0;
+      swaps = 0;
+      updateStats();
+      
+      // 隐藏算法信息
+      algorithmInfo.classList.add('hidden');
+      stepInfo.classList.add('hidden');
+      
+      // 更新按钮状态
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+      resetBtn.disabled = true;
+    }
+    
+    // 生成冒泡排序步骤
+    function generateBubbleSortSteps() {
+      const tempArray = [...array];
+      
+      for (let i = 0; i < tempArray.length - 1; i++) {
+        let swapped = false;
+        
+        for (let j = 0; j < tempArray.length - i - 1; j++) {
+          // 比较步骤
+          comparisons++;
+          algorithmSteps.push({
+            type: 'compare',
+            indices: [j, j + 1],
+            array: [...tempArray]
+          });
+          
+          if (tempArray[j] > tempArray[j + 1]) {
+            // 交换步骤
+            swaps++;
+            [tempArray[j], tempArray[j + 1]] = [tempArray[j + 1], tempArray[j]];
+            
+            algorithmSteps.push({
+              type: 'swap',
+              indices: [j, j + 1],
+              array: [...tempArray]
+            });
+            
+            swapped = true;
+          }
+        }
+        
+        // 标记已排序的元素
+        algorithmSteps.push({
+          type: 'sorted',
+          indices: [tempArray.length - i - 1],
+          array: [...tempArray]
+        });
+        
+        // 如果没有交换，数组已经有序
+        if (!swapped) {
+          // 标记剩余元素为已排序
+          for (let k = 0; k < tempArray.length - i - 1; k++) {
+            algorithmSteps.push({
+              type: 'sorted',
+              indices: [k],
+              array: [...tempArray]
+            });
+          }
+          break;
+        }
+      }
+      
+      // 标记第一个元素为已排序（如果还没有标记）
+      if (algorithmSteps.length > 0) {
+        const lastStep = algorithmSteps[algorithmSteps.length - 1];
+        if (!lastStep.indices.includes(0)) {
+          algorithmSteps.push({
+            type: 'sorted',
+            indices: [0],
+            array: [...tempArray]
+          });
+        }
+      }
+      
+      // 添加完成步骤
+      algorithmSteps.push({
+        type: 'complete',
+        array: [...tempArray]
+      });
+    }
+    
+    // 生成快速排序步骤
+    function generateQuickSortSteps(low, high) {
+      const tempArray = [...array];
+      
+      if (low < high) {
+        // 分区
+        const pivotIndex = partition(tempArray, low, high);
+        
+        // 递归排序左半部分
+        generateQuickSortSteps(low, pivotIndex - 1);
+        
+        // 递归排序右半部分
+        generateQuickSortSteps(pivotIndex + 1, high);
+      } else if (low === high) {
+        // 单个元素已排序
+        algorithmSteps.push({
+          type: 'sorted',
+          indices: [low],
+          array: [...array]
+        });
+      }
+    }
+    
+    // 快速排序分区函数
+    function partition(arr, low, high) {
+      const pivot = arr[high];
+      let i = low - 1;
+      
+      // 记录原始数组状态
+      const originalArray = [...array];
+      
+      // 标记枢轴元素
+      algorithmSteps.push({
+        type: 'pivot',
+        indices: [high],
+        array: [...array]
+      });
+      
+      for (let j = low; j < high; j++) {
+        // 比较步骤
+        comparisons++;
+        algorithmSteps.push({
+          type: 'compare',
+          indices: [j, high],
+          array: [...array]
+        });
+        
+        if (arr[j] < pivot) {
+          i++;
+          
+          // 交换步骤
+          if (i !== j) {
+            swaps++;
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            [array[i], array[j]] = [array[j], array[i]];
+            
+            algorithmSteps.push({
+              type: 'swap',
+              indices: [i, j],
+              array: [...array]
+            });
+          }
+        }
+      }
+      
+      // 将枢轴元素放到正确位置
+      if (i + 1 !== high) {
+        swaps++;
+        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+        [array[i + 1], array[high]] = [array[high], array[i + 1]];
+        
+        algorithmSteps.push({
+          type: 'swap',
+          indices: [i + 1, high],
+          array: [...array]
+        });
+      }
+      
+      // 标记枢轴元素为已排序
+      algorithmSteps.push({
+        type: 'sorted',
+        indices: [i + 1],
+        array: [...array]
+      });
+      
+      return i + 1;
+    }
+    
+    // 动画排序过程
+    function animateSorting() {
+      if (!isSorting || isPaused) return;
+      
+      if (currentStep >= algorithmSteps.length) {
+        // 排序完成
+        isSorting = false;
+        
+        // 更新按钮状态
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        resetBtn.disabled = false;
+        
+        // 更新步骤信息
+        stepInfo.innerHTML = '<p class="font-medium text-success">排序完成！</p>';
+        
+        return;
+      }
+      
+      // 获取当前步骤
+      const step = algorithmSteps[currentStep];
+      
+      // 更新数组
+      array = [...step.array];
+      
+      // 绘制数组
+      drawArray(step);
+      
+      // 更新步骤信息
+      updateStepInfo(step);
+      
+      // 增加步骤索引
+      currentStep++;
+      
+      // 根据动画速度设置延迟
+      const delay = 600 - (animationSpeed * 100);
+      
+      setTimeout(() => {
+        animationFrameId = requestAnimationFrame(animateSorting);
+      }, delay);
+    }
+    
+    // 绘制数组
+    function drawArray(step = null) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const width = canvas.width;
+      const height = canvas.height;
+      const maxValue = Math.max(...array);
+      const barWidth = width / array.length - 2;
+      const barSpacing = 2;
+      
+      // 绘制已排序区间背景
+      for (const range of sortedRanges) {
+        if (range.start <= range.end) {
+          const startX = range.start * (barWidth + barSpacing) + barSpacing;
+          const endX = (range.end + 1) * (barWidth + barSpacing);
+          ctx.fillStyle = 'rgba(16, 185, 129, 0.1)'; // 淡绿色背景
+          ctx.fillRect(startX, 20, endX - startX, height - 40);
+          
+          // 绘制已排序区间边框
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(startX, 20, endX - startX, height - 40);
+          
+          // 绘制"已排序"标签
+          ctx.fillStyle = '#10b981';
+          ctx.font = '12px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('已排序', startX + (endX - startX) / 2, 15);
+        }
+      }
+      
+      // 绘制数组元素
+      for (let i = 0; i < array.length; i++) {
+        const barHeight = (array[i] / maxValue) * (height - 40);
+        const x = i * (barWidth + barSpacing) + barSpacing;
+        const y = height - barHeight - 20;
+        
+        // 设置颜色
+        let color = '#6366f1'; // 默认颜色
+        let borderColor = null;
+        let borderWidth = 0;
+        
+        if (step) {
+          // 根据步骤类型设置颜色和动画效果
+          if (step.type === 'compare' && step.indices.includes(i)) {
+            color = '#ec4899'; // 比较的元素为粉色
+            borderColor = '#be185d';
+            borderWidth = 2;
+            
+            // 如果是比较步骤，绘制比较线
+            if (step.indices.length === 2) {
+              const otherIndex = step.indices[0] === i ? step.indices[1] : step.indices[0];
+              const otherX = otherIndex * (barWidth + barSpacing) + barSpacing + barWidth / 2;
+              const otherY = height - (array[otherIndex] / maxValue) * (height - 40) - 20;
+              
+              // 绘制比较线
+              ctx.beginPath();
+              ctx.moveTo(x + barWidth / 2, y - 10);
+              ctx.lineTo(otherX, otherY - 10);
+              ctx.strokeStyle = '#ec4899';
+              ctx.lineWidth = 2;
+              ctx.stroke();
+              
+              // 绘制比较符号
+              ctx.fillStyle = '#ec4899';
+              ctx.font = '14px Arial';
+              ctx.textAlign = 'center';
+              const midX = (x + otherX) / 2;
+              const midY = Math.min(y, otherY) - 20;
+              ctx.fillText(array[i] <= array[otherIndex] ? '≤' : '>', midX, midY);
+            }
+          } else if (step.type === 'swap' && step.indices.includes(i)) {
+            color = '#f59e0b'; // 交换的元素为橙色
+            borderColor = '#d97706';
+            borderWidth = 3;
+            
+            // 如果是交换步骤，绘制交换动画效果
+            if (step.indices.length === 2) {
+              const otherIndex = step.indices[0] === i ? step.indices[1] : step.indices[0];
+              const otherX = otherIndex * (barWidth + barSpacing) + barSpacing + barWidth / 2;
+              const otherY = height - (array[otherIndex] / maxValue) * (height - 40) - 20;
+              
+              // 绘制交换箭头
+              ctx.beginPath();
+              ctx.moveTo(x + barWidth / 2, y - 15);
+              ctx.lineTo(x + barWidth / 2, y - 30);
+              ctx.lineTo(otherX, y - 30);
+              ctx.lineTo(otherX, otherY - 15);
+              ctx.strokeStyle = '#f59e0b';
+              ctx.lineWidth = 2;
+              ctx.stroke();
+              
+              // 绘制箭头头部
+              ctx.beginPath();
+              ctx.moveTo(otherX, otherY - 15);
+              ctx.lineTo(otherX - 5, otherY - 20);
+              ctx.lineTo(otherX + 5, otherY - 20);
+              ctx.closePath();
+              ctx.fillStyle = '#f59e0b';
+              ctx.fill();
+            }
+          } else if (step.type === 'sorted' && step.indices.includes(i)) {
+            color = '#10b981'; // 已排序的元素为绿色
+            borderColor = '#059669';
+            borderWidth = 2;
+          } else if (step.type === 'pivot' && step.indices.includes(i)) {
+            color = '#ef4444'; // 枢轴元素为红色
+            borderColor = '#dc2626';
+            borderWidth = 3;
+          } else if (step.type === 'select' && step.indices.includes(i)) {
+            color = '#3b82f6'; // 选中的元素为蓝色
+            borderColor = '#2563eb';
+            borderWidth = 2;
+          } else if (step.type === 'shift' && i >= step.indices[0] && i <= step.indices[1]) {
+            color = '#8b5cf6'; // 要移动的元素为紫色
+            borderColor = '#7c3aed';
+            borderWidth = 2;
+          }
+        }
+        
+        // 绘制柱状图
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, barWidth, barHeight);
+        
+        // 绘制边框
+        if (borderColor) {
+          ctx.strokeStyle = borderColor;
+          ctx.lineWidth = borderWidth;
+          ctx.strokeRect(x, y, barWidth, barHeight);
+        }
+        
+        // 绘制数值
+        ctx.fillStyle = '#e0e7ff';
+        ctx.font = '10px Arial';
+        ctx.textAlign = 'center';
+        
+        // 只有当柱状图足够高时才显示数值
+        if (barHeight > 15) {
+          ctx.fillText(array[i], x + barWidth / 2, y + 12);
+        }
+      }
+      
+      // 绘制比较次数差异（如果两种算法都已执行）
+      if (algorithmStats.bubble.comparisons > 0 && algorithmStats.quick.comparisons > 0) {
+        const diff = algorithmStats.bubble.comparisons - algorithmStats.quick.comparisons;
+        const percentage = Math.abs(Math.round((diff / algorithmStats.bubble.comparisons) * 100));
+        
+        ctx.fillStyle = '#e0e7ff';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'right';
+        ctx.fillText(`冒泡排序比快速排序${diff > 0 ? '多' : '少'}${percentage}%的比较次数`, width - 20, 30);
+      }
+    }
+    
+    // 更新步骤信息
+    function updateStepInfo(step) {
+      let info = '';
+      
+      switch (step.type) {
+        case 'compare':
+          info = `<p class="font-medium">比较元素: <span class="text-danger">${step.indices[0]}</span> 和 <span class="text-danger">${step.indices[1]}</span></p>`;
+          info += `<p class="text-sm">值比较: ${array[step.indices[0]]} ${array[step.indices[0]] <= array[step.indices[1]] ? '≤' : '>'} ${array[step.indices[1]]}</p>`;
+          break;
+        case 'swap':
+          info = `<p class="font-medium">交换元素: <span class="text-warning">${step.indices[0]}</span> 和 <span class="text-warning">${step.indices[1]}</span></p>`;
+          info += `<p class="text-sm">交换值: ${array[step.indices[1]]} ↔ ${array[step.indices[0]]}</p>`;
+          break;
+        case 'sorted':
+          info = `<p class="font-medium">元素 <span class="text-success">${step.indices[0]}</span> 已排序</p>`;
+          if (sortedRanges.length > 0) {
+            const range = sortedRanges[0];
+            info += `<p class="text-sm">已排序区间: [${range.start}, ${range.end}]</p>`;
+          }
+          break;
+        case 'pivot':
+          info = `<p class="font-medium">选择枢轴元素: <span class="text-danger">${step.indices[0]}</span></p>`;
+          info += `<p class="text-sm">枢轴值: ${array[step.indices[0]]}</p>`;
+          break;
+        case 'select':
+          info = `<p class="font-medium">选择元素: <span class="text-info">${step.indices[0]}</span></p>`;
+          info += `<p class="text-sm">当前值: ${array[step.indices[0]]}</p>`;
+          break;
+        case 'shift':
+          info = `<p class="font-medium">移动元素范围: <span class="text-secondary">${step.indices[0]}</span> 到 <span class="text-secondary">${step.indices[1]}</span></p>`;
+          break;
+        case 'complete':
+          info = '<p class="font-medium text-success">排序完成！</p>';
+          info += `<p class="text-sm">总比较次数: ${comparisons}</p>`;
+          info += `<p class="text-sm">总交换次数: ${swaps}</p>`;
+          break;
+      }
+      
+      stepInfo.innerHTML = info;
+    }
+    
+    // 更新统计信息
+    function updateStats() {
+      comparisonsElement.textContent = `比较次数: ${comparisons}`;
+      swapsElement.textContent = `交换次数: ${swaps}`;
+    }
+    
+    // 生成二分排序步骤
+    function generateBinarySortSteps() {
+      const tempArray = [...array];
+      
+      // 第一个元素已经排序
+      algorithmSteps.push({
+        type: 'sorted',
+        indices: [0],
+        array: [...tempArray]
+      });
+      
+      // 标记已排序区间
+      sortedRanges.push({start: 0, end: 0});
+      
+      for (let i = 1; i < tempArray.length; i++) {
+        const currentValue = tempArray[i];
+        let left = 0;
+        let right = i - 1;
+        let insertPos = i;
+        
+        // 记录当前要插入的元素
+        algorithmSteps.push({
+          type: 'select',
+          indices: [i],
+          array: [...tempArray]
+        });
+        
+        // 二分查找插入位置
+        while (left <= right) {
+          const mid = Math.floor((left + right) / 2);
+          
+          // 比较步骤
+          comparisons++;
+          algorithmSteps.push({
+            type: 'compare',
+            indices: [mid, i],
+            array: [...tempArray]
+          });
+          
+          if (tempArray[mid] > currentValue) {
+            right = mid - 1;
+            insertPos = mid;
+          } else {
+            left = mid + 1;
+            insertPos = left;
+          }
+        }
+        
+        // 如果插入位置不是当前位置，则需要移动元素
+        if (insertPos !== i) {
+          // 标记要移动的元素范围
+          algorithmSteps.push({
+            type: 'shift',
+            indices: [insertPos, i],
+            array: [...tempArray]
+          });
+          
+          // 移动元素
+          for (let j = i; j > insertPos; j--) {
+            swaps++;
+            [tempArray[j], tempArray[j - 1]] = [tempArray[j - 1], tempArray[j]];
+            
+            algorithmSteps.push({
+              type: 'swap',
+              indices: [j, j - 1],
+              array: [...tempArray]
+            });
+          }
+        }
+        
+        // 标记已排序区间扩展
+        algorithmSteps.push({
+          type: 'sorted',
+          indices: [i],
+          array: [...tempArray]
+        });
+        
+        // 更新已排序区间
+        sortedRanges[0].end = i;
+      }
+      
+      // 添加完成步骤
+      algorithmSteps.push({
+        type: 'complete',
+        array: [...tempArray]
+      });
+    }
+
+    // 重置统计信息
+    function resetStats() {
+      comparisons = 0;
+      swaps = 0;
+      sortedRanges = [];
+      updateStats();
+    }
+    
+    // 更新算法对比统计
+    function updateAlgorithmStats() {
+      // 更新冒泡排序统计
+      if (algorithmStats.bubble.comparisons > 0) {
+        bubbleStats.textContent = `${algorithmStats.bubble.comparisons}次比较, ${algorithmStats.bubble.swaps}次交换`;
+      } else {
+        bubbleStats.textContent = '--';
+      }
+      
+      // 更新快速排序统计
+      if (algorithmStats.quick.comparisons > 0) {
+        quickStats.textContent = `${algorithmStats.quick.comparisons}次比较, ${algorithmStats.quick.swaps}次交换`;
+      } else {
+        quickStats.textContent = '--';
+      }
+      
+      // 更新二分排序统计
+      if (algorithmStats.binary.comparisons > 0) {
+        document.getElementById('binary-stats').textContent = `${algorithmStats.binary.comparisons}次比较, ${algorithmStats.binary.swaps}次交换`;
+      } else {
+        document.getElementById('binary-stats').textContent = '--';
+      }
+    }
+    
+    // 初始化
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

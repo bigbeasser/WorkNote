@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飞书 × Hermes Agent 工作流程图</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #020617;
+      min-height: 100vh;
+      padding: 2rem;
+      color: white;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { margin-bottom: 2rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot { width: 12px; height: 12px; background: #22d3ee; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+    .diagram-container {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 1rem;
+      border: 1px solid #1e293b;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+    svg { width: 100%; min-width: 900px; display: block; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 0.75rem;
+      border: 1px solid #1e293b;
+      padding: 1.25rem;
+    }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; }
+    .card-dot.emerald { background: #34d399; }
+    .card-dot.violet { background: #a78bfa; }
+    .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>飞书 × Hermes Agent 工作流程</h1>
+      </div>
+      <p class="subtitle">消息从飞书发出 → 经 Gateway 转发 → Agent 处理 → 回复飞书</p>
+    </div>
+
+    <!-- Main Diagram -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 1050 720">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+          </marker>
+          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee" />
+          </marker>
+          <marker id="arrowhead-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+          </marker>
+          <marker id="arrowhead-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa" />
+          </marker>
+          <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+          </marker>
+          <marker id="arrowhead-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Background Grid -->
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- ============ ARROWS (drawn first, behind components) ============ -->
+
+        <!-- Step 1: User → Feishu App -->
+        <line x1="95" y1="135" x2="95" y2="188" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+        <text x="110" y="165" fill="#22d3ee" font-size="8">① 发送消息</text>
+
+        <!-- Step 2: Feishu App → Feishu Cloud (Event Subscription) -->
+        <line x1="95" y1="250" x2="95" y2="298" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+        <text x="110" y="278" fill="#22d3ee" font-size="8">② 事件推送</text>
+
+        <!-- Step 3: Feishu Cloud → Gateway (Webhook) -->
+        <line x1="155" y1="340" x2="228" y2="340" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
+        <text x="192" y="332" fill="#fbbf24" font-size="8" text-anchor="middle">③ Webhook</text>
+
+        <!-- Step 4: Gateway → Feishu Adapter -->
+        <line x1="350" y1="340" x2="398" y2="340" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead-emerald)"/>
+        <text x="374" y="332" fill="#34d399" font-size="7" text-anchor="middle">④</text>
+
+        <!-- Step 5: Feishu Adapter → Agent Core -->
+        <line x1="520" y1="340" x2="568" y2="340" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead-emerald)"/>
+        <text x="544" y="332" fill="#34d399" font-size="7" text-anchor="middle">⑤</text>
+
+        <!-- Step 6: Agent Core → LLM Provider -->
+        <line x1="700" y1="310" x2="700" y2="198" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrowhead-violet)"/>
+        <text x="715" y="258" fill="#a78bfa" font-size="8">⑥ 推理请求</text>
+
+        <!-- Step 6b: LLM → Agent Core (response) -->
+        <line x1="720" y1="198" x2="720" y2="310" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowhead-violet)"/>
+        <text x="755" y="258" fill="#a78bfa" font-size="8">⑥ 返回结果</text>
+
+        <!-- Step 7: Agent Core → Tools -->
+        <line x1="700" y1="370" x2="700" y2="418" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <text x="715" y="398" fill="#fb923c" font-size="8">⑦ 调用工具</text>
+
+        <!-- Step 8: Agent Core → Memory/Sessions -->
+        <line x1="650" y1="370" x2="550" y2="498" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowhead-rose)"/>
+        <text x="575" y="440" fill="#fb7185" font-size="8">⑧ 读写记忆</text>
+
+        <!-- Step 9: Agent Core → Response back through Adapter -->
+        <path d="M 600 340 L 520 340" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowhead-emerald)"/>
+        <text x="560" y="358" fill="#34d399" font-size="7" text-anchor="middle">⑨ 回复</text>
+
+        <!-- Step 10: Adapter → Gateway → Feishu Cloud -->
+        <path d="M 400 355 L 350 355 L 230 355 L 155 355" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowhead-amber)"/>
+        <text x="290" y="372" fill="#fbbf24" font-size="8" text-anchor="middle">⑩ API 回复</text>
+
+        <!-- Step 11: Feishu Cloud → Feishu App → User -->
+        <line x1="95" y1="298" x2="95" y2="250" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <line x1="95" y1="188" x2="95" y2="135" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="60" y="278" fill="#22d3ee" font-size="8" text-anchor="end">⑪ 展示</text>
+
+        <!-- ============ COMPONENTS ============ -->
+
+        <!-- === User === -->
+        <rect x="30" y="80" width="130" height="55" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="30" y="80" width="130" height="55" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="95" y="103" fill="white" font-size="12" font-weight="600" text-anchor="middle">👤 用户</text>
+        <text x="95" y="121" fill="#94a3b8" font-size="9" text-anchor="middle">飞书客户端</text>
+
+        <!-- === Feishu App (Bot) === -->
+        <rect x="20" y="190" width="150" height="60" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+        <rect x="20" y="190" width="150" height="60" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="95" y="215" fill="white" font-size="11" font-weight="600" text-anchor="middle">飞书机器人</text>
+        <text x="95" y="233" fill="#94a3b8" font-size="9" text-anchor="middle">Bot App</text>
+
+        <!-- === Feishu Cloud Platform === -->
+        <rect x="15" y="300" width="140" height="80" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+        <rect x="15" y="300" width="140" height="80" rx="8" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="85" y="325" fill="white" font-size="11" font-weight="600" text-anchor="middle">飞书开放平台</text>
+        <text x="85" y="343" fill="#94a3b8" font-size="8" text-anchor="middle">Event Subscription</text>
+        <text x="85" y="358" fill="#94a3b8" font-size="8" text-anchor="middle">Message API</text>
+        <text x="85" y="373" fill="#22d3ee" font-size="7" text-anchor="middle">open.feishu.cn</text>
+
+        <!-- === Hermes Gateway Boundary === -->
+        <rect x="215" y="250" width="330" height="200" rx="12" fill="rgba(251, 191, 36, 0.03)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="228" y="268" fill="#fbbf24" font-size="10" font-weight="600">Hermes Gateway 网关层</text>
+
+        <!-- Gateway Router -->
+        <rect x="230" y="310" width="120" height="60" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+        <rect x="230" y="310" width="120" height="60" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="290" y="335" fill="white" font-size="11" font-weight="600" text-anchor="middle">Gateway Router</text>
+        <text x="290" y="353" fill="#94a3b8" font-size="8" text-anchor="middle">消息路由 & 分发</text>
+
+        <!-- Feishu Adapter -->
+        <rect x="400" y="310" width="120" height="60" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+        <rect x="400" y="310" width="120" height="60" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="460" y="335" fill="white" font-size="11" font-weight="600" text-anchor="middle">飞书适配器</text>
+        <text x="460" y="353" fill="#94a3b8" font-size="8" text-anchor="middle">Feishu Adapter</text>
+
+        <!-- Other adapters (dimmed) -->
+        <rect x="240" y="395" width="70" height="30" rx="4" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+        <text x="275" y="414" fill="#64748b" font-size="8" text-anchor="middle">Telegram</text>
+
+        <rect x="320" y="395" width="70" height="30" rx="4" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+        <text x="355" y="414" fill="#64748b" font-size="8" text-anchor="middle">Discord</text>
+
+        <rect x="400" y="395" width="70" height="30" rx="4" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+        <text x="435" y="414" fill="#64748b" font-size="8" text-anchor="middle">Slack</text>
+
+        <rect x="480" y="395" width="50" height="30" rx="4" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+        <text x="505" y="414" fill="#64748b" font-size="8" text-anchor="middle">...</text>
+
+        <!-- === Agent Core Boundary === -->
+        <rect x="560" y="270" width="200" height="110" rx="12" fill="rgba(52, 211, 153, 0.03)" stroke="#34d399" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="573" y="288" fill="#34d399" font-size="10" font-weight="600">Agent Core 核心引擎</text>
+
+        <!-- Agent Core -->
+        <rect x="580" y="310" width="160" height="60" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+        <rect x="580" y="310" width="160" height="60" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="660" y="333" fill="white" font-size="11" font-weight="600" text-anchor="middle">AI Agent</text>
+        <text x="660" y="350" fill="#94a3b8" font-size="9" text-anchor="middle">对话循环 & 工具调度</text>
+        <text x="660" y="365" fill="#34d399" font-size="7" text-anchor="middle">run_conversation()</text>
+
+        <!-- === LLM Provider === -->
+        <rect x="630" y="130" width="160" height="65" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+        <rect x="630" y="130" width="160" height="65" rx="6" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="710" y="155" fill="white" font-size="11" font-weight="600" text-anchor="middle">LLM 大模型</text>
+        <text x="710" y="173" fill="#94a3b8" font-size="8" text-anchor="middle">OpenRouter / Anthropic</text>
+        <text x="710" y="187" fill="#a78bfa" font-size="7" text-anchor="middle">Qwen / Claude / GPT</text>
+
+        <!-- === Tools === -->
+        <rect x="620" y="420" width="180" height="100" rx="8" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/>
+        <rect x="620" y="420" width="180" height="100" rx="8" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="710" y="443" fill="white" font-size="11" font-weight="600" text-anchor="middle">🛠 工具集 Tools</text>
+        <text x="710" y="462" fill="#94a3b8" font-size="8" text-anchor="middle">• terminal 终端命令</text>
+        <text x="710" y="476" fill="#94a3b8" font-size="8" text-anchor="middle">• file 文件读写</text>
+        <text x="710" y="490" fill="#94a3b8" font-size="8" text-anchor="middle">• web 搜索 & 浏览器</text>
+        <text x="710" y="504" fill="#94a3b8" font-size="8" text-anchor="middle">• feishu_doc / feishu_drive</text>
+
+        <!-- === Memory & Sessions === -->
+        <rect x="420" y="500" width="180" height="90" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+        <rect x="420" y="500" width="180" height="90" rx="8" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="510" y="523" fill="white" font-size="11" font-weight="600" text-anchor="middle">💾 持久化存储</text>
+        <text x="510" y="542" fill="#94a3b8" font-size="8" text-anchor="middle">• Memory 跨会话记忆</text>
+        <text x="510" y="556" fill="#94a3b8" font-size="8" text-anchor="middle">• Sessions 对话历史</text>
+        <text x="510" y="570" fill="#94a3b8" font-size="8" text-anchor="middle">• Skills 技能库</text>
+        <text x="510" y="584" fill="#fb7185" font-size="7" text-anchor="middle">SQLite state.db</text>
+
+        <!-- === Config === -->
+        <rect x="220" y="500" width="170" height="70" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="220" y="500" width="170" height="70" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="305" y="523" fill="white" font-size="11" font-weight="600" text-anchor="middle">⚙️ 配置层</text>
+        <text x="305" y="542" fill="#94a3b8" font-size="8" text-anchor="middle">config.yaml 主配置</text>
+        <text x="305" y="556" fill="#94a3b8" font-size="8" text-anchor="middle">.env API 密钥</text>
+        <text x="305" y="570" fill="#94a3b8" font-size="8" text-anchor="middle">auth.json 凭证池</text>
+
+        <!-- === Cron === -->
+        <rect x="830" y="310" width="140" height="60" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+        <rect x="830" y="310" width="140" height="60" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="900" y="335" fill="white" font-size="11" font-weight="600" text-anchor="middle">⏰ 定时任务</text>
+        <text x="900" y="353" fill="#94a3b8" font-size="8" text-anchor="middle">Cron Scheduler</text>
+
+        <!-- Cron → Agent arrow -->
+        <line x1="830" y1="340" x2="762" y2="340" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowhead-amber)"/>
+
+        <!-- ============ STEP NUMBERS (circled) ============ -->
+        <!-- Flow sequence annotation -->
+        <rect x="20" y="630" width="1010" height="75" rx="8" fill="rgba(15, 23, 42, 0.6)" stroke="#1e293b" stroke-width="1"/>
+        <text x="40" y="652" fill="white" font-size="10" font-weight="600">完整消息流:</text>
+        <text x="40" y="672" fill="#94a3b8" font-size="9">① 用户在飞书发消息 → ② 飞书触发事件订阅 → ③ Webhook 推送到 Gateway → ④ Router 分发给飞书适配器 → ⑤ 适配器解析后交给 Agent Core</text>
+        <text x="40" y="692" fill="#94a3b8" font-size="9">⑥ Agent 调用 LLM 推理 → ⑦ 按需调用工具 → ⑧ 读写记忆/会话 → ⑨ 回复经适配器返回 → ⑩ 调用飞书 API 发送 → ⑪ 用户在飞书看到回复</text>
+
+        <!-- ============ LEGEND ============ -->
+        <text x="840" y="82" fill="white" font-size="10" font-weight="600">图例 Legend</text>
+        
+        <rect x="840" y="94" width="16" height="10" rx="2" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+        <text x="862" y="103" fill="#94a3b8" font-size="8">飞书平台</text>
+        
+        <rect x="840" y="110" width="16" height="10" rx="2" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="862" y="119" fill="#94a3b8" font-size="8">Gateway 网关</text>
+        
+        <rect x="840" y="126" width="16" height="10" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+        <text x="862" y="135" fill="#94a3b8" font-size="8">Agent 核心</text>
+        
+        <rect x="840" y="142" width="16" height="10" rx="2" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1"/>
+        <text x="862" y="151" fill="#94a3b8" font-size="8">LLM 模型</text>
+        
+        <rect x="840" y="158" width="16" height="10" rx="2" fill="rgba(251, 146, 60, 0.3)" stroke="#fb923c" stroke-width="1"/>
+        <text x="862" y="167" fill="#94a3b8" font-size="8">工具集</text>
+        
+        <rect x="840" y="174" width="16" height="10" rx="2" fill="rgba(136, 19, 55, 0.4)" stroke="#fb7185" stroke-width="1"/>
+        <text x="862" y="183" fill="#94a3b8" font-size="8">持久化存储</text>
+
+        <line x1="840" y1="198" x2="856" y2="198" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead-emerald)"/>
+        <text x="862" y="201" fill="#94a3b8" font-size="8">请求流</text>
+
+        <line x1="840" y1="214" x2="856" y2="214" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="862" y="217" fill="#94a3b8" font-size="8">响应流</text>
+
+      </svg>
+    </div>
+
+    <!-- Info Cards: Practical Examples -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3>场景一：查询服务器状态</h3>
+        </div>
+        <ul>
+          <li>• 用户在飞书发: "查一下生产服务器 CPU 使用率"</li>
+          <li>• Gateway 接收 → Agent 解析意图</li>
+          <li>• Agent 调用 terminal 工具: ssh + top/htop</li>
+          <li>• LLM 整理输出，格式化为易读报告</li>
+          <li>• 回复发回飞书，用户直接看到结果</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3>场景二：操作飞书文档</h3>
+        </div>
+        <ul>
+          <li>• 用户在飞书发: "把本周会议纪要写入文档"</li>
+          <li>• Agent 调用 feishu_doc 工具创建文档</li>
+          <li>• 调用 terminal 搜索本周相关聊天记录</li>
+          <li>• LLM 汇总整理成结构化纪要</li>
+          <li>• feishu_doc 写入内容，返回文档链接</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot violet"></div>
+          <h3>场景三：代码审查与部署</h3>
+        </div>
+        <ul>
+          <li>• 用户在飞书发: "review 一下 main 分支最新 PR"</li>
+          <li>• Agent 调用 terminal 执行 git/gh 命令</li>
+          <li>• 读取 diff，LLM 逐文件审查代码质量</li>
+          <li>• 调用 web 工具搜索最佳实践参考</li>
+          <li>• 返回审查意见 + 是否可合并的建议</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot amber"></div>
+          <h3>场景四：定时巡检推送</h3>
+        </div>
+        <ul>
+          <li>• 配置 Cron: 每天早上 9 点执行巡检</li>
+          <li>• Agent 自动检查数据库、API、磁盘空间</li>
+          <li>• 汇总异常项，生成巡检报告</li>
+          <li>• 通过 Gateway 主动推送到飞书群</li>
+          <li>• 无需人工触发，全自动运行</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3>场景五：数据分析与可视化</h3>
+        </div>
+        <ul>
+          <li>• 用户在飞书发: "分析上月销售数据画个趋势图"</li>
+          <li>• Agent 调用 terminal 读取 CSV/数据库</li>
+          <li>• 用 Python 做数据清洗和统计分析</li>
+          <li>• 生成 matplotlib 图表保存为图片</li>
+          <li>• 图片 + 文字分析一起发回飞书</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3>关键配置要点</h3>
+        </div>
+        <ul>
+          <li>• hermes gateway setup → 配置飞书 App ID/Secret</li>
+          <li>• 飞书开放平台开启事件订阅 (im.message.receive_v1)</li>
+          <li>• 配置 Request URL 指向 Hermes Gateway 地址</li>
+          <li>• hermes gateway install → 安装为后台服务</li>
+          <li>• 支持私聊和群聊 @机器人 两种触发方式</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer">
+      飞书 × Hermes Agent • 消息全链路处理架构 • Nous Research
+    </p>
+  </div>
+</body>
+</html>

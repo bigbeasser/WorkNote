@@ -2,6 +2,7 @@
 type: Note
 related_to: "[[tolaria]]"
 onboarding: 9
+_archived: true
 ---
 # Command Palette
 

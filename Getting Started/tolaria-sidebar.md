@@ -1,7 +1,8 @@
 ---
-type: Note
 related_to: "[[tolaria]]"
 onboarding: 2
+type: Note
+_archived: true
 ---
 # Sidebar
 

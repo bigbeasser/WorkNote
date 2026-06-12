@@ -2,6 +2,7 @@
 type: Note
 related_to: "[[tolaria]]"
 onboarding: 5
+_archived: true
 ---
 # Properties Panel
 

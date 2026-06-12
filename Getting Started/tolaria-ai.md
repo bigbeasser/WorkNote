@@ -2,6 +2,7 @@
 type: Note
 related_to: "[[tolaria]]"
 onboarding: 7
+_archived: true
 ---
 # AI in Tolaria
 

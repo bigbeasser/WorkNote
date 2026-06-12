@@ -2,6 +2,7 @@
 type: Note
 related_to: "[[tolaria]]"
 onboarding: 6.5
+_archived: true
 ---
 # Multiple Vaults
 

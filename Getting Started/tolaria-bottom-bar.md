@@ -2,6 +2,7 @@
 type: Note
 related_to: "[[tolaria]]"
 onboarding: 6
+_archived: true
 ---
 # Bottom Bar
 

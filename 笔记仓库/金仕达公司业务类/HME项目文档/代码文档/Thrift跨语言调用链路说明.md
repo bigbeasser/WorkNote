@@ -4,11 +4,10 @@
 
 本文档说明系统在什么前后文下会触发 Thrift 跨语言调用、为什么需要调用、以及 `API.Pricing` 在链路中的计算职责。
 
-核心结论：
-
-- `ThriftApiManager.APIs` 当前基本不参与运行时分发（更偏历史注册表）。
-- 当前生效的分发方式是：`ThriftServiceManagerProcessor.execute(...)` 通过 `apiKey` 动态 `getBean` + 反射执行 `cmd`。
-- Thrift 跨语言调用通常发生在 **Java 业务执行 Python 公式** 时，Python 侧通过 `utils.py -> ctrm_thrift_client.py` 反向调用 Java 计算能力。
+> [!summary] 核心结论
+> - `ThriftApiManager.APIs` 当前基本不参与运行时分发（更偏历史注册表）
+> - 当前生效的分发方式是：`ThriftServiceManagerProcessor.execute(...)` 通过 `apiKey` 动态 `getBean` + 反射执行 `cmd`
+> - Thrift 跨语言调用通常发生在 **Java 业务执行 Python 公式** 时，Python 侧通过 `utils.py -> ctrm_thrift_client.py` 反向调用 Java 计算能力
 
 ---
 
@@ -68,13 +67,17 @@ M --> N[Java 业务继续处理并响应前端]
 
 ## 4. 为什么会调用 Thrift
 
-设计目的：**让 Python 公式可动态编排，同时复用 Java 已有核心业务能力**。
+> [!info] 设计目的
+> **让 Python 公式可动态编排，同时复用 Java 已有核心业务能力**
 
-- Python 负责公式表达和灵活编排（脚本快速变化）。
-- Java 负责稳定的核心能力：数据库访问、估值、曲线取价、汇率与单位换算等。
-- Thrift 作为跨语言 RPC 桥梁，让 Python 在运行公式时按需调用 Java 能力。
+| 角色 | 职责 |
+| :---: | :--- |
+| **Python** | 负责公式表达和灵活编排（脚本快速变化） |
+| **Java** | 负责稳定的核心能力：数据库访问、估值、曲线取价、汇率与单位换算等 |
+| **Thrift** | 作为跨语言 RPC 桥梁，让 Python 在运行公式时按需调用 Java 能力 |
 
-因此，触发条件不是“进入点价模块就调用 Thrift”，而是“公式运行过程中需要 Java 核心能力时才调用”。
+> [!note] 触发条件
+> 触发条件不是”进入点价模块就调用 Thrift”，而是”**公式运行过程中需要 Java 核心能力时才调用**”。
 
 ---
 
@@ -147,20 +150,23 @@ M --> N[Java 业务继续处理并响应前端]
 
 ---
 
-## 9. 排查建议（定位“是否触发了 Thrift”）
+## 9. 排查建议（定位”是否触发了 Thrift”）
 
-可按以下顺序排查：
-
-1. 先确认入口是否执行到 `PythonUtils.exec_python(...)`。
-2. 确认执行的 Python 脚本是否引用并调用了 `utils.py` 中 `_c.execute(...)` 路径。
-3. 确认 Thrift 服务端是否已启动（`ThriftServer.Start(...)`，端口默认 `9000`）。
-4. 若有异常，优先看 `ThriftServiceManagerProcessor.execute(...)` 中日志（`API.KEY`、`API.CMD`、`API.UUID`）。
+> [!tip] 排查步骤
+> 可按以下顺序排查：
+> 1. 先确认入口是否执行到 `PythonUtils.exec_python(...)`
+> 2. 确认执行的 Python 脚本是否引用并调用了 `utils.py` 中 `_c.execute(...)` 路径
+> 3. 确认 Thrift 服务端是否已启动（`ThriftServer.Start(...)`，端口默认 `9000`）
+> 4. 若有异常，优先看 `ThriftServiceManagerProcessor.execute(...)` 中日志（`API.KEY`、`API.CMD`、`API.UUID`）
 
 ---
 
 ## 10. 术语对照
 
-- `apiKey`：Spring Bean 名（例如 `API.Pricing`）。
-- `cmd`：要反射调用的方法名（例如 `fetch`）。
-- `uuid`：参数暂存与执行关联标识，用于 Redis 中转。
+> [!note] 关键术语
+> | 术语 | 说明 |
+> | :---: | :--- |
+> | `apiKey` | Spring Bean 名（例如 `API.Pricing`） |
+> | `cmd` | 要反射调用的方法名（例如 `fetch`） |
+> | `uuid` | 参数暂存与执行关联标识，用于 Redis 中转 |
 

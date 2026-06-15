@@ -2,11 +2,12 @@
 
 ## 1. 方法范围
 
-- 方法：`ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments(Long id, Integer modify)`
-- 关注点：
-  - 删除分支（`actionId=40` 且存在删除行/整单删除）
-  - 常规分支（构建模型后进入 `b47` 引擎）
-  - 现金流联动（`cashFlowProjectionService`、`a155/a156`）
+> [!info] 分析目标
+> - **方法**：`ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments(Long id, Integer modify)`
+> - **关注点**：
+>   - 删除分支（`actionId=40` 且存在删除行/整单删除）
+>   - 常规分支（构建模型后进入 `b47` 引擎）
+>   - 现金流联动（`cashFlowProjectionService`、`a155/a156`）
 
 ---
 
@@ -142,23 +143,29 @@ sequenceDiagram
 
 ## 4. 数据一致性与排查建议（表级）
 
-- 删除分支出现“收发货已删但现金流未重建”时，优先核查：
-  - `receipt_delivery_details.inactive_flag`
-  - `cashflow_model_header_values / cashflow_model_values / cashflow_model_pricing_detail_values`
-  - `physical_deal_id` 与 `SO` 维度是否一致
-- 常规分支出现“主明细更新了但子表未同步”时，检查：
-  - `receipt_delivery_events / receipt_delivery_quantities / receipt_delivery_specifications`
-  - `b34` 对应步骤是否执行到（可通过日志关键字或断点）
-- 费用映射异常时，重点对比：
-  - `charge.charge_type=document` 与 `charge_type=receiptDeliveryDetail`
-  - `charge_level=ReceiptDelivery`
+> [!tip] 排查指南
+> **删除分支**出现”收发货已删但现金流未重建”时，优先核查：
+> - `receipt_delivery_details.inactive_flag`
+> - `cashflow_model_header_values / cashflow_model_values / cashflow_model_pricing_detail_values`
+> - `physical_deal_id` 与 `SO` 维度是否一致
+>
+> **常规分支**出现”主明细更新了但子表未同步”时，检查：
+> - `receipt_delivery_events / receipt_delivery_quantities / receipt_delivery_specifications`
+> - `b34` 对应步骤是否执行到（可通过日志关键字或断点）
+>
+> **费用映射异常**时，重点对比：
+> - `charge.charge_type=document` 与 `charge_type=receiptDeliveryDetail`
+> - `charge_level=ReceiptDelivery`
 
 ---
 
 ## 5. 附：快速核对 SQL 维度
 
-- 按单据核查：`document_id`、`document_number`、`reference_number`
-- 按明细核查：`header_id`（document item id）、`receipt_delivery_id`
-- 按合同核查：`physical_deal_id`、`link_id`
-- 按现金流核查：`cashflow_model_header_value_id`、`cashflow_model_value_id`
+> [!note] SQL 核对维度
+> | 维度 | 关键字段 |
+> | :---: | :--- |
+> | 按单据核查 | `document_id`、`document_number`、`reference_number` |
+> | 按明细核查 | `header_id`（document item id）、`receipt_delivery_id` |
+> | 按合同核查 | `physical_deal_id`、`link_id` |
+> | 按现金流核查 | `cashflow_model_header_value_id`、`cashflow_model_value_id` |
 

@@ -3,14 +3,16 @@ type: 代码文档
 ---
 # 定价明细（MovementPrice）生成逻辑文档
 
-> 生成日期：2026-06-10
-> 源码位置：`MovementPriceServiceImpl.java`
+> [!info] 文档信息
+> - **生成日期**：2026-06-10
+> - **源码位置**：`MovementPriceServiceImpl.java`
 
 ---
 
 ## 一、概述
 
-定价明细系统用于记录订单的敞口变动历史，通过不同的 `movementActionType` 标识不同的业务操作。 
+> [!abstract] 功能说明
+> 定价明细系统用于记录订单的敞口变动历史，通过不同的 `movementActionType` 标识不同的业务操作。 
 
 ### 核心字段说明
 
@@ -395,10 +397,11 @@ flowchart LR
 
 ## 八、注意事项
 
-1. **点价类型（BasicTriggeredPrice）** 在合同提交和补充协议提交时都不生成定价明细，只在日结处理时生成 RI-/RI+
-2. **均价预生成记录**（valid=-1）在合同撤销时会被标记为 `inactiveFlag=true`，而不是生成 CC-
-3. **日结处理** 时，RI+ 记录的价格信息来自 `CashflowModelValuesRes`，包含 spread、otherCostPrice、settlementNetPrice
-4. **补充协议** 在计价期内，只有修改关键字段（数量、单位、币种、税率、升贴水）才会生成新的定价明细
-5. **点价单提交** 时，如果当前时间超过 12:30 且生成的是 FIX 类型，`dailySettlementDate` 会调整为下一个工作日
-6. **合同撤销** 时，排除 RI- 和 CC- 类型的记录（它们本身已经是冲销记录），排除点价类型（BasicTriggeredPrice）
-7. **日结触发时机**：一般约定到时间手动触发，不是定时任务自动执行
+> [!warning] 重要规则
+> 1. **点价类型（BasicTriggeredPrice）** 在合同提交和补充协议提交时都不生成定价明细，只在日结处理时生成 RI-/RI+
+> 2. **均价预生成记录**（valid=-1）在合同撤销时会被标记为 `inactiveFlag=true`，而不是生成 CC-
+> 3. **日结处理** 时，RI+ 记录的价格信息来自 `CashflowModelValuesRes`，包含 spread、otherCostPrice、settlementNetPrice
+> 4. **补充协议** 在计价期内，只有修改关键字段（数量、单位、币种、税率、升贴水）才会生成新的定价明细
+> 5. **点价单提交** 时，如果当前时间超过 12:30 且生成的是 FIX 类型，`dailySettlementDate` 会调整为下一个工作日
+> 6. **合同撤销** 时，排除 RI- 和 CC- 类型的记录（它们本身已经是冲销记录），排除点价类型（BasicTriggeredPrice）
+> 7. **日结触发时机**：一般约定到时间手动触发，不是定时任务自动执行

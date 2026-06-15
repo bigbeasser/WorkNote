@@ -2,12 +2,12 @@
 
 ## 1. 文档目的
 
-本文用于紧急修复 `ExecuteHMEFlowTask.execute(String args)` 相关日结缺陷，重点回答：
-
-- 日结入口方法每一步在做什么；
-- 哪些是核心业务方法，哪些是工具方法；
-- 下游真实业务处理（价格、计价量、现金流、Session、系统日期推进）分别在哪；
-- 建议修复时应采用的调用流程（附流程图）。
+> [!abstract] 本文目标
+> 本文用于紧急修复 `ExecuteHMEFlowTask.execute(String args)` 相关日结缺陷，重点回答：
+> - 日结入口方法每一步在做什么
+> - 哪些是核心业务方法，哪些是工具方法
+> - 下游真实业务处理（价格、计价量、现金流、Session、系统日期推进）分别在哪
+> - 建议修复时应采用的调用流程（附流程图）
 
 ***
 
@@ -277,50 +277,50 @@ flowchart TD
 
 ## 7. 紧急修复建议（针对 execute 区域）
 
-### 建议 1：修复/确认流程变量 `curveDate` 的来源一致性
+> [!warning]- 建议 1：修复/确认流程变量 `curveDate` 的来源一致性
+> 当前代码固定：`variables.put(“curveDate”, LocalDate.now())`。
+>
+> 建议优先改为业务上下文日期（例如 `parameter.curveDate` 或 Redis 中 `EOD:CurveDate`），避免流程节点使用”系统当前日”导致错日结算。
 
-当前代码固定：`variables.put("curveDate", LocalDate.now())`。\
-\
-建议优先改为业务上下文日期（例如 `parameter.curveDate` 或 Redis 中 `EOD:CurveDate`），避免流程节点使用“系统当前日”导致错日结算。
+> [!warning]- 建议 2：对 `parameter.key`、`legalEntityId`、`date` 增强前置校验
+> - `parameter.key` 为空时，流程定义查询直接失败
+> - `legalEntityId` 非数字会在 `Long.parseLong` 失败
+> - `date` 可能为空导致 `EOD:Finished:null-xxx`
+>
+> 建议在启动流程前集中校验并记录结构化错误日志。
 
-### 建议 2：对 `parameter.key`、`legalEntityId`、`date` 增强前置校验
+> [!warning]- 建议 3：把”机构弹出 + 启动流程”变为可观测事务边界
+> 当前 `setPop` 后如果流程启动失败，机构可能丢失重试机会。
+>
+> 建议增加失败回补机制（例如失败时重新 `sSet` 当前机构）或持久化待处理列表。
 
-- `parameter.key` 为空时，流程定义查询直接失败；
-- `legalEntityId` 非数字会在 `Long.parseLong` 失败；
-- `date` 可能为空导致 `EOD:Finished:null-xxx`。
-
-建议在启动流程前集中校验并记录结构化错误日志。
-
-### 建议 3：把“机构弹出 + 启动流程”变为可观测事务边界
-
-当前 `setPop` 后如果流程启动失败，机构可能丢失重试机会。\
-\
-建议增加失败回补机制（例如失败时重新 `sSet` 当前机构）或持久化待处理列表。
-
-### 建议 4：将 `EOD:Status` 更新策略细化
-
-目前在多个位置直接设置 RUNNING/SUCCEED/TEMP_COMPLETE。\
-\
-建议补充“机构级状态 + 全局状态”双层状态，避免多机构串行时误判全局已完成。
+> [!warning] 建议 4：将 `EOD:Status` 更新策略细化
+> 目前在多个位置直接设置 RUNNING/SUCCEED/TEMP_COMPLETE。
+>
+> 建议补充”机构级状态 + 全局状态”双层状态，避免多机构串行时误判全局已完成。
 
 ***
 
 ## 8. 修复后最小回归清单
 
-1. 单机构日结：价格计算、movement 更新、session 推进、状态落库均成功。
-2. 多机构日结：前一个机构完成后自动触发下一机构。
-3. 缺失 `curveDate` 时：可从 `CurvedateSession` 正确推导。
-4. 故障注入：Activiti 启动失败时，机构不丢失、状态可恢复。
-5. 对外推送：CRM/SAP 的 session/eod 状态与 CTRM 一致。
+> [!check] 回归测试要点
+> | 序号 | 测试场景 | 验证点 |
+> | :---: | :--- | :--- |
+> | 1 | 单机构日结 | 价格计算、movement 更新、session 推进、状态落库均成功 |
+> | 2 | 多机构日结 | 前一个机构完成后自动触发下一机构 |
+> | 3 | 缺失 `curveDate` | 可从 `CurvedateSession` 正确推导 |
+> | 4 | 故障注入 | Activiti 启动失败时，机构不丢失、状态可恢复 |
+> | 5 | 对外推送 | CRM/SAP 的 session/eod 状态与 CTRM 一致 |
 
 ***
 
 ## 9. 修复时建议优先关注的方法（按优先级）
 
-1. `ExecuteHMEFlowTask.execute`（上下文与流程启动）
-2. `EODServiceImp.ComputeBrassScorporoHMEEOD`（EOD价格计算）
-3. `EODServiceImp.UpdateMovementEOD`（价格/计价量落库）
-4. `EODServiceImp.FinishProcessEOD`（多机构续跑）
-5. `EODServiceImp.updateCurveDate`（全局日期推进）
-
-#### 121212
+> [!tip] 优先级排序
+> | 优先级 | 方法 | 关注点 |
+> | :---: | :--- | :--- |
+> | 🔴 P0 | `ExecuteHMEFlowTask.execute` | 上下文与流程启动 |
+> | 🟠 P1 | `EODServiceImp.ComputeBrassScorporoHMEEOD` | EOD价格计算 |
+> | 🟡 P2 | `EODServiceImp.UpdateMovementEOD` | 价格/计价量落库 |
+> | 🟢 P3 | `EODServiceImp.FinishProcessEOD` | 多机构续跑 |
+> | 🔵 P4 | `EODServiceImp.updateCurveDate` | 全局日期推进 |

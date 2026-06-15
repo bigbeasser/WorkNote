@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Monthly Mgmt 科目逻辑梳理",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md"
+      "basename": "7-ai",
+      "path": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md"
+    },
+    {
+      "basename": "Common",
+      "path": "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Common.md"
+    },
+    {
+      "basename": "定价明细价格字段计算逻辑文档",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md"
+    },
+    {
+      "basename": "2024证监会考前集训期货知识讲义_1699446777",
+      "path": "个人学习/期货知识/2024证监会考前集训期货知识讲义_1699446777.pdf"
     },
     {
       "basename": "期货基础知识",
       "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货基础知识.md"
+    },
+    {
+      "basename": "代码文档_主题类型空壳",
+      "path": "金仕达公司业务类/HME项目文档/Getting Started/代码文档_主题类型空壳.md"
+    },
+    {
+      "basename": "tolaria",
+      "path": "金仕达公司业务类/HME项目文档/Getting Started/tolaria.md"
+    },
+    {
+      "basename": "Monthly Mgmt 科目逻辑梳理",
+      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md"
     },
     {
       "basename": "期货现货标准术语手册",
@@ -15,10 +39,6 @@
     {
       "basename": "金属损益（Metal Result）及管报重构项目进度汇报及问题沟通",
       "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md"
-    },
-    {
-      "basename": "定价明细价格字段计算逻辑文档",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md"
     },
     {
       "basename": "任务列表_Kanban",

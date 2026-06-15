@@ -2,13 +2,14 @@
 
 ## 1. 分析范围与原则
 
-- 目标接口：`POST /api/document/generateDetailsByDocuments`
-- 分析重点：**物资明细（ReceiptDeliveryDetails）如何计算、如何更新、如何删除、何时联动现金流**
-- 追踪范围：
-  - `DocumentController.generateDetailsByDocuments(...)`
-  - `ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments(Long id, Integer modify)`
-  - `b47 -> b36 -> b34 -> b24` 处理器链
-- 原则：只写代码中能直接验证的行为，不做自由发挥。
+> [!abstract] 分析说明
+> - **目标接口**：`POST /api/document/generateDetailsByDocuments`
+> - **分析重点**：**物资明细（ReceiptDeliveryDetails）如何计算、如何更新、如何删除、何时联动现金流**
+> - **追踪范围**：
+>   - `DocumentController.generateDetailsByDocuments(...)`
+>   - `ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments(Long id, Integer modify)`
+>   - `b47 -> b36 -> b34 -> b24` 处理器链
+> - **原则**：只写代码中能直接验证的行为，不做自由发挥
 
 ---
 
@@ -307,29 +308,23 @@ b47.a728(inputModel);
 
 ## 7. 疑难点解释（重点）
 
-## 疑难点 1：为什么方法里没有明显 `insert/update`，却能生成物资明细？
+> [!question]- 疑难点 1：为什么方法里没有明显 `insert/update`，却能生成物资明细？
+> `ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments` 只做”模型准备 + 调处理器”。实际 `insert/update` 在处理器链下游 `b24` 内完成（多处 `a226.insert/updateByPrimaryKey`）。
 
-答：`ReceiptDeliveryDetailsServiceImpl.generateDetailsByDocuments` 只做“模型准备 + 调处理器”。实际 `insert/update` 在处理器链下游 `b24` 内完成（多处 `a226.insert/updateByPrimaryKey`）。
+> [!question]- 疑难点 2：`dataState` 是方法级参数，为什么还要行级 `d`？
+> 方法级 `modify` 是默认状态；行级 `d` 会因 `inactiveFlag=true` 或补删逻辑被强制改成 `DELETE`。最终每条行按自己的 `d` 参与计算，避免整单状态覆盖行级真实删除状态。
 
-## 疑难点 2：`dataState` 是方法级参数，为什么还要行级 `d`？
+> [!question]- 疑难点 3：为什么要把已删除行再查出来参与计算？
+> 这是为了解决拣配链、上下游单据、库存统计与汇总记录的一致性问题。删除行不参与会导致旧 RDD/汇总残留，进而造成数量不平。
 
-答：方法级 `modify` 是默认状态；行级 `d` 会因 `inactiveFlag=true` 或补删逻辑被强制改成 `DELETE`。最终每条行按自己的 `d` 参与计算，避免整单状态覆盖行级真实删除状态。
+> [!question]- 疑难点 4：`actionId=40` 分支为什么会递归调用本方法？
+> 该分支属于”修复型重建”：当前单据删改后，上级单据和特定库存单据的明细必须联动重算，否则树状链路会断层。
 
-## 疑难点 3：为什么要把已删除行再查出来参与计算？
+> [!question]- 疑难点 5：`b47` 中 `a78` 会变化吗？影响什么？
+> 会。`b34.a416` 会按 `DocumentActions.actionType` 重写 `a78`。这会影响后续 `RiskUtil.calculateModelCategory(a78)` 结果，从而改变现金流引擎分发。
 
-答：这是为了解决拣配链、上下游单据、库存统计与汇总记录的一致性问题。删除行不参与会导致旧 RDD/汇总残留，进而造成数量不平。
-
-## 疑难点 4：`actionId=40` 分支为什么会递归调用本方法？
-
-答：该分支属于“修复型重建”：当前单据删改后，上级单据和特定库存单据的明细必须联动重算，否则树状链路会断层。
-
-## 疑难点 5：`b47` 中 `a78` 会变化吗？影响什么？
-
-答：会。`b34.a416` 会按 `DocumentActions.actionType` 重写 `a78`。这会影响后续 `RiskUtil.calculateModelCategory(a78)` 结果，从而改变现金流引擎分发。
-
-## 疑难点 6：数量值是直接取 `DocumentQuantities` 吗？
-
-答：不是。`a418` 会调用 `b32.a438`，通过 `QuantityType` 对应 Python 脚本公式计算 `quantityValue` 后写入 `receipt_delivery_quantities`。
+> [!question]- 疑难点 6：数量值是直接取 `DocumentQuantities` 吗？
+> 不是。`a418` 会调用 `b32.a438`，通过 `QuantityType` 对应 Python 脚本公式计算 `quantityValue` 后写入 `receipt_delivery_quantities`。
 
 ---
 

@@ -1,6 +1,9 @@
-# ReceiptDeliveryDetailsProcessorFactory.process 调用链深度分析（新版本 Skill 模板）
+# ReceiptDeliveryDetailsProcessorFactory.process 调用链深度分析
 
 ## 一、总调用图（先给全局）
+
+> [!info] 调用概览
+> 以下流程图展示了从接口入口到数据持久化的完整调用链路
 
 ```mermaid
 flowchart TD
@@ -263,12 +266,14 @@ L --> M[返回业务结果]
 
 ## 六、结论（当前真实流程）
 
-- 当前真实流程是“Controller 触发 -> Service 组装 -> Processor/Handler 落 RD 业务数据 -> RiskFactory 落现金流数据”。
-- `Document` 类型复杂度最高，核心复杂点在 `actionId + rdFlag` 双维分发与库存总量控制分支。
-- `process` 方法虽然代码短，但它是整个收发货与现金流两阶段编排的总入口，业务副作用覆盖主从表与风险模型表。
+> [!summary] 核心结论
+> - 当前真实流程是”Controller 触发 -> Service 组装 -> Processor/Handler 落 RD 业务数据 -> RiskFactory 落现金流数据”
+> - `Document` 类型复杂度最高，核心复杂点在 `actionId + rdFlag` 双维分发与库存总量控制分支
+> - `process` 方法虽然代码短，但它是整个收发货与现金流两阶段编排的总入口，业务副作用覆盖主从表与风险模型表
 
 ## 七、补充说明（建议优化流程，非当前真实代码）
 
-- 建议补充一张“`actionId` 到 Handler 到表更新清单”的静态矩阵，便于排障。
-- 建议把 `HandlerUtils` 中“总量库存/批次库存”分支逻辑拆小，降低单方法复杂度。
+> [!tip] 优化建议
+> - 建议补充一张”`actionId` 到 Handler 到表更新清单”的静态矩阵，便于排障
+> - 建议把 `HandlerUtils` 中”总量库存/批次库存”分支逻辑拆小，降低单方法复杂度
 

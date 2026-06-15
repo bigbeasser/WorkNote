@@ -1,19 +1,20 @@
 # ExecuteHMEFlowTask.execute() 调用链分析文档
 
-> 生成日期: 2026-06-01
-> 源文件: `bcadmin-system/src/main/java/com/resrun/modules/quartz/task/ExecuteHMEFlowTask.java`
-> 系统定位: **CTRM (Commodity Trading and Risk Management) 大宗商品贸易 ERP 系统**，涉及合金、半成品、产成品等商品的贸易与风险管理
+> [!info] 文档信息
+> - **生成日期**: 2026-06-01
+> - **源文件**: `bcadmin-system/src/main/java/com/resrun/modules/quartz/task/ExecuteHMEFlowTask.java`
+> - **系统定位**: **CTRM (Commodity Trading and Risk Management) 大宗商品贸易 ERP 系统**，涉及合金、半成品、产成品等商品的贸易与风险管理
 
 ---
 
 ## 一、总体概述
 
-`ExecuteHMEFlowTask.execute()` 是 HME 系统 **日结 (End-of-Day, EOD)** 流程的入口方法。它由 Quartz 定时任务调度触发，负责：
-
-1. 解析任务参数，初始化 Redis 中的日结状态和控制标志
-2. 按 **业务机构** (`legalEntityId`，对应 `SysCompany` 表中的公司) 逐个启动 **Activiti 工作流**
-3. 工作流内按顺序执行多个业务步骤（估值日期更新、现金流计算、物流定价/数量更新、持仓监控、交易时段切换等）
-4. 每个业务机构完成后自动触发下一个机构的处理，直到全部完成
+> [!abstract] 功能概述
+> `ExecuteHMEFlowTask.execute()` 是 HME 系统 **日结 (End-of-Day, EOD)** 流程的入口方法。它由 Quartz 定时任务调度触发，负责：
+> 1. 解析任务参数，初始化 Redis 中的日结状态和控制标志
+> 2. 按 **业务机构** (`legalEntityId`) 逐个启动 **Activiti 工作流**
+> 3. 工作流内按顺序执行多个业务步骤
+> 4. 每个业务机构完成后自动触发下一个机构的处理
 
 ---
 
@@ -637,11 +638,14 @@ process() 抛异常 →
 
 ## 十五、总结
 
-`ExecuteHMEFlowTask.execute()` 是 HME CTRM 系统日结流程的核心入口，整体架构设计特点：
-
-1. **Quartz + Activiti 双层调度：** Quartz 负责定时触发和多业务机构循环，Activiti 负责编排具体业务步骤
-2. **Redis 作为状态中枢：** 所有日结状态、控制标志、上下文参数都通过 Redis 传递和持久化
-3. **多业务机构串行处理：** 通过 Redis Set + FinishProcessEOD 重新触发 Job 实现逐个业务机构处理
-4. **控制标志灵活开关：** 每个业务步骤都有独立的控制标志，可按需启用/禁用
-5. **模板方法模式：** BaseActivityDelegate → BaseEODDelegate → 具体 Delegate，统一执行模板和错误处理
-6. **外部系统集成：** 通过 CRM/SAP 接口实现**定价锁定/解锁**，保证日结期间合金、半成品、产成品等商品交易数据的一致性
+> [!success] 架构设计特点
+> `ExecuteHMEFlowTask.execute()` 是 HME CTRM 系统日结流程的核心入口，整体架构设计特点：
+>
+> | 特点 | 说明 |
+> | :---: | :--- |
+> | **Quartz + Activiti 双层调度** | Quartz 负责定时触发和多业务机构循环，Activiti 负责编排具体业务步骤 |
+> | **Redis 作为状态中枢** | 所有日结状态、控制标志、上下文参数都通过 Redis 传递和持久化 |
+> | **多业务机构串行处理** | 通过 Redis Set + FinishProcessEOD 重新触发 Job 实现逐个业务机构处理 |
+> | **控制标志灵活开关** | 每个业务步骤都有独立的控制标志，可按需启用/禁用 |
+> | **模板方法模式** | BaseActivityDelegate → BaseEODDelegate → 具体 Delegate，统一执行模板和错误处理 |
+> | **外部系统集成** | 通过 CRM/SAP 接口实现定价锁定/解锁，保证日结期间数据一致性 |

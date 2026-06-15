@@ -8,27 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fe8e466664a43159",
+            "id": "2f408fd13dc6ed45",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
-                "mode": "preview",
+                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monthly Mgmt 科目逻辑梳理"
-            }
-          },
-          {
-            "id": "88c27fce72a19ab2",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "title": "7-ai"
             }
           }
         ]
@@ -63,9 +53,9 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "某种",
                 "matchingCase": false,
-                "explainSearch": false,
+                "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
@@ -148,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
-                "followCursor": false,
+                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Monthly Mgmt 科目逻辑梳理 的大纲"
+              "title": "7-ai 的大纲"
             }
           },
           {
@@ -188,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -198,7 +188,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Monthly Mgmt 科目逻辑梳理 的反向链接列表"
+              "title": "7-ai 的反向链接列表"
             }
           },
           {
@@ -207,12 +197,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
+                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Monthly Mgmt 科目逻辑梳理 的出链列表"
+              "title": "7-ai 的出链列表"
             }
           }
         ],
@@ -220,7 +210,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 515.5
+    "width": 531.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -235,36 +225,60 @@
       "omnisearch:Omnisearch": false,
       "obsidian-kanban:Create new board": false,
       "realclaudian:Open Claudian": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md.crdownload",
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识",
-    "金仕达公司业务类/HME项目文档/代码文档/新建文件夹",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货基础知识.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md.tmp.11788.61aac9b4355e",
-    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md",
-    "任务列表_Kanban.md",
-    "金仕达公司业务类/HME项目文档/任务计划/任务计划.md",
-    "未命名.canvas",
-    "Untitled Kanban.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md.tmp.11788.9c78b2402401",
-    "金仕达公司业务类/HME项目文档/任务计划/任务计划安排_主题类型空壳.md",
-    "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md.tmp.11788.d7c30cdc1605",
-    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细MovementPrice生成逻辑.html",
-    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑.html",
-    "金仕达公司业务类/HME项目文档/通用文档/CTRM业务术语表/CTRM业务术语表.md",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md.tmp.11788.8af9f3257e11",
-    "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md.tmp.34080.e5ba3150aa1b",
-    "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/库存价值评估报表方法分析.md",
-    "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/DetailEntrisValueEvaluation-方法分析与二开指引.md",
-    "2026-06-12.md"
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Common.md",
+    "个人学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+    "个人学习/软件使用技巧/assets/Obsidian的使用/file-20260615102458810.png",
+    "个人学习/软件使用技巧/assets/Obsidian的使用",
+    "个人学习/软件使用技巧/Obsidian的使用.md",
+    "个人学习/软件使用技巧/assets",
+    "个人学习/软件使用技巧",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4/week-1.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4/my-story.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2/x-misc.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/7-ai.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/6-writing.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/5-speaking.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/2-vocabulary.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/4-reading.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/1-understanding.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/3-listening.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/VibeCoding.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Rust.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-4/week-1.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Swift.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Python.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/x-misc.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Prompt.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/PHP.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/JavaScript.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Java.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Go.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/my-story.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-4",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing@2x.png",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/单词本示意图.jpg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/黑人问号.jpg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/word-list@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-skills.png",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-en@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/understanding@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/word-list@2x.png",
+    "未命名.canvas"
   ]
 }

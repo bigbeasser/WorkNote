@@ -1,5 +1,6 @@
 {
   "focusNewTab": false,
   "showLineNumber": true,
-  "readableLineLength": false
+  "readableLineLength": false,
+  "useMarkdownLinks": true
 }

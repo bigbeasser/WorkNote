@@ -2,24 +2,26 @@
 
 ## 1. 方法定位
 
-- 方法：`EomStorageServiceImpl.listDetailEntrisValueEvaluation(DetailEntrisValueEvaluationQuery query)`
-- 目标：生成“库存价值评估明细”报表数据（行级），并返回给前端/导出模块使用。
-- 核心流程：**底稿查询** -> **补充冲销来源行** -> **计算估值与金额指标** -> **冲销行负号化** -> 返回。
+> [!info] 方法概述
+> - **方法**：`EomStorageServiceImpl.listDetailEntrisValueEvaluation(DetailEntrisValueEvaluationQuery query)`
+> - **目标**：生成”库存价值评估明细”报表数据（行级），并返回给前端/导出模块使用
+> - **核心流程**：**底稿查询** → **补充冲销来源行** → **计算估值与金额指标** → **冲销行负号化** → 返回
 
 ---
 
 ## 2. 报表查询的是哪类数据
 
-该方法查询的是**入库登记类单据明细（document action=42）在会计日之前的库存价值评估数据**，并按单据行维度输出估值、开票、点价关联、金属/附加价、待收 CD 金额等指标。
+> [!abstract] 数据范围
+> 该方法查询的是**入库登记类单据明细（document action=42）在会计日之前的库存价值评估数据**，并按单据行维度输出估值、开票、点价关联、金属/附加价、待收 CD 金额等指标。
 
-在 SQL 层（`EomStorageMapper.xml` -> `listDetailEntrisValueEvaluationFrame`）有以下硬条件：
-
-- `doc.action_id = 42`（只取指定单据动作）
-- `doc.sap_push_status = 2`（仅取已推 SAP 的单据）
-- `doc.post_date <= accountingDate`（会计日截断）
-- `di/doc/pdl/pd` 均要求未失效（`inactive_flag` / `inative_flag`）
-
-因此这是一个**“截至会计日”的库存估值快照明细报表**。
+> [!note] SQL 硬条件
+> 在 SQL 层（`EomStorageMapper.xml` -> `listDetailEntrisValueEvaluationFrame`）有以下硬条件：
+> - `doc.action_id = 42`（只取指定单据动作）
+> - `doc.sap_push_status = 2`（仅取已推 SAP 的单据）
+> - `doc.post_date <= accountingDate`（会计日截断）
+> - `di/doc/pdl/pd` 均要求未失效（`inactive_flag` / `inative_flag`）
+>
+> 因此这是一个**”截至会计日”的库存估值快照明细报表**。
 
 ---
 

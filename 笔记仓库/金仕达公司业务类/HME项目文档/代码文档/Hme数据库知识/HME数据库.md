@@ -2,85 +2,52 @@
 
 ## HME一些专有名词和方法
 
-寻找金属价 先找到 商品,再找最上层的父商品 
-
-1. 例如6004136 商品 他的父商品  \-\> C33  再找  \-\>C34
-
-2. 去合约问文本里按照名字C34去搜索出合约文本
-
-3\.取每日市场行情,根据合约文本和时间找对应金属价   
+> [!tip] 寻找金属价的方法
+> 先找到商品，再找最上层的父商品：
+> 1. 例如 6004136 商品，它的父商品 → C33 → C34
+> 2. 去合约文本里按照名字 C34 去搜索出合约文本
+> 3. 取每日市场行情，根据合约文本和时间找对应金属价   
 
 
 
 # 数据库表名和关系
 
-新增量脚本地址，如下图
+> [!info] 脚本地址
+> - **新增量脚本地址**：`\\10.253.47.221\部门文件\产业金融产品部\CTRM产品组\海亮\hme\v8-20240604`
+> - **前端开发**：v8 wb 文件地址同上
+> - **后端开发**：全量更新的配置表有，不需要增量脚本
 
-@前端开发 v8 wb文件地址
+### 配置表清单
 
-\\\\10\.253\.47\.221\\部门文件\\产业金融产品部\\CTRM产品组\\海亮\\hme\\v8\-20240604
+| 分类 | 表名 | 说明 |
+| :---: | :--- | :--- |
+| **字典** | `admindb.sys_dict` | 字典主表 |
+| | `admindb.sys_dict_detail` | 字典明细 |
+| **动态表单** | `systemdb.web_forms` | 表单 |
+| | `systemdb.web_from_panels` | 表单面板 |
+| | `systemdb.web_from_attributes` | 表单属性 |
+| **出入库配置** | `systemdb.document_actions` | 单据动作 |
+| | `systemdb.document_action_items` | 单据动作明细 |
+| **计价公式** | `systemdb.pricing_formulas` | 计价公式 |
+| | `systemdb.event_type` | 事件类型 |
+| | `systemdb.pricing_range_rules` | 区间规则 |
+| **国际化** | `systemdb.lang_resources` | 多语言资源 |
+| **透视表** | `systemdb.pivotgrid` | 透视表 |
+| | `systemdb.pivotgrid_field` | 透视表字段 |
+| | `systemdb.pivotgrid_sql` | 透视表SQL |
+| **导入模板** | `systemdb.template_config` | 模板配置 |
+| | `systemdb.template_config_row` | 模板行 |
+| | `systemdb.template_config_column` | 模板列 |
 
-@后端开发 全量更新的配置表有, 不需要增量脚本
+### 期货表
 
-## 字典
-
-1. admindb\.sys\_dict
-
-2. admindb\.sys\_dict\_detail
-
-## 动态表单
-
-3. systemdb\.web\_forms
-
-4. systemdb\.web\_from\_panels
-
-5. systemdb\.web\_from\_attributes
-
-## 出入库配置
-
-6. systemdb\.document\_actions
-
-7. systemdb\.document\_action\_items
-
-## 计价公式
-
-8. systemdb\.pricing\_formulas
-
-9. systemdb\.event\_type  事件类型
-
-10. systemdb\.pricing\_range\_rules 区间规则
-
-## 国际化
-
-11. systemdb\.lang\_resources
-
-## 透视表
-
-12. systemdb\.pivotgrid
-
-13. systemdb\.pivotgrid\_field
-
-14. systemdb\.pivotgrid\_sql
-
-## 导入模板
-
-15. systemdb\.template\_config
-
-16. systemdb\.template\_config\_row
-
-17. systemdb\.template\_config\_column
-
-期货表
-
-成交流水   futures\_record
-
-合约文本   forward\_curve
-
-合约管理   forward\_contract
-
-作价市场    publication
-
-每日市场行情  forward\_price
+| 表名 | 说明 |
+| :--- | :--- |
+| `futures_record` | 成交流水 |
+| `forward_curve` | 合约文本 |
+| `forward_contract` | 合约管理 |
+| `publication` | 作价市场 |
+| `forward_price` | 每日市场行情 |
 
 ## 合约之间的关系
 
@@ -106,15 +73,14 @@
 
 ## 业务部门，业务机构，业务板块, 交易对家（客户公司）
 
-**legal\_entity\_id  业务机构   admindb\.sys\_company**
-
-**portfolio\_id  业务部门     admindb\.sys\_department**
-
-**business\_segment\_id    业务板块      admindb\.sys\_business\_segment**
-
-**counterparty\_id       交易对家    admindb\.counterparty**
-
-**wolf\.wb\_user cb ON cb\.USER\_NAME = ibp\.created\_by  制单人**
+> [!note] 组织维度表对照
+> | 维度 | 字段名 | 表名 |
+> | :---: | :--- | :--- |
+> | 业务机构 | `legal_entity_id` | `admindb.sys_company` |
+> | 业务部门 | `portfolio_id` | `admindb.sys_department` |
+> | 业务板块 | `business_segment_id` | `admindb.sys_business_segment` |
+> | 交易对家 | `counterparty_id` | `admindb.counterparty` |
+> | 制单人 | `created_by` | `wolf.wb_user` (通过 USER_NAME 关联) |
 
 ```Plain Text
 legal_entity_id              bigint           null comment '业务机构',
@@ -218,38 +184,18 @@ W("W", 3)
 
 ## rdd物资明细表 receipt\_delivery\_details
 
-### 物资明细和document\_items的关联关系
-
-```Plain Text
-LEFT JOIN receipt_delivery_details 
-  ON cmhv.receipt_delivery_id = rdd.receipt_delivery_id
-LEFT JOIN document_items doci ON doci.id = rdd.header_id
-LEFT JOIN documents ds ON ds.id = doci.document_id
-```
-
-### 物资明细的字段解释备忘
-
-- header\_number  单据主表上的单据号documents上的document\_number
-
-- action\_id  单据主表的类型，出入库登记，出入库通知，出入库计划
-
-- header\_type   合同表的类型   采购合同 PO, 销售合同 SO,信用计划 LP,信用申请 LA,信用登记 LR
-
-- link\_id 两条document主表id ，一条合同主表physical\_deals的id
-
-- contract\_number  合同主表的合同号contract\_number
-
-- receipt\_delivery\_status             库存量消耗 \-\- 2    合同量消耗 \-\- 1
-
-- receipt\_deliver\_type\_id          收发货类型:1收货，2发货
-
-- bav\_flag  
-
-- detail\_number 
-
-- storage\_statistics\_type           仓库统计类型\(1\-\-总量库存，2或空批次\)
-
-- warehouse\_type\_id     库存类型：1现货，2仓单
+> [!note] 物资明细字段解释
+> | 字段 | 说明 |
+> | :--- | :--- |
+> | `header_number` | 单据主表上的单据号（documents 上的 document_number） |
+> | `action_id` | 单据主表的类型（出入库登记、出入库通知、出入库计划） |
+> | `header_type` | 合同表的类型（PO/SO/LP/LA/LR） |
+> | `link_id` | 两条 document 主表 id，一条合同主表 physical_deals 的 id |
+> | `contract_number` | 合同主表的合同号 |
+> | `receipt_delivery_status` | 库存量消耗=2，合同量消耗=1 |
+> | `receipt_deliver_type_id` | 收发货类型：1收货，2发货 |
+> | `storage_statistics_type` | 仓库统计类型（1=总量库存，2或空=批次） |
+> | `warehouse_type_id` | 库存类型：1现货，2仓单 |
 
 
 
@@ -381,11 +327,13 @@ FROM cashflow_model_header_values
 
 ### cashflow\_model\_values字段
 
-- settlement\_net\_price  总价字段
-
-- settlement\_price  单价字段
-
-- 有时候统计合同的**总金额**需要把settlement\_net\_pric这个字段进行sum（settlement\_net\_pric）求和
+> [!note] 关键字段
+> | 字段 | 说明 |
+> | :--- | :--- |
+> | `settlement_net_price` | **总价字段** |
+> | `settlement_price` | **单价字段** |
+>
+> **注意**：统计合同的**总金额**需要把 `settlement_net_price` 字段进行 `SUM()` 求和
 
 
 
@@ -602,23 +550,21 @@ WHERE 1 = 1
 
 # 数据权限问题表的追踪
 
-有关表结构wolf库里:
+> [!info] 权限相关表（wolf库）
+> | 表名 | 说明 |
+> | :--- | :--- |
+> | `ks_role` | 角色表 |
+> | `ks_function` | 功能表（通过 role_id 查找 qtip） |
+> | `ks_role_function` | 角色功能关联表 |
+> | `ks_menu` | 菜单表 |
+> | `ks_user_role` | 用户角色关联表（通过 user_id 找 role_id） |
+> | `wb_user` | 用户表（通过角色找到 user_id） |
 
-ks\_role
-
-ks\_function 通过role\_id查此张表 找打qtip 
-
-ks\_role\_function
-
-ks\_menu
-
-ks\_user\_role  角色id和权限关联表  通过user\_id 找到 role\_id 
-
-wb\_user   角色 找到user\_id 
-
-ks\_function A  INNER JOIN ks\_role\_function B ON A\.func\_id = B\.func\_id  这两张是关联表
-
-程序里的自定义注解@PreAuthorize\("@el\.check\('document:info'\)"\)  这个的背后实现就是通过得到用户名找到用户id然后查到所有的qtip   然后检查qtip里面是否含有document:info这个关键词\.
+> [!note] 权限校验原理
+> 程序里的自定义注解 `@PreAuthorize("@el.check('document:info')")` 的实现逻辑：
+> 1. 通过用户名找到用户 ID
+> 2. 查到所有的 qtip
+> 3. 检查 qtip 里面是否含有 `document:info` 这个关键词
 
 
 
@@ -632,49 +578,35 @@ ks\_function A  INNER JOIN ks\_role\_function B ON A\.func\_id = B\.func\_id  �
 
 ## 查询数据库表状态
 
-
-
-SHOW PROCESSLIST;
-
-kill thread\_id
-
-方法二
-
-### 查事务
-
-SELECT \* FROM information\_schema\.INNODB\_TRX;
-
-方法三：
-
-### 查看正在锁的事务：
-
-
-
-SELECT \* FROM performance\_schema\.data\_locks
-
-### 查看等待锁的事务:
-
-
-
-SELECT \* FROM performance\_schema\.data\_lock\_waits;
-
-### 查询进程
-
-SHOW PROCESSLIST;
-
-### show OPEN TABLES where In\_use \> 0;
-
-解释:
-
-它返回的是当前打开的表的状态，其中 In\_use 列表示该表是否被某个线程（比如查询、插入等操作）正在使用。
-
-1. systemdb：这是数据库的名字，表明当前状态的表属于 systemdb 数据库。
-
-2. intraday\_price：这是表的名字，表明正在被使用的表是 intraday\_price。
-
-3. 2：这是 In\_use 列的值，表示该表当前有 2 个线程正在使用它。
-
-4. 0：这是 Last\_access 列的值，表示该表自上次访问以来的时间，单位是秒。0 表示该表最近一次访问是即时的，或者刚刚被访问。
+> [!tip] 常用查询命令
+> 
+> **查进程**
+> ```sql
+> SHOW PROCESSLIST;
+> -- kill thread_id
+> ```
+> 
+> **查事务**
+> ```sql
+> SELECT * FROM information_schema.INNODB_TRX;
+> ```
+> 
+> **查看正在锁的事务**
+> ```sql
+> SELECT * FROM performance_schema.data_locks;
+> ```
+> 
+> **查看等待锁的事务**
+> ```sql
+> SELECT * FROM performance_schema.data_lock_waits;
+> ```
+> 
+> **查看表使用状态**
+> ```sql
+> SHOW OPEN TABLES WHERE In_use > 0;
+> ```
+> - `In_use`：表示该表当前有 N 个线程正在使用它
+> - `Last_access`：自上次访问以来的时间（秒），0 表示即时访问
 
 
 

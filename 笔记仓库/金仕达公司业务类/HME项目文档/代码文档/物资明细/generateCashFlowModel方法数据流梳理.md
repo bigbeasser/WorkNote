@@ -2,10 +2,11 @@
 
 ## 1. 文档范围与边界
 
-- 分析目标：`bcadmin-system/src/main/java/com/resrun/modules/business/service/impl/CashFlowProjectionServiceImpl.java` 中的 `generateCashFlowModel(CashModelQueryCriteria criteria)`。
-- 向上追踪：该方法的 REST 入口、典型业务触发点。
-- 向下追踪：`a155.a1208(...)` 的引擎分发逻辑，以及输入模型如何转换为引擎上下文。
-- 说明边界：本文只写“代码中可以直接看到的事实”，不对业务语义做额外假设。
+> [!abstract] 分析范围
+> - **分析目标**：`bcadmin-system/src/main/java/com/resrun/modules/business/service/impl/CashFlowProjectionServiceImpl.java` 中的 `generateCashFlowModel(CashModelQueryCriteria criteria)`
+> - **向上追踪**：该方法的 REST 入口、典型业务触发点
+> - **向下追踪**：`a155.a1208(...)` 的引擎分发逻辑，以及输入模型如何转换为引擎上下文
+> - **说明边界**：本文只写”代码中可以直接看到的事实”，不对业务语义做额外假设
 
 ---
 
@@ -275,11 +276,12 @@ protected void a1217(a16 a1209) {
 
 ## 9. 可直接确认的行为与注意点
 
-- 本方法是 `void`，且不抛业务异常；失败感知主要依赖下游日志/异常传播。
-- 当没有符合条件的出入库明细时，仍会触发引擎（通过兜底明细）。
-- 本方法未读取 `criteria.computeFlag/localDate/...` 等字段；当前代码中只使用 `headerType/linkId`。
-- 引擎调用加了 `synchronized (a155.class)`，意味着同进程内该入口具备串行化特征。
-- `a18` 返回值在本方法里未消费，仅触发计算过程。
+> [!warning] 关键注意点
+> - 本方法是 `void`，且不抛业务异常；失败感知主要依赖下游日志/异常传播
+> - 当没有符合条件的出入库明细时，仍会触发引擎（通过兜底明细）
+> - 本方法未读取 `criteria.computeFlag/localDate/...` 等字段；当前代码中只使用 `headerType/linkId`
+> - 引擎调用加了 `synchronized (a155.class)`，意味着同进程内该入口具备串行化特征
+> - `a18` 返回值在本方法里未消费，仅触发计算过程
 
 ---
 

@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7-ai"
+              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务"
+            }
+          },
+          {
+            "id": "6d24065828a5cdb3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "HME数据库"
             }
           }
         ]
@@ -88,7 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 270.5
+    "width": 297.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -138,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "7-ai 的大纲"
+              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的大纲"
             }
           },
           {
@@ -178,7 +192,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,7 +202,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "7-ai 的反向链接列表"
+              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的反向链接列表"
             }
           },
           {
@@ -197,12 +211,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "7-ai 的出链列表"
+              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的出链列表"
             }
           }
         ],
@@ -225,14 +239,24 @@
       "omnisearch:Omnisearch": false,
       "obsidian-kanban:Create new board": false,
       "realclaudian:Open Claudian": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "pdf-plus:PDF++: Toggle auto-copy": false,
-      "pdf-plus:PDF++: Toggle auto-focus": false,
-      "pdf-plus:PDF++: Toggle auto-paste": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
+    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化.md",
+    "金仕达公司业务类/HME项目文档/代码文档/主数据利率/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
+    "金仕达公司业务类/HME项目文档/代码文档/主数据利率",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172054882.png",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172037761.png",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/升贴水报表涉及主数据优化V1.0.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
+    "技术文章-DailyTech",
+    "新建文件夹",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Common.md",
     "个人学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
     "个人学习/软件使用技巧/assets/Obsidian的使用/file-20260615102458810.png",
@@ -253,23 +277,12 @@
     "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4",
     "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/VibeCoding.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Rust.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-4/week-1.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Swift.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Python.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/x-misc.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Prompt.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/PHP.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/JavaScript.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Java.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Go.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/my-story.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-4",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing@2x.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/单词本示意图.jpg",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/黑人问号.jpg",
@@ -277,8 +290,6 @@
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/word-list@2x.svg",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-skills.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-en@2x.svg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/understanding@2x.svg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/word-list@2x.png",
     "未命名.canvas"
   ]
 }

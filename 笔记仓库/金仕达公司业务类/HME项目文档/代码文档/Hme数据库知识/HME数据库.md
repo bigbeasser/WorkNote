@@ -97,9 +97,6 @@ LEFT JOIN admindb.sys_company com ON main.legal_entity_id = com.`ID`
 LEFT JOIN admindb.sys_department dept ON c.portfolio_id = dept.ID
 
 LEFT JOIN admindb.sys_business_segment sbe ON p.business_segment_id = sbe.id
-
-
-
 LEFT JOIN admindb.sys_company sc ON ds.legal_entity_id = sc.ID
 LEFT JOIN admindb.sys_department sd ON ds.portfolio_id = sd.ID
 LEFT JOIN admindb.sys_personnel sp ON sp.id = ds.trader_id
@@ -140,7 +137,6 @@ or ds.action_id = 41)
 ```
 
 
-
 ### 查询合同下出入库登记的数量 并且是减去冲销的
 
 ```Plain Text
@@ -156,12 +152,9 @@ where doc.inactive_flag = false
   and doc.physical_deal_id = 3836308553072640
 ```
 
-
-
 ## Document\_items表
 
 - offset\_quantity
-
 - rd\_flag  收发方向    W       D   
 
 ```Plain Text
@@ -175,7 +168,6 @@ W("W", 3)
 ### 出库通知和拣配明细的对应关系
 
 **而且在出库通知单据上是一条出库通知对应一条减配明细  ，对应关系 而且拣配明细行上的link\_document\_id对应的是出库通知明细单据的id  **
-
 
 
 ### 关于拣配明细对应的物资明细
@@ -196,7 +188,6 @@ W("W", 3)
 > | `receipt_deliver_type_id` | 收发货类型：1收货，2发货 |
 > | `storage_statistics_type` | 仓库统计类型（1=总量库存，2或空=批次） |
 > | `warehouse_type_id` | 库存类型：1现货，2仓单 |
-
 
 
 ## physical\_deals和physical\_deal\_line

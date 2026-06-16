@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
+                "file": "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化"
+              "title": "深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化"
             }
           }
         ],
@@ -153,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
+                "file": "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化 的大纲"
+              "title": "深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化 的大纲"
             }
           },
           {
@@ -253,12 +253,32 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "2d6b6332900f52ac",
+  "active": "be8e60a89a3c8e10",
   "lastOpenFiles": [
     "Dashboard/Databoard看板.md",
-    "技术文章-DailyTech/📋 文章索引.md",
     "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
-    "技术文章-DailyTech/📋 文章索引.md.tmp.37388.3d7af5b92d2c",
+    "技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md.tmp.37388.2387b67a8b5d",
+    "技术文章-DailyTech/📋 文章索引.md.tmp.37388.23fdf79df41c",
+    "技术文章-DailyTech/AI 不缺智商缺纪律：我的 Harness 工程化实践.md",
+    "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md",
+    "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md.tmp.37388.be7b7eaf4af9",
+    "技术文章-DailyTech/OpenClaw与Hermes：源码里的 AI Agent 架构知识大复盘.md",
+    "技术文章-DailyTech/OpenClaw与Hermes：源码里的 AI Agent 架构知识大复盘.md.tmp.37388.6299744ac304",
+    "技术文章-DailyTech/基于钉钉机器人的 Qoder CLI - Claude Code 双引擎 AI 助手实践.md",
+    "技术文章-DailyTech/横向拆解Claude Code、Codex等六大Agent上下文压缩策略后，我们做了第7个.md",
+    "技术文章-DailyTech/横向拆解Claude Code、Codex等六大Agent上下文压缩策略后，我们做了第7个.md.tmp.37388.15c86c48ef36",
+    "技术文章-DailyTech/都是 AI Coding，为什么 Java 体验差了一个量级？五条方法论帮你构建自己的 Harness 环境.md",
+    "技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md",
+    "技术文章-DailyTech/ContextBucket Agent 的无限记忆与工作区底座.md",
+    "技术文章-DailyTech/ContextBucket Agent 的无限记忆与工作区底座.md.tmp.37388.f3acbb589dea",
+    "技术文章-DailyTech/Prompt被淘汰了？深度拆解Loop Engineering，炒作还是趋势？.md",
+    "技术文章-DailyTech/Prompt被淘汰了？深度拆解Loop Engineering，炒作还是趋势？.md.tmp.37388.02f24bdd731b",
+    "技术文章-DailyTech/verify-data一个端到端的数据验数Agent Skill.md",
+    "技术文章-DailyTech/verify-data一个端到端的数据验数Agent Skill.md.tmp.37388.76469c21016d",
+    "技术文章-DailyTech/你的 Agent 每次都失忆？这个工具彻底治好了我的前端开发焦虑.md",
+    "技术文章-DailyTech/你的 Agent 每次都失忆？这个工具彻底治好了我的前端开发焦虑.md.tmp.37388.259c5a003418",
+    "技术文章-DailyTech/_raw/11_AI 不缺智商缺纪律：我的 Harness 工程化实践.txt",
+    "技术文章-DailyTech/📋 文章索引.md",
     "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
     "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md",
     "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md",
@@ -269,33 +289,13 @@
     "().md",
     "个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心.md",
     "个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南.md",
-    "Dashboard/Databoard看板.md.tmp.37388.039311c2d1f2",
-    "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md.tmp.37388.10dd9d83e674",
-    "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md.tmp.37388.97fad7c1f8ce",
-    "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md.tmp.36432.4b57580de667",
-    "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md.tmp.36432.388182d1a0b8",
-    "技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md.tmp.36432.f08260c7404d",
-    "技术文章-DailyTech/如何搭建一个端到端业务需求专家 Agent.md.tmp.36432.50b13b710a56",
     "技术文章-DailyTech/04_阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
-    "技术文章-DailyTech/04_阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md.tmp.36432.1d6154ff0f54",
-    "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md.tmp.36432.68f738097f1b",
-    "2026-06-12.md",
-    "任务安排/任务明细/升贴水字段修改 🛫 2026-06-15 🔼.md",
-    "任务安排/任务列表_Kanban.md",
-    "任务安排/任务记录/2026-06-15安排.md",
-    "Dashboard/Tasks Dashboard.md",
-    "任务安排/模板/111.md",
-    "任务安排/模板/今日任务.md",
-    "任务安排/模板/每日任务模板.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/assets/6-writing/aigc.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/assets/6-writing/aigc.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/README/ai@2x.svg",
     "个人学习/英语学习/English-level-up-tips-master/assets/README/ai@2x.svg",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/assets/x-misc/黑人问号.jpg",
     "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2/assets/x-misc/黑人问号.jpg",
-    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
-    "Untitled Kanban.md",
     "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172054882.png",
     "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172037761.png",
     "个人学习/软件使用技巧/assets/Obsidian的使用/file-20260615102458810.png",

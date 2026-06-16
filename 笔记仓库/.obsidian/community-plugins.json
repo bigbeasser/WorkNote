@@ -4,10 +4,11 @@
   "editing-toolbar",
   "obsidian-outliner",
   "recent-files-obsidian",
-  "obsidian-kanban",
   "realclaudian",
-  "obsidian-html-plugin",
   "table-editor-obsidian",
   "tag-wrangler",
-  "obsidian-custom-attachment-location"
+  "obsidian-custom-attachment-location",
+  "dataview",
+  "calendar",
+  "obsidian-kanban"
 ]

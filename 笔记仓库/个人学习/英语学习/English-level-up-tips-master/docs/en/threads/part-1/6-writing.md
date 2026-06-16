@@ -64,7 +64,7 @@ Used well, it can help you spot issues. You can ask for suggestions, take what�
 > For example, this chapter itself was edited with AI suggestions.
 
 ![New Bing](../../../assets/chatgpt.png)
-![AIGC](../../../assets/aigc.png)
+![AIGC](个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/assets/6-writing/aigc.png)
 
 ---
 

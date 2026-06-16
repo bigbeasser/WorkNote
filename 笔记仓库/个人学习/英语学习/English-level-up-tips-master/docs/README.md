@@ -78,7 +78,7 @@ The only way to do great work is to love what you do. If you haven't found it ye
 
 [![writing](assets/writing@2x.svg)](threads/part-1/6-writing.md)
 
-[![ai](assets/ai@2x.svg)](threads/part-1/7-ai.md)
+[![ai](个人学习/英语学习/English-level-up-tips-master/docs/assets/README/ai@2x.svg)](threads/part-1/7-ai.md)
 
 新增的 AI 章节已经更新为 `2026` 版，重点不再只是通用 Prompt，而是更系统地回答：
 

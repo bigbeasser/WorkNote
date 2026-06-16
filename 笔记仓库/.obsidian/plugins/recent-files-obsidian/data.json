@@ -1,12 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术",
+      "path": "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md"
+    },
+    {
+      "basename": "AI 不缺智商缺纪律：一场 Harness 工程化实践",
+      "path": "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md"
+    },
+    {
+      "basename": "转转前端周刊第199期 AI时代程序员的技能转型",
+      "path": "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md"
+    },
+    {
+      "basename": "一篇搞懂 AI Coding Agent 的 Token 成本控制",
+      "path": "技术文章-DailyTech/一篇搞懂 AI Coding Agent 的 Token 成本控制.md"
+    },
+    {
+      "basename": "如何搭建一个端到端业务需求专家 Agent",
+      "path": "技术文章-DailyTech/如何搭建一个端到端业务需求专家 Agent.md"
+    },
+    {
+      "basename": "人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧",
+      "path": "技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md"
+    },
+    {
+      "basename": "让 Claude Code 拥有自我进化和记忆系统｜得物技术",
+      "path": "技术文章-DailyTech/让 Claude Code 拥有自我进化和记忆系统｜得物技术.md"
+    },
+    {
+      "basename": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化",
+      "path": "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md"
+    },
+    {
+      "basename": "📋 文章索引",
+      "path": "技术文章-DailyTech/📋 文章索引.md"
+    },
+    {
+      "basename": "Skills：从编程工具的配角到Agent研发的核心",
+      "path": "个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心.md"
+    },
+    {
+      "basename": "企业级 Agent 多智能体架构与选型指南",
+      "path": "个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南.md"
+    },
+    {
+      "basename": "Databoard看板",
+      "path": "Dashboard/Databoard看板.md"
+    },
+    {
+      "basename": "升贴水字段修改 🛫 2026-06-15 🔼",
+      "path": "任务安排/任务明细/升贴水字段修改 🛫 2026-06-15 🔼.md"
+    },
+    {
+      "basename": "任务列表_Kanban",
+      "path": "任务安排/任务列表_Kanban.md"
+    },
+    {
       "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务",
       "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md"
     },
     {
       "basename": "HME数据库",
       "path": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md"
+    },
+    {
+      "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试",
+      "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试.md"
     },
     {
       "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化",
@@ -53,10 +113,6 @@
       "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md"
     },
     {
-      "basename": "任务列表_Kanban",
-      "path": "任务列表_Kanban.md"
-    },
-    {
       "basename": "任务计划",
       "path": "金仕达公司业务类/HME项目文档/任务计划/任务计划.md"
     },
@@ -87,10 +143,6 @@
     {
       "basename": "DetailEntrisValueEvaluation-方法分析与二开指引",
       "path": "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/DetailEntrisValueEvaluation-方法分析与二开指引.md"
-    },
-    {
-      "basename": "2026-06-12",
-      "path": "2026-06-12.md"
     }
   ],
   "omittedPaths": [],

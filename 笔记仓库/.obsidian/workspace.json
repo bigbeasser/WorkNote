@@ -4,38 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "030fa62ad88f80af",
+        "id": "e9cc97355b076f35",
         "type": "tabs",
         "children": [
           {
-            "id": "2f408fd13dc6ed45",
+            "id": "f98fa710cd9ac92d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
+                "file": "技术文章-DailyTech/📋 文章索引.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务"
+              "title": "📋 文章索引"
             }
           },
           {
-            "id": "6d24065828a5cdb3",
+            "id": "43c1122950f447b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+                "file": "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HME数据库"
+              "title": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -67,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "某种",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -102,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5
+    "width": 391.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -152,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
+                "file": "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的大纲"
+              "title": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术 的大纲"
             }
           },
           {
@@ -218,78 +219,88 @@
               "icon": "links-going-out",
               "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的出链列表"
             }
+          },
+          {
+            "id": "b4bd7e684255f159",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
           }
         ],
         "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 531.5
+    "width": 373.5
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
+      "daily-notes:打开/创建今天的日记": true,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
+      "bases:新建数据库": true,
       "obsidian-git:Open Git source control": false,
       "omnisearch:Omnisearch": false,
-      "obsidian-kanban:Create new board": false,
       "realclaudian:Open Claudian": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": true,
+      "obsidian-kanban:Create new board": false
     }
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+    "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md",
+    "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md",
+    "技术文章-DailyTech/一篇搞懂 AI Coding Agent 的 Token 成本控制.md",
+    "技术文章-DailyTech/如何搭建一个端到端业务需求专家 Agent.md",
+    "技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md",
+    "技术文章-DailyTech/让 Claude Code 拥有自我进化和记忆系统｜得物技术.md",
+    "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
+    "技术文章-DailyTech/📋 文章索引.md",
+    "().md",
+    "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
+    "个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心.md",
+    "个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南.md",
+    "Dashboard/Databoard看板.md",
+    "Dashboard/Databoard看板.md.tmp.37388.039311c2d1f2",
+    "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md.tmp.37388.10dd9d83e674",
+    "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md.tmp.37388.97fad7c1f8ce",
+    "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md.tmp.36432.4b57580de667",
+    "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md.tmp.36432.388182d1a0b8",
+    "技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md.tmp.36432.f08260c7404d",
+    "技术文章-DailyTech/如何搭建一个端到端业务需求专家 Agent.md.tmp.36432.50b13b710a56",
+    "技术文章-DailyTech/04_阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
+    "技术文章-DailyTech/04_阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md.tmp.36432.1d6154ff0f54",
+    "技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md.tmp.36432.68f738097f1b",
+    "技术文章-DailyTech/_raw/08_人和Agent怎么一起干活？---复制粘贴的进化之路，先装个贾维斯吧.txt",
+    "2026-06-12.md",
+    "任务安排/任务明细/升贴水字段修改 🛫 2026-06-15 🔼.md",
+    "任务安排/任务列表_Kanban.md",
+    "任务安排/任务记录/2026-06-15安排.md",
+    "Dashboard/Tasks Dashboard.md",
+    "任务安排/模板/111.md",
+    "任务安排/模板/今日任务.md",
+    "任务安排/模板/每日任务模板.md",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/assets/6-writing/aigc.png",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/assets/6-writing/aigc.png",
+    "个人学习/英语学习/English-level-up-tips-master/docs/assets/README/ai@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/assets/README/ai@2x.svg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/assets/x-misc/黑人问号.jpg",
+    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2/assets/x-misc/黑人问号.jpg",
     "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
-    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化.md",
-    "金仕达公司业务类/HME项目文档/代码文档/主数据利率/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md",
-    "金仕达公司业务类/HME项目文档/代码文档/主数据利率",
+    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+    "Untitled Kanban.md",
+    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试.md",
     "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172054882.png",
     "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化/file-20260615172037761.png",
-    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets/6-11号主数据利率日期范围配置及升贴水明细表功能优化",
-    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/assets",
-    "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/升贴水报表涉及主数据优化V1.0.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
-    "技术文章-DailyTech",
-    "新建文件夹",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Common.md",
-    "个人学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md",
     "个人学习/软件使用技巧/assets/Obsidian的使用/file-20260615102458810.png",
-    "个人学习/软件使用技巧/assets/Obsidian的使用",
-    "个人学习/软件使用技巧/Obsidian的使用.md",
-    "个人学习/软件使用技巧/assets",
-    "个人学习/软件使用技巧",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4/week-1.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4/my-story.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2/x-misc.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/7-ai.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/6-writing.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/5-speaking.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/2-vocabulary.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/4-reading.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/1-understanding.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/3-listening.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-4",
-    "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-2",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/VibeCoding.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Rust.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-4/week-1.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Swift.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Python.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-2/x-misc.md",
-    "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Prompt.md",
     "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing@2x.png",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/单词本示意图.jpg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/黑人问号.jpg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing@2x.svg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/word-list@2x.svg",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-skills.png",
-    "个人学习/英语学习/English-level-up-tips-master/docs/assets/writing-en@2x.svg",
     "未命名.canvas"
   ]
 }

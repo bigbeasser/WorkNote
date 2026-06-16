@@ -1,13 +1,6 @@
 ## 🔖 技术文章知识库
 
 ```dataview
-TABLE file.size AS "大小(KB)", tags AS "标签", file.cday AS "创建日期"
-FROM "技术文章-DailyTech"
-WHERE contains(tags, "tech-article")
-SORT file.cday DESC
-```
-
-```dataview
 LIST
 FROM "技术文章-DailyTech"
 WHERE contains(tags, "tech-article")

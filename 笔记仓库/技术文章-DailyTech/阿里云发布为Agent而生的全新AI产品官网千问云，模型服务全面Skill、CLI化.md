@@ -113,6 +113,17 @@ mindmap
 
 ## 与你已有知识的关联
 
+**《[[个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心|Skills核心]]》**：本文是 Skills 理念在模型服务平台的落地实践——千问云将 Skills 从编程工具概念扩展到模型调度领域。
+
+**《[[个人学习/LLM大模型类相关知识/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践|AI Agent系列]]》**：千问云 Skills 是 Skills 范式的具体产品化案例，可与 Function Calling 和 MCP 做对比理解。
+
+**《[[个人学习/LLM大模型类相关知识/AgentSkillsTeams 架构演进过程及技术选型之道|AgentSkillsTeams]]》**：千问云的 Skills + CLI 架构可作为 AgentSkillTeam 中"模型服务层"的参考实现。
+
+**《[[个人学习/LLM大模型类相关知识/深入理解OpenClaw技术架构与实现原理（上）|OpenClaw架构]]》**：文中明确提到 OpenClaw 可直接集成千问云 Skills，是 OpenClaw 生态的重要扩展。
+
+**《[[个人学习/LLM大模型类相关知识/如何构建和调优高可用性的Agent？浅谈阿里云服务领域Agent构建的方法论|高可用性Agent]]》**：同属阿里云 Agent 构建体系，千问云是基础设施层，前文是方法论层。
+
+**《[[个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南|企业级多智能体]]》**：千问云作为模型服务中台，是企业级 Agent 架构中"模型接入层"的参考方案。
 
 ## 重难点理解
 

@@ -342,6 +342,12 @@ mindmap
 
 本文与你已有知识库中的以下文章存在直接关联：
 
+**《[[个人学习/LLM大模型类相关知识/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践|AI Agent系列]]》**：本文第八章详细介绍了 MCP 工具在 AI Coding 中的落地实践（接口文档直连、飞书云文档直读），正是 MCP 协议在前端研发场景中的具体应用案例。
+
+**《[[个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心|Skills核心]]》**：本文提出的"三层规范体系"中的"示范层"（code-design 模板），本质上就是 Skills 思维在编程规范中的体现——将团队的"标准产出"固化为可被 AI 直接引用的模板和规则。
+
+**《[[个人学习/LLM大模型类相关知识/AgentSkillsTeams 架构演进过程及技术选型之道|AgentSkillsTeams]]》**：本文第九章"值得期待的方向"中提到的"多 Agent 并行开发"，正是 Agent 协作架构在 AI Coding 场景下的潜在应用方向。
+
 ## 重难点理解
 
 ### 重难点 1：Spec Coding 为什么能减少返工？

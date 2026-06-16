@@ -216,6 +216,15 @@ mindmap
 
 本文与你的知识库中存在多处可关联的内容：
 
+**《[[个人学习/LLM大模型类相关知识/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践|AI Agent系列]]》**：ClipFlow 本质上是将 Agent 能力嵌入操作系统交互层的一种实践——通过剪贴板将 AI 能力注入工作流，是一种极简化的 Agent 交互模式。
+
+**《[[个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心|Skills核心]]》**：ClipFlow 的自定义 Prompt 本质上就是 Skills 的雏形——每个 Prompt 是独立的能力单元，可随意组合调用，在 OS 交互层面，Prompt 本身就是轻量级 Skill。
+
+**《[[个人学习/LLM大模型类相关知识/如何构建和调优高可用性的Agent？浅谈阿里云服务领域Agent构建的方法论|高可用性Agent]]》**：ClipFlow 的多模型路由策略（不同任务用不同模型），与高可用性 Agent 方法论中的"模型选择"策略异曲同工。
+
+**《[[个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南|企业级多智能体]]》**：ClipFlow 可作为企业级 Agent 架构中"人机交互层"的参考实现——在用户操作系统的剪贴板层面嵌入 AI 能力。
+
+**《[[个人学习/LLM大模型类相关知识/优秀的Prompt提示词参考|Prompt参考]]》**：ClipFlow 的 Prompt 模板功能与 Prompt 提示词设计理念直接相关，是对"好的 Prompt 应该被复用"理念的产品化实践。
 
 ## 重难点理解
 

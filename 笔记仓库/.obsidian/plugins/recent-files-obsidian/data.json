@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Hermes连接飞书全攻略",
-      "path": "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md"
+      "basename": "HME数据库",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md"
+    },
+    {
+      "basename": "最近爆火的Loop Engineering新概念,和Prompt有什么不一样",
+      "path": "个人学习/LLM大模型类相关知识/hermes/最近爆火的Loop Engineering新概念,和Prompt有什么不一样.md"
+    },
+    {
+      "basename": "Loop Engineering 概念解析、思考与实践",
+      "path": "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md"
     },
     {
       "basename": "飞书 _ Lark _ Hermes Agent",
@@ -19,10 +27,6 @@
     {
       "basename": "Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统",
       "path": "技术文章-DailyTech/Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统.md"
-    },
-    {
-      "basename": "Loop Engineering 概念解析、思考与实践",
-      "path": "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md"
     },
     {
       "basename": "📋 文章索引",
@@ -51,10 +55,6 @@
     {
       "basename": "pricing-formula-developer-guide",
       "path": "金仕达公司业务类/HME项目文档/代码文档/计价公式/pricing-formula-developer-guide.md"
-    },
-    {
-      "basename": "HME数据库",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md"
     },
     {
       "basename": "深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化",

@@ -165,6 +165,90 @@ D("D",2),
 W("W", 3)
 ```
 
+### 字段item_status
+
+itemStatus的使用
+
+#### 一、状态值对照表
+
+|   |   |   |
+|---|---|---|
+|值|业务含义|字典/常量来源|
+|null|正常 / 未完成|DocumentItemStatusEnum.NORMAL|
+|1|正常（冲销后仍有剩余量）|DataState.OFFSET_NORMAL，i18n：正常|
+|2|已冲销|DataState.OFFSET_SUCCESS，注释：已冲销|
+|8|已完成|DocumentItemStatusEnum.COMPLETE，i18n：已完成|
+|9|解押（仓单赎回后，原质押行）|代码注释：解押状态|
+|10|质押（仓单质押）|代码注释：质押|
+|888 / 999|仅前端展示用，不落库|查询时临时赋值，保存前清回 null|
+
+#### 新建明细 — 默认 `null`
+    
+
+```Shell
+资金路径自动生成入库通知、SAP 对接新建明细、采购等场景，创建时显式设为 null：
+FundPathServiceImpl.javaLines 668-668
+                    item.setItemStatus(null);
+```
+
+#### 冲销相关 — `1` / `2`
+    
+
+```Shell
+保存冲销单（offsetFlag = 'Y'）时，冲销单明细直接标为已冲销：
+DocumentsServiceImpl.javaLines 1336-1343
+        if (StringUtils.equals(DataState.Y, documentsAllReq.getDocumentsBaseReq().getData().getOffsetFlag())) {
+            ...
+                documentItems.getData().setItemStatus(DataState.OFFSET_SUCCESS);
+冲销单审批通过（status = 2）后，回写原单明细：
+冲销量 = 原单量 → 2（完全冲销）
+否则 → 1（部分冲销，仍正常）
+DocumentsServiceImpl.javaLines 2762-2770
+                    for (DocumentItems sourceItem : sourceItemsNew) {
+                        if (sourceItem.getQuantity().equals(sourceItem.getOffsetQuantity())) {
+                            sourceItem.setItemStatus(DataState.OFFSET_SUCCESS);
+                        } else {
+                            sourceItem.setItemStatus(DataState.OFFSET_NORMAL);
+                        }
+SAP 入库冲销（102）：被冲销的原登记明细 → 2；整单冲销后原明细 → 1。
+批量更新冲销完成：DocumentItemsServiceImpl.updateItemStatus / updateCompletedQuantityByDocuments → 2。
+```
+
+3. #### 仓单质押/解押 — `10` / `9`
+    
+
+|   |   |   |
+|---|---|---|
+|单据类型|actionId|赋值|
+|质押申请（ReceiptSign）|18|明细 → 10|
+|赎回申请（ReceiptRedeem）|21|源质押明细 → 9（解押）|
+|删除解押单|21|源质押明细恢复 → 10|
+
+```Shell
+DocumentsServiceImpl.javaLines 1354-1408
+            if (18 == documentsAllReq.getDocumentsBaseReq().getData().getActionId()) {
+                documentItems.getData().setItemStatus(10); // 状态更新成质押
+            }
+        ...
+                sourceDocumentItem.setItemStatus(9); // 解押状态
+```
+
+#### 计划/通知「完成」— `8`
+    
+
+```Shell
+出库计划(39)、出库通知(40)、入库通知(42) 等执行「完成」操作时：
+DocumentsServiceImpl.javaLines 3002-3004
+                // 设置行项目状态为"已完成"
+                documentItems.setItemStatus(DocumentItemStatusEnum.COMPLETE.getValue());
+                documentItemsService.updateById(documentItems);
+取消完成时清回 null：
+DocumentsServiceImpl.javaLines 4182-4183
+                documentItems.setItemStatus(null);
+                documentItemsService.updateById(documentItems);
+```
+
+
 ### 出库通知和拣配明细的对应关系
 
 **而且在出库通知单据上是一条出库通知对应一条减配明细  ，对应关系 而且拣配明细行上的link\_document\_id对应的是出库通知明细单据的id  **

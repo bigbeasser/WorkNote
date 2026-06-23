@@ -1,6 +1,8 @@
-# 我读完 Loop Engineering 三篇文章后，用了一整天搭了一个自动循环系统——然后它半夜 3 点自己跑了一轮
-
-> 从「这东西不就是定时任务嘛」到「卧槽它居然自己发现问题还修了」，中间隔了 12 个小时的折腾
+# 我读完 Loop Engineering 三篇文章后的一些小感悟
+文章顺列表:
+> - [Loop Engineering 概念解析、思考与实践](https://mp.weixin.qq.com/s/ael7aIEoomk4AU84E-mpGg)
+> - [Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统](https://mp.weixin.qq.com/s/YqIyL7uW4EV2r5HLDW7wcA)
+> - [Prompt 被淘汰了？深度拆解 Loop Engineering，炒作还是趋势？](https://mp.weixin.qq.com/s/daezGa5JxGcl-FokX_-zvg)
 
 ---
 

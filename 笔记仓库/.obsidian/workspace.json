@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md",
+                "file": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hermes连接飞书全攻略"
+              "title": "HME数据库"
             }
           }
         ]
@@ -138,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md",
+                "file": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Loop Engineering 概念解析、思考与实践 的大纲"
+              "title": "HME数据库 的大纲"
             }
           },
           {
@@ -216,12 +216,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 471.5,
-    "collapsed": true
+    "width": 471.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,27 +238,31 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "f98fa710cd9ac92d",
+  "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
+    "个人学习/LLM大模型类相关知识/hermes/最近爆火的Loop Engineering新概念,和Prompt有什么不一样.md",
+    "技术文章-DailyTech/全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从一问一答走向边看边说.md",
+    "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md",
+    "技术文章-DailyTech/我读完Loop Engineering三篇文章后动手实验的一整天.md",
+    "技术文章-DailyTech/_raw/01_全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从“一问一答”走向“边看边说”.txt",
+    "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md",
+    "个人学习/LLM大模型类相关知识/hermes/Hermes连接飞书全攻略.md",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/scripts/run_pipeline.sh",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-uat-deploy/SKILL.md",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/SKILL.md",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/scripts",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-uat-deploy",
+    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy",
+    "个人学习/LLM大模型类相关知识/hermes/skills",
     "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md.tmp.17256.805d6115f1ce",
     "个人学习/LLM大模型类相关知识/hermes/飞书 _ Lark _ Hermes Agent.pdf",
-    "个人学习/LLM大模型类相关知识/hermes/Hermes连接飞书全攻略.md",
-    "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md",
     "技术文章-DailyTech/当 Agent 替你值班：基于 Devix 构建 7x24 自动化运维 Harness Engineering.md",
     "Dashboard/Databoard看板.md",
     "技术文章-DailyTech/Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统.md",
-    "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md",
     "技术文章-DailyTech/📋 文章索引.md",
     "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等",
     "金仕达公司业务类/HME项目文档/知识库操作指南.md",
     "金仕达公司业务类/HME项目文档/Getting Started/AGENTS.md.tmp.41560.02ad9742e203",
-    "金仕达公司业务类/HME项目文档/Getting Started/AGENTS.md.tmp.41560.b91c627eb865",
-    "金仕达公司业务类/HME项目文档/Getting Started/AGENTS.md.tmp.41560.6901ff3303bb",
-    "金仕达公司业务类/HME项目文档/shturl.md.tmp.41560.ea68baba912f",
-    "金仕达公司业务类/HME项目文档/schema.md.tmp.41560.bf6069103d22",
-    "金仕达公司业务类/HME项目文档/schema.md.tmp.41560.8c5e48971095",
-    "金仕达公司业务类/HME项目文档/schema.md.tmp.41560.63f5ec3d129a",
-    "金仕达公司业务类/HME项目文档/schema.md.tmp.41560.91bbe06f328c",
     "金仕达公司业务类/HME项目文档/shturl.md",
     "金仕达公司业务类/HME项目文档/schema.md",
     "金仕达公司业务类/HME项目文档/wiki/库存管理.md",
@@ -273,10 +276,6 @@
     "金仕达公司业务类/HME项目文档/wiki/实货交易.md",
     "金仕达公司业务类/HME项目文档/代码文档/计价量模型movementPrice/movement-price-lifecycle.md",
     "金仕达公司业务类/HME项目文档/代码文档/点价单/点价单创建流程.md",
-    "金仕达公司业务类/HME项目文档/代码文档/点价单/点价单和定价明细的计算.md",
-    "金仕达公司业务类/HME项目文档/代码文档/点价单/点价单和定价明细.md",
-    "金仕达公司业务类/HME项目文档/代码文档/点价单/pricing-table-calculation-analysis.md",
-    "金仕达公司业务类/HME项目文档/代码文档/计价公式/pricing-formula-developer-guide.md",
     "技术文章-DailyTech/assets/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化/file-20260616181435116.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/assets/6-writing/aigc.png",
     "个人学习/英语学习/English-level-up-tips-master/docs/en/threads/part-1/assets/6-writing/aigc.png",

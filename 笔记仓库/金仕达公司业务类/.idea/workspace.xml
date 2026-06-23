@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="76802a2b-87fc-45b8-859d-0d9639253789" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/AgentSkillsTeams 架构演进过程及技术选型之道.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/Skills：从编程工具的配角到Agent研发的核心.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/【DeepSeek+LoRA+FastAPI】开发人员如何微调大模型并暴露接口给后端调用.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/【DeepSeek+LoRA+FastAPI】开发人员如何微调大模型并暴露接口给后端调用.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/企业级 Agent 多智能体架构与选型指南.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/如何构建和调优高可用性的Agent？浅谈阿里云服务领域Agent构建的方法论.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../个人学习/LLM大模型类相关知识/纯本地化搭建---DeepSeek_RAGFlow-构建个人知识库.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/AI 不缺智商缺纪律：我的 Harness 工程化实践.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/ContextBucket Agent 的无限记忆与工作区底座.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/OpenClaw与Hermes：源码里的 AI Agent 架构知识大复盘.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/Prompt被淘汰了？深度拆解Loop Engineering，炒作还是趋势？.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/Zvec- 开箱即用、高性能的嵌入式向量数据库.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/assets/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化/file-20260616181435116.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/verify-data一个端到端的数据验数Agent Skill.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/一篇搞懂 AI Coding Agent 的 Token 成本控制.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/你的 Agent 每次都失忆？这个工具彻底治好了我的前端开发焦虑.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从一问一答走向边看边说.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/基于钉钉机器人的 Qoder CLI - Claude Code 双引擎 AI 助手实践.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/如何搭建一个端到端业务需求专家 Agent.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/当 Agent 替你值班：基于 Devix 构建 7x24 自动化运维 Harness Engineering.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/横向拆解Claude Code、Codex等六大Agent上下文压缩策略后，我们做了第7个.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/让 Claude Code 拥有自我进化和记忆系统｜得物技术.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/转转前端周刊第199期 AI时代程序员的技能转型.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/都是 AI Coding，为什么 Java 体验差了一个量级？五条方法论帮你构建自己的 Harness 环境.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../技术文章-DailyTech/ 文章索引.md" beforePathEscaped="$PROJECT_DIR$/../技术文章-DailyTech/📋 文章索引.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3FWiMepmqZ0QVphkp3MldwI21GK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/StudyDataBase/笔记仓库/金仕达公司业务类"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76802a2b-87fc-45b8-859d-0d9639253789" name="Changes" comment="" />
+      <created>1782197180635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782197180635</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

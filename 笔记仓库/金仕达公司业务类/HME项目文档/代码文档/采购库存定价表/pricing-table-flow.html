@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>采购库存定价表 · 方法流程</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f5f5f5;
+      font-family: 'Geist', sans-serif;
+      color: #2d3142;
+      padding: 2rem;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2rem;
+    }
+    .eyebrow {
+      font-family: 'Geist Mono', monospace;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4f5d75;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #2d3142;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      font-family: 'Geist Mono', monospace;
+      font-size: 9px;
+      color: #7a8399;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 0.9fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(45,49,66,0.12);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .card .eyebrow {
+      margin-bottom: 0.75rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-header h3 {
+      font-family: 'Geist', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .card-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .card-dot.coral { background: #eb6c36; }
+    .card-dot.ink { background: #2d3142; }
+    .card-dot.muted { background: #4f5d75; }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card li {
+      font-family: 'Geist', sans-serif;
+      font-size: 12px;
+      color: #4f5d75;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(45,49,66,0.06);
+      line-height: 1.5;
+    }
+    .card li:last-child {
+      border-bottom: none;
+    }
+    .card li code {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      color: #2d3142;
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(45,49,66,0.12);
+      font-family: 'Geist Mono', monospace;
+      font-size: 8px;
+      color: #7a8399;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">REPORT METHOD ANALYSIS</p>
+      <h1>采购库存定价表 · 方法流程</h1>
+      <p class="subtitle">ReceiptDeliveryDetailsServiceImpl#getProcurementInventoryPricingTableNew</p>
+    </header>
+
+    <svg viewBox="0 0 880 980" xmlns="http://www.w3.org/2000/svg">
+      <!-- Defs: arrow markers -->
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
+        </marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+        </marker>
+      </defs>
+
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+      <!-- ========== ARROWS (drawn first for z-order) ========== -->
+
+      <!-- 1→2: 开始 → 参数预处理 -->
+      <line x1="440" y1="100" x2="440" y2="148" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 2→3: 参数预处理 → 主表查询 -->
+      <line x1="440" y1="204" x2="440" y2="244" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 3→4: 主表查询 → 预加载 -->
+      <line x1="440" y1="300" x2="440" y2="340" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 4→5: 预加载 → 逐行循环 -->
+      <line x1="440" y1="396" x2="440" y2="436" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 5→6: 逐行循环 → 定价方式 diamond (accent) -->
+      <line x1="440" y1="492" x2="440" y2="504" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+
+      <!-- 6→7 LEFT (点价): diamond左 → 分支计算 -->
+      <path d="M 360 548 L 240 548 L 240 680 L 280 680" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 6→7 DOWN (固定价): diamond下 → 分支计算 -->
+      <line x1="440" y1="592" x2="440" y2="652" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 6→7 RIGHT (均价): diamond右 → 分支计算 -->
+      <path d="M 520 548 L 640 548 L 640 680 L 600 680" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 7→8: 分支计算 → 完成率判定 -->
+      <line x1="440" y1="708" x2="440" y2="728" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 8→9: 完成率判定 → 返回 -->
+      <line x1="440" y1="808" x2="440" y2="860" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- ========== ARROW LABELS (with opaque mask) ========== -->
+
+      <!-- "点价" on left branch -->
+      <rect x="280" y="536" width="40" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="300" y="545" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace"
+            text-anchor="middle" letter-spacing="0.06em">点价</text>
+
+      <!-- "固定价" on down branch -->
+      <rect x="448" y="616" width="44" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="470" y="625" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace"
+            text-anchor="middle" letter-spacing="0.06em">固定价</text>
+
+      <!-- "均价" on right branch -->
+      <rect x="560" y="536" width="40" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="580" y="545" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace"
+            text-anchor="middle" letter-spacing="0.06em">均价</text>
+
+      <!-- ========== NODES ========== -->
+
+      <!-- 1. 开始 (oval) -->
+      <rect x="380" y="60" width="120" height="40" rx="20" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="84" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">开始</text>
+
+      <!-- 2. 参数预处理 -->
+      <rect x="300" y="148" width="280" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="172" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">参数预处理</text>
+      <text x="440" y="188" fill="#4f5d75" font-size="9"
+            font-family="'Geist Mono', monospace" text-anchor="middle">校验 · 日期计算 · 排除 RB/RS</text>
+
+      <!-- 3. 分页查询主表 (FOCAL) -->
+      <rect x="300" y="244" width="280" height="56" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+      <!-- type tag -->
+      <rect x="308" y="250" width="36" height="12" rx="2" fill="transparent" stroke="rgba(235,108,54,0.40)" stroke-width="0.8"/>
+      <text x="326" y="259" fill="rgba(235,108,54,0.80)" font-size="7"
+            font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">QUERY</text>
+      <text x="440" y="272" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">分页查询主表数据</text>
+      <text x="440" y="288" fill="#4f5d75" font-size="9"
+            font-family="'Geist Mono', monospace" text-anchor="middle">mapper 分页查询</text>
+
+      <!-- 4. 预加载 9 Map -->
+      <rect x="280" y="340" width="320" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <rect x="288" y="346" width="28" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.40)" stroke-width="0.8"/>
+      <text x="302" y="355" fill="rgba(45,49,66,0.80)" font-size="7"
+            font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">MAP</text>
+      <text x="440" y="368" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">预加载 9 个关联数据 Map</text>
+      <text x="440" y="384" fill="#4f5d75" font-size="9"
+            font-family="'Geist Mono', monospace" text-anchor="middle">MovementPrice · PriceTriggering · Evaluation</text>
+
+      <!-- 5. 遍历每行计算 -->
+      <rect x="280" y="436" width="320" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <rect x="288" y="442" width="32" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.40)" stroke-width="0.8"/>
+      <text x="304" y="451" fill="rgba(45,49,66,0.80)" font-size="7"
+            font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">LOOP</text>
+      <text x="440" y="464" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">遍历每行 · 单位换算 · 量计算</text>
+      <text x="440" y="480" fill="#4f5d75" font-size="9"
+            font-family="'Geist Mono', monospace" text-anchor="middle">KG 换算 · 入库量 · 调差量</text>
+
+      <!-- 6. 定价方式? (diamond, FOCAL) -->
+      <path d="M 440 504 L 520 548 L 440 592 L 360 548 Z" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+      <text x="440" y="552" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">定价方式?</text>
+
+      <!-- 7. 按分支计算金额 -->
+      <rect x="280" y="652" width="320" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <rect x="288" y="658" width="32" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.40)" stroke-width="0.8"/>
+      <text x="304" y="667" fill="rgba(45,49,66,0.80)" font-size="7"
+            font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">CALC</text>
+      <text x="440" y="680" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">按分支计算金额</text>
+      <text x="440" y="696" fill="#4f5d75" font-size="9"
+            font-family="'Geist Mono', monospace" text-anchor="middle">已定价未入库金额 · 单价</text>
+
+      <!-- 8. 完成率? (diamond) -->
+      <path d="M 440 728 L 520 768 L 440 808 L 360 768 Z" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="772" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">完成率?</text>
+
+      <!-- 9. 返回 (oval) -->
+      <rect x="380" y="860" width="120" height="40" rx="20" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="884" fill="#2d3142" font-size="12" font-weight="600"
+            font-family="'Geist', sans-serif" text-anchor="middle">返回结果</text>
+
+      <!-- ========== ANNOTATION CALLOUTS ========== -->
+
+      <!-- Annotation 1: near node 4 (right side) -->
+      <line x1="600" y1="368" x2="628" y2="368" stroke="#7a8399" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <text x="632" y="364" fill="#4f5d75" font-size="14" font-style="italic"
+            font-family="'Instrument Serif', serif">9 个 Map 一次预加载</text>
+      <text x="632" y="380" fill="#7a8399" font-size="9"
+            font-family="'Geist Mono', monospace">避免循环内逐条查询</text>
+
+      <!-- Annotation 2: near diamond 8 (right side) -->
+      <line x1="520" y1="768" x2="548" y2="768" stroke="#7a8399" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <text x="552" y="764" fill="#4f5d75" font-size="14" font-style="italic"
+            font-family="'Instrument Serif', serif">比值 &#x2208; [99.99%, 100.01%]</text>
+      <text x="552" y="780" fill="#7a8399" font-size="9"
+            font-family="'Geist Mono', monospace">已定价量 &#x00F7; 已入库量 &#x2248; 1 &#x2192; 完成</text>
+
+      <!-- ========== LEGEND ========== -->
+      <line x1="30" y1="932" x2="850" y2="932" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+      <text x="30" y="956" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace"
+            letter-spacing="0.14em">LEGEND</text>
+
+      <!-- Diamond legend -->
+      <path d="M 140 948 L 148 956 L 140 964 L 132 956 Z" fill="#ffffff" stroke="#2d3142" stroke-width="0.8"/>
+      <text x="156" y="960" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">决策判断</text>
+
+      <!-- Rect legend -->
+      <rect x="260" y="948" width="16" height="16" rx="2" fill="#ffffff" stroke="#2d3142" stroke-width="0.8"/>
+      <text x="284" y="960" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">处理步骤</text>
+
+      <!-- Focal legend -->
+      <rect x="384" y="948" width="16" height="16" rx="2" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="0.8"/>
+      <text x="408" y="960" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">核心焦点</text>
+    </svg>
+
+    <div class="cards">
+      <!-- Card 1: 预加载数据源 -->
+      <div class="card">
+        <p class="eyebrow">DATA SOURCES</p>
+        <div class="card-header">
+          <span class="card-dot coral"></span>
+          <h3>预加载数据源</h3>
+        </div>
+        <ul>
+          <li><code>MovementPrice</code> 定价明细</li>
+          <li><code>PriceTriggering</code> 点价记录</li>
+          <li><code>Evaluation</code> 估值数据</li>
+          <li><code>DocInQuantity</code> 截至月入库量</li>
+          <li><code>AdjustDifference</code> 调差数据</li>
+        </ul>
+      </div>
+
+      <!-- Card 2: 定价方式分支 -->
+      <div class="card">
+        <p class="eyebrow">PRICING MODE</p>
+        <div class="card-header">
+          <span class="card-dot ink"></span>
+          <h3>定价方式分支</h3>
+        </div>
+        <ul>
+          <li><code>BasicTriggeredPrice</code> 点价 — 按点价量与入库量关系分支</li>
+          <li><code>BasicFixedPrice</code> 固定价 — 价格固定不变</li>
+          <li><code>BasicAveragePrice</code> 均价 — 按期间均价计算</li>
+        </ul>
+      </div>
+
+      <!-- Card 3: 核心计算公式 -->
+      <div class="card">
+        <p class="eyebrow">FORMULAS</p>
+        <div class="card-header">
+          <span class="card-dot muted"></span>
+          <h3>核心计算公式</h3>
+        </div>
+        <ul>
+          <li>已入库未定价 = 已定价量 &#x2212; 已入库量 &#x2212; 调差量</li>
+          <li>未入库金额 = 金属金额 &#x2212; 估值 &#x2212; 应收CD</li>
+          <li>完成率 = 已定价量 &#x00F7; 已入库量</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      ReceiptDeliveryDetailsServiceImpl.java · L2586–L2949 · 364 LINES · 9 MAPS · 3 PRICING MODES
+    </footer>
+  </div>
+</body>
+</html>

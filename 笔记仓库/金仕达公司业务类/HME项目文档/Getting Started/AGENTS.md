@@ -1,106 +1,81 @@
 ---
 type: Note
-_organized: true
-_archived: true
 ---
-# AGENTS.md — Tolaria Vault
+# AGENTS.md — HME 项目知识库
 
-This is a [Tolaria](https://github.com/refactoringhq/tolaria) vault: a folder of Markdown files with YAML frontmatter forming a personal knowledge graph.
+## 知识库启动协议（Agent 必读）
 
-Keep edits compatible with Tolaria's current conventions. Prefer small, human-readable changes over heavy restructuring.
+本知识库采用三层架构，Agent 每次进入时必须按以下顺序读取：
 
-## Core conventions
-
-- One Markdown note per file.
-- The first H1 in the body is the preferred display title.
-- Legacy `title:` frontmatter is still read as a fallback when a note has no H1. Do not add it to new notes unless you are maintaining an older file.
-- Store note type in the `type:` frontmatter field.
-- Most notes live at the vault root as flat `.md` files. Type definitions live in `type/`. Saved views live in `views/`.
-- Any frontmatter field containing [[wikilinks]] is treated as a relationship. Common names include `Belongs to:`, `Related to:`, `Workspace:`, and custom relationship names.
-- Frontmatter properties that start with `_` are usually Tolaria-managed state. Leave them alone unless the user explicitly asks for them to change.
-
-## Notes
-
-```yaml
----
-type: Project
-status: Active
-icon: target
-Workspace: "[[tolaria]]"
-Belongs to:
-  - "[[25q2]]"
-Related to:
-  - "[[person-luca-rossi]]"
-aliases:
-  - Tolaria work
-url: https://example.com
----
-
-# Ship Tolaria
-
-Body content in Markdown.
+```
+1. 读取 wiki/_MAP.md        → 建立全局知识体系认知
+2. 读取 shturl.md 前 30 行   → 了解最近变更，判断知识新旧
+3. 读取 schema.md            → 了解操作规则（摄入/查询/维护流程）
+4. 按需读取 wiki/<领域>.md    → 进入具体领域
+5. 按需读取详细文档           → 深入代码/需求/错误分析
 ```
 
-## Types
+### 关键文件位置
 
-Type definitions are regular notes stored in `type/`. Use `type: Type` for new ones:
+| 文件 | 路径 | 用途 |
+|---|---|---|
+| 知识地图 | `wiki/_MAP.md` | 全局知识体系一览，agent 第一站 |
+| 变更日志 | `shturl.md` | 最新变更在最上面，判断知识新旧 |
+| 操作规则 | `schema.md` | 摄入/查询/维护的完整流程规范 |
+| 领域概览 | `wiki/<领域名>.md` | 每个业务领域的概念索引和文档导航 |
+| 术语表 | `通用文档/CTRM业务术语表/CTRM业务术语表.md` | 业务术语权威来源 |
 
-```yaml
+### Skills（自动触发）
+
+| Skill | 触发场景 |
+|---|---|
+| `hme-wiki-ingest` | 用户要求整理新文档、摄入资料、添加知识到知识库 |
+| `hme-wiki-query` | 用户提问 HME 项目相关技术问题、查找代码逻辑、询问业务流程 |
+
+### 自定义命令
+
+| 命令 | 用途 |
+|---|---|
+| `/ingest` | 摄入新文档到知识库 |
+| `/wiki-query` | 查询知识库回答问题 |
+
 ---
-type: Type
-icon: shapes
-color: blue
-sidebar label: Projects
-template: |
-  ## Outcome
 
-  ## Next actions
----
+## 目录结构
 
-# Project
+```
+HME项目文档/
+├── wiki/                      # 知识导航层（agent 的第一站）
+├── 代码文档/                   # 代码分析文档（按业务模块分子目录）
+├── 需求文档/                   # 需求说明（按迭代/功能分子目录）
+├── 通用文档/                   # 跨模块共享的领域知识
+├── 错误分析-问题排查记录/       # Bug 分析与排查记录
+├── 任务计划/                   # 任务安排与进度
+├── shturl.md                  # 变更追踪日志
+└── schema.md                  # 操作规则（agent 操作手册）
 ```
 
-Useful type metadata includes `icon`, `color`, `order`, `sidebar label`, `template`, `sort`, `view`, and `visible`.
+---
 
-## Wikilinks
+## Obsidian 约定
 
-- [[filename]] or [[Note Title]] — link by filename or title
-- [[filename|display text]] — with custom display text
-- Works in frontmatter values and Markdown body
+- 使用 `[[wikilink]]` 进行文档间链接
+- `tags` 字段用于文档分类：`代码文档`、`需求文档`、`错误分析`、`通用文档`、`wiki`
+- `aliases` 字段用于搜索别名
+- `related` 字段存放相关文档的 wikilink 列表
+- `version` 字段用于判断文档是否需要重新读取
+- `_` 开头的 frontmatter 字段不主动修改
 
-## Views
+## 文档命名
 
-Saved views live in `views/*.yml` and are written as YAML:
+- 代码文档：`<类名或方法名>-分析说明.md`
+- 需求文档：`<功能名>-<文档角色>.md`
+- 错误分析：`<问题关键词>-<简要描述>.md`
 
-```yaml
-name: Active Projects
-icon: kanban
-color: blue
-sort: modified:desc
-filters:
-  all:
-    - field: type
-      op: equals
-      value: Project
-    - field: status
-      op: equals
-      value: Active
-```
+## Agent 操作守则
 
-## Filenames
-
-Use kebab-case: `my-note-title.md`. One note per file.
-
-## What agents should do
-
-- Create and edit notes using the frontmatter and H1 conventions above.
-- Create and edit type documents in `type/`.
-- Add or modify relationships without breaking existing wikilinks.
-- Create and edit saved views in `views/`.
-- Update `AGENTS.md` only when the user asks for vault-level guidance changes.
-
-## What agents should avoid
-
-- Do not infer note type from folders other than the dedicated `type/` directory for type definitions.
-- Do not silently overwrite an existing custom `AGENTS.md`.
-- Do not overwrite user-authored config or installation-specific app files unless the user explicitly asks.
+- 摄入新文档后必须更新：对应的 `wiki/<领域>.md` + `wiki/_MAP.md` + `shturl.md`
+- 修改已有文档后必须：更新 `shturl.md` + 文档 `version` +1
+- 不修改无关文档，不做无关重构
+- 代码文档保留源码行号和类名引用
+- 新建文档的 frontmatter 必须包含 `tags`、`version`、`date`、`related`

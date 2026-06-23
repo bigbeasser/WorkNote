@@ -1,28 +1,84 @@
 {
   "recentFiles": [
     {
-      "basename": "深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化",
-      "path": "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md"
+      "basename": "Hermes连接飞书全攻略",
+      "path": "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md"
+    },
+    {
+      "basename": "飞书 _ Lark _ Hermes Agent",
+      "path": "个人学习/LLM大模型类相关知识/hermes/飞书 _ Lark _ Hermes Agent.pdf"
+    },
+    {
+      "basename": "当 Agent 替你值班：基于 Devix 构建 7x24 自动化运维 Harness Engineering",
+      "path": "技术文章-DailyTech/当 Agent 替你值班：基于 Devix 构建 7x24 自动化运维 Harness Engineering.md"
     },
     {
       "basename": "Databoard看板",
       "path": "Dashboard/Databoard看板.md"
     },
     {
-      "basename": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化",
-      "path": "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md"
+      "basename": "Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统",
+      "path": "技术文章-DailyTech/Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统.md"
+    },
+    {
+      "basename": "Loop Engineering 概念解析、思考与实践",
+      "path": "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md"
     },
     {
       "basename": "📋 文章索引",
       "path": "技术文章-DailyTech/📋 文章索引.md"
     },
     {
-      "basename": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术",
-      "path": "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md"
+      "basename": "shturl",
+      "path": "金仕达公司业务类/HME项目文档/shturl.md"
+    },
+    {
+      "basename": "schema",
+      "path": "金仕达公司业务类/HME项目文档/schema.md"
+    },
+    {
+      "basename": "库存管理",
+      "path": "金仕达公司业务类/HME项目文档/wiki/库存管理.md"
+    },
+    {
+      "basename": "_MAP",
+      "path": "金仕达公司业务类/HME项目文档/wiki/_MAP.md"
+    },
+    {
+      "basename": "ClaimReport-SAP-Docking-Service",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/ClaimReport/ClaimReport-SAP-Docking-Service.md"
+    },
+    {
+      "basename": "pricing-formula-developer-guide",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/计价公式/pricing-formula-developer-guide.md"
+    },
+    {
+      "basename": "HME数据库",
+      "path": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md"
+    },
+    {
+      "basename": "深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化",
+      "path": "技术文章-DailyTech/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化.md"
+    },
+    {
+      "basename": "让 Claude Code 拥有自我进化和记忆系统｜得物技术",
+      "path": "技术文章-DailyTech/让 Claude Code 拥有自我进化和记忆系统｜得物技术.md"
     },
     {
       "basename": "AI 不缺智商缺纪律：一场 Harness 工程化实践",
       "path": "技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md"
+    },
+    {
+      "basename": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术",
+      "path": "技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md"
+    },
+    {
+      "basename": "AI 不缺智商缺纪律：我的 Harness 工程化实践",
+      "path": "技术文章-DailyTech/AI 不缺智商缺纪律：我的 Harness 工程化实践.md"
+    },
+    {
+      "basename": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化",
+      "path": "技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md"
     },
     {
       "basename": "转转前端周刊第199期 AI时代程序员的技能转型",
@@ -39,10 +95,6 @@
     {
       "basename": "人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧",
       "path": "技术文章-DailyTech/人和Agent怎么一起干活——复制粘贴的进化之路，先装个贾维斯吧.md"
-    },
-    {
-      "basename": "让 Claude Code 拥有自我进化和记忆系统｜得物技术",
-      "path": "技术文章-DailyTech/让 Claude Code 拥有自我进化和记忆系统｜得物技术.md"
     },
     {
       "basename": "Skills：从编程工具的配角到Agent研发的核心",
@@ -63,10 +115,6 @@
     {
       "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务",
       "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md"
-    },
-    {
-      "basename": "HME数据库",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md"
     },
     {
       "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试",

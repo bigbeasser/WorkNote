@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>计价公式生命周期 · 从订单到现金流</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f5f5f5; font-family: 'Geist', sans-serif; color: #2d3142; padding: 2rem; }
+    .page { max-width: 960px; margin: 0 auto; }
+    header { margin-bottom: 2rem; }
+    .eyebrow { font-family: 'Geist Mono', monospace; font-size: 8px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #4f5d75; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: 1.75rem; font-weight: 400; margin-bottom: 0.25rem; }
+    .subtitle { font-family: 'Geist Mono', monospace; font-size: 9px; color: #7a8399; }
+    svg { width: 100%; height: auto; display: block; }
+    .cards { display: grid; grid-template-columns: 1.1fr 1fr 0.9fr; gap: 1rem; margin-top: 2rem; }
+    .card { background: #fff; border: 1px solid rgba(45,49,66,0.12); border-radius: 6px; padding: 1.25rem; }
+    .card .eyebrow { margin-bottom: 0.75rem; }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-header h3 { font-size: 14px; font-weight: 600; }
+    .card-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .card-dot.coral { background: #eb6c36; }
+    .card-dot.ink { background: #2d3142; }
+    .card-dot.muted { background: #4f5d75; }
+    .card ul { list-style: none; }
+    .card li { font-size: 12px; color: #4f5d75; padding: 0.25rem 0; border-bottom: 1px solid rgba(45,49,66,0.06); line-height: 1.5; }
+    .card li:last-child { border-bottom: none; }
+    .card li code { font-family: 'Geist Mono', monospace; font-size: 10px; color: #2d3142; }
+    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(45,49,66,0.12); font-family: 'Geist Mono', monospace; font-size: 8px; color: #7a8399; letter-spacing: 0.06em; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">PRICING FORMULA LIFECYCLE</p>
+      <h1>计价公式 · 从订单到现金流</h1>
+      <p class="subtitle">MovementPriceServiceImpl · CashFlowProjectionServiceImpl · EODServiceImp</p>
+    </header>
+
+    <svg viewBox="0 0 880 800" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
+        </marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+        </marker>
+      </defs>
+
+      <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+      <!-- ===== ARROWS (z-order: behind nodes) ===== -->
+
+      <!-- 1→2: 创建订单 → 合同审批 -->
+      <line x1="440" y1="108" x2="440" y2="152" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 2→3: 合同审批 → 基础价类型? (accent) -->
+      <line x1="440" y1="208" x2="440" y2="248" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+
+      <!-- 3→4 LEFT: diamond左 → 固定价 -->
+      <path d="M 376 284 L 228 284 L 228 356" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 3→5 DOWN: diamond下 → 点价 -->
+      <line x1="440" y1="320" x2="440" y2="356" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 3→6 RIGHT: diamond右 → 均价 -->
+      <path d="M 504 284 L 652 284 L 652 356" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 4→7: 固定价 → 日结处理 -->
+      <path d="M 228 412 L 228 460 L 400 460" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 5→7: 点价 → 日结处理 -->
+      <line x1="440" y1="412" x2="440" y2="460" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 6→7: 均价 → 日结处理 -->
+      <path d="M 652 412 L 652 460 L 480 460" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 7→8: 日结处理 → 现金流生成 -->
+      <line x1="440" y1="516" x2="440" y2="556" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- 8→9: 现金流生成 → 结算完成 -->
+      <line x1="440" y1="612" x2="440" y2="660" stroke="#4f5d75" stroke-width="1" marker-end="url(#arrow)"/>
+
+      <!-- ===== ARROW LABELS ===== -->
+
+      <!-- "固定价" on left horizontal -->
+      <rect x="280" y="272" width="44" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="302" y="281" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">固定价</text>
+
+      <!-- "点价" on center vertical -->
+      <rect x="448" y="332" width="36" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="466" y="341" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">点价</text>
+
+      <!-- "均价" on right horizontal -->
+      <rect x="556" y="272" width="40" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="576" y="281" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">均价</text>
+
+      <!-- ===== NODES ===== -->
+
+      <!-- 1. 创建订单 (oval) -->
+      <rect x="352" y="52" width="176" height="56" rx="28" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="78" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">创建订单 · 选择公式</text>
+      <text x="440" y="94" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">pricing_formula_id_parameters</text>
+
+      <!-- 2. 合同审批 -->
+      <rect x="352" y="152" width="176" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <rect x="360" y="158" width="44" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.40)" stroke-width="0.8"/>
+      <text x="382" y="167" fill="rgba(45,49,66,0.80)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">COMMIT</text>
+      <text x="440" y="182" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">合同审批</text>
+      <text x="440" y="198" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">生成 MovementPrice</text>
+
+      <!-- 3. 基础价类型? (diamond, FOCAL) -->
+      <path d="M 440 248 L 504 284 L 440 320 L 376 284 Z" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+      <text x="440" y="288" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">基础价类型?</text>
+
+      <!-- 4. 固定价 -->
+      <rect x="140" y="356" width="176" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="228" y="382" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">固定价</text>
+      <text x="228" y="398" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">BasicFixedPrice</text>
+
+      <!-- 5. 点价 -->
+      <rect x="352" y="356" width="176" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="382" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">点价</text>
+      <text x="440" y="398" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">BasicTriggeredPrice</text>
+
+      <!-- 6. 均价 -->
+      <rect x="564" y="356" width="176" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="652" y="382" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">均价</text>
+      <text x="652" y="398" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">BasicAveragePrice</text>
+
+      <!-- 7. 日结处理 (EOD) -->
+      <rect x="340" y="460" width="200" height="56" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <rect x="348" y="466" width="28" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.40)" stroke-width="0.8"/>
+      <text x="362" y="475" fill="rgba(45,49,66,0.80)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">EOD</text>
+      <text x="440" y="490" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">日结处理</text>
+      <text x="440" y="506" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">RI- / RI+ 滚动定价</text>
+
+      <!-- 8. 现金流生成 -->
+      <rect x="340" y="556" width="200" height="56" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+      <rect x="348" y="562" width="44" height="12" rx="2" fill="transparent" stroke="rgba(235,108,54,0.40)" stroke-width="0.8"/>
+      <text x="370" y="571" fill="rgba(235,108,54,0.80)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">ENGINE</text>
+      <text x="440" y="586" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">现金流生成</text>
+      <text x="440" y="602" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">CashflowModelValues</text>
+
+      <!-- 9. 结算完成 (oval) -->
+      <rect x="360" y="660" width="160" height="48" rx="24" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="440" y="688" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">结算完成</text>
+
+      <!-- ===== ANNOTATION CALLOUT ===== -->
+      <line x1="504" y1="284" x2="532" y2="284" stroke="#7a8399" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <text x="536" y="280" fill="#4f5d75" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">决定 basePrice 的取值方式</text>
+      <text x="536" y="296" fill="#7a8399" font-size="9" font-family="'Geist Mono', monospace">spread + otherCost 独立叠加</text>
+
+      <!-- ===== LEGEND ===== -->
+      <line x1="30" y1="740" x2="850" y2="740" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+      <text x="30" y="764" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+
+      <!-- Diamond -->
+      <path d="M 140 756 L 148 764 L 140 772 L 132 764 Z" fill="#ffffff" stroke="#2d3142" stroke-width="0.8"/>
+      <text x="156" y="768" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">决策分支</text>
+
+      <!-- Rect -->
+      <rect x="260" y="756" width="16" height="16" rx="2" fill="#ffffff" stroke="#2d3142" stroke-width="0.8"/>
+      <text x="284" y="768" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">处理步骤</text>
+
+      <!-- Focal -->
+      <rect x="384" y="756" width="16" height="16" rx="2" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="0.8"/>
+      <text x="408" y="768" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">核心焦点</text>
+
+      <!-- Oval -->
+      <rect x="508" y="756" width="16" height="16" rx="8" fill="#ffffff" stroke="#2d3142" stroke-width="0.8"/>
+      <text x="532" y="768" fill="#4f5d75" font-size="9" font-family="'Geist', sans-serif">起止</text>
+    </svg>
+
+    <div class="cards">
+      <div class="card">
+        <p class="eyebrow">FORMULA TYPES</p>
+        <div class="card-header">
+          <span class="card-dot coral"></span>
+          <h3>计价公式层级</h3>
+        </div>
+        <ul>
+          <li><code>Level 1</code> 基础价 — 固定价 / 点价 / 均价 / 多网均价</li>
+          <li><code>Level 2</code> 升贴水 — 固定升贴水(含百分比模式) / 浮动升贴水</li>
+          <li><code>Level 3</code> 加工费 — ProcessingFee</li>
+          <li><code>Level 4</code> 附加价 — AddedValue</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="eyebrow">MOVEMENT PRICE</p>
+        <div class="card-header">
+          <span class="card-dot ink"></span>
+          <h3>定价明细记录</h3>
+        </div>
+        <ul>
+          <li><code>basePrice</code> 基础价（由公式类型决定）</li>
+          <li><code>spread</code> 升贴水（固定值或百分比）</li>
+          <li><code>otherCostPrice</code> 其他费用</li>
+          <li><code>settlementNetPrice</code> = base + spread + other</li>
+          <li><code>scorporoPrice</code> 金属拆价（父产品单位）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="eyebrow">TRIGGERS</p>
+        <div class="card-header">
+          <span class="card-dot muted"></span>
+          <h3>生成时机</h3>
+        </div>
+        <ul>
+          <li><code>合同审批</code> 固定价→1条MP，均价→N条MP</li>
+          <li><code>点价单审批</code> 点价→每次点价1条MP</li>
+          <li><code>日结 EOD</code> 滚动未定价记录(RI-/RI+)</li>
+          <li><code>补充协议</code> 变更量/价→CC+/CC- 记录</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      MovementPriceServiceImpl · CashFlowProjectionServiceImpl · EODServiceImp · 3 PRICING MODES · UNIFIED FORMULA
+    </footer>
+  </div>
+</body>
+</html>

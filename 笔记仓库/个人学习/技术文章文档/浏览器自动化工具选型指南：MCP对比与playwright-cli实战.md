@@ -325,6 +325,8 @@ echo "=== 完成 ==="
 
 - [browser-use / Agent Browser / Playwright MCP 踩坑对比——最后我选了 playwright-cli](https://juejin.cn/post/7630657629954228267) — 张海潮
 - [3款浏览器 MCP 比较: playwright-mcp browser-use chrome-mcp](https://juejin.cn/post/7552804183390289966) — 火车叼位
+- https://github.com/microsoft/playwright-mcp - GitHub官方开源
+- [browser-use/browser-use](https://github.com/browser-use/browser-use)  - GitHub官方开源
 
 ---
 

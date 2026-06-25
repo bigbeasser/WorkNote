@@ -1,0 +1,19 @@
+# LangGraph Human-in-the-Loop 学习案例依赖
+# 安装：pip install -r requirements.txt
+
+# 核心框架
+langgraph>=0.4.0
+langchain>=0.3.0
+langchain-core>=0.3.0
+
+# LLM 提供商（按需保留，默认 OpenAI）
+langchain-openai>=0.3.0
+
+# Redis 检查点（USE_REDIS=true 时需要；Redis 需 RedisJSON + RediSearch 模块）
+langgraph-checkpoint-redis>=0.0.8
+
+# 可选：真实网络搜索（将 tools.py 中 mock_web_search 替换为 TavilySearch）
+# langchain-tavily>=0.2.0
+
+# 类型提示
+typing_extensions>=4.0.0

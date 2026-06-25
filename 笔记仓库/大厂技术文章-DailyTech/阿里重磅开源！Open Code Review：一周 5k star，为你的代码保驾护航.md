@@ -29,7 +29,7 @@ aliases:
 
 ## 原文
 
-![图1](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_01.jpg)
+![图1](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_01.jpg>)
 
 阿里妹导读
 
@@ -39,11 +39,11 @@ aliases:
 
 AI 每天生成的代码量已经远超人工评审的上限 —— 以前每天 review 几百行，现在动辄几千、几万行。代码评审，正在成为研发效率新的质量瓶颈。
 
-![图2](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_02.png)
+![图2](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_02.png>)
 
 Open Code Review 是什么？
 
-![图3](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_03.png)
+![图3](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_03.png>)
 
 Open Code Review 是一款 AI 驱动的代码评审 CLI 工具。**它的前身是阿里集团内部官方 AI 代码评审助手**，过去两年在**内部服务了数万开发者，识别了数百万个代码缺陷**，经过大规模充分验证后，我们将其孵化为开源项目，对社区开放[1]。
 
@@ -76,16 +76,23 @@ Open Code Review 的核心设计理念是将确定性工程与 Agent 结合，�
 - **场景化提示词调优：**针对代码评审场景深度优化提示词模版，在提升效果的同时有效降低 Token 消耗。
 - **场景化工具集沉淀：**基于对大量线上数据中工具调用轨迹的深入分析，包括不同工具的调用频率分布、单一工具的重复调用率、新增工具对整体调用链路的影响等多维度分析，从而对通用 Agent **工具集进行取舍与拆分**，最终沉淀出一套在代码评审场景下效果更稳定、行为更可预期的专属工具集。
 
-![图4](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_04.png)
+![图4](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_04.png>)
 
 Open Code Review 效果怎么样？
 
 **内部使用情况**
 
-Open Code Review 的前身已在阿里集团内部经过大规模生产环境验证，这组数据表明，Open Code Review 不仅具备大规模落地的工程能力，更在真实开发工作流中获得了一线工程师的广泛认可。以下数据的前提为** CR 被合并到目标分支**中：
-指标数据月活用户2万累计执行任务370万次真实评审任务用户采纳率超过30%有效AI评论占比全集团范围内近80%评论位置准确率超过97%
+Open Code Review 的前身已在阿里集团内部经过大规模生产环境验证，这组数据表明，Open Code Review 不仅具备大规模落地的工程能力，更在真实开发工作流中获得了一线工程师的广泛认可。以下数据的前提为 **CR 被合并到目标分支** 中：
 
-![图5](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_05.png)
+| 指标 | 数据 |
+|------|------|
+| 月活用户 | 2万 |
+| 累计执行任务 | 370万次（真实评审任务） |
+| 用户采纳率 | 超过30% |
+| 有效AI评论占比 | 全集团范围内近80% |
+| 评论位置准确率 | 超过97% |
+
+![图5](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_05.png>)
 
 **开源评测集对比**
 
@@ -107,7 +114,7 @@ Open Code Review 的核心优势在于准确率：各模型的准确率在 25%�
 
 一个值得关注的现象是，Claude-4.8-Opus 在两个工具上均表现出"更精确但更保守"的特征：它的准确率是所有组合中最高的（OCR 上 37.80%、CC 上 15.93%），但召回率明显低于 Claude-4.6-Opus（OCR 上 11.70% vs 20.00%、CC 上 12.70% vs 28.90%）。这说明模型的代际升级并不一定带来代码评审效果的全面提升 —— 更强的模型能力可能倾向于更严格的判断标准，从而在提升精度的同时牺牲了覆盖面。
 
-![图6](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_06.png)
+![图6](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_06.png>)
 
 **实践案例：Open Code Review 评审一个由 
 Claude Code 从零构建的生产级项目**
@@ -118,7 +125,7 @@ Open Code Review 的前身是阿里内部基于 Java 构建的系统。我们全
 
 **结果：在 106 次代码变更中，累计发现 145 个有效问题，涵盖：**严重 Bug / 逻辑错误、安全问题、错误处理不当、命名 / 拼写错误、代码重复 / DRY 违反、性能问题、Shell 脚本问题、React / 前端问题、国际化不完整。
 
-![图7](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_07.jpg)
+![图7](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_07.jpg>)
 
 Open Code Review 做了什么？
 
@@ -142,7 +149,7 @@ Open Code Review 的应对策略：
 
 - **反思模型（Reflection Model）作为过滤器：**在集团内部实践中，团队利用用户反馈数据（采纳、误报、忽略）训练了一个专项 Qwen3-30B-A3B 模型。由于线上数据存在噪声（"忽略"中混合了正确和错误的数据），他们将少量专家标注和用户明确反馈作为锚点，通过混合不同噪声比例的扰动数据集训练多个差异化模型进行协同标注，从噪声中识别可靠样本。最终模型相比基模的误报拦截率从 30.09% 提升到 52.63%，平均耗时从大尺寸主模型的 5 秒降低到 500ms 内。（参考论文[2]）
 
-![图8](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_08.png)
+![图8](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_08.png>)
 
 - **精细化规则模板：**通过 glob pattern 将规则精准匹配到特定文件类型（如 Java 文件用 Java 规则、XML mapper 用 SQL 规则），避免模型"发散"到不相关的问题上。相比纯自然语言驱动的规则指导，基于模板引擎的规则匹配更稳定可预测。这些规则是根据当下架构的能力边界以及阿里内部数万用户的使用数据迭代而来。（规则文档[3]）
 - **上下文隔离设计：**由于对代码变更采用了分治策略，评审任务的 LLM 对话上下文之间交叉污染更小，降低了因上下文混淆带来的误报概率。
@@ -194,70 +201,49 @@ Open Code Review 如何使用？
 
 ### 安装
 
-安装后，`ocr` 命令即可全局使用。
+安装后，`ocr` 命令即可全局使用。
 
-`npm install -g @alibaba-group/open-code-review``# 验证版本``ocr version`
+```bash
+npm install -g @alibaba-group/open-code-review
+# 验证版本
+ocr version
+```
 
 ### 基础使用
 
 在审查代码之前，必须先配置 LLM。
 
-`ocr config provider          # 选择内置供应商或添加自定义供应商``ocr config model             # 为当前供应商选择模型`
+```bash
+ocr config provider          # 选择内置供应商或添加自定义供应商
+ocr config model             # 为当前供应商选择模型
+```
 
-![图9](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_09.jpg)
+![图9](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_09.jpg>)
 
 配置完成后，在任意 Git 仓库中即可开始评审：
 
-`# 工作区模式 —— 评审所有暂存、未暂存和未追踪的变更``ocr review``# 分支对比 —— 比较两个引用之间的 diff``ocr review --from main --to feature-branch``# 单次提交``ocr review --commit abc123``# 附带需求背景 —— 评审变更是否正确实现了需求``ocr review --background "实现用户登录的手机号验证逻辑"`
+```bash
+# 工作区模式 —— 评审所有暂存、未暂存和未追踪的变更
+ocr review
+# 分支对比 —— 比较两个引用之间的 diff
+ocr review --from main --to feature-branch
+# 单次提交
+ocr review --commit abc123
+# 附带需求背景 —— 评审变更是否正确实现了需求
+ocr review --background "实现用户登录的手机号验证逻辑"
+```
+
 常用参数：
 
-参数
-
-默认值
-
-说明
-
---repo
-
-当前目录
-
-Git 仓库根目录
-
---format
-
-text
-
-输出格式：text 或 json
-
---concurrency
-
-8
-
-最大并发评审文件数
-
---timeout
-
-10
-
-并发任务超时（分钟）
-
---audience
-
-human
-
-human（展示进度）或 agent（仅输出摘要）
-
---background
-
-—
-
-需求背景描述
-
---preview、-p
-
-—
-
-预览将被审查的文件列表
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--repo` | 当前目录 | Git 仓库根目录 |
+| `--format` | text | 输出格式：text 或 json |
+| `--concurrency` | 8 | 最大并发评审文件数 |
+| `--timeout` | 10 | 并发任务超时（分钟） |
+| `--audience` | human | human（展示进度）或 agent（仅输出摘要） |
+| `--background` | — | 需求背景描述 |
+| `--preview`、`-p` | — | 预览将被审查的文件列表 |
 
 全量扫描模式（ocr scan）
 
@@ -270,11 +256,22 @@ human（展示进度）或 agent（仅输出摘要）
 
 #### 使用
 
-`# 扫描整个仓库（不指定 --path 时的默认行为）``ocr scan``
-``# 扫描单个目录``ocr scan --path internal/agent``
-``# 扫描多个指定文件``ocr scan --path internal/agent/agent.go,internal/diff/scan.go``
-``# 排除生成代码 / 测试文件``ocr scan --path internal --exclude '**/*_test.go,**/generated/**'``
-``# 扫描非 Git 目录，并以 JSON 输出（包含 project_summary 字段）``ocr scan --repo /path/to/plain/dir --format json`
+```bash
+# 扫描整个仓库（不指定 --path 时的默认行为）
+ocr scan
+
+# 扫描单个目录
+ocr scan --path internal/agent
+
+# 扫描多个指定文件
+ocr scan --path internal/agent/agent.go,internal/diff/scan.go
+
+# 排除生成代码 / 测试文件
+ocr scan --path internal --exclude '**/*_test.go,**/generated/**'
+
+# 扫描非 Git 目录，并以 JSON 输出（包含 project_summary 字段）
+ocr scan --repo /path/to/plain/dir --format json
+```
 
 #### 多阶段评审流程
 
@@ -291,164 +288,75 @@ human（展示进度）或 agent（仅输出摘要）
 
 - 每次运行前会打印一份粗略的 **token 成本预估**，让你在调用 LLM 前对开销心里有数。
 
-![图10](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_10.png)
+![图10](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_10.png>)
 
 - 使用 `--preview`（`-p`）可在不调用任何 LLM 的情况下，先查看将被扫描的文件清单。
 
-![图11](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_11.png)
+![图11](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_11.png>)
 
-- 使用 `--max-tokens-budget` 设置总 token 上限（input + output），一旦超出便停止调度新的批次，避免在大型仓库上失控消耗。
+- 使用 `--max-tokens-budget` 设置总 token 上限（input + output），一旦超出便停止调度新的批次，避免在大型仓库上失控消耗。
 
-`# 先预览将被扫描的文件清单（不调用 LLM）``ocr scan --preview``
-``# 扫描整个仓库，将开销限制在约 50 万 token 以内``ocr scan --max-tokens-budget 500000``
-``# 最快速的扫描：跳过 Plan、Dedup 和项目总结三个阶段``ocr scan --no-plan --no-dedup --no-summary`
+```bash
+# 先预览将被扫描的文件清单（不调用 LLM）
+ocr scan --preview
+
+# 扫描整个仓库，将开销限制在约 50 万 token 以内
+ocr scan --max-tokens-budget 500000
+
+# 最快速的扫描：跳过 Plan、Dedup 和项目总结三个阶段
+ocr scan --no-plan --no-dedup --no-summary
+```
 
 #### 常用参数
 
-参数
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--path` | 整个仓库 | 逗号分隔的待扫描目录或文件（仓库相对路径） |
+| `--exclude` | — | 逗号分隔的 gitignore 风格排除模式 |
+| `--preview`、`-p` | false | 预览将被扫描的文件清单，不调用 LLM |
+| `--max-tokens-budget` | 0（不限） | 总 token 用量上限，超出后停止调度新批次 |
+| `--no-plan` | false | 跳过逐文件的 Plan 预处理阶段 |
+| `--no-dedup` | false | 跳过批内相似评论的去重阶段 |
+| `--no-summary` | false | 跳过项目级总结阶段 |
+| `--batch` | by-language | 批次策略：none / by-language / by-directory |
+| `--format`、`-f` | text | 输出格式：text 或 json |
+| `--model` | — | 覆盖本次扫描使用的 LLM 模型 |
+| `--background`、`-b` | — | 需求/业务背景描述 |
+| `--concurrency` | 8 | 最大并发扫描文件数 |
+| `--repo` | 当前目录 | 待扫描的仓库或目录根 |
+| `--rule` | — | 自定义 JSON 评审规则文件路径 |
 
-默认值
-
-说明
-
-`--path`
-
-整个仓库
-
-逗号分隔的待扫描目录或文件（仓库相对路径）
-
-`--exclude`
-
-—
-
-逗号分隔的 gitignore 风格排除模式
-
-`--preview、-p`
-
-`false`
-
-预览将被扫描的文件清单，不调用 LLM
-
-`--max-tokens-budget`
-
-`0`（不限）
-
-总 token 用量上限，超出后停止调度新批次
-
-`--no-plan`
-
-`false`
-
-跳过逐文件的 Plan 预处理阶段
-
-`--no-dedup`
-
-`false`
-
-跳过批内相似评论的去重阶段
-
-`--no-summary`
-
-`false`
-
-跳过项目级总结阶段
-
-`--batch`
-
-`by-language`
-
-批次策略：`none` / `by-language` / `by-directory`
-
-`--format、-f`
-
-`text`
-
-输出格式：`text` 或 `json`
-
-`--model`
-
-—
-
-覆盖本次扫描使用的 LLM 模型
-
-`--background、-b`
-
-—
-
-需求/业务背景描述
-
-`--concurrency`
-
-`8`
-
-最大并发扫描文件数
-
-`--repo`
-
-当前目录
-
-待扫描的仓库或目录根
-
-`--rule`
-
-—
-
-自定义 JSON 评审规则文件路径
-
-#### 
-
-高级用法
+#### 高级用法
 
 #### 自定义评审规则
 
 Open Code Review 通过四层链路解析评审规则。每层采用首次匹配原则：如果文件路径匹配到某个模式，则使用该规则；否则穿透到下一层。
 
-优先级（高到低）
-
-来源
-
-路径
-
-描述
-
-1
-
---rule
-
-用户指定路径
-
-CLI 显式覆盖
-
-参数
-
-2
-
-项目配置
-
-<repoDir>/.opencodereview/rule.json
-
-项目级规则，可用 git 管理
-
-3
-
-全局配置
-
-~/.opencodereview/rule.json
-
-用户级规则
-
-4
-
-系统默认
-
-内嵌
-
-覆盖常见语言和文件类型的内置规则
+| 优先级（高→低） | 来源 | 路径 | 描述 |
+|----------------|------|------|------|
+| 1 | CLI 参数 `--rule` | 用户指定路径 | CLI 显式覆盖 |
+| 2 | 项目配置 | `<repoDir>/.opencodereview/rule.json` | 项目级规则，可用 git 管理 |
+| 3 | 全局配置 | `~/.opencodereview/rule.json` | 用户级规则 |
+| 4 | 系统默认 | 内嵌 | 覆盖常见语言和文件类型的内置规则 |
 
 规则配置文件格式：
 
-`{``  "rules": [``    {``      "path": "force-api/**/*.java",``      "rule": "所有对外接口必须使用 AuthType 注解进行鉴权"``    },``    {``      "path": "**/*mapper*.xml",``      "rule": "检查 SQL 注入风险、参数错误和缺少闭合标签"``    }``  ]``}`
-- `path` 支持 `**` 递归匹配和 `{java,kt}` 大括号展开。
+```json
+{
+  "rules": [
+    {
+      "path": "force-api/**/*.java",
+      "rule": "所有对外接口必须使用 AuthType 注解进行鉴权"
+    },
+    {
+      "path": "**/*mapper*.xml",
+      "rule": "检查 SQL 注入风险、参数错误和缺少闭合标签"
+    }
+  ]
+}
+```
+
+- `path` 支持 `**` 递归匹配和 `{java,kt}` 大括号展开。
 - 在每一层内，规则按声明顺序评估 —— 首次匹配生效。
 - 如果规则文件不存在，将被静默跳过。
 
@@ -456,55 +364,49 @@ CLI 显式覆盖
 
 内置 OpenTelemetry 支持，可上报评审过程的 spans 和 metrics，便于监控和调优：
 
-`# 启用遥测``ocr config set telemetry.enabled true``# 配置 OTLP 导出``ocr config set telemetry.exporter otlp``ocr config set telemetry.otlp_endpoint localhost:4317``# 可选：在遥测数据中包含 LLM prompt 内容（用于调试）``ocr config set telemetry.content_logging true`
+```bash
+# 启用遥测
+ocr config set telemetry.enabled true
+# 配置 OTLP 导出
+ocr config set telemetry.exporter otlp
+ocr config set telemetry.otlp_endpoint localhost:4317
+# 可选：在遥测数据中包含 LLM prompt 内容（用于调试）
+ocr config set telemetry.content_logging true
+```
 
 #### Web 视图
 
 启动内置 WebUI 查看器，可视化浏览历史评审会话：
 
-`ocr viewer``ocr viewer --addr :3000`
+```bash
+ocr viewer
+ocr viewer --addr :3000
+```
 
-![图12](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_12.png)
+![图12](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_12.png>)
 
 **在 Claude Code 中使用**
 
-Open Code Review 提供了对 Claude Code 的原生集成，支持 **Command** 和 **Skills** 两种接入方式，执行对应命令即可完成安装（在此之前请参考上文配置你的模型端点）。
+Open Code Review 提供了对 Claude Code 的原生集成，支持 **Command** 和 **Skills** 两种接入方式，执行对应命令即可完成安装（在此之前请参考上文配置你的模型端点）。
 
-_
-Command
+| 维度 | Command | Skills（CLAUDE.md） |
+|------|---------|---------------------|
+| 触发方式 | 用户主动调用 `/open-code-review` | 每次对话自动加载 |
+| 本质 | 可复用的任务提示词模板 | 持久的行为规范、常驻上下文 |
+| 灵活性 | 支持参数传入 | 静态内容，全局生效 |
+| 适用场景 | 特定任务的快捷入口 | 项目级约束与背景知识 |
 
-Skills（CLAUDE.md）
+#### Command
 
-触发方式
-
-用户主动调用 /open-code-review
-
-每次对话自动加载
-
-本质
-
-可复用的任务提示词模板
-
-持久的行为规范、常驻上下文
-
-灵活性
-
-支持参数传入
-
-静态内容，全局生效
-
-适用场景
-
-特定任务的快捷入口
-
-项目级约束与背景知识
-Command
-
-`mkdir -p ~/.claude/commands && curl -fsSL "https://code.alibaba-inc.com/open-code-review/cc-integrated/raw/master/.claude/commands/open-code-review.md" -o ~/.claude/commands/open-code-review.md`
+```bash
+mkdir -p ~/.claude/commands && curl -fsSL "https://code.alibaba-inc.com/open-code-review/cc-integrated/raw/master/.claude/commands/open-code-review.md" -o ~/.claude/commands/open-code-review.md
+```
 
 #### Skills
 
-`mkdir -p ~/.claude/skills/open-code-review && curl -fsSL "https://code.alibaba-inc.com/open-code-review/cc-integrated/raw/master/.claude/skills/open-code-review/SKILL.md" -o ~/.claude/skills/open-code-review/SKILL.md`
+```bash
+mkdir -p ~/.claude/skills/open-code-review && curl -fsSL "https://code.alibaba-inc.com/open-code-review/cc-integrated/raw/master/.claude/skills/open-code-review/SKILL.md" -o ~/.claude/skills/open-code-review/SKILL.md
+```
 安装完成后，你可以在 Claude Code 的任意工作流中随时触发 Open Code Review。其核心工作机制如下：
 
 - **上下文隔离：**评审任务在独立线程中执行，全程不污染当前主任务的上下文。
@@ -513,7 +415,7 @@ Command
 - **自动修复：**对于值得采纳的建议，Agent 可直接发起自动修复，减少人工介入成本。
 这种集成方式让专业的代码评审无缝嵌入编码过程，**真正将评审左移至编码阶段**，在问题产生的第一现场将其拦截，与此同时，借助上游 Agent 已有的需求上下文，能够更准确地区分哪些问题值得修复、哪些是 by design 的合理决策，从而避免误报干扰，**整个过程无需人工介入**。
 
-![图13](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_13.png)
+![图13](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_13.png>)
 
 **集成到 Github/Gitlab CI 流水线**
 
@@ -523,9 +425,13 @@ Open Code Review 天然适配 CI/CD 场景——`--format json` 输出结构化
 
 - **GitHub Actions**（`examples/github_actions/`）：在 PR 创建或评论 `/open-code-review` 时自动触发，评审结果通过 GitHub Pulls API 以 **inline review comments** 的形式精准标注到对应代码行，并支持 GitHub 原生的 `suggestion` 代码块，开发者可一键采纳修复建议。
 - **GitLab CI**（`examples/gitlab_ci/`）：在 Merge Request 创建时自动触发，评审结果通过 GitLab Discussions API 以**行级讨论**的形式回写到 MR，支持自托管 GitLab 实例。
-两套方案只需配置一个模型端点（通过 CI Secrets/Variables 注入 `OCR_LLM_URL`、`OCR_LLM_AUTH_TOKEN`、`OCR_LLM_MODEL`），无需额外改造现有流水线。核心命令均为：
+两套方案只需配置一个模型端点（通过 CI Secrets/Variables 注入 `OCR_LLM_URL`、`OCR_LLM_AUTH_TOKEN`、`OCR_LLM_MODEL`），无需额外改造现有流水线。核心命令均为：
 
-`ocr review --from "origin/$BASE_BRANCH" --to "origin/$HEAD_BRANCH" \``    --format json --audience agent`
+```bash
+ocr review --from "origin/$BASE_BRANCH" --to "origin/$HEAD_BRANCH" \
+    --format json --audience agent
+```
+
 Open Code Review 如何客观衡量评审质量？
 
 一个值得警惕的趋势正在发生：开发者已经开始不再仔细审查 AI 生成的代码。这种惰性同样会蔓延到 AI 代码评审环节 —— 当编码成本趋近于零，开发者可能会盲目采纳所有建议，或者干脆忽略所有建议。如今阿里内部代码平台上的 AI 评论占比已达 80%，真人参与实际评审的比例大幅萎缩。在这种情况下，采纳率、AI 生成占比等传统指标将彻底失真 —— 它们衡量的是用户行为，而非评审本身的质量。
@@ -551,7 +457,7 @@ AACR-Bench 不仅是一个数据集，更是一套完整的评估体系，核心
 - 多维度评估：更全面的评估维度打破语言壁垒，支持10 种主流编程语言，并提供完整的仓库级依赖上下文，覆盖了多种类型与多种作用域的代码问题。这使得评估场景能够真实还原复杂的跨文件代码审查过程，全面考验模型的系统性理解能力。
 - 更深刻的行业洞察：通过对主流 LLM 的广泛评估，我们发现上下文粒度和检索方法的选择对模型表现有着巨大影响。AACR-Bench 重新定义了 ACR 任务的评估标准，揭示了以往因数据局限性而被误导或低估的模型能力。
 
-![图14](assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_14.png)
+![图14](<assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_14.png>)
 
 展望
 
@@ -611,7 +517,7 @@ mindmap
 
 **《[[大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术|Spec Coding实战]]》**：文章实践案例即「Claude Code 写 Go + OCR 审 Go」，印证 AI 写代码与 AI 审代码是两种不同能力，需要专业评审 Agent 兜底。
 
-**《[[大厂技术文章-DailyTech/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践|MCP与Skills差异]]》**：OCR 提供 CLI + 未来 MCP 集成，与 Claude Code Command/Skills 双轨接入，是「专用工具 vs 通用协议」在 CR 场景的具体选型案例。
+**《[[大厂技术文章-DailyTech/AI Agent系列｜深入解析Function Calling、MCP和Skills的本质差异与最佳实践|MCP与Skills差异]]》**：OCR 提供 CLI + 未来 MCP 集成，与 Claude Code Command/Skills 双轨接入，是专用工具与通用协议在 CR 场景的具体选型案例。
 
 ## 重难点理解
 
@@ -631,14 +537,14 @@ mindmap
 flowchart TD
     A[AI生成代码量激增] --> B[人工CR成为瓶颈]
     B --> C{选型}
-    C -->|固定流程+低成本| D[playwright-cli等脚本]
-    C -->|专业AI代码评审| E[Open Code Review]
-    E --> F[确定性工程: 筛选/打包/规则/定位]
-    E --> G[Agent: 动态召回+专属工具集]
+    C -->|日常CR+低成本| D[Open Code Review CLI]
+    C -->|最大覆盖+安全审计| E[Claude Code /review]
+    D --> F[确定性工程: 筛选/打包/规则/定位]
+    D --> G[Agent: 动态召回+专属工具集]
     F --> H[ocr review / ocr scan]
     G --> H
     H --> I{输出}
-    I --> J[CLI文本/JSON]
+    I --> J[CLI text/json]
     I --> K[Claude Code集成]
     I --> L[GitHub/GitLab CI]
     H --> M[AACR-Bench客观评测]
@@ -671,7 +577,7 @@ flowchart TD
 
 1. **先 preview 再评审**: 用 `ocr scan --preview` 或 `ocr review --preview` 确认文件范围 — **适用场景**: 大仓库首次扫描 — **预期效果**: 避免 Token 失控。
 
-2. **项目级规则入库**: 在 `.opencodereview/rule.json` 维护团队规范 — **适用场景**: 多成员共享编码约束 — **预期效果**: 减少「团队 DNA 不同」导致的误报/漏报。
+2. **项目级规则入库**: 在 `.opencodereview/rule.json` 维护团队规范 — **适用场景**: 多成员共享编码约束 — **预期效果**: 减少团队差异导致的误报/漏报。
 
 3. **CI 用 JSON + agent 模式**: `--format json --audience agent` — **适用场景**: GitHub/GitLab PR 自动评论 — **预期效果**: 机器可读、无进度噪声。
 

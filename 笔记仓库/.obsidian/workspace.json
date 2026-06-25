@@ -4,24 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "e9cc97355b076f35",
+        "id": "e316cd8fd5910eea",
         "type": "tabs",
         "children": [
           {
-            "id": "f98fa710cd9ac92d",
+            "id": "a6476d1f3b55adaa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航.md",
+                "file": "大厂技术文章-DailyTech/📋 文章索引.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航"
+              "title": "📋 文章索引"
+            }
+          },
+          {
+            "id": "1f07f7d3b1118a8f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "LangGraph 企业级落地实战报告"
+            }
+          },
+          {
+            "id": "0223148c75fa8c90",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "大厂技术文章-DailyTech/Claude Code 动态工作流详解：让 Claude 自己现写一套 harness，把一个任务拆给一队 Claude 去干.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Claude Code 动态工作流详解：让 Claude 自己现写一套 harness，把一个任务拆给一队 Claude 去干"
+            }
+          },
+          {
+            "id": "5d3f1a7fe42d95c5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "loop",
+                "query": "实操手册",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -88,7 +131,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 369.5
+    "width": 401.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -138,13 +181,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
+                "file": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "HME数据库 的大纲"
+              "title": "LangGraph 企业级落地实战报告 的大纲"
             }
           },
           {
@@ -220,7 +263,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 471.5
+    "width": 771.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -238,54 +281,54 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "f98fa710cd9ac92d",
+  "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
+    "大厂技术文章-DailyTech/从表单到 Agent：得物社区活动搭建的 AI 实践之路.md",
+    "个人学习/软件使用技巧/LangGrash/📋 LangGraph索引.md",
+    "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
+    "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告：从架构设计到生产数据全解析 (2026-03-06) _ AI Daily _ AI Daily.html",
+    "个人学习/软件使用技巧/LangGrash",
+    "个人学习/微信公众号文章草稿/我读完Loop Engineering三篇文章后动手实验的一整天.md",
+    "大厂技术文章-DailyTech/📋 文章索引.md",
+    "大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
+    "大厂技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md",
+    "大厂技术文章-DailyTech/重磅！Loop Engineering 实操手册公开.md",
+    "大厂技术文章-DailyTech/_raw/01_重磅！Loop Engineering 实操手册公开.txt",
+    "大厂技术文章-DailyTech/_raw",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_08.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_07.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_06.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_05.jpg",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_04.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_03.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_02.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_01.png",
+    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开",
+    "个人学习/技术文章文档/我读完Loop Engineering三篇文章后动手实验的一整天.md",
+    "个人学习/软件使用技巧/Arthas/Arthas用户案例汇总.md",
+    "个人学习/软件使用技巧/Arthas/_regen_summary.py",
+    "个人学习/技术文章文档/Rebased：基于 IntelliJ 平台的轻量 Git 客户端.md",
+    "大厂技术文章-DailyTech/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试.md",
+    "个人学习/Arthas/_fetch_user_cases.py",
+    "个人学习/软件使用技巧/Arthas",
+    "大厂技术文章-DailyTech/你讲卫生吗？节省Token方法.md",
+    "大厂技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md",
+    "大厂技术文章-DailyTech/AI 不缺智商缺纪律：我的 Harness 工程化实践.md",
+    "大厂技术文章-DailyTech/_raw/02_小红书QEcon分享回顾：Agent 驱动的服务端端到端测试.txt",
+    "大厂技术文章-DailyTech/assets/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试/img_31.png",
+    "大厂技术文章-DailyTech/assets/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试/img_30.png",
+    "大厂技术文章-DailyTech/assets/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试",
+    "大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航.md",
+    "个人学习/微信公众号文章草稿/Open-Code-Review-上手实操/阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI.md",
+    "assets/阿里重磅开源！Open.md",
     "大厂技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
-    "大厂技术文章-DailyTech/assets/深度解析LLM Wiki - Obsidian-Wiki - GBrain：Agent时代知识的自组织与自进化/file-20260616181435116.png",
     "个人学习/微信公众号文章草稿/AI生成高质量技术公众号文章：生动、简略、吸睛的全套方法.md",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_14.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_13.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_12.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_11.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_10.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_09.jpg",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_08.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_07.jpg",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_06.png",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源-Open-Code-Review/mapping.txt",
-    "大厂技术文章-DailyTech/assets/阿里重磅开源-Open-Code-Review",
     "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
     "个人学习/LLM大模型类相关知识/hermes/最近爆火的Loop Engineering新概念,和Prompt有什么不一样.md",
     "技术文章-DailyTech/全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从一问一答走向边看边说.md",
     "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md",
     "技术文章-DailyTech/我读完Loop Engineering三篇文章后动手实验的一整天.md",
-    "技术文章-DailyTech/_raw/01_全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从“一问一答”走向“边看边说”.txt",
     "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md",
-    "个人学习/LLM大模型类相关知识/hermes/Hermes连接飞书全攻略.md",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/scripts/run_pipeline.sh",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-uat-deploy/SKILL.md",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/SKILL.md",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy/scripts",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-uat-deploy",
-    "个人学习/LLM大模型类相关知识/hermes/skills/hme-pipeline-deploy",
-    "个人学习/LLM大模型类相关知识/hermes/skills",
-    "个人学习/LLM大模型类相关知识/自己折腾claudecode,hermes等/Hermes连接飞书全攻略.md.tmp.17256.805d6115f1ce",
-    "技术文章-DailyTech/当 Agent 替你值班：基于 Devix 构建 7x24 自动化运维 Harness Engineering.md",
-    "Dashboard/Databoard看板.md",
-    "技术文章-DailyTech/Loop Engineering 实践指南：在 Code Buddy 中构建自主循环系统.md",
-    "技术文章-DailyTech/📋 文章索引.md",
-    "金仕达公司业务类/HME项目文档/知识库操作指南.md",
-    "金仕达公司业务类/HME项目文档/shturl.md",
-    "金仕达公司业务类/HME项目文档/schema.md",
-    "金仕达公司业务类/HME项目文档/wiki/库存管理.md",
-    "金仕达公司业务类/HME项目文档/wiki/_MAP.md",
-    "金仕达公司业务类/HME项目文档/wiki/_AGENT引导提示.md",
-    "金仕达公司业务类/HME项目文档/代码文档/ClaimReport/ClaimReport-SAP-Docking-Service.md",
-    "金仕达公司业务类/HME项目文档/wiki/系统架构.md",
-    "金仕达公司业务类/HME项目文档/wiki/应收应付与资金.md",
-    "金仕达公司业务类/HME项目文档/wiki/衍生品与风险管理.md",
-    "金仕达公司业务类/HME项目文档/wiki/作价与定价.md",
     "未命名.canvas"
   ]
 }

@@ -1,8 +1,76 @@
 {
   "recentFiles": [
     {
+      "basename": "LangGraph 企业级落地实战报告",
+      "path": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md"
+    },
+    {
+      "basename": "从表单到 Agent：得物社区活动搭建的 AI 实践之路",
+      "path": "大厂技术文章-DailyTech/从表单到 Agent：得物社区活动搭建的 AI 实践之路.md"
+    },
+    {
+      "basename": "📋 文章索引",
+      "path": "大厂技术文章-DailyTech/📋 文章索引.md"
+    },
+    {
+      "basename": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术",
+      "path": "大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md"
+    },
+    {
+      "basename": "用 LLM Agent 重构告警排查流程｜得物技术",
+      "path": "大厂技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md"
+    },
+    {
+      "basename": "重磅！Loop Engineering 实操手册公开",
+      "path": "大厂技术文章-DailyTech/重磅！Loop Engineering 实操手册公开.md"
+    },
+    {
+      "basename": "Arthas用户案例汇总",
+      "path": "个人学习/软件使用技巧/Arthas/Arthas用户案例汇总.md"
+    },
+    {
+      "basename": "Rebased：基于 IntelliJ 平台的轻量 Git 客户端",
+      "path": "个人学习/技术文章文档/Rebased：基于 IntelliJ 平台的轻量 Git 客户端.md"
+    },
+    {
+      "basename": "小红书QEcon分享回顾：Agent 驱动的服务端端到端测试",
+      "path": "大厂技术文章-DailyTech/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试.md"
+    },
+    {
+      "basename": "你讲卫生吗？节省Token方法",
+      "path": "大厂技术文章-DailyTech/你讲卫生吗？节省Token方法.md"
+    },
+    {
+      "basename": "AI 不缺智商缺纪律：一场 Harness 工程化实践",
+      "path": "大厂技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md"
+    },
+    {
+      "basename": "img_02",
+      "path": "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_02.png"
+    },
+    {
       "basename": "阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航",
       "path": "大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航.md"
+    },
+    {
+      "basename": "阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI",
+      "path": "个人学习/微信公众号文章草稿/Open-Code-Review-上手实操/阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI.md"
+    },
+    {
+      "basename": "img_11",
+      "path": "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_11.png"
+    },
+    {
+      "basename": "img_09",
+      "path": "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_09.jpg"
+    },
+    {
+      "basename": "img_01",
+      "path": "大厂技术文章-DailyTech/assets/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航/img_01.jpg"
+    },
+    {
+      "basename": "阿里重磅开源！Open",
+      "path": "assets/阿里重磅开源！Open.md"
     },
     {
       "basename": "阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化",
@@ -131,74 +199,6 @@
     {
       "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试",
       "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试.md"
-    },
-    {
-      "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化",
-      "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化.md"
-    },
-    {
-      "basename": "7-ai",
-      "path": "个人学习/英语学习/English-level-up-tips-master/docs/threads/part-1/7-ai.md"
-    },
-    {
-      "basename": "Common",
-      "path": "个人学习/英语学习/English-level-up-tips-master/docs/threads/word-list/Common.md"
-    },
-    {
-      "basename": "定价明细价格字段计算逻辑文档",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md"
-    },
-    {
-      "basename": "2024证监会考前集训期货知识讲义_1699446777",
-      "path": "个人学习/期货知识/2024证监会考前集训期货知识讲义_1699446777.pdf"
-    },
-    {
-      "basename": "期货基础知识",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货基础知识.md"
-    },
-    {
-      "basename": "代码文档_主题类型空壳",
-      "path": "金仕达公司业务类/HME项目文档/Getting Started/代码文档_主题类型空壳.md"
-    },
-    {
-      "basename": "tolaria",
-      "path": "金仕达公司业务类/HME项目文档/Getting Started/tolaria.md"
-    },
-    {
-      "basename": "Monthly Mgmt 科目逻辑梳理",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/Monthly Mgmt 科目逻辑梳理.md"
-    },
-    {
-      "basename": "期货现货标准术语手册",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/期货现货标准术语手册.md"
-    },
-    {
-      "basename": "金属损益（Metal Result）及管报重构项目进度汇报及问题沟通",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/项目基础/金属损益（Metal Result）及管报重构项目进度汇报及问题沟通.md"
-    },
-    {
-      "basename": "任务计划",
-      "path": "金仕达公司业务类/HME项目文档/任务计划/任务计划.md"
-    },
-    {
-      "basename": "任务计划安排_主题类型空壳",
-      "path": "金仕达公司业务类/HME项目文档/任务计划/任务计划安排_主题类型空壳.md"
-    },
-    {
-      "basename": "Thrift跨语言调用链路说明",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md"
-    },
-    {
-      "basename": "定价明细MovementPrice生成逻辑",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细MovementPrice生成逻辑.html"
-    },
-    {
-      "basename": "定价明细价格字段计算逻辑",
-      "path": "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑.html"
-    },
-    {
-      "basename": "CTRM业务术语表",
-      "path": "金仕达公司业务类/HME项目文档/通用文档/CTRM业务术语表/CTRM业务术语表.md"
     }
   ],
   "omittedPaths": [],

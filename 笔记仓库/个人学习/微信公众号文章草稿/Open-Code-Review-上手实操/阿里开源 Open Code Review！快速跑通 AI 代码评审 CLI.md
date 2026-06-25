@@ -1,6 +1,6 @@
 # 阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI
 
-> 参考来源：[大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航](../../大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航.md)  
+> 参考来源：[Open Code Review-AI代码评审CLI与确定性工程实践](../../大厂技术文章-DailyTech/文章/Open Code Review-AI代码评审CLI与确定性工程实践.md)  
 > 开源地址：https://github.com/alibaba/open-code-review
 
 ---

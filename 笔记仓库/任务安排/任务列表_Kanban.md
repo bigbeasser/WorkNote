@@ -38,10 +38,6 @@ TQ_show_urgency:
 - [x] [升贴水字段修改 🛫 2026-06-15 🔼](升贴水字段修改%20🛫%202026-06-15%20🔼.md)
 
 
-## 
-
-
-
 ***
 
 ## Archive
@@ -50,6 +46,6 @@ TQ_show_urgency:
 
 %% kanban:settings
 ```
-{"kanban-plugin":"list","list-collapse":[false,false,false],"show-checkboxes":true,"lane-width":500,"full-list-lane-width":true,"new-note-folder":"任务安排","tag-colors":[]}
+{"kanban-plugin":"list","list-collapse":[false,false],"show-checkboxes":true,"lane-width":500,"full-list-lane-width":true,"new-note-folder":"任务安排","tag-colors":[]}
 ```
 %%

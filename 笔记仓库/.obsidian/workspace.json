@@ -8,59 +8,55 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a6476d1f3b55adaa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "大厂技术文章-DailyTech/📋 文章索引.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "📋 文章索引"
-            }
-          },
-          {
-            "id": "1f07f7d3b1118a8f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "LangGraph 企业级落地实战报告"
-            }
-          },
-          {
             "id": "0223148c75fa8c90",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大厂技术文章-DailyTech/Claude Code 动态工作流详解：让 Claude 自己现写一套 harness，把一个任务拆给一队 Claude 去干.md",
+                "file": "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Claude Code 动态工作流详解：让 Claude 自己现写一套 harness，把一个任务拆给一队 Claude 去干"
+              "title": "Claude Code-Steering Claude七种配置方式选型指南"
+            }
+          },
+          {
+            "id": "720a23e4b563069a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Claude Code-Steering Claude七种配置方式选型指南"
+            }
+          },
+          {
+            "id": "d5264b81b09f5a9f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "大厂技术文章-DailyTech/文章/七条节省Token的交互习惯.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "七条节省Token的交互习惯"
             }
           },
           {
             "id": "5d3f1a7fe42d95c5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术"
+              "title": "新标签页"
             }
           }
         ],
@@ -96,7 +92,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "实操手册",
+                "query": "paths 作用域",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -116,22 +112,12 @@
               "icon": "lucide-bookmark",
               "title": "书签"
             }
-          },
-          {
-            "id": "02b0937f5622e3bb",
-            "type": "leaf",
-            "state": {
-              "type": "recent-files",
-              "state": {},
-              "icon": "clock",
-              "title": "Recent files"
-            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 401.5
+    "width": 440.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -181,13 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
+                "file": "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "LangGraph 企业级落地实战报告 的大纲"
+              "title": "Claude Code-Steering Claude七种配置方式选型指南 的大纲"
             }
           },
           {
@@ -247,16 +233,6 @@
               "icon": "links-going-out",
               "title": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务 的出链列表"
             }
-          },
-          {
-            "id": "b4bd7e684255f159",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
-            }
           }
         ],
         "currentTab": 4
@@ -277,58 +253,57 @@
       "obsidian-git:Open Git source control": false,
       "omnisearch:Omnisearch": false,
       "realclaudian:Open Claudian": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": true,
-      "obsidian-kanban:Create new board": false
+      "table-editor-obsidian:Advanced Tables Toolbar": true
     }
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/__init__.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/demo.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/tools.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/state.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/nodes.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/graph_builder.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/config.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__/checkpointer.cpython-313.pyc",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/__pycache__",
-    "个人学习/软件使用技巧/LangGrash/小案例/README.md",
-    "个人学习/软件使用技巧/LangGrash/小案例/requirements.txt",
-    "个人学习/软件使用技巧/LangGrash/小案例/human_in_loop_agent/demo.py",
-    "大厂技术文章-DailyTech/从表单到 Agent：得物社区活动搭建的 AI 实践之路.md",
-    "个人学习/软件使用技巧/LangGrash/📋 LangGraph索引.md",
-    "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md",
-    "个人学习/微信公众号文章草稿/我读完Loop Engineering三篇文章后动手实验的一整天.md",
+    "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude七种配置方式选型指南",
+    "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude Code七种配置方式选型指南",
+    "大厂技术文章-DailyTech/文章/七条节省Token的交互习惯.md",
     "大厂技术文章-DailyTech/📋 文章索引.md",
-    "大厂技术文章-DailyTech/AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术.md",
-    "大厂技术文章-DailyTech/用 LLM Agent 重构告警排查流程｜得物技术.md",
-    "大厂技术文章-DailyTech/重磅！Loop Engineering 实操手册公开.md",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_08.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_07.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_06.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_05.jpg",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_04.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_03.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_02.png",
-    "大厂技术文章-DailyTech/assets/重磅！Loop Engineering 实操手册公开/img_01.png",
-    "个人学习/技术文章文档/我读完Loop Engineering三篇文章后动手实验的一整天.md",
-    "个人学习/软件使用技巧/Arthas/Arthas用户案例汇总.md",
-    "个人学习/技术文章文档/Rebased：基于 IntelliJ 平台的轻量 Git 客户端.md",
-    "大厂技术文章-DailyTech/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试.md",
-    "大厂技术文章-DailyTech/你讲卫生吗？节省Token方法.md",
-    "大厂技术文章-DailyTech/AI 不缺智商缺纪律：一场 Harness 工程化实践.md",
-    "大厂技术文章-DailyTech/AI 不缺智商缺纪律：我的 Harness 工程化实践.md",
-    "大厂技术文章-DailyTech/assets/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试/img_31.png",
-    "大厂技术文章-DailyTech/assets/小红书QEcon分享回顾：Agent 驱动的服务端端到端测试/img_30.png",
-    "大厂技术文章-DailyTech/阿里重磅开源！Open Code Review：一周 5k star，为你的代码保驾护航.md",
-    "个人学习/微信公众号文章草稿/Open-Code-Review-上手实操/阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI.md",
-    "assets/阿里重磅开源！Open.md",
-    "大厂技术文章-DailyTech/阿里云发布为Agent而生的全新AI产品官网千问云，模型服务全面Skill、CLI化.md",
-    "个人学习/微信公众号文章草稿/AI生成高质量技术公众号文章：生动、简略、吸睛的全套方法.md",
-    "金仕达公司业务类/HME项目文档/代码文档/Hme数据库知识/HME数据库.md",
-    "个人学习/LLM大模型类相关知识/hermes/最近爆火的Loop Engineering新概念,和Prompt有什么不一样.md",
-    "技术文章-DailyTech/全球首个！京东全栈开源JoyAI-VL-Interaction，让大模型从一问一答走向边看边说.md",
-    "技术文章-DailyTech/Loop Engineering 概念解析、思考与实践.md",
+    "个人学习/Obsidian的使用/Obsidian的使用.md",
+    "个人学习/技术工具相关",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/__init__.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/state.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/tools.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/nodes.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/graph_builder.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/checkpointer.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/demo.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/config.cpython-313.pyc",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/README.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/📋 LangGraph索引.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/小案例/README.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/📋 LangGraph索引.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告.md",
+    "个人学习/英语学习/简单算法突击.md",
+    "大厂技术文章-DailyTech/文章/Zvec- 开箱即用、高性能的嵌入式向量数据库.md",
+    "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
+    "大厂技术文章-DailyTech/文章/Open Code Review-AI代码评审CLI与确定性工程实践.md",
+    "大厂技术文章-DailyTech/文章/Loop Engineering-实操手册与14步落地清单.md",
+    "大厂技术文章-DailyTech/文章/高可用Agent-阿里云服务领域构建与调优方法论.md",
+    "大厂技术文章-DailyTech/文章/钉钉AI助手-Qoder CLI与Claude Code双引擎实践.md",
+    "大厂技术文章-DailyTech/文章/得物活动Agent-从表单到LangGraph的社区活动搭建实践.md",
+    "大厂技术文章-DailyTech/文章/告警排查Agent-得物LLM Agent重构告警流程.md",
+    "大厂技术文章-DailyTech/文章/千问云-Agent-first模型服务Skill与CLI化.md",
+    "大厂技术文章-DailyTech/文章/剪贴板AI增强-人与Agent协作的复制粘贴进化.md",
+    "大厂技术文章-DailyTech/文章/企业级Agent-多智能体架构与选型指南.md",
+    "大厂技术文章-DailyTech/专题/记忆与上下文专题.md",
+    "大厂技术文章-DailyTech/专题/Loop工程专题.md",
+    "大厂技术文章-DailyTech/专题/Claude-Code专题.md",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_08.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_03.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_07.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_06.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_05.jpg",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_04.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_02.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_01.png",
+    "大厂技术文章-DailyTech/文章/assets/得物活动Agent-从表单到LangGraph的社区活动搭建实践/img_23.jpg",
+    "大厂技术文章-DailyTech/文章/assets/得物活动Agent-从表单到LangGraph的社区活动搭建实践/img_19.png",
+    "大厂技术文章-DailyTech/文章/Harness工程化-五层架构与门禁阻断实践.md",
     "未命名.canvas"
   ]
 }

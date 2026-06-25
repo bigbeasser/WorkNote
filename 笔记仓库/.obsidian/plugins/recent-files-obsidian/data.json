@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "LangGraph 企业级落地实战报告",
-      "path": "个人学习/软件使用技巧/LangGrash/LangGraph 企业级落地实战报告.md"
+      "basename": "任务列表_Kanban",
+      "path": "任务安排/任务列表_Kanban.md"
     },
     {
-      "basename": "从表单到 Agent：得物社区活动搭建的 AI 实践之路",
-      "path": "大厂技术文章-DailyTech/从表单到 Agent：得物社区活动搭建的 AI 实践之路.md"
+      "basename": "Obsidian的使用",
+      "path": "个人学习/Obsidian的使用/Obsidian的使用.md"
     },
     {
       "basename": "📋 文章索引",
       "path": "大厂技术文章-DailyTech/📋 文章索引.md"
+    },
+    {
+      "basename": "从表单到 Agent：得物社区活动搭建的 AI 实践之路",
+      "path": "大厂技术文章-DailyTech/从表单到 Agent：得物社区活动搭建的 AI 实践之路.md"
     },
     {
       "basename": "AI编程能力边界探索：基于 Claude Code 的 Spec Coding 项目实战-得物技术",
@@ -26,7 +30,7 @@
     },
     {
       "basename": "Arthas用户案例汇总",
-      "path": "个人学习/软件使用技巧/Arthas/Arthas用户案例汇总.md"
+      "path": "个人学习/技术工具相关/Arthas/Arthas用户案例汇总.md"
     },
     {
       "basename": "Rebased：基于 IntelliJ 平台的轻量 Git 客户端",
@@ -187,18 +191,6 @@
     {
       "basename": "升贴水字段修改 🛫 2026-06-15 🔼",
       "path": "任务安排/任务明细/升贴水字段修改 🛫 2026-06-15 🔼.md"
-    },
-    {
-      "basename": "任务列表_Kanban",
-      "path": "任务安排/任务列表_Kanban.md"
-    },
-    {
-      "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务",
-      "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-后端开发任务.md"
-    },
-    {
-      "basename": "6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试",
-      "path": "金仕达公司业务类/HME项目文档/需求文档/升贴水优化/6-11号主数据利率日期范围配置及升贴水明细表功能优化-测试.md"
     }
   ],
   "omittedPaths": [],

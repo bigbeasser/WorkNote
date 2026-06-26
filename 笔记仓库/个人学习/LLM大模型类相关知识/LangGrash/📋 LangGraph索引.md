@@ -22,7 +22,8 @@ aliases:
 | # | 文章 / 案例 | 核心主题 |
 | --- | --- | --- |
 | 1 | [[LangGraph 企业级落地实战报告]] | 生产数据、四行业落地案例、部署架构、ROI |
-| 2 | [[个人学习/LLM大模型类相关知识/LangGrash/小案例/README\|人机协作 Agent 小案例]] | interrupt、Redis 记忆、自定义状态、时间旅行 |
+| 2 | [[LangGraph-简单学习和6个企业级Demo入门实战]] | 6 递进 Demo、State/Node/Edge、Reducer/interrupt/Send |
+| 3 | [[个人学习/LLM大模型类相关知识/LangGrash/小案例/README\|人机协作 Agent 小案例]] | interrupt、Redis 记忆、自定义状态、时间旅行 |
 
 ---
 
@@ -55,8 +56,9 @@ aliases:
 
 ### 🟢 入门：理解 LangGraph 定位
 
-1. [[LangGraph 企业级落地实战报告#二、LangGraph 架构深度解析]] — 与 LangChain LCEL 对比、StateGraph 机制
-2. [[../../大厂技术文章-DailyTech/文章/得物活动Agent-从表单到LangGraph的社区活动搭建实践|得物活动 Agent 实践]] — 国内 Interrupt/Resume 落地
+1. [[LangGraph-简单学习和6个企业级Demo入门实战]] — 6 个可运行 Demo，State/Node/Edge 与 Reducer/interrupt/Send 动手入门
+2. [[LangGraph 企业级落地实战报告#二、LangGraph 架构深度解析]] — 与 LangChain LCEL 对比、StateGraph 机制
+3. [[../../大厂技术文章-DailyTech/文章/得物活动Agent-从表单到LangGraph的社区活动搭建实践|得物活动 Agent 实践]] — 国内 Interrupt/Resume 落地
 
 ### 🟡 工程实践：选型与部署
 
@@ -76,10 +78,11 @@ aliases:
 
 | 方向 | 笔记 | 关联点 |
 | --- | --- | --- |
-| 国内实战 | [[../../大厂技术文章-DailyTech/文章/从表单到 Agent：得物社区活动搭建的 AI 实践之路\|得物活动 Agent]] | LangGraph Workflow、Checkpointer、interrupt |
-| Agent 架构 | [[../../大厂技术文章-DailyTech/文章/如何搭建一个端到端业务需求专家 Agent\|需求专家 Agent]] | 四层架构、纵向闭环 |
-| 告警排查 | [[../../大厂技术文章-DailyTech/文章/用 LLM Agent 重构告警排查流程｜得物技术\|告警排查 Agent]] | ReAct、多 Agent 协作 |
-| LLM 基础 | [[LLM大模型学习\|LLM 大模型学习]] | Agent 概念、SSE 等基础 |
+| 入门教程 | [[LangGraph-简单学习和6个企业级Demo入门实战\|6 Demo 入门实战]] | CSDN + GitHub 可运行示例，概念到代码 |
+| 国内实战 | [[../../大厂技术文章-DailyTech/文章/得物活动Agent-从表单到LangGraph的社区活动搭建实践\|得物活动 Agent]] | LangGraph Workflow、Checkpointer、interrupt |
+| Agent 架构 | [[../../大厂技术文章-DailyTech/文章/业务需求专家Agent-端到端搭建指南\|需求专家 Agent]] | 四层架构、纵向闭环 |
+| 告警排查 | [[../../大厂技术文章-DailyTech/文章/告警排查Agent-得物LLM Agent重构告警流程\|告警排查 Agent]] | ReAct、多 Agent 协作 |
+| LLM 基础 | [[../LLM大模型学习\|LLM 大模型学习]] | Agent 概念、SSE 等基础 |
 | 总索引 | [[../../大厂技术文章-DailyTech/📋 文章索引\|技术文章总索引]] | DailyTech 全库入口 |
 
 ---
@@ -101,4 +104,4 @@ aliases:
 
 ---
 
-*最后更新: 2026-06-25（+LangGraph 企业级落地实战报告）*
+*最后更新: 2026-06-25（+LangGraph-简单学习和6个企业级Demo入门实战）*

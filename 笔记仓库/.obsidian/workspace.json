@@ -22,31 +22,15 @@
             }
           },
           {
-            "id": "720a23e4b563069a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Claude Code-Steering Claude七种配置方式选型指南"
-            }
-          },
-          {
             "id": "d5264b81b09f5a9f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "大厂技术文章-DailyTech/文章/七条节省Token的交互习惯.md",
-                "mode": "source",
-                "source": false
+                "file": "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf"
               },
-              "icon": "lucide-file",
-              "title": "七条节省Token的交互习惯"
+              "icon": "lucide-file-text",
+              "title": "凤凰架构：构建可靠的大型分布式系统"
             }
           },
           {
@@ -117,7 +101,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 440.5
+    "width": 419.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -167,13 +151,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
+                "file": "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Claude Code-Steering Claude七种配置方式选型指南 的大纲"
+              "title": "凤凰架构：构建可靠的大型分布式系统 的大纲"
             }
           },
           {
@@ -258,29 +242,43 @@
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph-简单学习和6个企业级Demo入门实战.md",
+    "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf",
+    "大厂技术文章-DailyTech/文章/Loop Engineering-6个Hook玩法入门.md",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_16.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_15.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_14.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_12.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_09.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_13.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_11.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_10.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_07.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_08.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门",
+    "大厂技术文章-DailyTech/文章/_raw/01_想玩Loop Engineering，可以先从这6个Hook玩法开始。.txt",
+    "大厂技术文章-DailyTech/文章/assets/想玩Loop Engineering，可以先从这6个Hook玩法开始。",
+    "大厂技术文章-DailyTech/文章/_raw",
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告.md",
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告：从架构设计到生产数据全解析 (2026-03-06) _ AI Daily _ AI Daily.html",
+    "大厂技术文章-DailyTech/文章/七条节省Token的交互习惯.md",
+    "金仕达公司业务类/HME项目文档/wiki/系统架构.md",
+    "金仕达公司业务类/HME项目文档/wiki/实货交易.md",
+    "金仕达公司业务类/HME项目文档/wiki/库存管理.md",
+    "金仕达公司业务类/HME项目文档/wiki/_MAP.md",
+    "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
     "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude七种配置方式选型指南",
     "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude Code七种配置方式选型指南",
-    "大厂技术文章-DailyTech/文章/七条节省Token的交互习惯.md",
     "大厂技术文章-DailyTech/📋 文章索引.md",
     "个人学习/Obsidian的使用/Obsidian的使用.md",
     "个人学习/技术工具相关",
     "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/__init__.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/state.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/tools.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/nodes.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/graph_builder.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/checkpointer.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/demo.cpython-313.pyc",
-    "个人学习/LLM大模型类相关知识/LangGrash/小案例/human_in_loop_agent/__pycache__/config.cpython-313.pyc",
     "个人学习/LLM大模型类相关知识/LangGrash/小案例/README.md",
     "个人学习/LLM大模型类相关知识/LangGrash/📋 LangGraph索引.md",
-    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告.md",
     "个人学习/LLM大模型类相关知识/LangGrash/小案例/README.md",
     "个人学习/LLM大模型类相关知识/LangGrash/📋 LangGraph索引.md",
-    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph 企业级落地实战报告.md",
     "个人学习/英语学习/简单算法突击.md",
     "大厂技术文章-DailyTech/文章/Zvec- 开箱即用、高性能的嵌入式向量数据库.md",
-    "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
     "大厂技术文章-DailyTech/文章/Open Code Review-AI代码评审CLI与确定性工程实践.md",
     "大厂技术文章-DailyTech/文章/Loop Engineering-实操手册与14步落地清单.md",
     "大厂技术文章-DailyTech/文章/高可用Agent-阿里云服务领域构建与调优方法论.md",
@@ -290,20 +288,6 @@
     "大厂技术文章-DailyTech/文章/千问云-Agent-first模型服务Skill与CLI化.md",
     "大厂技术文章-DailyTech/文章/剪贴板AI增强-人与Agent协作的复制粘贴进化.md",
     "大厂技术文章-DailyTech/文章/企业级Agent-多智能体架构与选型指南.md",
-    "大厂技术文章-DailyTech/专题/记忆与上下文专题.md",
-    "大厂技术文章-DailyTech/专题/Loop工程专题.md",
-    "大厂技术文章-DailyTech/专题/Claude-Code专题.md",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_08.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_03.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_07.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_06.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_05.jpg",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_04.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_02.png",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-实操手册与14步落地清单/img_01.png",
-    "大厂技术文章-DailyTech/文章/assets/得物活动Agent-从表单到LangGraph的社区活动搭建实践/img_23.jpg",
-    "大厂技术文章-DailyTech/文章/assets/得物活动Agent-从表单到LangGraph的社区活动搭建实践/img_19.png",
-    "大厂技术文章-DailyTech/文章/Harness工程化-五层架构与门禁阻断实践.md",
     "未命名.canvas"
   ]
 }

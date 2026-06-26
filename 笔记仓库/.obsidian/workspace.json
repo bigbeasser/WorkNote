@@ -25,12 +25,14 @@
             "id": "d5264b81b09f5a9f",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf"
+                "file": "金仕达公司业务类/HME项目文档/代码文档/计价公式/cashflow-现金流使用计价公式的方法.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "凤凰架构：构建可靠的大型分布式系统"
+              "icon": "lucide-file",
+              "title": "cashflow-现金流使用计价公式的方法"
             }
           },
           {
@@ -151,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf",
+                "file": "金仕达公司业务类/HME项目文档/代码文档/计价公式/cashflow-现金流使用计价公式的方法.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "凤凰架构：构建可靠的大型分布式系统 的大纲"
+              "title": "cashflow-现金流使用计价公式的方法 的大纲"
             }
           },
           {
@@ -242,8 +244,9 @@
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph-简单学习和6个企业级Demo入门实战.md",
+    "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
     "个人学习/技术文章文档/凤凰架构：构建可靠的大型分布式系统.pdf",
+    "个人学习/LLM大模型类相关知识/LangGrash/LangGraph-简单学习和6个企业级Demo入门实战.md",
     "大厂技术文章-DailyTech/文章/Loop Engineering-6个Hook玩法入门.md",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_16.png",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-6个Hook玩法入门/img_15.png",
@@ -266,7 +269,6 @@
     "金仕达公司业务类/HME项目文档/wiki/实货交易.md",
     "金仕达公司业务类/HME项目文档/wiki/库存管理.md",
     "金仕达公司业务类/HME项目文档/wiki/_MAP.md",
-    "大厂技术文章-DailyTech/文章/Claude Code-Steering Claude七种配置方式选型指南.md",
     "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude七种配置方式选型指南",
     "大厂技术文章-DailyTech/文章/assets/Claude Code-Steering Claude Code七种配置方式选型指南",
     "大厂技术文章-DailyTech/📋 文章索引.md",
@@ -287,7 +289,6 @@
     "大厂技术文章-DailyTech/文章/告警排查Agent-得物LLM Agent重构告警流程.md",
     "大厂技术文章-DailyTech/文章/千问云-Agent-first模型服务Skill与CLI化.md",
     "大厂技术文章-DailyTech/文章/剪贴板AI增强-人与Agent协作的复制粘贴进化.md",
-    "大厂技术文章-DailyTech/文章/企业级Agent-多智能体架构与选型指南.md",
     "未命名.canvas"
   ]
 }

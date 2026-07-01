@@ -78,20 +78,33 @@ query.setSize(-1);  // 不分页，全量加载
 
 **返回类型**：`List<EomEngagementDetailReportRes>`
 
-**主要字段**：
-- 法律实体、交易对手、合同号
-- 商品信息（productId、商品名、规格、大类）
-- 交易方向（采购/销售）
-- 已定价未交割量（kg）
-- 定价日期、交割日期
-- 价格、金额
-- 金属成分明细（Cu/Ni/Sn/Al/Zn/Pb 的 kg）
+**主要字段与数据来源**：
 
-**逻辑**：
-1. 调用 `futuresRecordService.engagementPage(query)` 获取全量数据
-2. 逐行转换为 `EomEngagementDetailReportRes`
-3. 补充金属成分拆分（与采购/销售快照逻辑一致）
-4. 返回列表（不分组、不汇总）
+| 字段 | 来源 | 说明 |
+|------|------|------|
+| `legalEntityId` | `FuturesEngagementRow.legalEntityId` | 法律实体 |
+| `counterpartyId` | `FuturesEngagementRow.counterpartyId` | 交易对手 |
+| `contractNumber` | `FuturesEngagementRow.contractNumber` | 合同号 |
+| `productId` | `FuturesEngagementRow.productId` | 商品ID |
+| `productName` | `FuturesEngagementRow.productName` | 商品名称 |
+| `psFlag` | `FuturesEngagementRow.psFlag` | 交易方向（P=采购, S=销售） |
+| `engagementQuantity` | `FuturesEngagementRow.engagementQuantity` | 已定价未交割量（kg） |
+| `pricingDate` | `FuturesEngagementRow.pricingDate` | 定价日期 |
+| `deliveryDate` | `FuturesEngagementRow.deliveryDate` | 交割日期 |
+| `price` | `FuturesEngagementRow.price` | 单价 |
+| `amount` | `FuturesEngagementRow.amount` | 金额 |
+| 金属成分明细 | `product_specification` 表 | Cu/Ni/Sn/Al/Zn/Pb 的 kg |
+
+**金属拆分计算**：
+
+```java
+// 与采购/销售快照逻辑一致
+yieldValue = Yield折率
+yieldMutQuantity = engagementQuantity × yieldValue
+
+for each metal (Cu/Ni/Sn/Al/Zn/Pb):
+    metalKg = metalPct × yieldMutQuantity
+```
 
 ---
 

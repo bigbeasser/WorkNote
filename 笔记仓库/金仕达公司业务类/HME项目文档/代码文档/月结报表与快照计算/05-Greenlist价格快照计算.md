@@ -78,6 +78,47 @@ flowchart TB
 - **Factory 维度**：按公司对应的工厂类别过滤，设置 `pctFactory`
 - **YieldPctFactory**：取 Factory 列表中 `SpecificationType=Yield` 且匹配工厂类别的值
 
+**金属占比计算公式**：
+
+| 字段 | 维度 | 计算公式 | 说明 |
+|------|------|---------|------|
+| `cuPct` | Fixation | `spec.defaultValue` | CU 成分占比（%） |
+| `znPct` | Fixation | `spec.defaultValue` | ZN 成分占比（%） |
+| `pbPct` | Fixation | `spec.defaultValue` | PB 成分占比（%） |
+| `alPct` | Fixation | `spec.defaultValue` | AL 成分占比（%） |
+| `snPct` | Fixation | `spec.defaultValue` | SN 成分占比（%） |
+| `niPct` | Fixation | `spec.defaultValue` | NI 成分占比（%） |
+| `cuPctFactory` | Factory | `spec.defaultValue` | CU 成分占比（%）- Factory 维度 |
+| `znPctFactory` | Factory | `spec.defaultValue` | ZN 成分占比（%）- Factory 维度 |
+| `pbPctFactory` | Factory | `spec.defaultValue` | PB 成分占比（%）- Factory 维度 |
+| `alPctFactory` | Factory | `spec.defaultValue` | AL 成分占比（%）- Factory 维度 |
+| `snPctFactory` | Factory | `spec.defaultValue` | SN 成分占比（%）- Factory 维度 |
+| `niPctFactory` | Factory | `spec.defaultValue` | NI 成分占比（%）- Factory 维度 |
+| `yieldPctFactory` | Factory | `spec.defaultValue` | Yield 折率（%）- Factory 维度 |
+
+**LME 价格计算公式**：
+
+```java
+// 对每种金属，从 ForwardCurve 查询价格
+for (metal in ["CU", "ZN", "PB", "AL", "SN", "NI"]) {
+    // 查询 LME 结算价（USD/吨）
+    BigDecimal lmePriceUsd = resolveLmeByElement(metal, curveId);
+    
+    // 转换为 EUR/吨
+    BigDecimal lmePriceEur = lmePriceUsd × usdEurExchangeRate;
+    
+    // 设置到快照字段
+    switch(metal) {
+        case "CU": snapshot.setLmeCu(lmePriceEur); break;
+        case "ZN": snapshot.setLmeZn(lmePriceEur); break;
+        case "PB": snapshot.setLmePb(lmePriceEur); break;
+        case "AL": snapshot.setLmeAl(lmePriceEur); break;
+        case "SN": snapshot.setLmeSn(lmePriceEur); break;
+        case "NI": snapshot.setLmeNi(lmePriceEur); break;
+    }
+}
+```
+
 ### 3.3 Marker 与 LmeForGreenlist（核心公式）
 
 | 商品大类 | Marker | LmeForGreenlist 取值 |
@@ -85,6 +126,43 @@ flowchart TB
 | Z003/Z002/Alloy（合金/半成品/成品） | `"Alloy"` | `allPriceCashMap[curveId]`（该商品对应合约文本的 Cash 价格） |
 | Z001 + family=000（New Metal） | `"Cash"` | `Σ(各金属pct × LME价格)`（按 Fixation 占比加权） |
 | Z001 + family=040（Scrap） | `"Lowest"` | `Σ(各金属pct × LME价格)`（同上，但 LME 用 Lowest 价格） |
+
+**详细计算公式**：
+
+```java
+// 1. Alloy/半成品/成品
+if (articleCategory in ["Z003", "Z002", "Alloy"]) {
+    marker = "Alloy";
+    lmeForGreenlist = allPriceCashMap.get(curveId);  // 直接取合约的 Cash 价格
+}
+
+// 2. 原材料 - New Metal (family=000)
+if (articleCategory == "Z001" && family == "000") {
+    marker = "Cash";
+    lmeForGreenlist = 
+        cuPct × lmeCu + 
+        znPct × lmeZn + 
+        pbPct × lmePb + 
+        alPct × lmeAl + 
+        snPct × lmeSn + 
+        niPct × lmeNi;  // 按 Fixation 占比加权求和
+}
+
+// 3. 原材料 - Scrap (family=040)
+if (articleCategory == "Z001" && family == "040") {
+    marker = "Lowest";
+    lmeForGreenlist = 
+        cuPct × lmeCuLowest + 
+        znPct × lmeZnLowest + 
+        pbPct × lmePbLowest + 
+        alPct × lmeAlLowest + 
+        snPct × lmeSnLowest + 
+        niPct × lmeNiLowest;  // 按 Fixation 占比加权求和，使用 Lowest 价格
+}
+
+snapshot.setMarker(marker);
+snapshot.setLmeForGreenlist(lmeForGreenlist);
+```
 
 ### 3.4 LME Equivalent
 
@@ -94,11 +172,48 @@ LmeEquivalent = Σ(金属Factory占比 × 对应LME价格) × YieldPctFactory
 
 即 6 种金属 (Cu/Zn/Pb/Al/Sn/Ni) 的 `pctFactory × lme` 之和再乘以折率。
 
+**详细计算公式**：
+
+```java
+// 1. 计算各金属的 Factory 加权价格
+BigDecimal metalWeightedSum = 
+    cuPctFactory × lmeCu + 
+    znPctFactory × lmeZn + 
+    pbPctFactory × lmePb + 
+    alPctFactory × lmeAl + 
+    snPctFactory × lmeSn + 
+    niPctFactory × lmeNi;
+
+// 2. 乘以 Yield 折率
+BigDecimal lmeEquivalent = metalWeightedSum × yieldPctFactory;
+
+snapshot.setLmeEquivalent(lmeEquivalent);
+```
+
 ### 3.5 月均折扣/溢价
 
 - 从 `receiptDetailsMap` 按 `companyId:productId` 取值
 - 计算方式：`totalDiscount合计 ÷ receiptQuantityTo合计`（保留5位小数）
 - 当月无数据时向前回补最多3个月
+
+**详细计算公式**：
+
+```java
+// 从收货明细查询折扣数据
+ReceiptDetailsMapKey key = companyId + ":" + productId;
+BigDecimal totalDiscount = receiptDetailsMap.get(key).totalDiscount;
+BigDecimal receiptQuantityTo = receiptDetailsMap.get(key).receiptQuantityTo;
+
+// 计算月均折扣/溢价
+BigDecimal averagePremiumDiscount = totalDiscount ÷ receiptQuantityTo;
+
+// 如果当月无数据，向前回补最多3个月
+if (averagePremiumDiscount == null && monthLookback > 0) {
+    averagePremiumDiscount = loadFromPreviousMonth(companyId, productId, monthLookback);
+}
+
+snapshot.setAveragePremiumDiscount(averagePremiumDiscount);
+```
 
 ### 3.6 Greenlist 单价 & Adder
 
@@ -106,6 +221,33 @@ LmeEquivalent = Σ(金属Factory占比 × 对应LME价格) × YieldPctFactory
 GreenlistPrice = 有手工价 ? 手工价 : LmeForGreenlist + 月均折扣
 Adder = GreenlistPrice - LmeEquivalent  （保留5位小数）
 ```
+
+**详细计算公式**：
+
+```java
+// 1. 检查是否有手工录入的 Greenlist 价格
+BigDecimal manualPrice = manualGreenlistPriceMap.get(legalEntityId + ":" + productId);
+
+// 2. 计算 Greenlist 单价（EUR/吨）
+BigDecimal greenlistPriceEurPerTo;
+if (manualPrice != null) {
+    greenlistPriceEurPerTo = manualPrice;  // 使用手工价
+} else {
+    greenlistPriceEurPerTo = lmeForGreenlist + averagePremiumDiscount;  // LME + 折扣
+}
+
+// 3. 计算 Adder（EUR/吨）
+BigDecimal adder = greenlistPriceEurPerTo - lmeEquivalent;
+
+snapshot.setGreenlistPriceEurPerTo(greenlistPriceEurPerTo);
+snapshot.setAdder(adder);
+```
+
+**字段说明**：
+- `greenlistPriceEurPerTo`：Greenlist 单价（EUR/吨）
+- `lmeEquivalent`：LME 等价单价（EUR/吨）
+- `adder`：Adder 单价（EUR/吨），= Greenlist - LME
+- `averagePremiumDiscount`：月均折扣/溢价（EUR/吨）
 
 ---
 

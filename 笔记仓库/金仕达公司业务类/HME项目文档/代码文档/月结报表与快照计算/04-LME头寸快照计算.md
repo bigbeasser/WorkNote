@@ -88,14 +88,35 @@ for (FuturesEngagementRow row : content) {
 
 **事务**：`@Transactional(transactionManager = "systemTransactionManager")`
 
-**写入字段**：
-- `data_main_snapshot_id`：关联月结快照主表
-- 法律实体、交易对手、合同号
-- 商品信息（productId、商品名、规格）
-- 量（engagement quantity）
-- 价格、金额
-- 交割日期
-- 审计字段
+**写入字段与数据来源**：
+
+| 字段 | 来源 | 说明 |
+|------|------|------|
+| `id` | `SnowFlakeUtil.generateId()` | 雪花ID |
+| `dataMainSnapshotId` | 参数传入 | 关联月结快照主表 |
+| 法律实体 | `FuturesEngagementRow.legalEntityId` | 业务机构 |
+| 交易对手 | `FuturesEngagementRow.counterpartyId` | 交易对手 |
+| 合同号 | `FuturesEngagementRow.contractNumber` | 合同号 |
+| 商品信息 | `FuturesEngagementRow.productId/productName` | 商品 |
+| 量 | `FuturesEngagementRow.engagementQuantity` | 头寸数量 |
+| 价格 | `FuturesEngagementRow.price` | 单价 |
+| 金额 | `FuturesEngagementRow.amount` | 金额 |
+| 交割日期 | `FuturesEngagementRow.deliveryDate` | 交割日 |
+| 审计字段 | `createdBy`, `createdTime`, `inactiveFlag` | 系统字段 |
+
+**转换逻辑**：
+
+```java
+for (FuturesEngagementRow row : content) {
+    LmeEngagementSnapshot item = new LmeEngagementSnapshot();
+    item.setId(SnowFlakeUtil.generateId());
+    item.setDataMainSnapshotId(dataMainSnapshotId);
+    BeanUtils.copyProperties(row, item);  // 直接复制字段
+    item.setCreatedBy(currentUser);
+    item.setCreatedTime(LocalDateTime.now());
+    item.setInactiveFlag(false);
+}
+```
 
 ---
 

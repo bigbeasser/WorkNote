@@ -88,6 +88,18 @@ SUMpart_2 = SUMpart_1 - E(recycleScrap) - D(salesInvoiceSub)
 → calculateQuantity = diffQuantity = SUMpart_2
 ```
 
+**详细计算公式**：
+
+| 字段 | 计算公式 | 说明 |
+|------|---------|------|
+| `goodsReceiptQuantity` (B) | 从 `sap_metal_composition_incremental` 表读取 | 入库单数量 |
+| `salesInvoiceQuantity` (C) | 从 `sap_metal_composition_incremental` 表读取 | 销售发票数量 |
+| `salesInvoiceSubQuantity` (D) | 从 `sap_metal_composition_incremental` 表读取 | 销售发票 sub 数量 |
+| `recycleScrapQuantity` (E) | 从 `sap_metal_composition_incremental` 表读取 | 废料再生产数量 |
+| `sapSubcontractQuantity` (H) | 从 `sap_metal_composition_incremental` 表读取 | 分包商数量 |
+| `diffQuantity` | `B + C + H - D - E` | 差异量 |
+| `calculateQuantity` | `diffQuantity` | 计算量（常规行） |
+
 ### 3.2 配置尾行（每组最后一条）
 
 > **关键业务规则**：年度(A)和月度(F)手工数据**不参与逐行计算**，只在每组最后一行一次性加入，避免重复计算。
@@ -97,24 +109,50 @@ diffQuantity = configMonth（月度配置合计）
 calculateQuantity = yearItem.initialYearQuantity + configMonth
 ```
 
-- **年度(A)**：取最大日期的那条记录的值
+**详细计算公式**：
+
+| 字段 | 计算公式 | 说明 |
+|------|---------|------|
+| `initialYearQuantity` (A) | 取最大日期的那条记录的 `initialYearQuantity` | 年度初始配置 |
+| `initialMonthQuantity` (F) | 日期范围内所有记录的 `initialMonthQuantity` 之和 | 月度初始配置 |
+| `diffQuantity` | `initialMonthQuantity` | 月度配置合计 |
+| `calculateQuantity` | `initialYearQuantity + initialMonthQuantity` | 年度 + 月度配置 |
+
+**年度(A)和月度(F)的取值逻辑**：
+- **年度(A)**：取最大日期的那条记录的值（`getMaxDateCompositionIncrementalConfig`）
 - **月度(F)**：取日期范围内所有记录的 `initialMonthQuantity` 之和
 
 ### 3.3 二次分组汇总（buildSnapshotList）
 
 按 `legalEntityId-businessSegmentId-specificationTypeId` 分组，对每组 SUM 以下 9 个字段：
 
-1. `initialYearQuantity`（A-初始年数量）
-2. `initialMonthQuantity`（F-初始月数量）
-3. `goodsReceiptQuantity`（B-入库单数量）
-4. `salesInvoiceQuantity`（C-销售发票数量）
-5. `salesInvoiceSubQuantity`（D-销售发票sub数量）
-6. `recycleScrapQuantity`（E-废料再生产数量）
-7. `sapSubcontractQuantity`（H-分包商数量）
-8. `diffQuantity`（差异量）
-9. `calculateQuantity`（计算量）
+| 字段 | 含义 | 汇总方式 |
+|------|------|---------|
+| `initialYearQuantity` | A-初始年数量 | SUM |
+| `initialMonthQuantity` | F-初始月数量 | SUM |
+| `goodsReceiptQuantity` | B-入库单数量 | SUM |
+| `salesInvoiceQuantity` | C-销售发票数量 | SUM |
+| `salesInvoiceSubQuantity` | D-销售发票sub数量 | SUM |
+| `recycleScrapQuantity` | E-废料再生产数量 | SUM |
+| `sapSubcontractQuantity` | H-分包商数量 | SUM |
+| `diffQuantity` | 差异量 | SUM |
+| `calculateQuantity` | 计算量 | SUM |
 
 每组生成 1 条 `SapMetalCompositionInventorySnapshot`。
+
+**汇总公式**：
+```
+for each group (legalEntityId, businessSegmentId, specificationTypeId):
+    initialYearQuantity = SUM(all rows.initialYearQuantity)
+    initialMonthQuantity = SUM(all rows.initialMonthQuantity)
+    goodsReceiptQuantity = SUM(all rows.goodsReceiptQuantity)
+    salesInvoiceQuantity = SUM(all rows.salesInvoiceQuantity)
+    salesInvoiceSubQuantity = SUM(all rows.salesInvoiceSubQuantity)
+    recycleScrapQuantity = SUM(all rows.recycleScrapQuantity)
+    sapSubcontractQuantity = SUM(all rows.sapSubcontractQuantity)
+    diffQuantity = SUM(all rows.diffQuantity)
+    calculateQuantity = SUM(all rows.calculateQuantity)
+```
 
 ---
 

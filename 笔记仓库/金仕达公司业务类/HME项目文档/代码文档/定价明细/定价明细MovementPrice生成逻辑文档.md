@@ -29,19 +29,19 @@ type: 代码文档
 
 ## 二、操作类型详解
 
-| 枚举值 | 代码 | 全称 | 含义 | 触发场景 |
-|--------|------|------|------|----------|
-| FID | FID | Fixed Initial Deal | 固定初始交易 | 固定价合同提交、点价单提交（已计价） |
-| FIX | FIX | Fixation | 定价等待 | 均价合同预生成、点价单提交（未计价，等待日结） |
-| RI+ | RI+ | Reverse Initial Plus | 反向初始（正） | 日结时生成，新生效的定价记录 |
-| RI- | RI- | Reverse Initial Minus | 反向初始（负） | 日结时生成，冲销原 FIX 记录 |
-| CC+ | CC+ | Contract Change Plus | 合同变更（正） | 补充协议变更时生成新记录 |
-| CC- | CC- | Contract Cancel Minus | 合同撤销（负） | 合同撤销/补充协议冲销时生成 |
-| ADD | ADD | Add | 增加 | 点价单增加数量 |
-| DEC | DEC | Decrease | 减少 | 点价单减少数量 |
-| CAN | CAN | Cancel | 取消 | 点价单取消 |
-| REA | REA | Reassign Add | 变更商品增加 | 换货时新商品增加 |
-| STO | STO | Reassign Decrease | 变更商品减少 | 换货时原商品减少 |
+| 枚举值 | 代码  | 全称                    | 含义      | 触发场景                    |
+| --- | --- | --------------------- | ------- | ----------------------- |
+| FID | FID | Fixed Initial Deal    | 固定初始交易  | 固定价合同提交、点价单提交（已计价）      |
+| FIX | FIX | Fixation              | 定价等待    | 均价合同预生成、点价单提交（未计价，等待日结） |
+| RI+ | RI+ | Reverse Initial Plus  | 反向初始（正） | 日结时生成，新生效的定价记录          |
+| RI- | RI- | Reverse Initial Minus | 反向初始（负） | 日结时生成，冲销原 FIX 记录        |
+| CC+ | CC+ | Contract Change Plus  | 合同变更（正） | 补充协议变更时生成新记录            |
+| CC- | CC- | Contract Cancel Minus | 合同撤销（负） | 合同撤销/补充协议冲销时生成          |
+| ADD | ADD | Add                   | 增加      | 点价单增加数量                 |
+| DEC | DEC | Decrease              | 减少      | 点价单减少数量                 |
+| CAN | CAN | Cancel                | 取消      | 点价单取消                   |
+| REA | REA | Reassign Add          | 变更商品增加  | 换货时新商品增加                |
+| STO | STO | Reassign Decrease     | 变更商品减少  | 换货时原商品减少                |
 
 ---
 
@@ -327,29 +327,29 @@ flowchart TB
 
 ## 五、完整操作对照表
 
-| 操作 | 基价类型 | 条件 | 生成类型 | valid | priced |
-|------|----------|------|----------|-------|--------|
-| 合同提交 | 固定价 | - | **FID** | 1 | 1 |
-| 合同提交 | 均价 | - | **FIX**（按计价期每日一条） | -1 | 0 |
-| 合同提交 | 点价 | - | 不生成 | - | - |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=null | **FID** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=ADD | **ADD** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=DEC | **DEC** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=CAN | **CAN** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=REA | **REA** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=1/2, changeType=STO | **STO** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=0, changeType=null, priceDate < dailySettlementDate | **FID** | 1 | 1 |
-| 点价单提交 | - | onSpotPrice=0, changeType=null, priceDate ≥ dailySettlementDate | **FIX** | 1 | 0 |
-| 日结处理 | 点价/均价 | - | **RI-**（冲销原记录） | 0 | - |
-| 日结处理 | 点价/均价 | - | **RI+**（新生效记录） | 1 | 1 |
-| 补充协议 | 固定价 | - | **CC+**（新记录）+ **CC-**（冲销原记录） | 1 | 1 |
-| 补充协议 | 均价 | 系统日期 > 计价结束日期 且 数量变化 | **CC+**（差异明细） | 1 | 1 |
-| 补充协议 | 均价 | 系统日期 < 计价开始日期 | **FIX** + **CC-** | -1/1 | 0/- |
-| 补充协议 | 均价 | 系统日期在计价期内 且 关键字段变化 | **FIX** + **CC-** | -1/1 | 0/- |
-| 补充协议 | 均价 | 系统日期在计价期内 且 非关键字段变化 | 不生成 | - | - |
-| 补充协议 | 点价 | - | 不生成 | - | - |
-| 合同撤销 | 固定价/均价 | - | **CC-**（冲销所有有效记录） | 1 | - |
-| 合同撤销 | 点价 | - | 不生成 | - | - |
+| 操作    | 基价类型   | 条件                                                              | 生成类型                         | valid | priced |
+| ----- | ------ | --------------------------------------------------------------- | ---------------------------- | ----- | ------ |
+| 合同提交  | 固定价    | -                                                               | **FID**                      | 1     | 1      |
+| 合同提交  | 均价     | -                                                               | **FIX**（按计价期每日一条）            | -1    | 0      |
+| 合同提交  | 点价     | -                                                               | 不生成                          | -     | -      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=null                                | **FID**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=ADD                                 | **ADD**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=DEC                                 | **DEC**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=CAN                                 | **CAN**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=REA                                 | **REA**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=1/2, changeType=STO                                 | **STO**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=0, changeType=null, priceDate < dailySettlementDate | **FID**                      | 1     | 1      |
+| 点价单提交 | -      | onSpotPrice=0, changeType=null, priceDate ≥ dailySettlementDate | **FIX**                      | 1     | 0      |
+| 日结处理  | 点价/均价  | -                                                               | **RI-**（冲销原记录）               | 0     | -      |
+| 日结处理  | 点价/均价  | -                                                               | **RI+**（新生效记录）               | 1     | 1      |
+| 补充协议  | 固定价    | -                                                               | **CC+**（新记录）+ **CC-**（冲销原记录） | 1     | 1      |
+| 补充协议  | 均价     | 系统日期 > 计价结束日期 且 数量变化                                            | **CC+**（差异明细）                | 1     | 1      |
+| 补充协议  | 均价     | 系统日期 < 计价开始日期                                                   | **FIX** + **CC-**            | -1/1  | 0/-    |
+| 补充协议  | 均价     | 系统日期在计价期内 且 关键字段变化                                              | **FIX** + **CC-**            | -1/1  | 0/-    |
+| 补充协议  | 均价     | 系统日期在计价期内 且 非关键字段变化                                             | 不生成                          | -     | -      |
+| 补充协议  | 点价     | -                                                               | 不生成                          | -     | -      |
+| 合同撤销  | 固定价/均价 | -                                                               | **CC-**（冲销所有有效记录）            | 1     | -      |
+| 合同撤销  | 点价     | -                                                               | 不生成                          | -     | -      |
 
 ---
 

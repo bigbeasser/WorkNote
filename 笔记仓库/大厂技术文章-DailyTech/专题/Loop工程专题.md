@@ -27,6 +27,7 @@ aliases:
 | 4 | [[Loop Engineering-实操手册与14步落地清单]] | 14 步清单、最小 Loop 四件套 |
 | 5 | [[Loop Engineering-Code Buddy自主循环系统实践指南]] | Code Buddy `/goal` `/loop` 实操 |
 | 6 | [[AI时代程序员技能转型-转转前端周刊199期]] | 行业背景：Loop 与 FDE 岗位 |
+| 7 | [[AI开发范式-Prompt到Context Harness Loop四层演进综述]] | PE→CE→HE→LE 全链路综述、Loop=Cron+决策器 |
 
 ## 相关（跨专题）
 

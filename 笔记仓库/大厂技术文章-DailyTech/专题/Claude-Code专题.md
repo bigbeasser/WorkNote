@@ -29,12 +29,17 @@ aliases:
 | 5 | [[Spec Coding-得物Claude Code项目实战与能力边界]] | 10 天 Spec Coding 实战 |
 | 6 | [[Claude Code记忆系统-得物自我进化与Hook观测实践]] | Hook 观测、记忆自进化 |
 | 7 | [[Devix-7x24自动化运维Harness Engineering实践]] | 运维场景 Harness 闭环 |
+| 8 | [[Multi-Agent Harness-生产级架构评估记忆成本与MCP接入]] | Multi-Agent 生产级五模块 |
+| 9 | [[Agent Harness Engineering-ETCLOVG七层框架综述]] | ETCLOVG 七层学术综述 |
+| 10 | [[Claude Code-代码统治力的系统工程推演]] | RL + Constitutional AI + 数据飞轮，底层机制推演 |
+| 11 | [[Agent Harness Engineering-从范式理论到钉钉AI招聘实战]] | 四条铁律、六大模式、悟空AI招聘实战 |
 
 ## 相关（跨专题）
 
 - [[Open Code Review-AI代码评审CLI与确定性工程实践]] — AI 写代码 + AI 审代码
 - [[钉钉AI助手-Qoder CLI与Claude Code双引擎实践]] — 双引擎集成实践
 - [[上下文压缩-六大Agent策略横向拆解与第7种方案]] — 上下文水位线与压缩
+- [[AI开发范式-Prompt到Context Harness Loop四层演进综述]] — 范式跃迁全景综述
 
 ## 核心标签
 

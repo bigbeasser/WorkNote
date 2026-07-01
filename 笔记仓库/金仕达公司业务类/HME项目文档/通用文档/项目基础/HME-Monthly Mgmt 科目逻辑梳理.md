@@ -71,9 +71,7 @@
 
 - 业务逻辑：系统记录的销售额是6360欧元/吨，而成本端是6250欧元/吨，中间的110欧元差价就是纯利润。这部分利润在CTRM系统中通常会被单独追踪，用于分析定价策略的有效性。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZTk2M2MwODA0MjgwZThlMmFjMmUxNDY3NmI1YzdkMjJfNmZhYmY2M2RkZWI5OTA4ZGEzMmU5Njc4NDc1ODA5OGVfSUQ6NzYxMzM2NTQ1MTEzNzEyNTU3N18xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
-
-
+![](file-20260629135623510.png)
 
 
 
@@ -266,7 +264,7 @@
 
     3. 时间点：理想情况下，应在次月第一周拿到准确数据后立即执行。记录中提到的“延迟”（12月数据到1月中才出来），正是由于新系统上线后，需要反复校验数据准确性（尤其是解释755吨铜头寸的来源），导致保值操作延迟，暴露了价格风险。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Mzg0OWM3NmYyYzUxNmQwNTQyNjAwYjZiZmQ4ZGZjZjVfYmRlYTk1MTdiN2U2MDVjMjcyMTFkYmUyY2Q5MDQ0NTdfSUQ6NzYxNTE2MzgxNjU3MzcxNzcwN18xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
+![](file-20260629140054039.png)
 
 
 
@@ -358,7 +356,7 @@
 
 总结：销售关单（短溢装）损益，是连接销售执行、合同管理、风险对冲和财务核算的一个关键节点。它目前因系统问题被归入“Others”，意味着管理层失去了对这一部分利润来源/损失的洞察力。修复这一数据链路，让“第4行”重新变得可信，是提升管理报表透明度的关键一步。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NjJkNzYxNWI0MDU0MjZiZDgxMDg5NmI5MTNiZDg0Y2JfM2M4MTc2N2UwMTUwNzA5ODA1ZjcyMDM2OGQxMjEzZDBfSUQ6NzYxNTIwMzA2OTU0NjU2NDgyOF8xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
+![](file-20260629140038759.png)
 
 # 采购
 
@@ -430,7 +428,7 @@
 > 2. 盘盈盘亏周期长（半年/1年），可否改为1月/3月一次，降低偏差
 > 3. 门登销售按长度非重量，转换为重量的表格逻辑是否嵌入系统处理
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NGVlN2Y4NTI3Y2IxZDM5ZDU1OGEwODZlMzY0OTYwZTJfYWM2NmEzODM4OGM3NjkyOTgzMzk1N2E0NWU3MTg4YTVfSUQ6NzYxNTIzMTUzODcyNDQ0MTMwNl8xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
+![](file-20260629135931320.png)
 
 
 
@@ -661,16 +659,8 @@
 # 门登\-紫铜
 
 ## 水道管的负工差
-
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NDY2N2NjYjQwYTE0OTMzNDgxNGI2ZDdmYWQ4MTQ1NzFfYmM5YTViZDA5YzkxYTQ2ODYyNjkxNThjNjBjZWNhMTlfSUQ6NzYyOTUzMDE1OTMwMTA1MzQwM18xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
-
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OTM4MjQxODA0NGNjNTY2MTk0MmMyNzI2NjM2OTgwMTNfZjVmMmRkZjg3MjExYmIyZjIzMWRmNjhjOWQ5ZjBlMGRfSUQ6NzYyOTUzMDI2NTczNjIzNjI1MV8xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
-
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YzgxMjVmM2VmMjI3Njc1MjFjZDc4YzYwYjE4YTM4YTFfOGNmMGRlNWU1MjU2ZDFjMzkzMGM5ODlkZGUyZDZlMzhfSUQ6NzYyOTUzMjcxMDQ0MDYwMjgwMl8xNzgxMjQ5OTk3OjE3ODEzMzYzOTdfVjM)
-
-
-
-
+![](file-20260629135757265.png)
+![](file-20260629135818146.png)
 
 ## 核心问题：为什么会有"金属损益"？
 

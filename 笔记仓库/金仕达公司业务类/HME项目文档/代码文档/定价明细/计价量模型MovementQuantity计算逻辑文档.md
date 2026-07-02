@@ -64,6 +64,109 @@ netWeight = grossWeight × netRate（净率/收率）
 elementMetalValue = netWeight × elementMetalPrice
 ```
 
+### 1.3 品位率与收率的业务含义
+
+> [!important] 冶金贸易核心概念
+> 计价量模型的核心设计理念是：**一个订单商品行（PhysicalDealLine）会根据质检类型（SpecificationType）拆分成多条计价量记录**，每条记录对应一种金属元素。
+
+#### 为什么需要拆分？
+
+以**铜精矿**为例，一批100吨的铜精矿里含有多种金属元素：
+
+| 元素 | 品位率（levelRate） | 含义 |
+|------|-------------------|------|
+| 铜（Cu/AZZ） | 0.25（25%） | 每吨铜精矿含0.25吨铜 |
+| 锌（Zn/00Z） | 0.05（5%） | 每吨铜精矿含0.05吨锌 |
+| 银（Ag/12Z） | 0.001（0.1%） | 每吨铜精矿含0.001吨银 |
+
+每种金属元素都有独立的市场价格，需要**单独计价**，因此一条订单商品行会生成多条计价量记录。
+
+#### 品位率（levelRate）
+
+- **定义**：该元素在矿石/精矿中的含量比例
+- **来源**：`ProductSpecification.defaultValue`（商品规格表的默认值字段）
+- **作用**：将矿石总量转换为该元素的毛重
+- **示例**：100吨铜精矿 × 0.25品位率 = 25吨铜（毛重）
+
+#### 收率（netRate / Yield）
+
+- **定义**：冶炼过程中的金属回收率，表示实际可回收的金属比例
+- **来源**：商品规格中名称包含 `"yield"` 的记录（代码第324行）
+- **作用**：扣除冶炼损耗，计算实际可回收的金属净重
+- **示例**：25吨铜（毛重） × 0.97收率 = 24.25吨铜（净重）
+
+#### 完整计算示例
+
+```
+一批铜精矿：quantity = 100 吨
+铜的品位率 levelRate = 0.25（25%）
+铜的收率 netRate = 0.97（97%）
+
+grossWeight = 100 × 0.25 = 25 吨（铜的毛重，即矿石中含铜量）
+netWeight   = 25 × 0.97 = 24.25 吨（铜的净重，即实际可回收的铜）
+
+最终：elementMetalValue = netWeight × elementMetalPrice
+      = 24.25 × 铜价 = 这批货中铜的金属价值
+```
+
+### 1.4 订单商品行到计价量的拆分规则
+
+> [!note] 数据模型关系
+> **一个 PhysicalDealLine（订单商品行）会生成 N 条 MovementQuantity（计价量记录）**
+
+#### 拆分逻辑
+
+```
+PhysicalDealLine（铜精矿 100吨）
+    ├── MovementQuantity: Cu（AZZ）→ levelRate=0.25, grossWeight=25, netWeight=24.25
+    ├── MovementQuantity: Zn（00Z）→ levelRate=0.05, grossWeight=5,  netWeight=4.85
+    ├── MovementQuantity: Ag（12Z）→ levelRate=0.001, grossWeight=0.1, netWeight=0.097
+    └── MovementQuantity: Yield → 不参与计价（被过滤掉）
+```
+
+#### 过滤规则
+
+代码中的过滤逻辑（第343-346行）会跳过以下类型的商品规格：
+
+```java
+// 跳过：无分类的、不参与计价的、Yield类型的
+if(StringUtils.isEmpty(productSpecification.getCategory())
+    || !(productSpecification.getPricingOrNot() != null && productSpecification.getPricingOrNot())
+    || (!StringUtils.isEmpty(productSpecification.getSpecificationTypeName()) 
+        && productSpecification.getSpecificationTypeName().toLowerCase().contains("yield"))
+) continue;
+```
+
+| 过滤条件 | 说明 |
+|---------|------|
+| `category` 为空 | 没有指定工厂/分类的规格 |
+| `pricingOrNot = false` | 明确标记为不参与计价的规格 |
+| 名称包含 `yield` | Yield（收率）本身不是金属元素，只是计算参数 |
+
+#### 质检类型与元素代码映射
+
+| 质检类型名称 | 元素代码 | 对应金属 |
+|------------|---------|---------|
+| AZZ | Cu | 铜（Copper） |
+| 00Z | Zn | 锌（Zinc） |
+| 04Z | Pb | 铅（Lead） |
+| 01Z | Ti | 钛（Titanium） |
+| 03Z | Al | 铝（Aluminium） |
+| 12Z | Ag | 银（Silver） |
+| 02Z | Ni | 镍（Nickel） |
+
+### 1.5 CTRM与CRM在数量计算上的差异
+
+| 维度 | CTRM内部生成 | CRM外部推送 |
+|------|-------------|-------------|
+| **适用场景** | 矿石/精矿等原料 | 产成品（已冶炼完成的金属产品） |
+| **数量来源** | 从订单商品行读取，按质检类型拆分 | 接口直接传入每种元素的净重 |
+| **品位率计算** | ✅ 需要：`grossWeight = quantity × levelRate` | ❌ 不需要：产成品金属含量已确定 |
+| **收率计算** | ✅ 需要：`netWeight = grossWeight × netRate` | ❌ 不需要：直接就是金属净重 |
+| **毛重/净重关系** | `grossWeight ≠ netWeight`（扣除冶炼损耗） | `grossWeight = netWeight = 接口传入值` |
+
+**原因**：CRM推送的是产成品（如铜锭、锌锭），金属含量已经是确定的，不需要通过品位率从矿石中"提取"金属量，也不需要扣除冶炼损耗。
+
 ---
 
 ## 二、系统架构总览

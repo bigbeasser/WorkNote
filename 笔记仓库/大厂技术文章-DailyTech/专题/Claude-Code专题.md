@@ -33,6 +33,8 @@ aliases:
 | 9 | [[Agent Harness Engineering-ETCLOVG七层框架综述]] | ETCLOVG 七层学术综述 |
 | 10 | [[Claude Code-代码统治力的系统工程推演]] | RL + Constitutional AI + 数据飞轮，底层机制推演 |
 | 11 | [[Agent Harness Engineering-从范式理论到钉钉AI招聘实战]] | 四条铁律、六大模式、悟空AI招聘实战 |
+| 12 | [[AINative研发-Harness方法论与水流理论实践]] | 水流理论、最小混沌单元、反slop、多层safety net |
+| 13 | [[Code is Cheap-AI Native研发Harness方法论与五倍效率]] | 水流理论深化、checkpoint六动作、代码廉价化四层级 |
 
 ## 相关（跨专题）
 

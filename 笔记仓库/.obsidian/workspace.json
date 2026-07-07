@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/代码文档/库存月结/EOM库存月结功能文档.md",
+                "file": "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EOM库存月结功能文档"
+              "title": "LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制"
             }
           },
           {
@@ -120,8 +120,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 474.5,
-    "collapsed": true
+    "width": 474.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -171,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "金仕达公司业务类/HME项目文档/代码文档/库存月结/EOM库存月结功能文档.md",
+                "file": "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "EOM库存月结功能文档 的大纲"
+              "title": "LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制 的大纲"
             }
           },
           {
@@ -262,34 +261,37 @@
   },
   "active": "2d6b6332900f52ac",
   "lastOpenFiles": [
-    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.19448.8459ba33f402",
-    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.19448.9cae73b14006",
-    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.19448.6826ec9a5da2",
-    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.19448.3e15d0093145",
-    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.19448.282894f2f825",
+    "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版.md",
+    "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版.md.tmp.42100.6cdc5defe222",
+    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.5157990c31c9",
+    "大厂技术文章-DailyTech/专题/Loop工程专题.md.tmp.13320.42b952064b26",
+    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.011e8735fc87",
+    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.8d0a668007f2",
+    "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md.tmp.13320.3b16d328c9dd",
+    "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md.tmp.13320.15771bd5ae63",
+    "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md",
+    "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md.tmp.13320.08540ec780bc",
+    "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md",
+    "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md.tmp.13320.bf6a14a6b54f",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_06.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_04.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_05.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_02.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_03.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_01.png",
+    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_24.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_26.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_25.png",
+    "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_23.png",
+    "大厂技术文章-DailyTech/📋 文章索引.md",
+    "金仕达公司业务类/HME项目文档/代码文档/库存月结/EOM库存月结功能文档.md",
     "大厂技术文章-DailyTech/文章/Agent Protocol-跨框架稳定对象与Runtime设计.md",
-    "大厂技术文章-DailyTech/文章/Agent Protocol-跨框架稳定对象与Runtime设计.md.tmp.19448.d097cd60fc07",
     "大厂技术文章-DailyTech/文章/AINative研发-Harness方法论与水流理论实践.md",
-    "大厂技术文章-DailyTech/文章/AINative研发-Harness方法论与水流理论实践.md.tmp.19448.f3ca4b750c17",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_21.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_20.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_18.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_19.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_17.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_16.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_15.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_14.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_13.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么/img_12.png",
-    "大厂技术文章-DailyTech/文章/assets/Agent Protocol-跨框架稳定对象与Runtime设计/相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么",
-    "大厂技术文章-DailyTech/文章/assets/AINative研发-Harness方法论与水流理论实践",
-    "大厂技术文章-DailyTech/文章/_raw/03_Loop Engineering又是啥？一文讲清企业Agent落地的四层工程进化论.txt",
-    "大厂技术文章-DailyTech/文章/assets/Loop Engineering又是啥？一文讲清企业Agent落地的四层工程进化论",
     "大厂技术文章-DailyTech/文章/Loop Engineering-企业Agent落地四层演进与诊断框架.md",
     "金仕达公司业务类/HME项目文档/代码文档/CELL-DATA价格接口与合成曲线分析/CELL-DATA价格接口与合成曲线分析.md",
     "金仕达公司业务类/HME项目文档/代码文档/库存月结/未开票库存价值表 accountingValue 当月库存附加价 adderValue.md",
     "金仕达公司业务类/HME项目文档/代码文档/库存价值报表方法分析/库存价值报表方法分析.md",
-    "金仕达公司业务类/HME项目文档/代码文档/库存月结/EOM库存月结功能文档.md",
     "金仕达公司业务类/HME项目文档/代码文档/计价公式/计价公式变更与算价链路分析.md",
     "金仕达公司业务类/HME项目文档/代码文档/现金流/Python脚本调用机制全链路分析.md",
     "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/库存价值评估报表方法分析.md",
@@ -305,9 +307,6 @@
     "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md",
     "金仕达公司业务类/HME项目文档/代码文档/代码文档索引.md",
     "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细MovementPrice生成逻辑文档.md",
-    "金仕达公司业务类/HME项目文档/代码文档/定价明细/定价明细价格字段计算逻辑文档.md",
-    "金仕达公司业务类/HME项目文档/代码文档/月结报表与快照计算/19-当月库存附加价-ListAddedValue.md",
-    "金仕达公司业务类/HME项目文档/代码文档/月结报表与快照计算/18-头寸汇总表-BollettinoSummaryReport.md",
     "未命名.canvas"
   ]
 }

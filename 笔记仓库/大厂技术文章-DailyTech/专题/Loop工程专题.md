@@ -28,6 +28,7 @@ aliases:
 | 5 | [[Loop Engineering-Code Buddy自主循环系统实践指南]] | Code Buddy `/goal` `/loop` 实操 |
 | 6 | [[AI时代程序员技能转型-转转前端周刊199期]] | 行业背景：Loop 与 FDE 岗位 |
 | 7 | [[AI开发范式-Prompt到Context Harness Loop四层演进综述]] | PE→CE→HE→LE 全链路综述、Loop=Cron+决策器 |
+| 8 | [[Loop Engineering-日志扫描到预发部署全自主闭环]] | 生产级全自主闭环、五动作六组件、日志扫描→预发部署、六层验证 |
 
 ## 相关（跨专题）
 

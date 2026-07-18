@@ -15,7 +15,7 @@ source: 改写自《LLM缓存命中率：Prefix Caching与KV Cache跨请求复�
 
 秘密就藏在「**缓存命中率 90%**」这个数字背后。今天用大白话带你吃透 KV Cache 和前缀缓存，看完直接知道 Prompt 该怎么写才省钱、不掉链子，避开 90% 的坑。
 
-![封面图](<assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_01.png>)
+![封面图](<大厂技术文章-DailyTech/文章/assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_01.png>)
 *大模型推理的缓存命中率，常年挂在 90% 上下*
 
 ---
@@ -38,7 +38,7 @@ source: 改写自《LLM缓存命中率：Prefix Caching与KV Cache跨请求复�
 
 那为什么每步都重算？把它们缓存下来，下一步直接读，新 token 只算自己那一份——这就是 **KV Cache（键值缓存）**。它把每步的计算从「重算整段历史」降到「只算新增的一个」，是所有大模型推理的地基。
 
-![KV Cache原理](<assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_03.png>)
+![KV Cache原理](<大厂技术文章-DailyTech/文章/assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_03.png>)
 *KV Cache：历史 K/V 存下来，每步只算新增*
 
 > 💡 **生活类比**：像考试默写，每写一个字都要回头核对前面所有答案——太累。KV Cache 就是把前面核对过的中间结果抄在「小抄」上，下次直接看小抄，只核对最新写的那一个字。
@@ -60,7 +60,7 @@ source: 改写自《LLM缓存命中率：Prefix Caching与KV Cache跨请求复�
 
 **Prefix Caching（前缀缓存）** 就是把这部分「公共前缀」的 KV Cache 留下来、跨请求复用：新请求进来，先看前缀是不是已经被算过、缓存过；命中了就直接读，跳过最昂贵的「预填充」环节。
 
-![前缀缓存](<assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_04.png>)
+![前缀缓存](<大厂技术文章-DailyTech/文章/assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_04.png>)
 *相同前缀只算一次，跨请求复用*
 
 > 💡 **生活类比**：像餐厅的招牌前菜，每个客人来都先上同一份。厨房不用每客重做，提前备好直接端上桌——客人越多，省下的功夫越大。
@@ -105,7 +105,7 @@ source: 改写自《LLM缓存命中率：Prefix Caching与KV Cache跨请求复�
 
 回想上一节的铁律：只追加、不插改，缓存就一直命中。而各类 AI Agent 的多轮调用，**正好就是这个形状**：
 
-![Agent只追加](<assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_07.png>)
+![Agent只追加](<大厂技术文章-DailyTech/文章/assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_07.png>)
 *每一轮把整段历史原封重发，末尾追加新内容*
 
 每一轮请求，都把整段历史原封不动重发一遍，再在末尾追加一点点新内容（上一步的工具输出 + 模型新回复）。
@@ -191,7 +191,7 @@ source: 改写自《LLM缓存命中率：Prefix Caching与KV Cache跨请求复�
 
 大家有问题可以评论交流，后续持续更新 AI / 开发实用技巧！
 
-![结尾](<assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_08.gif>)
+![结尾](<大厂技术文章-DailyTech/文章/assets/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制/img_08.gif>)
 
 ---
 

@@ -181,17 +181,116 @@
       flex-wrap: wrap;
       gap: 0.5rem;
     }
+    .step {
+      background: #ffffff;
+      border: 1px solid var(--color-rule);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .step-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(45,49,66,0.08);
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      flex: 1;
+    }
+    .step-tag {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
+      color: var(--color-muted);
+      background: rgba(45,49,66,0.04);
+      border: 1px solid var(--color-rule);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+    }
+    .step-tag.warn {
+      color: #8a5a1a;
+      background: rgba(235,108,54,0.08);
+      border-color: rgba(235,108,54,0.25);
+    }
+    .step-tag.empty {
+      color: var(--color-soft);
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+    }
+    @media (max-width: 720px) {
+      .step-grid { grid-template-columns: 1fr; }
+    }
+    .step-grid dt {
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-soft);
+      margin-bottom: 0.35rem;
+    }
+    .step-grid dd {
+      font-size: 0.8125rem;
+      line-height: 1.55;
+      color: var(--color-muted);
+      margin-bottom: 0.25rem;
+    }
+    .step-grid dd.tables {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-ink);
+      line-height: 1.65;
+    }
+    .nav-deep {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .nav-deep a {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      color: var(--color-link);
+      text-decoration: none;
+      border: 1px solid rgba(46,90,168,0.25);
+      border-radius: 4px;
+      padding: 0.35rem 0.6rem;
+      background: #fff;
+    }
+    .nav-deep a:hover { background: rgba(46,90,168,0.06); }
+    .toc-note {
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+      max-width: 72ch;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <p class="header-eyebrow">HME · EOD Runtime · Diagram Design</p>
+      <p class="header-eyebrow">HME · EOD Runtime · Deep Dive</p>
       <h1>日结批处理如何一步步跑完</h1>
       <p class="subtitle">
         从页面接口 <span class="mono">PUT /api/jobs/execByTaskName/EOD-hme</span> 启动，
-        经 Quartz 与 Activiti 编排，每个 Delegate 只做自己的 <span class="mono">process</span>，
-        最终由 Finish 驱动多机构循环。
+        经 Quartz 与 Activiti 编排，每个 Delegate 只做自己的 <span class="mono">process</span>。
+        下文展开每步<strong>计算了什么、目的、写哪些表</strong>。
       </p>
     </div>
 
@@ -426,11 +525,370 @@
       </div>
     </div>
 
-    <div class="section">
-      <h2 class="section-title">HME Delegate ↔ Service 映射</h2>
-      <p class="section-note">
-        顺序为业务语义建议序；精确 BPMN 顺序请在 Activiti 中打开 processDefinitionKey=<span class="mono">inside_1ilb</span>。
+    <div class="section" id="deep">
+      <h2 class="section-title">逐步深入：计算 · 目的 · 落库</h2>
+      <p class="toc-note">
+        几乎每步都会写 <span class="mono">curvedate_session_log</span>。下列「写表」只列业务主表。
+        Brass 若干落库代码在 <span class="mono">ForwardPriceServiceImpl</span> 中已被注释——页面用「半落库」标签标出。
+        完整文字版见 <span class="mono">eod_hme_runtime_guide.md §八</span>。
       </p>
+      <div class="nav-deep">
+        <a href="#s1">1 Lock</a>
+        <a href="#s2">2 Brass</a>
+        <a href="#s3">3 LME Check</a>
+        <a href="#s4">4 Movement</a>
+        <a href="#s5">5 Cashflow</a>
+        <a href="#s6">6 Position</a>
+        <a href="#s7">7 Inventory</a>
+        <a href="#s8">8 Bollettino</a>
+        <a href="#s9">9 Session</a>
+        <a href="#s10">10 Unlock</a>
+        <a href="#s11">11 CurveDate</a>
+        <a href="#s12">12 Finish</a>
+      </div>
+
+      <article class="step" id="s1">
+        <div class="step-head">
+          <span class="step-num">01</span>
+          <h3>Fixation Lock</h3>
+          <span class="step-tag">HMEFixationLockEODDelegate</span>
+          <span class="step-tag">control:lock</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>日结开始通知 CRM/SAP：进入 EOD 锁定（session=1，eod/session 状态=0），外围勿再改点价类操作。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>查公司编码 → 组装推送报文 → CRM + SAP IT_ITEM065。本地不做「锁字段」更新。</dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">sys_company · abutment_config(_details)</dd>
+            <dt>写表</dt>
+            <dd class="tables">curvedate_session_log</dd>
+            <dt>外部</dt>
+            <dd>CRM pushEodAndSession · SAP pushEodAndSessionToSap</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s2">
+        <div class="step-head">
+          <span class="step-num">02</span>
+          <h3>Brass Scorporo 价格</h3>
+          <span class="step-tag">HMEBrassScorporoEODDelegate</span>
+          <span class="step-tag warn">半落库</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>日终合成 Tube/Special Brass Scorporo 曲线价，并把 Margin 价推进到下一小节。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              ① calculateCurvePrice(endOfDay)：JEXL/priority 合成算价 — <strong>save 已注释</strong><br>
+              ② copyComplicatePrice(0→1) — <strong>insert 已注释</strong><br>
+              ③ copyMarginPriceToZeroSession — <strong>batch 已注释</strong><br>
+              ④ copyMarginPrice(0→1) — <strong>有效</strong>，经 copyPrice 写库
+            </dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">forward_contract · forward_curve · forward_composite_curve · curve_formula_ranges · forward_price</dd>
+            <dt>写表（当前有效）</dt>
+            <dd class="tables">forward_price（Margin：session 0→1，date curve→next）· curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:ComputeBrassScorporo</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s3">
+        <div class="step-head">
+          <span class="step-num">03</span>
+          <h3>LME Scorporo Check</h3>
+          <span class="step-tag">HMELMEScorpCheckEODDelegate</span>
+          <span class="step-tag empty">空实现</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>名义节点：金属价汇率 / scorporoPrice 检查完成。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>无计算；仅写两条「已完成」业务日志。</dd>
+          </div>
+          <div>
+            <dt>写表</dt>
+            <dd class="tables">curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:LMEScorpCheck</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s4">
+        <div class="step-head">
+          <span class="step-num">04</span>
+          <h3>Movement 定价 / 计价量</h3>
+          <span class="step-tag">HMEMovementEODDelegate</span>
+          <span class="step-tag">P0 核心写</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>按日结日刷新合同定价明细与计价量：点价/均价生成 RI+/RI-，补齐 Sco 价。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              取本机构 status∈{2,9} 合同 → updateByDailySettlement(价) → updateByDailySettlement(量)
+              → updateMissingPriceByDailySettlement 回填空 sco_price；可回写点价触发记录。
+            </dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">physical_deals · movement_price · movement_quantity · pricing_formulas · cashflow_model_values · price_triggering · forward_price …</dd>
+            <dt>写表</dt>
+            <dd class="tables">movement_price · movement_quantity · price_triggering · curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:movement</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s5">
+        <div class="step-head">
+          <span class="step-num">05</span>
+          <h3>合同现金流重算</h3>
+          <span class="step-tag">HMEContractCashflowEODDelegate</span>
+          <span class="step-tag">P0 核心写</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>对有效物理合同重跑 PHYSICAL 现金流引擎，刷新结算净价、spread、费用等模型值。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              getAllValidContractDataHME → 过滤过期 Fixed/Average → 按合同 _a157.a1208（isSave=true, MODIFY）。
+              失败合同号写入日志。
+            </dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">physical_deals · physical_deal_line · contract_execution_monitor · receipt_delivery_details · movement_price …</dd>
+            <dt>写表</dt>
+            <dd class="tables">cashflow_model_header_values · cashflow_model_values · cashflow_model_pricing_detail_values · curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:cashflow</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s6">
+        <div class="step-head">
+          <span class="step-num">06</span>
+          <h3>持仓监控历史</h3>
+          <span class="step-tag">HMEPositionMonitorEODDelegate</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>按机构 + 基础金属生成当日持仓快照（期初/期末、LME/现货变动）。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>getPositionMonitorMainReport 聚合 → saveOrUpdate(date, legalEntityId, baseMetal)。</dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">movement_quantity · futures_movement_quantity · position_monitor_history · curvedate_session · fixation_adjustment 相关 …</dd>
+            <dt>写表</dt>
+            <dd class="tables">position_monitor_history · curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:PositionMonitor</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s7">
+        <div class="step-head">
+          <span class="step-num">07</span>
+          <h3>库存报表（SAP）</h3>
+          <span class="step-tag">HMEInventoryReportEODDelegate</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>拉取 SAP 当日库存相关单据落地，并异步拆分为金属元素增量表。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              inputInventoryBySap：入库单 / 销售发票 / 废料再生产 / 分包商物料 → 中间表 → 事件异步 processAll 写 incremental。
+              本步不直接刷 sap_metal_composition_inventory。
+            </dd>
+          </div>
+          <div>
+            <dt>写表</dt>
+            <dd class="tables">sap_goods_receipt · sap_sales_invoice · sap_recycle_scarp · sap_sub_matl_doc(+item) · sap_metal_composition_incremental · curvedate_session_log</dd>
+            <dt>外部</dt>
+            <dd>SAP 四类接口</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:inventoryReport</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s8">
+        <div class="step-head">
+          <span class="step-num">08</span>
+          <h3>Metal Bollettino</h3>
+          <span class="step-tag">HMEMetalBullitinoEODDelegate</span>
+          <span class="step-tag empty">空实现</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>历史预留：金属公报更新。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>UpdateMetalBullitino 方法体全部注释，无动作。</dd>
+          </div>
+          <div>
+            <dt>写表</dt>
+            <dd class="tables">（无）</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s9">
+        <div class="step-head">
+          <span class="step-num">09</span>
+          <h3>Session 推进到 S2</h3>
+          <span class="step-tag">HMESessionEODDelegate</span>
+          <span class="step-tag">P0 核心写</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>在 nextDate 创建 Session=2（日结后小节），并把 Margin 价从 session1 拷到 session2。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              作废 nextDate 上 session≥2 → session1 latest=-1 → insert session=2 →
+              copyComplicatePrice(1→2) 写库已注释 → copyMarginPrice("1","2") 有效写 forward_price。
+            </dd>
+          </div>
+          <div>
+            <dt>写表</dt>
+            <dd class="tables">curvedate_session · forward_price（Margin） · curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd>无（缺 legalEntityId/nextDate 则跳过）</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s10">
+        <div class="step-head">
+          <span class="step-num">10</span>
+          <h3>Fixation Unlock</h3>
+          <span class="step-tag">HMEFixationUnlockEODDelegate</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>通知 CRM/SAP：日结完成，进入 Session=2 解锁态。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>推送 session=2，eodStatus=1，sessionStatus=1。</dd>
+          </div>
+          <div>
+            <dt>写表</dt>
+            <dd class="tables">curvedate_session_log</dd>
+            <dt>外部</dt>
+            <dd>CRM · SAP（与 Lock 共用 control:lock）</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s11">
+        <div class="step-head">
+          <span class="step-num">11</span>
+          <h3>系统曲线日推进</h3>
+          <span class="step-tag">HMECurvedateEODDelegate</span>
+          <span class="step-tag">P0 核心写</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>全部业务机构都完成日结（均有 session=2）后，推进全局系统计价日。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              Redis 记本机构 → 比对 enable 公司 vs 已日结集合 → 未齐只写日志 return →
+              齐了则 getPreAndNextWorkingDate 更新 curvedate。
+            </dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">sys_company · curvedate_session · curvedate</dd>
+            <dt>写表</dt>
+            <dd class="tables">curvedate · curvedate_session_log</dd>
+            <dt>开关</dt>
+            <dd class="tables">EOD:control:updateCurveCate</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="step" id="s12">
+        <div class="step-head">
+          <span class="step-num">12</span>
+          <h3>Finish 收尾 / 多机构循环</h3>
+          <span class="step-tag">HMEFinishEODDelegate</span>
+        </div>
+        <dl class="step-grid">
+          <div>
+            <dt>目的</dt>
+            <dd>标记本机构流程结束，再触发同一 Job 处理下一机构。</dd>
+            <dt>计算 / 动作</dt>
+            <dd>
+              日志「日结操作已完成」→ Redis TEMP_COMPLETE + Finished 标记 → 删 LegalEntityId →
+              quartzJobService.execution 再次弹出下一机构；队列空则 SUCCEED。
+            </dd>
+          </div>
+          <div>
+            <dt>读表</dt>
+            <dd class="tables">sys_quartz_job</dd>
+            <dt>写表</dt>
+            <dd class="tables">curvedate_session_log（+ 调度日志）</dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">排查时优先看哪些写表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>优先级</th>
+              <th>步骤</th>
+              <th>关键写表</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P0</td>
+              <td>Movement / 现金流 / Session / 系统日</td>
+              <td class="mono">movement_* · cashflow_model_* · curvedate_session · curvedate</td>
+            </tr>
+            <tr>
+              <td>P1</td>
+              <td>Brass Margin / 持仓 / SAP 库存</td>
+              <td class="mono">forward_price · position_monitor_history · sap_*</td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>Lock·Unlock / Finish / LMECheck / Bollettino</td>
+              <td class="mono">多为日志 / 外部推送 / 空实现</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">HME Delegate ↔ Service 速查</h2>
       <div class="table-wrap">
         <table>
           <thead>
@@ -461,7 +919,7 @@
 
     <div class="footer">
       <span>proj-context/diagrams/eod-hme-runtime.html</span>
-      <span>详见 eod_hme_runtime_guide.md</span>
+      <span>深度文字 · eod_hme_runtime_guide.md §八</span>
     </div>
   </div>
 </body>

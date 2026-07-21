@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "个人学习/微信公众号文章草稿/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版.md",
-                "mode": "preview",
+                "file": "金仕达公司业务类/HME项目文档/代码文档/日结流程/eod_日结流程图.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版"
+              "title": "eod_日结流程图"
             }
           },
           {
@@ -95,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "paths 作用域",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -120,7 +120,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.5
+    "width": 421.5
   },
   "right": {
     "id": "7ff51919022c48c4",
@@ -242,7 +242,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 559.5
+    "width": 341.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -261,31 +261,41 @@
   },
   "active": "2a36fe712416df5b",
   "lastOpenFiles": [
-    "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制.md",
+    "金仕达公司业务类/HME项目文档/代码文档/日结流程/eod_日结流程图.md",
+    "金仕达公司业务类/HME项目文档/代码文档/日结流程/eod_日结流程图.md",
+    "金仕达公司业务类/HME项目文档/代码文档/日结流程/eod-hme-runtime.html",
+    "大厂技术文章-DailyTech/📋 文章索引.md",
+    "金仕达公司业务类/HME项目文档/代码文档/日结流程",
+    "大厂技术文章-DailyTech/文章/得物活动Agent-从表单到LangGraph的社区活动搭建实践.md",
+    "大厂技术文章-DailyTech/文章/剪贴板AI增强-人与Agent协作的复制粘贴进化.md",
     "个人学习/微信公众号文章草稿/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版.md",
+    "个人学习/微信公众号文章草稿/我读完Loop Engineering三篇文章后动手实验的一整天.md",
+    "个人学习/微信公众号文章草稿/Open-Code-Review-上手实操/阿里开源 Open Code Review！快速跑通 AI 代码评审 CLI.md",
+    "个人学习/微信公众号文章草稿/AI生成高质量技术公众号文章：生动、简略、吸睛的全套方法.md",
+    "金仕达公司业务类/HME项目文档/代码文档/物资明细/ReceiptDeliveryDetailsProcessorFactory_process_调用链深度分析.md",
+    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.38284.aaf0ed872334",
+    "大厂技术文章-DailyTech/📋 文章索引.md.tmp.38284.1552389bac5d",
+    "大厂技术文章-DailyTech/文章/智能分析Skills-V1到V3架构演进与六条设计原则.md",
+    "大厂技术文章-DailyTech/文章/AI开发范式-Prompt到Context Harness Loop四层演进综述.md",
+    "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制.md",
     "大厂技术文章-DailyTech/文章/LLM缓存命中率-Prefix Caching与KV Cache跨请求复用机制-公众号版.md.tmp.42100.6cdc5defe222",
     "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.5157990c31c9",
     "大厂技术文章-DailyTech/专题/Loop工程专题.md.tmp.13320.42b952064b26",
     "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.011e8735fc87",
     "大厂技术文章-DailyTech/📋 文章索引.md.tmp.13320.8d0a668007f2",
     "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md.tmp.13320.3b16d328c9dd",
-    "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md.tmp.13320.15771bd5ae63",
     "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md",
-    "大厂技术文章-DailyTech/文章/Loop Engineering-日志扫描到预发部署全自主闭环.md.tmp.13320.08540ec780bc",
     "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md",
-    "大厂技术文章-DailyTech/文章/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架.md.tmp.13320.bf6a14a6b54f",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_06.png",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_04.png",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_05.png",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_02.png",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_03.png",
     "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架/img_01.png",
-    "大厂技术文章-DailyTech/文章/assets/AutoResearch-LLM-Agent接手LLM训练优化三阶段框架",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_24.png",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_26.png",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_25.png",
     "大厂技术文章-DailyTech/文章/assets/Loop Engineering-日志扫描到预发部署全自主闭环/img_23.png",
-    "大厂技术文章-DailyTech/📋 文章索引.md",
     "金仕达公司业务类/HME项目文档/代码文档/库存月结/EOM库存月结功能文档.md",
     "大厂技术文章-DailyTech/文章/Agent Protocol-跨框架稳定对象与Runtime设计.md",
     "大厂技术文章-DailyTech/文章/AINative研发-Harness方法论与水流理论实践.md",
@@ -297,16 +307,6 @@
     "金仕达公司业务类/HME项目文档/代码文档/现金流/Python脚本调用机制全链路分析.md",
     "金仕达公司业务类/HME项目文档/代码文档/库存价值评估报表方法分析/库存价值评估报表方法分析.md",
     "金仕达公司业务类/HME项目文档/代码文档/现金流/现金流模块混淆名称对照表.md",
-    "金仕达公司业务类/HME项目文档/schema.md",
-    "金仕达公司业务类/HME项目文档/代码文档/现金流/ThriftPricingService分析.md",
-    "金仕达公司业务类/HME项目文档/代码文档/计价公式/cashflow-现金流使用计价公式的方法.md",
-    "金仕达公司业务类/HME项目文档/代码文档/ThriftPricingService分析.md",
-    "金仕达公司业务类/HME项目文档/代码文档/现金流/Thrift跨语言调用链路说明.md",
-    "金仕达公司业务类/HME项目文档/代码文档/计价公式/pricing-formula-developer-guide.md",
-    "金仕达公司业务类/HME项目文档/代码文档/计价量模型movementPrice/计价量模型MovementQuantity计算逻辑文档.md",
-    "金仕达公司业务类/HME项目文档/代码文档/定价明细/计价量模型MovementQuantity计算逻辑文档.md",
-    "金仕达公司业务类/HME项目文档/代码文档/Thrift跨语言调用链路说明.md",
-    "金仕达公司业务类/HME项目文档/代码文档/代码文档索引.md",
     "未命名.canvas"
   ]
 }
